@@ -1,0 +1,113 @@
+					Assigned	Reviewer
+Functions
+WMCreateBackupRestorer
+WMCreateCertificate
+WMCreateEditor
+WMCreateDeviceRegistration
+WMCreateDRMTranscryptor
+WMCreateIndexer
+WMCreateLicenseRevocationAgent
+WMCreateProfileManager
+WMCreateReader
+WMCreateSyncReader
+WMCreateWriter
+WMCreateWriterFileSink
+WMCreateWriterNetworkSink
+WMCheckURLExtension
+WMCheckURLScheme
+WMIsAvailableOffline
+WMIsContentProtected
+WMValidateData
+
+
+Interfaces			Parent			Methods		Assigned	Reviewer
+INSNetSourceCreator					8		
+INSSBuffer						5		snarfle		ready
+INSSBuffer2			INSSBuffer		2		
+INSSBuffer3			INSSBuffer2		2		
+INSSBuffer4			INSSBuffer3		2		
+IServiceProvider					1		
+IWMAddressAccess					4		
+IWMAddressAccess2		IWMAddressAccess	2		
+IWMBackupRestoreProps					6		
+IWMBandwidthSharing		IWMStreamList		4		
+IWMClientConnections					2		
+IWMClientConnections2		IWMClientConnections	1		
+IWMCodecAMVideoAccelerator				3		
+IWMCodecInfo						3		
+IWMCodecInfo2			IWMCodecInfo		2		
+IWMCodecInfo3			IWMCodecInfo2		4		
+IWMCodecVideoAccelerator				2		
+IWMCredentialCallback					1		
+IWMDRMEditor						1		
+IWMDRMReader						8		
+IWMDRMWriter						4		
+IWMHeaderInfo						12		
+IWMHeaderInfo2			IWMHeaderInfo		2		
+IWMHeaderInfo3			IWMHeaderInfo2		7		
+IWMImageInfo						2		
+IWMIndexer						2		
+IWMIndexer2			IWMIndexer		1		
+IWMInputMediaProps		IWMMediaProps		2		
+IWMIStreamProps						1		
+IWMLanguageList						3		
+IWMLicenseBackup					2		
+IWMLicenseRestore					2		
+IWMMediaProps						3		
+IWMMetadataEditor					3		
+IWMMetadataEditor2		IWMMetadataEditor	1		
+IWMMutualExclusion		IWMStreamList		2		
+IWMMutualExclusion2		IWMMutualExclusion	10		
+IWMOutputMediaProps		IWMMediaProps		2		
+IWMPacketSize						2		
+IWMPacketSize2			IWMPacketSize		2		
+IWMPlayerTimestampHook					1		
+IWMProfile						18		
+IWMProfile2			IWMProfile		1		
+IWMProfile3			IWMProfile2		12		
+IWMProfileManager					6		
+IWMProfileManager2		IWMProfileManager	2		
+IWMProfileManagerLanguage				2		
+IWMPropertyVault					6		
+IWMReader						11		
+IWMReaderAccelerator					2		
+IWMReaderAdvanced					20		
+IWMReaderAdvanced2		IWMReaderAdvanced	15		
+IWMReaderAdvanced3		IWMReaderAdvanced2	2		
+IWMReaderAdvanced4		IWMReaderAdvanced3	9		
+IWMReaderAllocatorEx					2		
+IWMReaderCallback		IWMStatusCallback	1		
+IWMReaderCallbackAdvanced				6		
+IWMReaderNetworkConfig					33		
+IWMReaderNetworkConfig2		IWMReaderNetworkConfig	13		
+IWMReaderStreamClock					3		
+IWMReaderTimecode					2		
+IWMReaderTypeNegotiation				1		
+IWMRegisterCallback					2		
+IWMSBufferAllocator					2		
+IWMSInternalAdminNetSource				11		
+IWMSInternalAdminNetSource2				4		
+IWMSInternalAdminNetSource3	IWMSInternalAdminNetSource2	7	
+IWMStatusCallback					1		
+IWMStreamConfig						11		
+IWMStreamConfig2		IWMStreamConfig		6		
+IWMStreamConfig3		IWMStreamConfig2	2		
+IWMStreamList						3		
+IWMStreamPrioritization					2		
+IWMSyncReader						21		
+IWMSyncReader2			IWMSyncReader		6		
+IWMVideoMediaProps		IWMMediaProps		4		
+IWMWatermarkInfo					2		
+IWMWriter						13		
+IWMWriterAdvanced					11		
+IWMWriterAdvanced2		IWMWriterAdvanced	2		
+IWMWriterAdvanced3		IWMWriterAdvanced2	2		
+IWMWriterFileSink		IWMWriterSink		1		
+IWMWriterFileSink2		IWMWriterFileSink	7		
+IWMWriterFileSink3		IWMWriterFileSink2	8		
+IWMWriterNetworkSink		IWMWriterSink		8		
+IWMWriterPostView					9		
+IWMWriterPostViewCallback	IWMStatusCallback	2		
+IWMWriterPreprocess					5		
+IWMWriterPushSink		IWMWriterSink		3		
+IWMWriterSink						5		
