@@ -25,19 +25,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 
 [assembly: AssemblyTitle("Windows Media .NET library")]
 [assembly: AssemblyDescription(".NET Interfaces for calling Windows Media.  See http://windowsmedianet.sourceforge.net/")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ALPHA VERSION")]
+[assembly: Guid("FA40A71D-13EA-4890-B916-FD76A57D4BAE")]
+[assembly: AssemblyVersion("0.9.0.0")]
+#if DEBUG
+[assembly: AssemblyProduct("Debug Version")]
+#else
+[assembly : AssemblyProduct("Release Version")]
+#endif
 [assembly: AssemblyCopyright("Lesser General Public License Version 2.1")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
-[assembly: AssemblyVersion("0.9.0.0")]
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
 
-[assembly : CLSCompliant(true)]
-[assembly : ComVisible(false)]
+[assembly: ComVisible(false)]
+[assembly: CLSCompliant(true)]
+[assembly: SecurityPermission(SecurityAction.RequestMinimum, UnmanagedCode = true)]

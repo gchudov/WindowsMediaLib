@@ -59,6 +59,8 @@ namespace WindowsMediaLib
         }
 
 
+#if ALLOW_UNTESTED_INTERFACES
+
         [DllImport("WMVCore.dll")]
         public static extern int WMCreateEditor(
             out IWMMetadataEditor ppMetadataEditor
@@ -124,6 +126,9 @@ namespace WindowsMediaLib
         public static extern int WMCreateWriterPushSink(
             out IWMWriterPushSink ppSink
             );
+
+#endif
+
     }
     #endregion
 
@@ -1233,4 +1238,21 @@ namespace WindowsMediaLib
         }
 
     }
+
+    [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Class)]
+    public class UnmanagedNameAttribute : System.Attribute
+    {
+        private string m_Name;
+
+        public UnmanagedNameAttribute(string s)
+        {
+            m_Name = s;
+        }
+
+        public override string ToString()
+        {
+            return m_Name;
+        }
+    }
+
 }

@@ -32,10 +32,9 @@ namespace WindowsMediaLib
 {
     #region Declarations
 
-    /// <summary>
-    /// From unnamed enum
-    /// </summary>
-    [Flags]
+#if ALLOW_UNTESTED_INTERFACES
+
+    [Flags, UnmanagedName("From unnamed enum")]
     public enum WriteFlags
     {
         None = 0,
@@ -44,10 +43,7 @@ namespace WindowsMediaLib
         DataLoss	= 0x4
     }
 
-    /// <summary>
-    /// From WMT_CREDENTIAL_FLAGS
-    /// </summary>
-    [Flags]
+    [Flags, UnmanagedName("WMT_CREDENTIAL_FLAGS")]
     public enum CredentialFlags
     {
         Save = 0x1,
@@ -57,10 +53,7 @@ namespace WindowsMediaLib
         Encrypt	= 0x10
     }
 
-    /// <summary>
-    /// From WMT_RIGHTS
-    /// </summary>
-    [Flags]
+    [Flags, UnmanagedName("WMT_RIGHTS")]
     public enum Rights
     {
         Playback            = 0x00000001,
@@ -73,9 +66,7 @@ namespace WindowsMediaLib
         SDMINoMoreCopies    = 0x00020000
     }
 
-    /// <summary>
-    /// From NETSOURCE_URLCREDPOLICY_SETTINGS
-    /// </summary>
+    [UnmanagedName("NETSOURCE_URLCREDPOLICY_SETTINGS")]
     public enum NetSourceURLCredPolicySettings
     {
         AnonymousOnly = 2,
@@ -83,10 +74,7 @@ namespace WindowsMediaLib
         SilentLogonOk = 0
     }
 
-
-    /// <summary>
-    /// From WMT_INDEXER_TYPE
-    /// </summary>
+    [UnmanagedName("WMT_INDEXER_TYPE")]
     public enum IndexerType
     {
         // Fields
@@ -95,10 +83,7 @@ namespace WindowsMediaLib
         TimeCode = 2
     }
 
-
-    /// <summary>
-    /// From WMT_OFFSET_FORMAT
-    /// </summary>
+    [UnmanagedName("WMT_OFFSET_FORMAT")]
     public enum OffsetFormat
     {
         // Fields
@@ -108,10 +93,7 @@ namespace WindowsMediaLib
         Timecode = 3
     }
 
-
-    /// <summary>
-    /// WMT_STORAGE_FORMAT
-    /// </summary>
+    [UnmanagedName("WMT_STORAGE_FORMAT")]
     public enum StorageFormat
     {
         // Fields
@@ -119,10 +101,7 @@ namespace WindowsMediaLib
         V1 = 1
     }
 
-
-    /// <summary>
-    /// From WMT_TRANSPORT_TYPE
-    /// </summary>
+    [UnmanagedName("WMT_TRANSPORT_TYPE")]
     public enum TransportType
     {
         // Fields
@@ -130,10 +109,7 @@ namespace WindowsMediaLib
         Unreliable = 0
     }
 
-
-    /// <summary>
-    /// From WMT_WATERMARK_ENTRY_TYPE
-    /// </summary>
+    [UnmanagedName("WMT_WATERMARK_ENTRY_TYPE")]
     public enum WaterMarkEntryType
     {
         // Fields
@@ -141,20 +117,14 @@ namespace WindowsMediaLib
         Video = 2
     }
 
-
-    /// <summary>
-    /// From WM_AETYPE
-    /// </summary>
+    [UnmanagedName("WM_AETYPE")]
     public enum AEType
     {
         Exclude = 0x65,
         Include = 0x69
     }
 
-
-    /// <summary>
-    /// From WMT_ATTR_DATATYPE
-    /// </summary>
+    [UnmanagedName("WMT_ATTR_DATATYPE")]
     public enum AttrDataType
     {
         DWORD   = 0,
@@ -166,10 +136,7 @@ namespace WindowsMediaLib
         GUID    = 6
     }
 
-
-    /// <summary>
-    /// From WMT_CODEC_INFO_TYPE
-    /// </summary>
+    [UnmanagedName("WMT_CODEC_INFO_TYPE")]
     public enum CodecInfoType
     {
         Audio   = 0,
@@ -177,19 +144,13 @@ namespace WindowsMediaLib
         Unknown = 0xffffff
     }
 
-
-    /// <summary>
-    /// From WMT_NET_PROTOCOL
-    /// </summary>
+    [UnmanagedName("WMT_NET_PROTOCOL")]
     public enum NetProtocol
     {
         HTTP	= 0
     }
 
-
-    /// <summary>
-    /// From WMT_PLAY_MODE
-    /// </summary>
+    [UnmanagedName("WMT_PLAY_MODE")]
     public enum PlayMode
     {
         // Fields
@@ -199,10 +160,7 @@ namespace WindowsMediaLib
         Streaming = 3
     }
 
-
-    /// <summary>
-    /// From WMT_PROXY_SETTINGS
-    /// </summary>
+    [UnmanagedName("WMT_PROXY_SETTINGS")]
     public enum ProxySettings
     {
         // Fields
@@ -213,10 +171,7 @@ namespace WindowsMediaLib
         None = 0
     }
 
-
-    /// <summary>
-    /// From WMT_STATUS
-    /// </summary>
+    [UnmanagedName("WMT_STATUS")]
     public enum Status
     {
         Error                       = 0,
@@ -266,10 +221,7 @@ namespace WindowsMediaLib
         LicenseURLSignatureState  = 43
     }
 
-
-    /// <summary>
-    /// From WMT_STREAM_SELECTION
-    /// </summary>
+    [UnmanagedName("WMT_STREAM_SELECTION")]
     public enum StreamSelection
     {
         CleanPointOnly = 1,
@@ -277,10 +229,7 @@ namespace WindowsMediaLib
         On = 2
     }
 
-
-    /// <summary>
-    /// From WMT_VERSION
-    /// </summary>
+    [UnmanagedName("WMT_VERSION")]
     public enum WMVersion
     {
         V4_0  = 0x00040000,
@@ -289,11 +238,7 @@ namespace WindowsMediaLib
         V9_0  = 0x00090000
     }	
 
-
-    /// <summary>
-    /// From WMT_WATERMARK_ENTRY
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_WATERMARK_ENTRY")]
     public struct WaterMarkEntry
     {
         public WaterMarkEntryType wmetType;
@@ -303,44 +248,28 @@ namespace WindowsMediaLib
         public string pwszDisplayName;
     }
 
-
-    /// <summary>
-    /// From WM_ADDRESS_ACCESSENTRY
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_ADDRESS_ACCESSENTRY")]
     public struct WMAddressAccessEntry
     {
         public int dwIPAddress;
         public int dwMask;
     }
 
-
-    /// <summary>
-    /// From WM_CLIENT_PROPERTIES
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_CLIENT_PROPERTIES")]
     public struct WMClientProperties
     {
         public int dwIPAddress;
         public int dwPort;
     }
 
-
-    /// <summary>
-    /// From WM_PORT_NUMBER_RANGE
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=2)]
+    [StructLayout(LayoutKind.Sequential, Pack = 2), UnmanagedName("WM_PORT_NUMBER_RANGE")]
     public struct WMPortNumberRange
     {
         public short wPortBegin;
         public short wPortEnd;
     }
 
-
-    /// <summary>
-    /// From WM_READER_CLIENTINFO
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=8)]
+    [StructLayout(LayoutKind.Sequential, Pack = 8), UnmanagedName("WM_READER_CLIENTINFO")]
     public struct WMReaderClientInfo
     {
         public int cbSize;
@@ -354,11 +283,7 @@ namespace WindowsMediaLib
         public string wszPlayerUserAgent;
     }
 
-
-    /// <summary>
-    /// From WM_READER_STATISTICS
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_READER_STATISTICS")]
     public struct WMReaderStatistics
     {
         public int cbSize;
@@ -369,22 +294,14 @@ namespace WindowsMediaLib
         public short wQuality;
     }
 
-
-    /// <summary>
-    /// From WM_STREAM_PRIORITY_RECORD
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=2)]
+    [StructLayout(LayoutKind.Sequential, Pack = 2), UnmanagedName("WM_STREAM_PRIORITY_RECORD")]
     public struct WMStreamPrioritizationRecord
     {
         public short wStreamNumber;
         public int fMandatory;
     }
 
-
-    /// <summary>
-    /// From WMT_BUFFER_SEGMENT
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_BUFFER_SEGMENT")]
     public struct BufferSegment
     {
         public INSSBuffer pBuffer;
@@ -392,11 +309,7 @@ namespace WindowsMediaLib
         public int cbLength;
     }
 
-
-    /// <summary>
-    /// From WMT_FILESINK_DATA_UNIT
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_FILESINK_DATA_UNIT")]
     public struct FileSinkDataUnit
     {
         public BufferSegment packetHeaderBuffer;
@@ -406,11 +319,7 @@ namespace WindowsMediaLib
         public IntPtr pPayloadDataFragments;
     }
 
-
-    /// <summary>
-    /// From WMT_TIMECODE_EXTENSION_DATA
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=2)]
+    [StructLayout(LayoutKind.Sequential, Pack = 2), UnmanagedName("WMT_TIMECODE_EXTENSION_DATA")]
     public struct TimeCodeExtensionData
     {
         public short wRange;
@@ -419,11 +328,7 @@ namespace WindowsMediaLib
         public int dwAmFlags;
     }
 
-
-    /// <summary>
-    /// From WM_WRITER_STATISTICS
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("WM_WRITER_STATISTICS")]
     public struct WriterStatistics
     {
         public long qwSampleCount;
@@ -438,11 +343,7 @@ namespace WindowsMediaLib
         public int dwExpectedSampleRate;
     }
 
-
-    /// <summary>
-    /// From WM_WRITER_STATISTICS_EX
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=4)]
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_WRITER_STATISTICS_EX")]
     public struct WMWriterStatisticsEx
     {
         public int dwBitratePlusOverhead;
@@ -454,11 +355,7 @@ namespace WindowsMediaLib
         public int dwTotalSampleDropsInMultiplexer;
     }
 
-
-    /// <summary>
-    /// From STATSTG
-    /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=8)]
+    [StructLayout(LayoutKind.Sequential, Pack = 8), UnmanagedName("STATSTG")]
     public struct STATSTG
     {
         [MarshalAs(UnmanagedType.LPWStr)]
@@ -475,164 +372,144 @@ namespace WindowsMediaLib
         public int reserved;
     }
 
+#endif
 
     #endregion
 
     #region Interfaces
 
-    [Guid("45086030-F7E4-486a-B504-826BB5792A3B"),
+#if ALLOW_UNTESTED_INTERFACES
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("45086030-F7E4-486a-B504-826BB5792A3B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IConfigAsfWriter
     {
-        [PreserveSig]
-        int ConfigureFilterUsingProfileId([In] int dwProfileId);
+        void ConfigureFilterUsingProfileId([In] int dwProfileId);
 
-        [PreserveSig]
-        int GetCurrentProfileId([Out] out int pdwProfileId);
+        void GetCurrentProfileId([Out] out int pdwProfileId);
 
-        [PreserveSig]
-        int ConfigureFilterUsingProfileGuid([In, MarshalAs(UnmanagedType.LPStruct)] Guid guidProfile);
+        void ConfigureFilterUsingProfileGuid([In, MarshalAs(UnmanagedType.LPStruct)] Guid guidProfile);
 
-        [PreserveSig]
-        int GetCurrentProfileGuid([Out] out Guid pProfileGuid);
+        void GetCurrentProfileGuid([Out] out Guid pProfileGuid);
 
-        [PreserveSig]
-        int ConfigureFilterUsingProfile([In] IWMProfile pProfile);
+        void ConfigureFilterUsingProfile([In] IWMProfile pProfile);
 
-        [PreserveSig]
-        int GetCurrentProfileGuid([Out] out IWMProfile ppProfile);
+        void GetCurrentProfileGuid([Out] out IWMProfile ppProfile);
 
-        [PreserveSig]
-        int SetIndexMode([In, MarshalAs(UnmanagedType.Bool)] bool bIndexFile);
+        void SetIndexMode([In, MarshalAs(UnmanagedType.Bool)] bool bIndexFile);
 
-        [PreserveSig]
-        int GetIndexMode([Out, MarshalAs(UnmanagedType.Bool)] out bool pbIndexFile);
+        void GetIndexMode([Out, MarshalAs(UnmanagedType.Bool)] out bool pbIndexFile);
     }
 
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("E1CD3524-03D7-11D2-9EED-006097D2D7CF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity, 
+    Guid("E1CD3524-03D7-11D2-9EED-006097D2D7CF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer
     {
-        [PreserveSig]
-        int GetLength(
+        void GetLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        int SetLength(
+        void SetLength(
             [In] int dwLength
             );
 
-        [PreserveSig]
-        int GetMaxLength(
+        void GetMaxLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        int GetBuffer(
+        void GetBuffer(
             out IntPtr ppdwBuffer
             );
 
-        [PreserveSig]
-        int GetBufferAndLength(
+        void GetBufferAndLength(
             out IntPtr ppdwBuffer,
             out int pdwLength
             );
     }
 
-
-    [Guid("BB3C6389-1633-4E92-AF14-9F3173BA39D0"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("BB3C6389-1633-4E92-AF14-9F3173BA39D0"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMAddressAccess
     {
-        [PreserveSig]
-        int GetAccessEntryCount(
+        void GetAccessEntryCount(
             [In] AEType aeType,
             out int pcEntries
             );
 
-        [PreserveSig]
-        int GetAccessEntry(
+        void GetAccessEntry(
             [In] AEType aeType,
             [In] int dwEntryNum,
             out WMAddressAccessEntry pAddrAccessEntry
             );
 
-        [PreserveSig]
-        int AddAccessEntry(
+        void AddAccessEntry(
             [In] AEType aeType,
             [In, MarshalAs(UnmanagedType.LPStruct)] WMAddressAccessEntry pAddrAccessEntry
             );
 
-        [PreserveSig]
-        int RemoveAccessEntry(
+        void RemoveAccessEntry(
             [In] AEType aeType,
             [In] int dwEntryNum
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("65A83FC2-3E98-4D4D-81B5-2A742886B33D")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("65A83FC2-3E98-4D4D-81B5-2A742886B33D"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMAddressAccess2 : IWMAddressAccess
     {
-        #region IWMAddressAccess Methods
+    #region IWMAddressAccess Methods
 
-        [PreserveSig]
-        new int GetAccessEntryCount(
+        new void GetAccessEntryCount(
             [In] AEType aeType,
             out int pcEntries
             );
 
-        [PreserveSig]
-        new int GetAccessEntry(
+        new void GetAccessEntry(
             [In] AEType aeType,
             [In] int dwEntryNum,
             out WMAddressAccessEntry pAddrAccessEntry
             );
 
-        [PreserveSig]
-        new int AddAccessEntry(
+        new void AddAccessEntry(
             [In] AEType aeType,
             [In, MarshalAs(UnmanagedType.LPStruct)] WMAddressAccessEntry pAddrAccessEntry
             );
 
-        [PreserveSig]
-        new int RemoveAccessEntry(
+        new void RemoveAccessEntry(
             [In] AEType aeType,
             [In] int dwEntryNum
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetAccessEntryEx(
+        void GetAccessEntryEx(
             [In] AEType aeType,
             [In] int dwEntryNum,
             [MarshalAs(UnmanagedType.BStr)] out string pbstrAddress,
             [MarshalAs(UnmanagedType.BStr)] out string pbstrMask
             );
 
-        [PreserveSig]
-        int AddAccessEntryEx(
+        void AddAccessEntryEx(
             [In] AEType aeType,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrAddress,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrMask
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("3C8E0DA6-996F-4FF3-A1AF-4838F9377E2E")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("3C8E0DA6-996F-4FF3-A1AF-4838F9377E2E"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMBackupRestoreProps
     {
-        [PreserveSig]
-        int GetPropCount(
+        void GetPropCount(
             out short pcProps
             );
 
-        [PreserveSig]
-        int GetPropByIndex(
+        void GetPropByIndex(
             [In] short wIndex,
             [Out] StringBuilder pwszName,
             ref short pcchNameLen,
@@ -641,118 +518,102 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        int GetPropByName(
+        void GetPropByName(
             [In] string pszName,
             out AttrDataType pType,
             out byte [] pValue,
             ref short pcbLength
             );
 
-        [PreserveSig]
-        int SetProp(
+        void SetProp(
             [In] string pszName,
             [In] AttrDataType Type,
             [In] byte [] pValue,
             [In] short cbLength
             );
 
-        [PreserveSig]
-        int RemoveProp(
+        void RemoveProp(
             [In] string pcwszName
             );
 
-        [PreserveSig]
-        int RemoveAllProps();
+        void RemoveAllProps();
     }
 
-
-    [Guid("AD694AF1-F8D9-42F8-BC47-70311B0C4F9E"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("AD694AF1-F8D9-42F8-BC47-70311B0C4F9E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMBandwidthSharing : IWMStreamList
     {
-        #region IWMStreamList Methods
+    #region IWMStreamList Methods
 
-        [PreserveSig]
-        new int GetStreams(
+        new void GetStreams(
             out short [] pwStreamNumArray,
             ref short pcStreams
             );
 
-        [PreserveSig]
-        new int AddStream(
+        new void AddStream(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        new int RemoveStream(
+        new void RemoveStream(
             [In] short wStreamNum
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetType(
+        void GetType(
             out Guid pguidType
             );
 
-        [PreserveSig]
-        int SetType(
+        void SetType(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType
             );
 
-        [PreserveSig]
-        int GetBandwidth(
+        void GetBandwidth(
             out int pdwBitrate,
             out int pmsBufferWindow
             );
 
-        [PreserveSig]
-        int SetBandwidth(
+        void SetBandwidth(
             [In] int dwBitrate,
             [In] int msBufferWindow
             );
     }
 
-
-    [Guid("73C66010-A299-41DF-B1F0-CCF03B09C1C6"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("73C66010-A299-41DF-B1F0-CCF03B09C1C6"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMClientConnections
     {
-        [PreserveSig]
-        int GetClientCount(
+        void GetClientCount(
             out int pcClients
             );
 
-        [PreserveSig]
-        int GetClientProperties(
+        void GetClientProperties(
             [In] int dwClientNum,
             out WMClientProperties pClientProperties
             );
     }
 
-
-    [Guid("4091571E-4701-4593-BB3D-D5F5F0C74246"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("4091571E-4701-4593-BB3D-D5F5F0C74246"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMClientConnections2 : IWMClientConnections
     {
-        #region IWMClientConnections Methods
+    #region IWMClientConnections Methods
 
-        [PreserveSig]
-        new int GetClientCount(
+        new void GetClientCount(
             out int pcClients
             );
 
-        [PreserveSig]
-        new int GetClientProperties(
+        new void GetClientProperties(
             [In] int dwClientNum,
             out WMClientProperties pClientProperties
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetClientInfo(
+        void GetClientInfo(
             [In] int dwClientNum,
             [Out] StringBuilder pwszNetworkAddress,
             ref int pcchNetworkAddress,
@@ -763,26 +624,23 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("A970F41E-34DE-4A98-B3BA-E4B3CA7528F0")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("A970F41E-34DE-4A98-B3BA-E4B3CA7528F0"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo
     {
-        [PreserveSig]
-        int GetCodecInfoCount(
+        void GetCodecInfoCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             out int pcCodecs
             );
 
-        [PreserveSig]
-        int GetCodecFormatCount(
+        void GetCodecFormatCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             out int pcFormat
             );
 
-        [PreserveSig]
-        int GetCodecFormat(
+        void GetCodecFormat(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] int dwFormatIndex,
@@ -790,46 +648,41 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("AA65E273-B686-4056-91EC-DD768D4DF710")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("AA65E273-B686-4056-91EC-DD768D4DF710"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo2 : IWMCodecInfo
     {
-        #region IWMCodecInfo Methods
+    #region IWMCodecInfo Methods
 
-        [PreserveSig]
-        new int GetCodecInfoCount(
+        new void GetCodecInfoCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             out int pcCodecs
             );
 
-        [PreserveSig]
-        new int GetCodecFormatCount(
+        new void GetCodecFormatCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             out int pcFormat
             );
 
-        [PreserveSig]
-        new int GetCodecFormat(
+        new void GetCodecFormat(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] int dwFormatIndex,
             out IWMStreamConfig ppIStreamConfig
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetCodecName(
+        void GetCodecName(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [Out] StringBuilder wszName,
             ref int pcchName
             );
 
-        [PreserveSig]
-        int GetCodecFormatDesc(
+        void GetCodecFormatDesc(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] int dwFormatIndex,
@@ -839,48 +692,43 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("7E51F487-4D93-4F98-8AB4-27D0565ADC51")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("7E51F487-4D93-4F98-8AB4-27D0565ADC51"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo3 : IWMCodecInfo2
     {
-        #region IWMCodecInfo Methods
+    #region IWMCodecInfo Methods
 
-        [PreserveSig]
-        new int GetCodecInfoCount(
+        new void GetCodecInfoCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             out int pcCodecs
             );
 
-        [PreserveSig]
-        new int GetCodecFormatCount(
+        new void GetCodecFormatCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             out int pcFormat
             );
 
-        [PreserveSig]
-        new int GetCodecFormat(
+        new void GetCodecFormat(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] int dwFormatIndex,
             out IWMStreamConfig ppIStreamConfig
             );
 
-        #endregion
+    #endregion
 
-        #region IWMCodecInfo2 Methods
+    #region IWMCodecInfo2 Methods
 
-        [PreserveSig]
-        new int GetCodecName(
+        new void GetCodecName(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [Out] StringBuilder wszName,
             ref int pcchName
             );
 
-        [PreserveSig]
-        new int GetCodecFormatDesc(
+        new void GetCodecFormatDesc(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] int dwFormatIndex,
@@ -889,10 +737,9 @@ namespace WindowsMediaLib
             ref int pcchDesc
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetCodecFormatProp(
+        void GetCodecFormatProp(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] int dwFormatIndex,
@@ -902,8 +749,7 @@ namespace WindowsMediaLib
             ref int pdwSize
             );
 
-        [PreserveSig]
-        int GetCodecProp(
+        void GetCodecProp(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] string pszName,
@@ -912,8 +758,7 @@ namespace WindowsMediaLib
             ref int pdwSize
             );
 
-        [PreserveSig]
-        int SetCodecEnumerationSetting(
+        void SetCodecEnumerationSetting(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] string pszName,
@@ -922,8 +767,7 @@ namespace WindowsMediaLib
             [In] int dwSize
             );
 
-        [PreserveSig]
-        int GetCodecEnumerationSetting(
+        void GetCodecEnumerationSetting(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] string pszName,
@@ -933,13 +777,12 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("342E0EB7-E651-450C-975B-2ACE2C90C48E")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("342E0EB7-E651-450C-975B-2ACE2C90C48E"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCredentialCallback
     {
-        [PreserveSig]
-        int AcquireCredentials(
+        void AcquireCredentials(
             [In] string pwszRealm,
             [In] string pwszSite,
             [Out] StringBuilder pwszUser,
@@ -951,13 +794,12 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("FF130EBC-A6C3-42A6-B401-C3382C3E08B3")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("FF130EBC-A6C3-42A6-B401-C3382C3E08B3"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMEditor
     {
-        [PreserveSig]
-        int GetDRMProperty(
+        void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
             out byte [] pValue,
@@ -965,43 +807,35 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("D2827540-3EE7-432C-B14C-DC17F085D3B3")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("D2827540-3EE7-432C-B14C-DC17F085D3B3"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMReader
     {
-        [PreserveSig]
-        int AcquireLicense(
+        void AcquireLicense(
             [In] int dwFlags
             );
 
-        [PreserveSig]
-        int CancelLicenseAcquisition();
+        void CancelLicenseAcquisition();
 
-        [PreserveSig]
-        int Individualize(
+        void Individualize(
             [In] int dwFlags
             );
 
-        [PreserveSig]
-        int CancelIndividualization();
+        void CancelIndividualization();
 
-        [PreserveSig]
-        int MonitorLicenseAcquisition();
+        void MonitorLicenseAcquisition();
 
-        [PreserveSig]
-        int CancelMonitorLicenseAcquisition();
+        void CancelMonitorLicenseAcquisition();
 
-        [PreserveSig]
-        int SetDRMProperty(
+        void SetDRMProperty(
             [In] string pwstrName,
             [In] AttrDataType dwType,
             [In] byte [] pValue,
             [In] short cbLength
             );
 
-        [PreserveSig]
-        int GetDRMProperty(
+        void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
             out byte [] pValue,
@@ -1009,33 +843,29 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("D6EA5DD0-12A0-43F4-90AB-A3FD451E6A07")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("D6EA5DD0-12A0-43F4-90AB-A3FD451E6A07"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMWriter
     {
-        [PreserveSig]
-        int GenerateKeySeed(
+        void GenerateKeySeed(
             [Out] StringBuilder pwszKeySeed,
             ref int pcwchLength
             );
 
-        [PreserveSig]
-        int GenerateKeyID(
+        void GenerateKeyID(
             [Out] StringBuilder pwszKeyID,
             ref int pcwchLength
             );
 
-        [PreserveSig]
-        int GenerateSigningKeyPair(
+        void GenerateSigningKeyPair(
             [Out] StringBuilder pwszPrivKey,
             ref int pcwchPrivKeyLength,
             [Out] StringBuilder pwszPubKey,
             ref int pcwchPubKeyLength
             );
 
-        [PreserveSig]
-        int SetDRMAttribute(
+        void SetDRMAttribute(
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -1044,19 +874,17 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [Guid("96406BDA-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BDA-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo
     {
-        [PreserveSig]
-        int GetAttributeCount(
+        void GetAttributeCount(
             [In] short wStreamNum,
             out short pcAttributes
             );
 
-        [PreserveSig]
-        int GetAttributeByIndex(
+        void GetAttributeByIndex(
             [In] short wIndex,
             ref short pwStreamNum,
             [Out] StringBuilder pwszName,
@@ -1066,8 +894,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        int GetAttributeByName(
+        void GetAttributeByName(
             ref short pwStreamNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -1075,8 +902,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        int SetAttribute(
+        void SetAttribute(
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -1084,37 +910,31 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        int GetMarkerCount(
+        void GetMarkerCount(
             out short pcMarkers
             );
 
-        [PreserveSig]
-        int GetMarker(
+        void GetMarker(
             [In] short wIndex,
             [Out] StringBuilder pwszMarkerName,
             ref short pcchMarkerNameLen,
             out long pcnsMarkerTime
             );
 
-        [PreserveSig]
-        int AddMarker(
+        void AddMarker(
             [In] string pwszMarkerName,
             [In] long cnsMarkerTime
             );
 
-        [PreserveSig]
-        int RemoveMarker(
+        void RemoveMarker(
             [In] short wIndex
             );
 
-        [PreserveSig]
-        int GetScriptCount(
+        void GetScriptCount(
             out short pcScripts
             );
 
-        [PreserveSig]
-        int GetScript(
+        void GetScript(
             [In] short wIndex,
             [Out] StringBuilder pwszType,
             ref short pcchTypeLen,
@@ -1123,34 +943,30 @@ namespace WindowsMediaLib
             out long pcnsScriptTime
             );
 
-        [PreserveSig]
-        int AddScript(
+        void AddScript(
             [In] string pwszType,
             [In] string pwszCommand,
             [In] long cnsScriptTime
             );
 
-        [PreserveSig]
-        int RemoveScript(
+        void RemoveScript(
             [In] short wIndex
             );
     }
 
-
-    [Guid("15CF9781-454E-482E-B393-85FAE487A810"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("15CF9781-454E-482E-B393-85FAE487A810"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo2 : IWMHeaderInfo
     {
-        #region IWMHeaderInfo Methods
+    #region IWMHeaderInfo Methods
 
-        [PreserveSig]
-        new int GetAttributeCount(
+        new void GetAttributeCount(
             [In] short wStreamNum,
             out short pcAttributes
             );
 
-        [PreserveSig]
-        new int GetAttributeByIndex(
+        new void GetAttributeByIndex(
             [In] short wIndex,
             ref short pwStreamNum,
             [Out] StringBuilder pwszName,
@@ -1160,8 +976,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        new int GetAttributeByName(
+        new void GetAttributeByName(
             ref short pwStreamNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -1169,8 +984,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        new int SetAttribute(
+        new void SetAttribute(
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -1178,37 +992,31 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        new int GetMarkerCount(
+        new void GetMarkerCount(
             out short pcMarkers
             );
 
-        [PreserveSig]
-        new int GetMarker(
+        new void GetMarker(
             [In] short wIndex,
             [Out] StringBuilder pwszMarkerName,
             ref short pcchMarkerNameLen,
             out long pcnsMarkerTime
             );
 
-        [PreserveSig]
-        new int AddMarker(
+        new void AddMarker(
             [In] string pwszMarkerName,
             [In] long cnsMarkerTime
             );
 
-        [PreserveSig]
-        new int RemoveMarker(
+        new void RemoveMarker(
             [In] short wIndex
             );
 
-        [PreserveSig]
-        new int GetScriptCount(
+        new void GetScriptCount(
             out short pcScripts
             );
 
-        [PreserveSig]
-        new int GetScript(
+        new void GetScript(
             [In] short wIndex,
             [Out] StringBuilder pwszType,
             ref short pcchTypeLen,
@@ -1217,27 +1025,23 @@ namespace WindowsMediaLib
             out long pcnsScriptTime
             );
 
-        [PreserveSig]
-        new int AddScript(
+        new void AddScript(
             [In] string pwszType,
             [In] string pwszCommand,
             [In] long cnsScriptTime
             );
 
-        [PreserveSig]
-        new int RemoveScript(
+        new void RemoveScript(
             [In] short wIndex
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetCodecInfoCount(
+        void GetCodecInfoCount(
             out int pcCodecInfos
             );
 
-        [PreserveSig]
-        int GetCodecInfo(
+        void GetCodecInfo(
             [In] int wIndex,
             ref short pcchName,
             [Out] StringBuilder pwszName,
@@ -1249,21 +1053,19 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [Guid("15CC68E3-27CC-4ECD-B222-3F5D02D80BD5"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("15CC68E3-27CC-4ECD-B222-3F5D02D80BD5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo3 : IWMHeaderInfo2
     {
-        #region IWMHeaderInfo Methods
+    #region IWMHeaderInfo Methods
 
-        [PreserveSig]
-        new int GetAttributeCount(
+        new void GetAttributeCount(
             [In] short wStreamNum,
             out short pcAttributes
             );
 
-        [PreserveSig]
-        new int GetAttributeByIndex(
+        new void GetAttributeByIndex(
             [In] short wIndex,
             ref short pwStreamNum,
             [Out] StringBuilder pwszName,
@@ -1273,8 +1075,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        new int GetAttributeByName(
+        new void GetAttributeByName(
             ref short pwStreamNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -1282,8 +1083,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        new int SetAttribute(
+        new void SetAttribute(
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -1291,37 +1091,31 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        new int GetMarkerCount(
+        new void GetMarkerCount(
             out short pcMarkers
             );
 
-        [PreserveSig]
-        new int GetMarker(
+        new void GetMarker(
             [In] short wIndex,
             [Out] StringBuilder pwszMarkerName,
             ref short pcchMarkerNameLen,
             out long pcnsMarkerTime
             );
 
-        [PreserveSig]
-        new int AddMarker(
+        new void AddMarker(
             [In] string pwszMarkerName,
             [In] long cnsMarkerTime
             );
 
-        [PreserveSig]
-        new int RemoveMarker(
+        new void RemoveMarker(
             [In] short wIndex
             );
 
-        [PreserveSig]
-        new int GetScriptCount(
+        new void GetScriptCount(
             out short pcScripts
             );
 
-        [PreserveSig]
-        new int GetScript(
+        new void GetScript(
             [In] short wIndex,
             [Out] StringBuilder pwszType,
             ref short pcchTypeLen,
@@ -1330,29 +1124,25 @@ namespace WindowsMediaLib
             out long pcnsScriptTime
             );
 
-        [PreserveSig]
-        new int AddScript(
+        new void AddScript(
             [In] string pwszType,
             [In] string pwszCommand,
             [In] long cnsScriptTime
             );
 
-        [PreserveSig]
-        new int RemoveScript(
+        new void RemoveScript(
             [In] short wIndex
             );
 
-        #endregion
+    #endregion
 
-        #region IWMHeaderInfo2 Methods
+    #region IWMHeaderInfo2 Methods
 
-        [PreserveSig]
-        new int GetCodecInfoCount(
+        new void GetCodecInfoCount(
             out int pcCodecInfos
             );
 
-        [PreserveSig]
-        new int GetCodecInfo(
+        new void GetCodecInfo(
             [In] int wIndex,
             ref short pcchName,
             [Out] StringBuilder pwszName,
@@ -1363,16 +1153,14 @@ namespace WindowsMediaLib
             IntPtr pbCodecInfo
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetAttributeCountEx(
+        void GetAttributeCountEx(
             [In] short wStreamNum,
             out short pcAttributes
             );
 
-        [PreserveSig]
-        int GetAttributeIndices(
+        void GetAttributeIndices(
             [In] short wStreamNum,
             [In] string pwszName,
             [In] ref short pwLangIndex,
@@ -1380,8 +1168,7 @@ namespace WindowsMediaLib
             ref short pwCount
             );
 
-        [PreserveSig]
-        int GetAttributeByIndexEx(
+        void GetAttributeByIndexEx(
             [In] short wStreamNum,
             [In] short wIndex,
             [Out] StringBuilder pwszName,
@@ -1392,8 +1179,7 @@ namespace WindowsMediaLib
             ref int pdwDataLength
             );
 
-        [PreserveSig]
-        int ModifyAttribute(
+        void ModifyAttribute(
             [In] short wStreamNum,
             [In] short wIndex,
             [In] AttrDataType Type,
@@ -1402,8 +1188,7 @@ namespace WindowsMediaLib
             [In] int dwLength
             );
 
-        [PreserveSig]
-        int AddAttribute(
+        void AddAttribute(
             [In] short wStreamNum,
             [In] string pszName,
             out short pwIndex,
@@ -1413,14 +1198,12 @@ namespace WindowsMediaLib
             [In] int dwLength
             );
 
-        [PreserveSig]
-        int DeleteAttribute(
+        void DeleteAttribute(
             [In] short wStreamNum,
             [In] short wIndex
             );
 
-        [PreserveSig]
-        int AddCodecInfo(
+        void AddCodecInfo(
             [In] string pwszName,
             [In] string pwszDescription,
             [In] CodecInfoType codecType,
@@ -1429,18 +1212,16 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("9F0AA3B6-7267-4D89-88F2-BA915AA5C4C6")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("9F0AA3B6-7267-4D89-88F2-BA915AA5C4C6"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMImageInfo
     {
-        [PreserveSig]
-        int GetImageCount(
+        void GetImageCount(
             out int pcImages
             );
 
-        [PreserveSig]
-        int GetImage(
+        void GetImage(
             [In] int wIndex,
             ref short pcchMIMEType,
             [Out] StringBuilder pwszMIMEType,
@@ -1452,43 +1233,38 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("6D7CDC71-9888-11D3-8EDC-00C04F6109CF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6D7CDC71-9888-11D3-8EDC-00C04F6109CF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMIndexer
     {
-        [PreserveSig]
-        int StartIndexing(
+        void StartIndexing(
             [In] string pwszURL,
             [In] IWMStatusCallback pCallback,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int Cancel();
+        void Cancel();
     }
 
-
-    [Guid("B70F1E42-6255-4DF0-A6B9-02B212D9E2BB"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("B70F1E42-6255-4DF0-A6B9-02B212D9E2BB"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMIndexer2 : IWMIndexer
     {
-        #region IWMIndexer Methods
+    #region IWMIndexer Methods
 
-        [PreserveSig]
-        new int StartIndexing(
+        new void StartIndexing(
             [In] string pwszURL,
             [In] IWMStatusCallback pCallback,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        new int Cancel();
+        new void Cancel();
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int Configure(
+        void Configure(
             [In] short wStreamNum,
             [In] IndexerType nIndexerType,
             [In] IntPtr pvInterval,
@@ -1496,51 +1272,45 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [Guid("96406BD5-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BD5-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMInputMediaProps : IWMMediaProps
     {
-        #region IWMMediaProps Methods
+    #region IWMMediaProps Methods
 
-        [PreserveSig]
-        new int GetType(
+        new void GetType(
             out Guid pguidType
             );
 
-        [PreserveSig]
-        new int GetMediaType(
+        new void GetMediaType(
             out AMMediaType pType,
             ref int pcbType
             );
 
-        [PreserveSig]
-        new int SetMediaType(
+        new void SetMediaType(
             [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pType
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetConnectionName(
+        void GetConnectionName(
             [Out] StringBuilder pwszName,
             ref short pcchName
             );
 
-        [PreserveSig]
-        int GetGroupName(
+        void GetGroupName(
             [Out] StringBuilder pwszName,
             ref short pcchName
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("6816DAD3-2B4B-4C8E-8149-874C3483A753")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6816DAD3-2B4B-4C8E-8149-874C3483A753"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMIStreamProps
     {
-        [PreserveSig]
-        int GetProperty(
+        void GetProperty(
             [In] string pszName,
             out AttrDataType pType,
             out byte [] pValue,
@@ -1548,873 +1318,737 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("DF683F00-2D49-4D8E-92B7-FB19F6A0DC57")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("DF683F00-2D49-4D8E-92B7-FB19F6A0DC57"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMLanguageList
     {
-        [PreserveSig]
-        int GetLanguageCount(
+        void GetLanguageCount(
             out short pwCount
             );
 
-        [PreserveSig]
-        int GetLanguageDetails(
+        void GetLanguageDetails(
             [In] short wIndex,
             [Out] StringBuilder pwszLanguageString,
             ref short pcchLanguageStringLength
             );
 
-        [PreserveSig]
-        int AddLanguageByRFC1766String(
+        void AddLanguageByRFC1766String(
             [In] string pwszLanguageString,
             out short pwIndex
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
     Guid("05E5AC9F-3FB6-4508-BB43-A4067BA1EBE8")]
     public interface IWMLicenseBackup
     {
-        [PreserveSig]
-        int BackupLicenses(
+        void BackupLicenses(
             [In] int dwFlags,
             [In] IWMStatusCallback pCallback
             );
 
-        [PreserveSig]
-        int CancelLicenseBackup();
+        void CancelLicenseBackup();
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("C70B6334-A22E-4EFB-A245-15E65A004A13")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("C70B6334-A22E-4EFB-A245-15E65A004A13"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMLicenseRestore
     {
-        [PreserveSig]
-        int RestoreLicenses(
+        void RestoreLicenses(
             [In] int dwFlags,
             [In] IWMStatusCallback pCallback
             );
 
-        [PreserveSig]
-        int CancelLicenseRestore();
+        void CancelLicenseRestore();
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BCE-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BCE-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMediaProps
     {
-        [PreserveSig]
-        int GetType(
+        void GetType(
             out Guid pguidType
             );
 
-        [PreserveSig]
-        int GetMediaType(
+        void GetMediaType(
             out AMMediaType pType,
             ref int pcbType
             );
 
-        [PreserveSig]
-        int SetMediaType(
+        void SetMediaType(
             [In] AMMediaType pType
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BD9-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BD9-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMetadataEditor
     {
-        [PreserveSig]
-        int Open(
+        void Open(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        int Close();
+        void Close();
 
-        [PreserveSig]
-        int Flush();
+        void Flush();
     }
 
-
-    [Guid("203CFFE3-2E18-4FDF-B59D-6E71530534CF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("203CFFE3-2E18-4FDF-B59D-6E71530534CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMetadataEditor2 : IWMMetadataEditor
     {
-        #region IWMMetadataEditor Methods
+    #region IWMMetadataEditor Methods
 
-        [PreserveSig]
-        new int Open(
+        new void Open(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        new int Close();
+        new void Close();
 
-        [PreserveSig]
-        new int Flush();
+        new void Flush();
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int OpenEx(
+        void OpenEx(
             [In] string pwszFilename,
             [In] int dwDesiredAccess,
             [In] int dwShareMode
             );
     }
 
-
-    [Guid("96406BDE-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BDE-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMutualExclusion : IWMStreamList
     {
-        #region IWMStreamList Methods
+    #region IWMStreamList Methods
 
-        [PreserveSig]
-        new int GetStreams(
+        new void GetStreams(
             out short [] pwStreamNumArray,
             ref short pcStreams
             );
 
-        [PreserveSig]
-        new int AddStream(
+        new void AddStream(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        new int RemoveStream(
+        new void RemoveStream(
             [In] short wStreamNum
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetType(
+        void GetType(
             out Guid pguidType
             );
 
-        [PreserveSig]
-        int SetType(
+        void SetType(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType
             );
     }
 
-
-    [Guid("0302B57D-89D1-4BA2-85C9-166F2C53EB91"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("0302B57D-89D1-4BA2-85C9-166F2C53EB91"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMutualExclusion2 : IWMMutualExclusion
     {
-        #region IWMStreamList Methods
+    #region IWMStreamList Methods
 
-        [PreserveSig]
-        new int GetStreams(
+        new void GetStreams(
             out short [] pwStreamNumArray,
             ref short pcStreams
             );
 
-        [PreserveSig]
-        new int AddStream(
+        new void AddStream(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        new int RemoveStream(
+        new void RemoveStream(
             [In] short wStreamNum
             );
 
-        #endregion
+    #endregion
 
-        #region IWMMutualExclusion Methods
+    #region IWMMutualExclusion Methods
 
-        [PreserveSig]
-        new int GetType(
+        new void GetType(
             out Guid pguidType
             );
 
-        [PreserveSig]
-        new int SetType(
+        new void SetType(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetName(
+        void GetName(
             [Out] StringBuilder pwszName,
             ref short pcchName
             );
 
-        [PreserveSig]
-        int SetName(
+        void SetName(
             [In] string pwszName
             );
 
-        [PreserveSig]
-        int GetRecordCount(
+        void GetRecordCount(
             out short pwRecordCount
             );
 
-        [PreserveSig]
-        int AddRecord();
+        void AddRecord();
 
-        [PreserveSig]
-        int RemoveRecord(
+        void RemoveRecord(
             [In] short wRecordNumber
             );
 
-        [PreserveSig]
-        int GetRecordName(
+        void GetRecordName(
             [In] short wRecordNumber,
             [Out] StringBuilder pwszRecordName,
             ref short pcchRecordName
             );
 
-        [PreserveSig]
-        int SetRecordName(
+        void SetRecordName(
             [In] short wRecordNumber,
             [In] string pwszRecordName
             );
 
-        [PreserveSig]
-        int GetStreamsForRecord(
+        void GetStreamsForRecord(
             [In] short wRecordNumber,
             out short [] pwStreamNumArray,
             ref short pcStreams
             );
 
-        [PreserveSig]
-        int AddStreamForRecord(
+        void AddStreamForRecord(
             [In] short wRecordNumber,
             [In] short wStreamNumber
             );
 
-        [PreserveSig]
-        int RemoveStreamForRecord(
+        void RemoveStreamForRecord(
             [In] short wRecordNumber,
             [In] short wStreamNumber
             );
     }
 
-
-    [Guid("96406BD7-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BD7-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMOutputMediaProps : IWMMediaProps
     {
-        #region IWMMediaProps Methods
+    #region IWMMediaProps Methods
 
-        [PreserveSig]
-        new int GetType(
+        new void GetType(
             out Guid pguidType
             );
 
-        [PreserveSig]
-        new int GetMediaType(
+        new void GetMediaType(
             out AMMediaType pType,
             ref int pcbType
             );
 
-        [PreserveSig]
-        new int SetMediaType(
+        new void SetMediaType(
             [In] AMMediaType pType
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetStreamGroupName(
+        void GetStreamGroupName(
             [Out] StringBuilder pwszName,
             ref short pcchName
             );
 
-        [PreserveSig]
-        int GetConnectionName(
+        void GetConnectionName(
             [Out] StringBuilder pwszName,
             ref short pcchName
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("CDFB97AB-188F-40B3-B643-5B7903975C59")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("CDFB97AB-188F-40B3-B643-5B7903975C59"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPacketSize
     {
-        [PreserveSig]
-        int GetMaxPacketSize(
+        void GetMaxPacketSize(
             out int pdwMaxPacketSize
             );
 
-        [PreserveSig]
-        int SetMaxPacketSize(
+        void SetMaxPacketSize(
             [In] int dwMaxPacketSize
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("8BFC2B9E-B646-4233-A877-1C6A079669DC")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("8BFC2B9E-B646-4233-A877-1C6A079669DC"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPacketSize2 : IWMPacketSize
     {
-        #region IWMPacketSize Methods
+    #region IWMPacketSize Methods
 
-        [PreserveSig]
-        new int GetMaxPacketSize(
+        new void GetMaxPacketSize(
             out int pdwMaxPacketSize
             );
 
-        [PreserveSig]
-        new int SetMaxPacketSize(
+        new void SetMaxPacketSize(
             [In] int dwMaxPacketSize
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetMinPacketSize(
+        void GetMinPacketSize(
             out int pdwMinPacketSize
             );
 
-        [PreserveSig]
-        int SetMinPacketSize(
+        void SetMinPacketSize(
             [In] int dwMinPacketSize
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BDB-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BDB-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile
     {
-        [PreserveSig]
-        int GetVersion(
+        void GetVersion(
             out WMVersion pdwVersion
             );
 
-        [PreserveSig]
-        int GetName(
+        void GetName(
             [Out] StringBuilder pwszName,
             ref int pcchName
             );
 
-        [PreserveSig]
-        int SetName(
+        void SetName(
             [In] string pwszName
             );
 
-        [PreserveSig]
-        int GetDescription(
+        void GetDescription(
             [Out] StringBuilder pwszDescription,
             ref int pcchDescription
             );
 
-        [PreserveSig]
-        int SetDescription(
+        void SetDescription(
             [In] string pwszDescription
             );
 
-        [PreserveSig]
-        int GetStreamCount(
+        void GetStreamCount(
             out int pcStreams
             );
 
-        [PreserveSig]
-        int GetStream(
+        void GetStream(
             [In] int dwStreamIndex,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        int GetStreamByNumber(
+        void GetStreamByNumber(
             [In] short wStreamNum,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        int RemoveStream(
+        void RemoveStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        int RemoveStreamByNumber(
+        void RemoveStreamByNumber(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        int AddStream(
+        void AddStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        int ReconfigStream(
+        void ReconfigStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        int CreateNewStream(
+        void CreateNewStream(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidStreamType,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        int GetMutualExclusionCount(
+        void GetMutualExclusionCount(
             out int pcME
             );
 
-        [PreserveSig]
-        int GetMutualExclusion(
+        void GetMutualExclusion(
             [In] int dwMEIndex,
             out IWMMutualExclusion ppME
             );
 
-        [PreserveSig]
-        int RemoveMutualExclusion(
+        void RemoveMutualExclusion(
             [In] IWMMutualExclusion pME
             );
 
-        [PreserveSig]
-        int AddMutualExclusion(
+        void AddMutualExclusion(
             [In] IWMMutualExclusion pME
             );
 
-        [PreserveSig]
-        int CreateNewMutualExclusion(
+        void CreateNewMutualExclusion(
             out IWMMutualExclusion ppME
             );
     }
 
-
-    [Guid("07E72D33-D94E-4BE7-8843-60AE5FF7E5F5"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("07E72D33-D94E-4BE7-8843-60AE5FF7E5F5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile2 : IWMProfile
     {
-        #region IWMProfile Methods
+    #region IWMProfile Methods
 
-        [PreserveSig]
-        new int GetVersion(
+        new void GetVersion(
             out WMVersion pdwVersion
             );
 
-        [PreserveSig]
-        new int GetName(
+        new void GetName(
             [Out] StringBuilder pwszName,
             ref int pcchName
             );
 
-        [PreserveSig]
-        new int SetName(
+        new void SetName(
             [In] string pwszName
             );
 
-        [PreserveSig]
-        new int GetDescription(
+        new void GetDescription(
             [Out] StringBuilder pwszDescription,
             ref int pcchDescription
             );
 
-        [PreserveSig]
-        new int SetDescription(
+        new void SetDescription(
             [In] string pwszDescription
             );
 
-        [PreserveSig]
-        new int GetStreamCount(
+        new void GetStreamCount(
             out int pcStreams
             );
 
-        [PreserveSig]
-        new int GetStream(
+        new void GetStream(
             [In] int dwStreamIndex,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        new int GetStreamByNumber(
+        new void GetStreamByNumber(
             [In] short wStreamNum,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        new int RemoveStream(
+        new void RemoveStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        new int RemoveStreamByNumber(
+        new void RemoveStreamByNumber(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        new int AddStream(
+        new void AddStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        new int ReconfigStream(
+        new void ReconfigStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        new int CreateNewStream(
+        new void CreateNewStream(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidStreamType,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        new int GetMutualExclusionCount(
+        new void GetMutualExclusionCount(
             out int pcME
             );
 
-        [PreserveSig]
-        new int GetMutualExclusion(
+        new void GetMutualExclusion(
             [In] int dwMEIndex,
             out IWMMutualExclusion ppME
             );
 
-        [PreserveSig]
-        new int RemoveMutualExclusion(
+        new void RemoveMutualExclusion(
             [In] IWMMutualExclusion pME
             );
 
-        [PreserveSig]
-        new int AddMutualExclusion(
+        new void AddMutualExclusion(
             [In] IWMMutualExclusion pME
             );
 
-        [PreserveSig]
-        new int CreateNewMutualExclusion(
+        new void CreateNewMutualExclusion(
             out IWMMutualExclusion ppME
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetProfileID(
+        void GetProfileID(
             out Guid pguidID
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("00EF96CC-A461-4546-8BCD-C9A28F0E06F5")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("00EF96CC-A461-4546-8BCD-C9A28F0E06F5"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile3 : IWMProfile2
     {
-        #region IWMProfile Methods
+    #region IWMProfile Methods
 
-        [PreserveSig]
-        new int GetVersion(
+        new void GetVersion(
             out WMVersion pdwVersion
             );
 
-        [PreserveSig]
-        new int GetName(
+        new void GetName(
             [Out] StringBuilder pwszName,
             ref int pcchName
             );
 
-        [PreserveSig]
-        new int SetName(
+        new void SetName(
             [In] string pwszName
             );
 
-        [PreserveSig]
-        new int GetDescription(
+        new void GetDescription(
             [Out] StringBuilder pwszDescription,
             ref int pcchDescription
             );
 
-        [PreserveSig]
-        new int SetDescription(
+        new void SetDescription(
             [In] string pwszDescription
             );
 
-        [PreserveSig]
-        new int GetStreamCount(
+        new void GetStreamCount(
             out int pcStreams
             );
 
-        [PreserveSig]
-        new int GetStream(
+        new void GetStream(
             [In] int dwStreamIndex,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        new int GetStreamByNumber(
+        new void GetStreamByNumber(
             [In] short wStreamNum,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        new int RemoveStream(
+        new void RemoveStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        new int RemoveStreamByNumber(
+        new void RemoveStreamByNumber(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        new int AddStream(
+        new void AddStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        new int ReconfigStream(
+        new void ReconfigStream(
             [In] IWMStreamConfig pConfig
             );
 
-        [PreserveSig]
-        new int CreateNewStream(
+        new void CreateNewStream(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidStreamType,
             out IWMStreamConfig ppConfig
             );
 
-        [PreserveSig]
-        new int GetMutualExclusionCount(
+        new void GetMutualExclusionCount(
             out int pcME
             );
 
-        [PreserveSig]
-        new int GetMutualExclusion(
+        new void GetMutualExclusion(
             [In] int dwMEIndex,
             out IWMMutualExclusion ppME
             );
 
-        [PreserveSig]
-        new int RemoveMutualExclusion(
+        new void RemoveMutualExclusion(
             [In] IWMMutualExclusion pME
             );
 
-        [PreserveSig]
-        new int AddMutualExclusion(
+        new void AddMutualExclusion(
             [In] IWMMutualExclusion pME
             );
 
-        [PreserveSig]
-        new int CreateNewMutualExclusion(
+        new void CreateNewMutualExclusion(
             out IWMMutualExclusion ppME
             );
 
-        #endregion
+    #endregion
 
-        #region IWMProfile2 Methods
+    #region IWMProfile2 Methods
 
-        [PreserveSig]
-        new int GetProfileID(
+        new void GetProfileID(
             out Guid pguidID
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetStorageFormat(
+        void GetStorageFormat(
             out StorageFormat pnStorageFormat
             );
 
-        [PreserveSig]
-        int SetStorageFormat(
+        void SetStorageFormat(
             [In] StorageFormat nStorageFormat
             );
 
-        [PreserveSig]
-        int GetBandwidthSharingCount(
+        void GetBandwidthSharingCount(
             out int pcBS
             );
 
-        [PreserveSig]
-        int GetBandwidthSharing(
+        void GetBandwidthSharing(
             [In] int dwBSIndex,
             out IWMBandwidthSharing ppBS
             );
 
-        [PreserveSig]
-        int RemoveBandwidthSharing(
+        void RemoveBandwidthSharing(
             [In] IWMBandwidthSharing pBS
             );
 
-        [PreserveSig]
-        int AddBandwidthSharing(
+        void AddBandwidthSharing(
             [In] IWMBandwidthSharing pBS
             );
 
-        [PreserveSig]
-        int CreateNewBandwidthSharing(
+        void CreateNewBandwidthSharing(
             out IWMBandwidthSharing ppBS
             );
 
-        [PreserveSig]
-        int GetStreamPrioritization(
+        void GetStreamPrioritization(
             out IWMStreamPrioritization ppSP
             );
 
-        [PreserveSig]
-        int SetStreamPrioritization(
+        void SetStreamPrioritization(
             [In] IWMStreamPrioritization pSP
             );
 
-        [PreserveSig]
-        int RemoveStreamPrioritization();
+        void RemoveStreamPrioritization();
 
-        [PreserveSig]
-        int CreateNewStreamPrioritization(
+        void CreateNewStreamPrioritization(
             out IWMStreamPrioritization ppSP
             );
 
-        [PreserveSig]
-        int GetExpectedPacketCount(
+        void GetExpectedPacketCount(
             [In] long msDuration,
             out long pcPackets
             );
     }
 
-
-    [Guid("D16679F2-6CA0-472D-8D31-2F5D55AEE155"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("D16679F2-6CA0-472D-8D31-2F5D55AEE155"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfileManager
     {
-        [PreserveSig]
-        int CreateEmptyProfile(
+        void CreateEmptyProfile(
             [In] WMVersion dwVersion,
             out IWMProfile ppProfile
             );
 
-        [PreserveSig]
-        int LoadProfileByID(
+        void LoadProfileByID(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidProfile,
             out IWMProfile ppProfile
             );
 
-        [PreserveSig]
-        int LoadProfileByData(
+        void LoadProfileByData(
             [In] string pwszProfile,
             out IWMProfile ppProfile
             );
 
-        [PreserveSig]
-        int SaveProfile(
+        void SaveProfile(
             [In] IWMProfile pIWMProfile,
             [In] string pwszProfile,
             ref int pdwLength
             );
 
-        [PreserveSig]
-        int GetSystemProfileCount(
+        void GetSystemProfileCount(
             out int pcProfiles
             );
 
-        [PreserveSig]
-        int LoadSystemProfile(
+        void LoadSystemProfile(
             [In] int dwProfileIndex,
             out IWMProfile ppProfile
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("7A924E51-73C1-494D-8019-23D37ED9B89A")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("7A924E51-73C1-494D-8019-23D37ED9B89A"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfileManager2 : IWMProfileManager
     {
-        #region IWMProfileManager Methods
+    #region IWMProfileManager Methods
 
-        [PreserveSig]
-        new int CreateEmptyProfile(
+        new void CreateEmptyProfile(
             [In] WMVersion dwVersion,
             out IWMProfile ppProfile
             );
 
-        [PreserveSig]
-        new int LoadProfileByID(
+        new void LoadProfileByID(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidProfile,
             out IWMProfile ppProfile
             );
 
-        [PreserveSig]
-        new int LoadProfileByData(
+        new void LoadProfileByData(
             [In] string pwszProfile,
             out IWMProfile ppProfile
             );
 
-        [PreserveSig]
-        new int SaveProfile(
+        new void SaveProfile(
             [In] IWMProfile pIWMProfile,
             [In] string pwszProfile,
             ref int pdwLength
             );
 
-        [PreserveSig]
-        new int GetSystemProfileCount(
+        new void GetSystemProfileCount(
             out int pcProfiles
             );
 
-        [PreserveSig]
-        new int LoadSystemProfile(
+        new void LoadSystemProfile(
             [In] int dwProfileIndex,
             out IWMProfile ppProfile
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetSystemProfileVersion(
+        void GetSystemProfileVersion(
             out WMVersion pdwVersion
             );
 
-        [PreserveSig]
-        int SetSystemProfileVersion(
+        void SetSystemProfileVersion(
             WMVersion dwVersion
             );
     }
 
-
-    [Guid("BA4DCC78-7EE0-4AB8-B27A-DBCE8BC51454"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("BA4DCC78-7EE0-4AB8-B27A-DBCE8BC51454"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfileManagerLanguage
     {
-        [PreserveSig]
-        int GetUserLanguageID(
+        void GetUserLanguageID(
             out short wLangID
             );
 
-        [PreserveSig]
-        int SetUserLanguageID(
+        void SetUserLanguageID(
             short wLangID
             );
     }
 
-
-    [Guid("72995A79-5090-42A4-9C8C-D9D0B6D34BE5"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("72995A79-5090-42A4-9C8C-D9D0B6D34BE5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPropertyVault
     {
-        [PreserveSig]
-        int GetPropertyCount(
+        void GetPropertyCount(
             out int pdwCount
             );
 
-        [PreserveSig]
-        int GetPropertyByName(
+        void GetPropertyByName(
             [In] string pszName,
             out AttrDataType pType,
             out byte [] pValue,
             ref int pdwSize
             );
 
-        [PreserveSig]
-        int SetProperty(
+        void SetProperty(
             [In] string pszName,
             [In] AttrDataType pType,
             [In] byte [] pValue,
             [In] int dwSize
             );
 
-        [PreserveSig]
-        int GetPropertyByIndex(
+        void GetPropertyByIndex(
             [In] int dwIndex,
             [Out] StringBuilder pszName,
             ref int pdwNameLen,
@@ -2423,383 +2057,319 @@ namespace WindowsMediaLib
             ref int pdwSize
             );
 
-        [PreserveSig]
-        int CopyPropertiesFrom(
+        void CopyPropertiesFrom(
             [In] IWMPropertyVault pIWMPropertyVault
             );
 
-        [PreserveSig]
-        int Clear();
+        void Clear();
     }
 
-
-    [Guid("96406BD6-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BD6-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReader
     {
-        [PreserveSig]
-        int Open(
+        void Open(
             [In] string pwszURL,
             [In] IWMReaderCallback pCallback,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int Close();
+        void Close();
 
-        [PreserveSig]
-        int GetOutputCount(
+        void GetOutputCount(
             out int pcOutputs
             );
 
-        [PreserveSig]
-        int GetOutputProps(
+        void GetOutputProps(
             [In] int dwOutputNum,
             out IWMOutputMediaProps ppOutput
             );
 
-        [PreserveSig]
-        int SetOutputProps(
+        void SetOutputProps(
             [In] int dwOutputNum,
             [In] IWMOutputMediaProps pOutput
             );
 
-        [PreserveSig]
-        int GetOutputFormatCount(
+        void GetOutputFormatCount(
             [In] int dwOutputNumber,
             out int pcFormats
             );
 
-        [PreserveSig]
-        int GetOutputFormat(
+        void GetOutputFormat(
             [In] int dwOutputNumber,
             [In] int dwFormatNumber,
             out IWMOutputMediaProps ppProps
             );
 
-        [PreserveSig]
-        int Start(
+        void Start(
             [In] long cnsStart,
             [In] long cnsDuration,
             [In] float fRate,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int Stop();
+        void Stop();
 
-        [PreserveSig]
-        int Pause();
+        void Pause();
 
-        [PreserveSig]
-        int Resume();
+        void Resume();
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("BDDC4D08-944D-4D52-A612-46C3FDA07DD4")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("BDDC4D08-944D-4D52-A612-46C3FDA07DD4"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAccelerator
     {
-        [PreserveSig]
-        int GetCodecInterface(
+        void GetCodecInterface(
             [In] int dwOutputNum,
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid riid,
             out IntPtr ppvCodecInterface
             );
 
-        [PreserveSig]
-        int Notify(
+        void Notify(
             [In] int dwOutputNum,
             [In] AMMediaType pSubtype
             );
     }
 
-
-    [Guid("96406BEA-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BEA-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced
     {
-        [PreserveSig]
-        int SetUserProvidedClock(
+        void SetUserProvidedClock(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
             );
 
-        [PreserveSig]
-        int GetUserProvidedClock(
+        void GetUserProvidedClock(
             [MarshalAs(UnmanagedType.Bool)] out bool pfUserClock
             );
 
-        [PreserveSig]
-        int DeliverTime(
+        void DeliverTime(
             [In] long cnsTime
             );
 
-        [PreserveSig]
-        int SetManualStreamSelection(
+        void SetManualStreamSelection(
             [In, MarshalAs(UnmanagedType.Bool)] bool fSelection
             );
 
-        [PreserveSig]
-        int GetManualStreamSelection(
+        void GetManualStreamSelection(
             [MarshalAs(UnmanagedType.Bool)] out bool pfSelection
             );
 
-        [PreserveSig]
-        int SetStreamsSelected(
+        void SetStreamsSelected(
             [In] short cStreamCount,
             [In] short [] pwStreamNumbers,
             [In] StreamSelection [] pSelections
             );
 
-        [PreserveSig]
-        int GetStreamSelected(
+        void GetStreamSelected(
             [In] short wStreamNum,
             out StreamSelection pSelection
             );
 
-        [PreserveSig]
-        int SetReceiveSelectionCallbacks(
+        void SetReceiveSelectionCallbacks(
             [In, MarshalAs(UnmanagedType.Bool)] bool fGetCallbacks
             );
 
-        [PreserveSig]
-        int GetReceiveSelectionCallbacks(
+        void GetReceiveSelectionCallbacks(
             [MarshalAs(UnmanagedType.Bool)] out bool pfGetCallbacks
             );
 
-        [PreserveSig]
-        int SetReceiveStreamSamples(
+        void SetReceiveStreamSamples(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fReceiveStreamSamples
             );
 
-        [PreserveSig]
-        int GetReceiveStreamSamples(
+        void GetReceiveStreamSamples(
             [In] short wStreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfReceiveStreamSamples
             );
 
-        [PreserveSig]
-        int SetAllocateForOutput(
+        void SetAllocateForOutput(
             [In] int dwOutputNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        int GetAllocateForOutput(
+        void GetAllocateForOutput(
             [In] int dwOutputNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        int SetAllocateForStream(
+        void SetAllocateForStream(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        int GetAllocateForStream(
+        void GetAllocateForStream(
             [In] short dwSreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        int GetStatistics(
+        void GetStatistics(
             [In, Out, MarshalAs(UnmanagedType.LPStruct)] WMReaderStatistics pStatistics
             );
 
-        [PreserveSig]
-        int SetClientInfo(
+        void SetClientInfo(
             [In, MarshalAs(UnmanagedType.LPStruct)] WMReaderClientInfo pClientInfo
             );
 
-        [PreserveSig]
-        int GetMaxOutputSampleSize(
+        void GetMaxOutputSampleSize(
             [In] int dwOutput,
             out int pcbMax
             );
 
-        [PreserveSig]
-        int GetMaxStreamSampleSize(
+        void GetMaxStreamSampleSize(
             [In] short wStream,
             out int pcbMax
             );
 
-        [PreserveSig]
-        int NotifyLateDelivery(
+        void NotifyLateDelivery(
             long cnsLateness
             );
     }
 
-
-    [Guid("AE14A945-B90C-4D0D-9127-80D665F7D73E"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("AE14A945-B90C-4D0D-9127-80D665F7D73E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced2 : IWMReaderAdvanced
     {
-        #region IWMReaderAdvanced Methods
+    #region IWMReaderAdvanced Methods
 
-        [PreserveSig]
-        new int SetUserProvidedClock(
+        new void SetUserProvidedClock(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
             );
 
-        [PreserveSig]
-        new int GetUserProvidedClock(
+        new void GetUserProvidedClock(
             [MarshalAs(UnmanagedType.Bool)] out bool pfUserClock
             );
 
-        [PreserveSig]
-        new int DeliverTime(
+        new void DeliverTime(
             [In] long cnsTime
             );
 
-        [PreserveSig]
-        new int SetManualStreamSelection(
+        new void SetManualStreamSelection(
             [In, MarshalAs(UnmanagedType.Bool)] bool fSelection
             );
 
-        [PreserveSig]
-        new int GetManualStreamSelection(
+        new void GetManualStreamSelection(
             [MarshalAs(UnmanagedType.Bool)] out bool pfSelection
             );
 
-        [PreserveSig]
-        new int SetStreamsSelected(
+        new void SetStreamsSelected(
             [In] short cStreamCount,
             [In] short [] pwStreamNumbers,
             [In] StreamSelection [] pSelections
             );
 
-        [PreserveSig]
-        new int GetStreamSelected(
+        new void GetStreamSelected(
             [In] short wStreamNum,
             out StreamSelection pSelection
             );
 
-        [PreserveSig]
-        new int SetReceiveSelectionCallbacks(
+        new void SetReceiveSelectionCallbacks(
             [In, MarshalAs(UnmanagedType.Bool)] bool fGetCallbacks
             );
 
-        [PreserveSig]
-        new int GetReceiveSelectionCallbacks(
+        new void GetReceiveSelectionCallbacks(
             [MarshalAs(UnmanagedType.Bool)] out bool pfGetCallbacks
             );
 
-        [PreserveSig]
-        new int SetReceiveStreamSamples(
+        new void SetReceiveStreamSamples(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fReceiveStreamSamples
             );
 
-        [PreserveSig]
-        new int GetReceiveStreamSamples(
+        new void GetReceiveStreamSamples(
             [In] short wStreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfReceiveStreamSamples
             );
 
-        [PreserveSig]
-        new int SetAllocateForOutput(
+        new void SetAllocateForOutput(
             [In] int dwOutputNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        new int GetAllocateForOutput(
+        new void GetAllocateForOutput(
             [In] int dwOutputNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        new int SetAllocateForStream(
+        new void SetAllocateForStream(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        new int GetAllocateForStream(
+        new void GetAllocateForStream(
             [In] short dwSreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        new int GetStatistics(
+        new void GetStatistics(
             [In, Out, MarshalAs(UnmanagedType.LPStruct)] WMReaderStatistics pStatistics
             );
 
-        [PreserveSig]
-        new int SetClientInfo(
+        new void SetClientInfo(
             [In, MarshalAs(UnmanagedType.LPStruct)] WMReaderClientInfo pClientInfo
             );
 
-        [PreserveSig]
-        new int GetMaxOutputSampleSize(
+        new void GetMaxOutputSampleSize(
             [In] int dwOutput,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int GetMaxStreamSampleSize(
+        new void GetMaxStreamSampleSize(
             [In] short wStream,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int NotifyLateDelivery(
+        new void NotifyLateDelivery(
             long cnsLateness
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int SetPlayMode(
+        void SetPlayMode(
             [In] PlayMode Mode
             );
 
-        [PreserveSig]
-        int GetPlayMode(
+        void GetPlayMode(
             out PlayMode pMode
             );
 
-        [PreserveSig]
-        int GetBufferProgress(
+        void GetBufferProgress(
             out int pdwPercent,
             out long pcnsBuffering
             );
 
-        [PreserveSig]
-        int GetDownloadProgress(
+        void GetDownloadProgress(
             out int pdwPercent,
             out long pqwBytesDownloaded,
             out long pcnsDownload
             );
 
-        [PreserveSig]
-        int GetSaveAsProgress(
+        void GetSaveAsProgress(
             out int pdwPercent
             );
 
-        [PreserveSig]
-        int SaveFileAs(
+        void SaveFileAs(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        int GetProtocolName(
+        void GetProtocolName(
             [Out] StringBuilder pwszProtocol,
             ref int pcchProtocol
             );
 
-        [PreserveSig]
-        int StartAtMarker(
+        void StartAtMarker(
             [In] short wMarkerIndex,
             [In] long cnsDuration,
             [In] float fRate,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int GetOutputSetting(
+        void GetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -2807,8 +2377,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        int SetOutputSetting(
+        void SetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -2816,205 +2385,171 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        int Preroll(
+        void Preroll(
             [In] long cnsStart,
             [In] long cnsDuration,
             [In] float fRate
             );
 
-        [PreserveSig]
-        int SetLogClientID(
+        void SetLogClientID(
             [In, MarshalAs(UnmanagedType.Bool)] bool fLogClientID
             );
 
-        [PreserveSig]
-        int GetLogClientID(
+        void GetLogClientID(
             [MarshalAs(UnmanagedType.Bool)] out bool pfLogClientID
             );
 
-        [PreserveSig]
-        int StopBuffering();
+        void StopBuffering();
 
-        [PreserveSig]
-        int OpenStream(
+        void OpenStream(
             [In] IStream pStream,
             [In] IWMReaderCallback pCallback,
             [In] IntPtr pvContext
             );
     }
 
-
-    [Guid("5DC0674B-F04B-4A4E-9F2A-B1AFDE2C8100"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("5DC0674B-F04B-4A4E-9F2A-B1AFDE2C8100"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced3 : IWMReaderAdvanced2
     {
-        #region IWMReaderAdvanced Methods
+    #region IWMReaderAdvanced Methods
 
-        [PreserveSig]
-        new int SetUserProvidedClock(
+        new void SetUserProvidedClock(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
             );
 
-        [PreserveSig]
-        new int GetUserProvidedClock(
+        new void GetUserProvidedClock(
             [MarshalAs(UnmanagedType.Bool)] out bool pfUserClock
             );
 
-        [PreserveSig]
-        new int DeliverTime(
+        new void DeliverTime(
             [In] long cnsTime
             );
 
-        [PreserveSig]
-        new int SetManualStreamSelection(
+        new void SetManualStreamSelection(
             [In, MarshalAs(UnmanagedType.Bool)] bool fSelection
             );
 
-        [PreserveSig]
-        new int GetManualStreamSelection(
+        new void GetManualStreamSelection(
             [MarshalAs(UnmanagedType.Bool)] out bool pfSelection
             );
 
-        [PreserveSig]
-        new int SetStreamsSelected(
+        new void SetStreamsSelected(
             [In] short cStreamCount,
             [In] short [] pwStreamNumbers,
             [In] StreamSelection [] pSelections
             );
 
-        [PreserveSig]
-        new int GetStreamSelected(
+        new void GetStreamSelected(
             [In] short wStreamNum,
             out StreamSelection pSelection
             );
 
-        [PreserveSig]
-        new int SetReceiveSelectionCallbacks(
+        new void SetReceiveSelectionCallbacks(
             [In, MarshalAs(UnmanagedType.Bool)] bool fGetCallbacks
             );
 
-        [PreserveSig]
-        new int GetReceiveSelectionCallbacks(
+        new void GetReceiveSelectionCallbacks(
             [MarshalAs(UnmanagedType.Bool)] out bool pfGetCallbacks
             );
 
-        [PreserveSig]
-        new int SetReceiveStreamSamples(
+        new void SetReceiveStreamSamples(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fReceiveStreamSamples
             );
 
-        [PreserveSig]
-        new int GetReceiveStreamSamples(
+        new void GetReceiveStreamSamples(
             [In] short wStreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfReceiveStreamSamples
             );
 
-        [PreserveSig]
-        new int SetAllocateForOutput(
+        new void SetAllocateForOutput(
             [In] int dwOutputNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        new int GetAllocateForOutput(
+        new void GetAllocateForOutput(
             [In] int dwOutputNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        new int SetAllocateForStream(
+        new void SetAllocateForStream(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        new int GetAllocateForStream(
+        new void GetAllocateForStream(
             [In] short dwSreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        new int GetStatistics(
+        new void GetStatistics(
             [In, Out, MarshalAs(UnmanagedType.LPStruct)] WMReaderStatistics pStatistics
             );
 
-        [PreserveSig]
-        new int SetClientInfo(
+        new void SetClientInfo(
             [In, MarshalAs(UnmanagedType.LPStruct)] WMReaderClientInfo pClientInfo
             );
 
-        [PreserveSig]
-        new int GetMaxOutputSampleSize(
+        new void GetMaxOutputSampleSize(
             [In] int dwOutput,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int GetMaxStreamSampleSize(
+        new void GetMaxStreamSampleSize(
             [In] short wStream,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int NotifyLateDelivery(
+        new void NotifyLateDelivery(
             long cnsLateness
             );
 
-        #endregion
+    #endregion
 
-        #region IWMReaderAdvanced2 Methods
+    #region IWMReaderAdvanced2 Methods
 
-        [PreserveSig]
-        new int SetPlayMode(
+        new void SetPlayMode(
             [In] PlayMode Mode
             );
 
-        [PreserveSig]
-        new int GetPlayMode(
+        new void GetPlayMode(
             out PlayMode pMode
             );
 
-        [PreserveSig]
-        new int GetBufferProgress(
+        new void GetBufferProgress(
             out int pdwPercent,
             out long pcnsBuffering
             );
 
-        [PreserveSig]
-        new int GetDownloadProgress(
+        new void GetDownloadProgress(
             out int pdwPercent,
             out long pqwBytesDownloaded,
             out long pcnsDownload
             );
 
-        [PreserveSig]
-        new int GetSaveAsProgress(
+        new void GetSaveAsProgress(
             out int pdwPercent
             );
 
-        [PreserveSig]
-        new int SaveFileAs(
+        new void SaveFileAs(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        new int GetProtocolName(
+        new void GetProtocolName(
             [Out] StringBuilder pwszProtocol,
             ref int pcchProtocol
             );
 
-        [PreserveSig]
-        new int StartAtMarker(
+        new void StartAtMarker(
             [In] short wMarkerIndex,
             [In] long cnsDuration,
             [In] float fRate,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        new int GetOutputSetting(
+        new void GetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -3022,8 +2557,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        new int SetOutputSetting(
+        new void SetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -3031,40 +2565,33 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        new int Preroll(
+        new void Preroll(
             [In] long cnsStart,
             [In] long cnsDuration,
             [In] float fRate
             );
 
-        [PreserveSig]
-        new int SetLogClientID(
+        new void SetLogClientID(
             [In, MarshalAs(UnmanagedType.Bool)] bool fLogClientID
             );
 
-        [PreserveSig]
-        new int GetLogClientID(
+        new void GetLogClientID(
             [MarshalAs(UnmanagedType.Bool)] out bool pfLogClientID
             );
 
-        [PreserveSig]
-        new int StopBuffering();
+        new void StopBuffering();
 
-        [PreserveSig]
-        new int OpenStream(
+        new void OpenStream(
             [In] IStream pStream,
             [In] IWMReaderCallback pCallback,
             [In] IntPtr pvContext
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int StopNetStreaming();
+        void StopNetStreaming();
 
-        [PreserveSig]
-        int StartAtPosition(
+        void StartAtPosition(
             [In] short wStreamNum,
             [In] IntPtr pvOffsetStart,
             [In] IntPtr pvDuration,
@@ -3074,177 +2601,148 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("945A76A2-12AE-4D48-BD3C-CD1D90399B85")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("945A76A2-12AE-4D48-BD3C-CD1D90399B85"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced4 : IWMReaderAdvanced3
     {
-        #region IWMReaderAdvanced Methods
+    #region IWMReaderAdvanced Methods
 
-        [PreserveSig]
-        new int SetUserProvidedClock(
+        new void SetUserProvidedClock(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
             );
 
-        [PreserveSig]
-        new int GetUserProvidedClock(
+        new void GetUserProvidedClock(
             [MarshalAs(UnmanagedType.Bool)] out bool pfUserClock
             );
 
-        [PreserveSig]
-        new int DeliverTime(
+        new void DeliverTime(
             [In] long cnsTime
             );
 
-        [PreserveSig]
-        new int SetManualStreamSelection(
+        new void SetManualStreamSelection(
             [In, MarshalAs(UnmanagedType.Bool)] bool fSelection
             );
 
-        [PreserveSig]
-        new int GetManualStreamSelection(
+        new void GetManualStreamSelection(
             [MarshalAs(UnmanagedType.Bool)] out bool pfSelection
             );
 
-        [PreserveSig]
-        new int SetStreamsSelected(
+        new void SetStreamsSelected(
             [In] short cStreamCount,
             [In] short [] pwStreamNumbers,
             [In] StreamSelection [] pSelections
             );
 
-        [PreserveSig]
-        new int GetStreamSelected(
+        new void GetStreamSelected(
             [In] short wStreamNum,
             out StreamSelection pSelection
             );
 
-        [PreserveSig]
-        new int SetReceiveSelectionCallbacks(
+        new void SetReceiveSelectionCallbacks(
             [In, MarshalAs(UnmanagedType.Bool)] bool fGetCallbacks
             );
 
-        [PreserveSig]
-        new int GetReceiveSelectionCallbacks(
+        new void GetReceiveSelectionCallbacks(
             [MarshalAs(UnmanagedType.Bool)] out bool pfGetCallbacks
             );
 
-        [PreserveSig]
-        new int SetReceiveStreamSamples(
+        new void SetReceiveStreamSamples(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fReceiveStreamSamples
             );
 
-        [PreserveSig]
-        new int GetReceiveStreamSamples(
+        new void GetReceiveStreamSamples(
             [In] short wStreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfReceiveStreamSamples
             );
 
-        [PreserveSig]
-        new int SetAllocateForOutput(
+        new void SetAllocateForOutput(
             [In] int dwOutputNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        new int GetAllocateForOutput(
+        new void GetAllocateForOutput(
             [In] int dwOutputNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        new int SetAllocateForStream(
+        new void SetAllocateForStream(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        new int GetAllocateForStream(
+        new void GetAllocateForStream(
             [In] short dwSreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
 
-        [PreserveSig]
-        new int GetStatistics(
+        new void GetStatistics(
             [In, Out, MarshalAs(UnmanagedType.LPStruct)] WMReaderStatistics pStatistics
             );
 
-        [PreserveSig]
-        new int SetClientInfo(
+        new void SetClientInfo(
             [In, MarshalAs(UnmanagedType.LPStruct)] WMReaderClientInfo pClientInfo
             );
 
-        [PreserveSig]
-        new int GetMaxOutputSampleSize(
+        new void GetMaxOutputSampleSize(
             [In] int dwOutput,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int GetMaxStreamSampleSize(
+        new void GetMaxStreamSampleSize(
             [In] short wStream,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int NotifyLateDelivery(
+        new void NotifyLateDelivery(
             long cnsLateness
             );
 
-        #endregion
+    #endregion
 
-        #region IWMReaderAdvanced2 Methods
+    #region IWMReaderAdvanced2 Methods
 
-        [PreserveSig]
-        new int SetPlayMode(
+        new void SetPlayMode(
             [In] PlayMode Mode
             );
 
-        [PreserveSig]
-        new int GetPlayMode(
+        new void GetPlayMode(
             out PlayMode pMode
             );
 
-        [PreserveSig]
-        new int GetBufferProgress(
+        new void GetBufferProgress(
             out int pdwPercent,
             out long pcnsBuffering
             );
 
-        [PreserveSig]
-        new int GetDownloadProgress(
+        new void GetDownloadProgress(
             out int pdwPercent,
             out long pqwBytesDownloaded,
             out long pcnsDownload
             );
 
-        [PreserveSig]
-        new int GetSaveAsProgress(
+        new void GetSaveAsProgress(
             out int pdwPercent
             );
 
-        [PreserveSig]
-        new int SaveFileAs(
+        new void SaveFileAs(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        new int GetProtocolName(
+        new void GetProtocolName(
             [Out] StringBuilder pwszProtocol,
             ref int pcchProtocol
             );
 
-        [PreserveSig]
-        new int StartAtMarker(
+        new void StartAtMarker(
             [In] short wMarkerIndex,
             [In] long cnsDuration,
             [In] float fRate,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        new int GetOutputSetting(
+        new void GetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -3252,8 +2750,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        new int SetOutputSetting(
+        new void SetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -3261,42 +2758,35 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        new int Preroll(
+        new void Preroll(
             [In] long cnsStart,
             [In] long cnsDuration,
             [In] float fRate
             );
 
-        [PreserveSig]
-        new int SetLogClientID(
+        new void SetLogClientID(
             [In, MarshalAs(UnmanagedType.Bool)] bool fLogClientID
             );
 
-        [PreserveSig]
-        new int GetLogClientID(
+        new void GetLogClientID(
             [MarshalAs(UnmanagedType.Bool)] out bool pfLogClientID
             );
 
-        [PreserveSig]
-        new int StopBuffering();
+        new void StopBuffering();
 
-        [PreserveSig]
-        new int OpenStream(
+        new void OpenStream(
             [In] IStream pStream,
             [In] IWMReaderCallback pCallback,
             [In] IntPtr pvContext
             );
 
-        #endregion
+    #endregion
 
-        #region IWMReaderAdvanced3
+    #region IWMReaderAdvanced3
 
-        [PreserveSig]
-        new int StopNetStreaming();
+        new void StopNetStreaming();
 
-        [PreserveSig]
-        new int StartAtPosition(
+        new void StartAtPosition(
             [In] short wStreamNum,
             [In] IntPtr pvOffsetStart,
             [In] IntPtr pvDuration,
@@ -3305,64 +2795,54 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetLanguageCount(
+        void GetLanguageCount(
             [In] int dwOutputNum,
             out short pwLanguageCount
             );
 
-        [PreserveSig]
-        int GetLanguage(
+        void GetLanguage(
             [In] int dwOutputNum,
             [In] short wLanguage,
             [Out] StringBuilder pwszLanguageString,
             ref short pcchLanguageStringLength
             );
 
-        [PreserveSig]
-        int GetMaxSpeedFactor(
+        void GetMaxSpeedFactor(
             out double pdblFactor
             );
 
-        [PreserveSig]
-        int IsUsingFastCache(
+        void IsUsingFastCache(
             [MarshalAs(UnmanagedType.Bool)] out bool pfUsingFastCache
             );
 
-        [PreserveSig]
-        int AddLogParam(
+        void AddLogParam(
             [In] string wszNameSpace,
             [In] string wszName,
             [In] string wszValue
             );
 
-        [PreserveSig]
-        int SendLogParams();
+        void SendLogParams();
 
-        [PreserveSig]
-        int CanSaveFileAs(
+        void CanSaveFileAs(
             [MarshalAs(UnmanagedType.Bool)] out bool pfCanSave
             );
 
-        [PreserveSig]
-        int CancelSaveFileAs();
+        void CancelSaveFileAs();
 
-        [PreserveSig]
-        int GetURL(
+        void GetURL(
             [Out] StringBuilder pwszURL,
             ref int pcchURL
             );
     }
 
-
-    [Guid("9F762FA7-A22E-428D-93C9-AC82F3AAFE5A"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("9F762FA7-A22E-428D-93C9-AC82F3AAFE5A"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAllocatorEx
     {
-        [PreserveSig]
-        int AllocateForStreamEx(
+        void AllocateForStreamEx(
             [In] short wStreamNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
@@ -3372,8 +2852,7 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int AllocateForOutputEx(
+        void AllocateForOutputEx(
             [In] int dwOutputNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
@@ -3384,15 +2863,14 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BD8-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BD8-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderCallback : IWMStatusCallback
     {
-        #region IWMStatusCallback Methods
+    #region IWMStatusCallback Methods
 
-        [PreserveSig]
-        new int OnStatus(
+        new void OnStatus(
             [In] Status Status,
             [In, MarshalAs(UnmanagedType.Error)] int hr,
             [In] AttrDataType dwType,
@@ -3400,10 +2878,9 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int OnSample(
+        void OnSample(
             [In] int dwOutputNum,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
@@ -3413,13 +2890,12 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [Guid("96406BEB-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BEB-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderCallbackAdvanced
     {
-        [PreserveSig]
-        int OnStreamSample(
+        void OnStreamSample(
             [In] short wStreamNum,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
@@ -3428,37 +2904,32 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int OnTime(
+        void OnTime(
             [In] long cnsCurrentTime,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int OnStreamSelection(
+        void OnStreamSelection(
             [In] short wStreamCount,
             [In] short [] pStreamNumbers,
             [In] StreamSelection [] pSelections,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int OnOutputPropsChanged(
+        void OnOutputPropsChanged(
             [In] int dwOutputNum,
             [In] AMMediaType pMediaType,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int AllocateForStream(
+        void AllocateForStream(
             [In] short wStreamNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int AllocateForOutput(
+        void AllocateForOutput(
             [In] int dwOutputNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
@@ -3466,481 +2937,397 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BEC-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BEC-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderNetworkConfig
     {
-        [PreserveSig]
-        int GetBufferingTime(
+        void GetBufferingTime(
             out long pcnsBufferingTime
             );
 
-        [PreserveSig]
-        int SetBufferingTime(
+        void SetBufferingTime(
             [In] long cnsBufferingTime
             );
 
-        [PreserveSig]
-        int GetUDPPortRanges(
+        void GetUDPPortRanges(
             out WMPortNumberRange pRangeArray,
             ref int pcRanges
             );
 
-        [PreserveSig]
-        int SetUDPPortRanges(
+        void SetUDPPortRanges(
             [In, MarshalAs(UnmanagedType.LPStruct)] WMPortNumberRange pRangeArray,
             [In] int cRanges
             );
 
-        [PreserveSig]
-        int GetProxySettings(
+        void GetProxySettings(
             [In] string pwszProtocol,
             out ProxySettings pProxySetting
             );
 
-        [PreserveSig]
-        int SetProxySettings(
+        void SetProxySettings(
             [In] string pwszProtocol,
             [In] ProxySettings ProxySetting
             );
 
-        [PreserveSig]
-        int GetProxyHostName(
+        void GetProxyHostName(
             [In] string pwszProtocol,
             [Out] StringBuilder pwszHostName,
             ref int pcchHostName
             );
 
-        [PreserveSig]
-        int SetProxyHostName(
+        void SetProxyHostName(
             [In] string pwszProtocol,
             [In] string pwszHostName
             );
 
-        [PreserveSig]
-        int GetProxyPort(
+        void GetProxyPort(
             [In] string pwszProtocol,
             out int pdwPort
             );
 
-        [PreserveSig]
-        int SetProxyPort(
+        void SetProxyPort(
             [In] string pwszProtocol,
             [In] int dwPort
             );
 
-        [PreserveSig]
-        int GetProxyExceptionList(
+        void GetProxyExceptionList(
             [In] string pwszProtocol,
             [Out] StringBuilder pwszExceptionList,
             ref int pcchExceptionList
             );
 
-        [PreserveSig]
-        int SetProxyExceptionList(
+        void SetProxyExceptionList(
             [In] string pwszProtocol,
             [In] string pwszExceptionList
             );
 
-        [PreserveSig]
-        int GetProxyBypassForLocal(
+        void GetProxyBypassForLocal(
             [In] string pwszProtocol,
             [MarshalAs(UnmanagedType.Bool)] out bool pfBypassForLocal
             );
 
-        [PreserveSig]
-        int SetProxyBypassForLocal(
+        void SetProxyBypassForLocal(
             [In] string pwszProtocol,
             [In, MarshalAs(UnmanagedType.Bool)] bool fBypassForLocal
             );
 
-        [PreserveSig]
-        int GetForceRerunAutoProxyDetection(
+        void GetForceRerunAutoProxyDetection(
             [MarshalAs(UnmanagedType.Bool)] out bool pfForceRerunDetection
             );
 
-        [PreserveSig]
-        int SetForceRerunAutoProxyDetection(
+        void SetForceRerunAutoProxyDetection(
             [In, MarshalAs(UnmanagedType.Bool)] bool fForceRerunDetection
             );
 
-        [PreserveSig]
-        int GetEnableMulticast(
+        void GetEnableMulticast(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableMulticast
             );
 
-        [PreserveSig]
-        int SetEnableMulticast(
+        void SetEnableMulticast(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableMulticast
             );
 
-        [PreserveSig]
-        int GetEnableHTTP(
+        void GetEnableHTTP(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableHTTP
             );
 
-        [PreserveSig]
-        int SetEnableHTTP(
+        void SetEnableHTTP(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableHTTP
             );
 
-        [PreserveSig]
-        int GetEnableUDP(
+        void GetEnableUDP(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableUDP
             );
 
-        [PreserveSig]
-        int SetEnableUDP(
+        void SetEnableUDP(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableUDP
             );
 
-        [PreserveSig]
-        int GetEnableTCP(
+        void GetEnableTCP(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableTCP
             );
 
-        [PreserveSig]
-        int SetEnableTCP(
+        void SetEnableTCP(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableTCP
             );
 
-        [PreserveSig]
-        int ResetProtocolRollover();
+        void ResetProtocolRollover();
 
-        [PreserveSig]
-        int GetConnectionBandwidth(
+        void GetConnectionBandwidth(
             out int pdwConnectionBandwidth
             );
 
-        [PreserveSig]
-        int SetConnectionBandwidth(
+        void SetConnectionBandwidth(
             [In] int dwConnectionBandwidth
             );
 
-        [PreserveSig]
-        int GetNumProtocolsSupported(
+        void GetNumProtocolsSupported(
             out int pcProtocols
             );
 
-        [PreserveSig]
-        int GetSupportedProtocolName(
+        void GetSupportedProtocolName(
             [In] int dwProtocolNum,
             [Out] StringBuilder pwszProtocolName,
             ref int pcchProtocolName
             );
 
-        [PreserveSig]
-        int AddLoggingUrl(
+        void AddLoggingUrl(
             [In] string pwszURL
             );
 
-        [PreserveSig]
-        int GetLoggingUrl(
+        void GetLoggingUrl(
             [In] int dwIndex,
             [Out] StringBuilder pwszURL,
             ref int pcchURL
             );
 
-        [PreserveSig]
-        int GetLoggingUrlCount(
+        void GetLoggingUrlCount(
             out int pdwUrlCount
             );
 
-        [PreserveSig]
-        int ResetLoggingUrlList();
+        void ResetLoggingUrlList();
     }
 
-
-    [Guid("D979A853-042B-4050-8387-C939DB22013F"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("D979A853-042B-4050-8387-C939DB22013F"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderNetworkConfig2 : IWMReaderNetworkConfig
     {
-        #region IWMReaderNetworkConfig Methods
+    #region IWMReaderNetworkConfig Methods
 
-        [PreserveSig]
-        new int GetBufferingTime(
+        new void GetBufferingTime(
             out long pcnsBufferingTime
             );
 
-        [PreserveSig]
-        new int SetBufferingTime(
+        new void SetBufferingTime(
             [In] long cnsBufferingTime
             );
 
-        [PreserveSig]
-        new int GetUDPPortRanges(
+        new void GetUDPPortRanges(
             out WMPortNumberRange pRangeArray,
             ref int pcRanges
             );
 
-        [PreserveSig]
-        new int SetUDPPortRanges(
+        new void SetUDPPortRanges(
             [In, MarshalAs(UnmanagedType.LPStruct)] WMPortNumberRange pRangeArray,
             [In] int cRanges
             );
 
-        [PreserveSig]
-        new int GetProxySettings(
+        new void GetProxySettings(
             [In] string pwszProtocol,
             out ProxySettings pProxySetting
             );
 
-        [PreserveSig]
-        new int SetProxySettings(
+        new void SetProxySettings(
             [In] string pwszProtocol,
             [In] ProxySettings ProxySetting
             );
 
-        [PreserveSig]
-        new int GetProxyHostName(
+        new void GetProxyHostName(
             [In] string pwszProtocol,
             [Out] StringBuilder pwszHostName,
             ref int pcchHostName
             );
 
-        [PreserveSig]
-        new int SetProxyHostName(
+        new void SetProxyHostName(
             [In] string pwszProtocol,
             [In] string pwszHostName
             );
 
-        [PreserveSig]
-        new int GetProxyPort(
+        new void GetProxyPort(
             [In] string pwszProtocol,
             out int pdwPort
             );
 
-        [PreserveSig]
-        new int SetProxyPort(
+        new void SetProxyPort(
             [In] string pwszProtocol,
             [In] int dwPort
             );
 
-        [PreserveSig]
-        new int GetProxyExceptionList(
+        new void GetProxyExceptionList(
             [In] string pwszProtocol,
             [Out] StringBuilder pwszExceptionList,
             ref int pcchExceptionList
             );
 
-        [PreserveSig]
-        new int SetProxyExceptionList(
+        new void SetProxyExceptionList(
             [In] string pwszProtocol,
             [In] string pwszExceptionList
             );
 
-        [PreserveSig]
-        new int GetProxyBypassForLocal(
+        new void GetProxyBypassForLocal(
             [In] string pwszProtocol,
             [MarshalAs(UnmanagedType.Bool)] out bool pfBypassForLocal
             );
 
-        [PreserveSig]
-        new int SetProxyBypassForLocal(
+        new void SetProxyBypassForLocal(
             [In] string pwszProtocol,
             [In, MarshalAs(UnmanagedType.Bool)] bool fBypassForLocal
             );
 
-        [PreserveSig]
-        new int GetForceRerunAutoProxyDetection(
+        new void GetForceRerunAutoProxyDetection(
             [MarshalAs(UnmanagedType.Bool)] out bool pfForceRerunDetection
             );
 
-        [PreserveSig]
-        new int SetForceRerunAutoProxyDetection(
+        new void SetForceRerunAutoProxyDetection(
             [In, MarshalAs(UnmanagedType.Bool)] bool fForceRerunDetection
             );
 
-        [PreserveSig]
-        new int GetEnableMulticast(
+        new void GetEnableMulticast(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableMulticast
             );
 
-        [PreserveSig]
-        new int SetEnableMulticast(
+        new void SetEnableMulticast(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableMulticast
             );
 
-        [PreserveSig]
-        new int GetEnableHTTP(
+        new void GetEnableHTTP(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableHTTP
             );
 
-        [PreserveSig]
-        new int SetEnableHTTP(
+        new void SetEnableHTTP(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableHTTP
             );
 
-        [PreserveSig]
-        new int GetEnableUDP(
+        new void GetEnableUDP(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableUDP
             );
 
-        [PreserveSig]
-        new int SetEnableUDP(
+        new void SetEnableUDP(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableUDP
             );
 
-        [PreserveSig]
-        new int GetEnableTCP(
+        new void GetEnableTCP(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableTCP
             );
 
-        [PreserveSig]
-        new int SetEnableTCP(
+        new void SetEnableTCP(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableTCP
             );
 
-        [PreserveSig]
-        new int ResetProtocolRollover();
+        new void ResetProtocolRollover();
 
-        [PreserveSig]
-        new int GetConnectionBandwidth(
+        new void GetConnectionBandwidth(
             out int pdwConnectionBandwidth
             );
 
-        [PreserveSig]
-        new int SetConnectionBandwidth(
+        new void SetConnectionBandwidth(
             [In] int dwConnectionBandwidth
             );
 
-        [PreserveSig]
-        new int GetNumProtocolsSupported(
+        new void GetNumProtocolsSupported(
             out int pcProtocols
             );
 
-        [PreserveSig]
-        new int GetSupportedProtocolName(
+        new void GetSupportedProtocolName(
             [In] int dwProtocolNum,
             [Out] StringBuilder pwszProtocolName,
             ref int pcchProtocolName
             );
 
-        [PreserveSig]
-        new int AddLoggingUrl(
+        new void AddLoggingUrl(
             [In] string pwszURL
             );
 
-        [PreserveSig]
-        new int GetLoggingUrl(
+        new void GetLoggingUrl(
             [In] int dwIndex,
             [Out] StringBuilder pwszURL,
             ref int pcchURL
             );
 
-        [PreserveSig]
-        new int GetLoggingUrlCount(
+        new void GetLoggingUrlCount(
             out int pdwUrlCount
             );
 
-        [PreserveSig]
-        new int ResetLoggingUrlList();
+        new void ResetLoggingUrlList();
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetEnableContentCaching(
+        void GetEnableContentCaching(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableContentCaching
             );
 
-        [PreserveSig]
-        int SetEnableContentCaching(
+        void SetEnableContentCaching(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableContentCaching
             );
 
-        [PreserveSig]
-        int GetEnableFastCache(
+        void GetEnableFastCache(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableFastCache
             );
 
-        [PreserveSig]
-        int SetEnableFastCache(
+        void SetEnableFastCache(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableFastCache
             );
 
-        [PreserveSig]
-        int GetAcceleratedStreamingDuration(
+        void GetAcceleratedStreamingDuration(
             out long pcnsAccelDuration
             );
 
-        [PreserveSig]
-        int SetAcceleratedStreamingDuration(
+        void SetAcceleratedStreamingDuration(
             [In] long cnsAccelDuration
             );
 
-        [PreserveSig]
-        int GetAutoReconnectLimit(
+        void GetAutoReconnectLimit(
             out int pdwAutoReconnectLimit
             );
 
-        [PreserveSig]
-        int SetAutoReconnectLimit(
+        void SetAutoReconnectLimit(
             [In] int dwAutoReconnectLimit
             );
 
-        [PreserveSig]
-        int GetEnableResends(
+        void GetEnableResends(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableResends
             );
 
-        [PreserveSig]
-        int SetEnableResends(
+        void SetEnableResends(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableResends
             );
 
-        [PreserveSig]
-        int GetEnableThinning(
+        void GetEnableThinning(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableThinning
             );
 
-        [PreserveSig]
-        int SetEnableThinning(
+        void SetEnableThinning(
             [In, MarshalAs(UnmanagedType.Bool)] bool fEnableThinning
             );
 
-        [PreserveSig]
-        int GetMaxNetPacketSize(
+        void GetMaxNetPacketSize(
             out int pdwMaxNetPacketSize
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BED-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BED-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderStreamClock
     {
-        [PreserveSig]
-        int GetTime(
+        void GetTime(
             [In] ref long pcnsNow
             );
 
-        [PreserveSig]
-        int SetTimer(
+        void SetTimer(
             [In] long cnsWhen,
             [In] IntPtr pvParam,
             out int pdwTimerId
             );
 
-        [PreserveSig]
-        int KillTimer(
+        void KillTimer(
             [In] int dwTimerId
             );
     }
 
-
-    [Guid("F369E2F0-E081-4FE6-8450-B810B2F410D1"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("F369E2F0-E081-4FE6-8450-B810B2F410D1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderTimecode
     {
-        [PreserveSig]
-        int GetTimecodeRangeCount(
+        void GetTimecodeRangeCount(
             [In] short wStreamNum,
             out short pwRangeCount
             );
 
-        [PreserveSig]
-        int GetTimecodeRangeBounds(
+        void GetTimecodeRangeBounds(
             [In] short wStreamNum,
             [In] short wRangeNum,
             out int pStartTimecode,
@@ -3948,43 +3335,39 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("FDBE5592-81A1-41EA-93BD-735CAD1ADC05")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("FDBE5592-81A1-41EA-93BD-735CAD1ADC05"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderTypeNegotiation
     {
-        [PreserveSig]
-        int TryOutputProps(
+        void TryOutputProps(
             [In] int dwOutputNum,
             [In] IWMOutputMediaProps pOutput
             );
     }
 
-
-    [Guid("CF4B1F99-4DE2-4E49-A363-252740D99BC1"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("CF4B1F99-4DE2-4E49-A363-252740D99BC1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMRegisterCallback
     {
-        [PreserveSig]
-        int Advise(
+        void Advise(
             [In] IWMStatusCallback pCallback,
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int Unadvise(
+        void Unadvise(
             [In] IWMStatusCallback pCallback,
             [In] IntPtr pvContext
             );
     }
 
-
-    [Guid("6D7CDC70-9888-11D3-8EDC-00C04F6109CF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6D7CDC70-9888-11D3-8EDC-00C04F6109CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStatusCallback
     {
-        [PreserveSig]
-        int OnStatus(
+        void OnStatus(
             [In] Status Status,
             [In, MarshalAs(UnmanagedType.Error)] int hr,
             [In] AttrDataType dwType,
@@ -3993,160 +3376,133 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BDC-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BDC-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig
     {
-        [PreserveSig]
-        int GetStreamType(
+        void GetStreamType(
             out Guid pguidStreamType
             );
 
-        [PreserveSig]
-        int GetStreamNumber(
+        void GetStreamNumber(
             out short pwStreamNum
             );
 
-        [PreserveSig]
-        int SetStreamNumber(
+        void SetStreamNumber(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        int GetStreamName(
+        void GetStreamName(
             [Out] StringBuilder pwszStreamName,
             ref short pcchStreamName
             );
 
-        [PreserveSig]
-        int SetStreamName(
+        void SetStreamName(
             [In] string pwszStreamName
             );
 
-        [PreserveSig]
-        int GetConnectionName(
+        void GetConnectionName(
             [Out] StringBuilder pwszInputName,
             ref short pcchInputName
             );
 
-        [PreserveSig]
-        int SetConnectionName(
+        void SetConnectionName(
             [In] string pwszInputName
             );
 
-        [PreserveSig]
-        int GetBitrate(
+        void GetBitrate(
             out int pdwBitrate
             );
 
-        [PreserveSig]
-        int SetBitrate(
+        void SetBitrate(
             [In] int pdwBitrate
             );
 
-        [PreserveSig]
-        int GetBufferWindow(
+        void GetBufferWindow(
             out int pmsBufferWindow
             );
 
-        [PreserveSig]
-        int SetBufferWindow(
+        void SetBufferWindow(
             [In] int msBufferWindow
             );
     }
 
-
-    [Guid("7688D8CB-FC0D-43BD-9459-5A8DEC200CFA"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("7688D8CB-FC0D-43BD-9459-5A8DEC200CFA"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig2 : IWMStreamConfig
     {
-        #region IWMStreamConfig Methods
+    #region IWMStreamConfig Methods
 
-        [PreserveSig]
-        new int GetStreamType(
+        new void GetStreamType(
             out Guid pguidStreamType
             );
 
-        [PreserveSig]
-        new int GetStreamNumber(
+        new void GetStreamNumber(
             out short pwStreamNum
             );
 
-        [PreserveSig]
-        new int SetStreamNumber(
+        new void SetStreamNumber(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        new int GetStreamName(
+        new void GetStreamName(
             [Out] StringBuilder pwszStreamName,
             ref short pcchStreamName
             );
 
-        [PreserveSig]
-        new int SetStreamName(
+        new void SetStreamName(
             [In] string pwszStreamName
             );
 
-        [PreserveSig]
-        new int GetConnectionName(
+        new void GetConnectionName(
             [Out] StringBuilder pwszInputName,
             ref short pcchInputName
             );
 
-        [PreserveSig]
-        new int SetConnectionName(
+        new void SetConnectionName(
             [In] string pwszInputName
             );
 
-        [PreserveSig]
-        new int GetBitrate(
+        new void GetBitrate(
             out int pdwBitrate
             );
 
-        [PreserveSig]
-        new int SetBitrate(
+        new void SetBitrate(
             [In] int pdwBitrate
             );
 
-        [PreserveSig]
-        new int GetBufferWindow(
+        new void GetBufferWindow(
             out int pmsBufferWindow
             );
 
-        [PreserveSig]
-        new int SetBufferWindow(
+        new void SetBufferWindow(
             [In] int msBufferWindow
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetTransportType(
+        void GetTransportType(
             out TransportType pnTransportType
             );
 
-        [PreserveSig]
-        int SetTransportType(
+        void SetTransportType(
             [In] TransportType nTransportType
             );
 
-        [PreserveSig]
-        int AddDataUnitExtension(
+        void AddDataUnitExtension(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidExtensionSystemID,
             [In] short cbExtensionDataSize,
             [In] byte [] pbExtensionSystemInfo,
             [In] int cbExtensionSystemInfo
             );
 
-        [PreserveSig]
-        int GetDataUnitExtensionCount(
+        void GetDataUnitExtensionCount(
             out short pcDataUnitExtensions
             );
 
-        [PreserveSig]
-        int GetDataUnitExtension(
+        void GetDataUnitExtension(
             [In] short wDataUnitExtensionNumber,
             out Guid pguidExtensionSystemID,
             out short pcbExtensionDataSize,
@@ -4154,103 +3510,86 @@ namespace WindowsMediaLib
             ref int pcbExtensionSystemInfo
             );
 
-        [PreserveSig]
-        int RemoveAllDataUnitExtensions();
+        void RemoveAllDataUnitExtensions();
     }
 
-
-    [Guid("CB164104-3AA9-45A7-9AC9-4DAEE131D6E1"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("CB164104-3AA9-45A7-9AC9-4DAEE131D6E1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig3 : IWMStreamConfig2
     {
-        #region IWMStreamConfig Methods
+    #region IWMStreamConfig Methods
 
-        [PreserveSig]
-        new int GetStreamType(
+        new void GetStreamType(
             out Guid pguidStreamType
             );
 
-        [PreserveSig]
-        new int GetStreamNumber(
+        new void GetStreamNumber(
             out short pwStreamNum
             );
 
-        [PreserveSig]
-        new int SetStreamNumber(
+        new void SetStreamNumber(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        new int GetStreamName(
+        new void GetStreamName(
             [Out] StringBuilder pwszStreamName,
             ref short pcchStreamName
             );
 
-        [PreserveSig]
-        new int SetStreamName(
+        new void SetStreamName(
             [In] string pwszStreamName
             );
 
-        [PreserveSig]
-        new int GetConnectionName(
+        new void GetConnectionName(
             [Out] StringBuilder pwszInputName,
             ref short pcchInputName
             );
 
-        [PreserveSig]
-        new int SetConnectionName(
+        new void SetConnectionName(
             [In] string pwszInputName
             );
 
-        [PreserveSig]
-        new int GetBitrate(
+        new void GetBitrate(
             out int pdwBitrate
             );
 
-        [PreserveSig]
-        new int SetBitrate(
+        new void SetBitrate(
             [In] int pdwBitrate
             );
 
-        [PreserveSig]
-        new int GetBufferWindow(
+        new void GetBufferWindow(
             out int pmsBufferWindow
             );
 
-        [PreserveSig]
-        new int SetBufferWindow(
+        new void SetBufferWindow(
             [In] int msBufferWindow
             );
 
-        #endregion
+    #endregion
 
-        #region IWMStreamConfig2 Methods
+    #region IWMStreamConfig2 Methods
 
-        [PreserveSig]
-        new int GetTransportType(
+        new void GetTransportType(
             out TransportType pnTransportType
             );
 
-        [PreserveSig]
-        new int SetTransportType(
+        new void SetTransportType(
             [In] TransportType nTransportType
             );
 
-        [PreserveSig]
-        new int AddDataUnitExtension(
+        new void AddDataUnitExtension(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidExtensionSystemID,
             [In] short cbExtensionDataSize,
             [In] byte [] pbExtensionSystemInfo,
             [In] int cbExtensionSystemInfo
             );
 
-        [PreserveSig]
-        new int GetDataUnitExtensionCount(
+        new void GetDataUnitExtensionCount(
             out short pcDataUnitExtensions
             );
 
-        [PreserveSig]
-        new int GetDataUnitExtension(
+        new void GetDataUnitExtension(
             [In] short wDataUnitExtensionNumber,
             out Guid pguidExtensionSystemID,
             out short pcbExtensionDataSize,
@@ -4258,91 +3597,78 @@ namespace WindowsMediaLib
             ref int pcbExtensionSystemInfo
             );
 
-        [PreserveSig]
-        new int RemoveAllDataUnitExtensions();
+        new void RemoveAllDataUnitExtensions();
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetLanguage(
+        void GetLanguage(
             [Out] StringBuilder pwszLanguageString,
             ref short pcchLanguageStringLength
             );
 
-        [PreserveSig]
-        int SetLanguage(
+        void SetLanguage(
             [In] string pwszLanguageString
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BDD-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BDD-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamList
     {
-        [PreserveSig]
-        int GetStreams(
+        void GetStreams(
             out short [] pwStreamNumArray,
             ref short pcStreams
             );
 
-        [PreserveSig]
-        int AddStream(
+        void AddStream(
             [In] short wStreamNum
             );
 
-        [PreserveSig]
-        int RemoveStream(
+        void RemoveStream(
             [In] short wStreamNum
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("8C1C6090-F9A8-4748-8EC3-DD1108BA1E77")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("8C1C6090-F9A8-4748-8EC3-DD1108BA1E77"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamPrioritization
     {
-        [PreserveSig]
-        int GetPriorityRecords(
+        void GetPriorityRecords(
             out WMStreamPrioritizationRecord pRecordArray,
             ref short pcRecords
             );
 
-        [PreserveSig]
-        int SetPriorityRecords(
+        void SetPriorityRecords(
             [In, MarshalAs(UnmanagedType.LPStruct)] WMStreamPrioritizationRecord pRecordArray,
             [In] short cRecords
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("9397F121-7705-4DC9-B049-98B698188414")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("9397F121-7705-4DC9-B049-98B698188414"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSyncReader
     {
-        [PreserveSig]
-        int Open(
+        void Open(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        int Close();
+        void Close();
 
-        [PreserveSig]
-        int SetRange(
+        void SetRange(
             [In] long cnsStartTime,
             [In] long cnsDuration
             );
 
-        [PreserveSig]
-        int SetRangeByFrame(
+        void SetRangeByFrame(
             [In] short wStreamNum,
             [In] long qwFrameNumber,
             [In] long cFramesToRead
             );
 
-        [PreserveSig]
-        int GetNextSample(
+        void GetNextSample(
             [In] short wStreamNum,
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
@@ -4352,33 +3678,28 @@ namespace WindowsMediaLib
             out short pwStreamNum
             );
 
-        [PreserveSig]
-        int SetStreamsSelected(
+        void SetStreamsSelected(
             [In] short cStreamCount,
             [In] short [] pwStreamNumbers,
             [In] StreamSelection [] pSelections
             );
 
-        [PreserveSig]
-        int GetStreamSelected(
+        void GetStreamSelected(
             [In] short wStreamNum,
             out StreamSelection pSelection
             );
 
-        [PreserveSig]
-        int SetReadStreamSamples(
+        void SetReadStreamSamples(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fCompressed
             );
 
-        [PreserveSig]
-        int GetReadStreamSamples(
+        void GetReadStreamSamples(
             [In] short wStreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfCompressed
             );
 
-        [PreserveSig]
-        int GetOutputSetting(
+        void GetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -4386,8 +3707,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        int SetOutputSetting(
+        void SetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -4395,96 +3715,81 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        int GetOutputCount(
+        void GetOutputCount(
             out int pcOutputs
             );
 
-        [PreserveSig]
-        int GetOutputProps(
+        void GetOutputProps(
             [In] int dwOutputNum,
             out IWMOutputMediaProps ppOutput
             );
 
-        [PreserveSig]
-        int SetOutputProps(
+        void SetOutputProps(
             [In] int dwOutputNum,
             [In] IWMOutputMediaProps pOutput
             );
 
-        [PreserveSig]
-        int GetOutputFormatCount(
+        void GetOutputFormatCount(
             [In] int dwOutputNum,
             out int pcFormats
             );
 
-        [PreserveSig]
-        int GetOutputFormat(
+        void GetOutputFormat(
             [In] int dwOutputNum,
             [In] int dwFormatNum,
             out IWMOutputMediaProps ppProps
             );
 
-        [PreserveSig]
-        int GetOutputNumberForStream(
+        void GetOutputNumberForStream(
             [In] short wStreamNum,
             out int pdwOutputNum
             );
 
-        [PreserveSig]
-        int GetStreamNumberForOutput(
+        void GetStreamNumberForOutput(
             [In] int dwOutputNum,
             out short pwStreamNum
             );
 
-        [PreserveSig]
-        int GetMaxOutputSampleSize(
+        void GetMaxOutputSampleSize(
             [In] int dwOutput,
             out int pcbMax
             );
 
-        [PreserveSig]
-        int GetMaxStreamSampleSize(
+        void GetMaxStreamSampleSize(
             [In] short wStream,
             out int pcbMax
             );
 
-        [PreserveSig]
-        int OpenStream(
+        void OpenStream(
             [In] IStream pStream
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("FAED3D21-1B6B-4AF7-8CB6-3E189BBC187B")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("FAED3D21-1B6B-4AF7-8CB6-3E189BBC187B"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSyncReader2 : IWMSyncReader
     {
-        #region IWMSyncReader Methods
+    #region IWMSyncReader Methods
 
-        [PreserveSig]
-        new int Open(
+        new void Open(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        new int Close();
+        new void Close();
 
-        [PreserveSig]
-        new int SetRange(
+        new void SetRange(
             [In] long cnsStartTime,
             [In] long cnsDuration
             );
 
-        [PreserveSig]
-        new int SetRangeByFrame(
+        new void SetRangeByFrame(
             [In] short wStreamNum,
             [In] long qwFrameNumber,
             [In] long cFramesToRead
             );
 
-        [PreserveSig]
-        new int GetNextSample(
+        new void GetNextSample(
             [In] short wStreamNum,
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
@@ -4494,33 +3799,28 @@ namespace WindowsMediaLib
             out short pwStreamNum
             );
 
-        [PreserveSig]
-        new int SetStreamsSelected(
+        new void SetStreamsSelected(
             [In] short cStreamCount,
             [In] short [] pwStreamNumbers,
             [In] StreamSelection [] pSelections
             );
 
-        [PreserveSig]
-        new int GetStreamSelected(
+        new void GetStreamSelected(
             [In] short wStreamNum,
             out StreamSelection pSelection
             );
 
-        [PreserveSig]
-        new int SetReadStreamSamples(
+        new void SetReadStreamSamples(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fCompressed
             );
 
-        [PreserveSig]
-        new int GetReadStreamSamples(
+        new void GetReadStreamSamples(
             [In] short wStreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfCompressed
             );
 
-        [PreserveSig]
-        new int GetOutputSetting(
+        new void GetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -4528,8 +3828,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        new int SetOutputSetting(
+        new void SetOutputSetting(
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -4537,274 +3836,231 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        [PreserveSig]
-        new int GetOutputCount(
+        new void GetOutputCount(
             out int pcOutputs
             );
 
-        [PreserveSig]
-        new int GetOutputProps(
+        new void GetOutputProps(
             [In] int dwOutputNum,
             out IWMOutputMediaProps ppOutput
             );
 
-        [PreserveSig]
-        new int SetOutputProps(
+        new void SetOutputProps(
             [In] int dwOutputNum,
             [In] IWMOutputMediaProps pOutput
             );
 
-        [PreserveSig]
-        new int GetOutputFormatCount(
+        new void GetOutputFormatCount(
             [In] int dwOutputNum,
             out int pcFormats
             );
 
-        [PreserveSig]
-        new int GetOutputFormat(
+        new void GetOutputFormat(
             [In] int dwOutputNum,
             [In] int dwFormatNum,
             out IWMOutputMediaProps ppProps
             );
 
-        [PreserveSig]
-        new int GetOutputNumberForStream(
+        new void GetOutputNumberForStream(
             [In] short wStreamNum,
             out int pdwOutputNum
             );
 
-        [PreserveSig]
-        new int GetStreamNumberForOutput(
+        new void GetStreamNumberForOutput(
             [In] int dwOutputNum,
             out short pwStreamNum
             );
 
-        [PreserveSig]
-        new int GetMaxOutputSampleSize(
+        new void GetMaxOutputSampleSize(
             [In] int dwOutput,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int GetMaxStreamSampleSize(
+        new void GetMaxStreamSampleSize(
             [In] short wStream,
             out int pcbMax
             );
 
-        [PreserveSig]
-        new int OpenStream(
+        new void OpenStream(
             [In] IStream pStream
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int SetRangeByTimecode(
+        void SetRangeByTimecode(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.LPStruct)] TimeCodeExtensionData pStart,
             [In, MarshalAs(UnmanagedType.LPStruct)] TimeCodeExtensionData pEnd
             );
 
-        [PreserveSig]
-        int SetRangeByFrameEx(
+        void SetRangeByFrameEx(
             [In] short wStreamNum,
             [In] long qwFrameNumber,
             [In] long cFramesToRead,
             out long pcnsStartTime
             );
 
-        [PreserveSig]
-        int SetAllocateForOutput(
+        void SetAllocateForOutput(
             [In] int dwOutputNum,
             [In] IWMReaderAllocatorEx pAllocator
             );
 
-        [PreserveSig]
-        int GetAllocateForOutput(
+        void GetAllocateForOutput(
             [In] int dwOutputNum,
             out IWMReaderAllocatorEx ppAllocator
             );
 
-        [PreserveSig]
-        int SetAllocateForStream(
+        void SetAllocateForStream(
             [In] short wStreamNum,
             [In] IWMReaderAllocatorEx pAllocator
             );
 
-        [PreserveSig]
-        int GetAllocateForStream(
+        void GetAllocateForStream(
             [In] short dwSreamNum,
             out IWMReaderAllocatorEx ppAllocator
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BCF-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BCF-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMVideoMediaProps : IWMMediaProps
     {
-        #region IWMMediaProps Methods
+    #region IWMMediaProps Methods
 
-        [PreserveSig]
-        new int GetType(
+        new void GetType(
             out Guid pguidType
             );
 
-        [PreserveSig]
-        new int GetMediaType(
+        new void GetMediaType(
             out AMMediaType pType,
             ref int pcbType
             );
 
-        [PreserveSig]
-        new int SetMediaType(
+        new void SetMediaType(
             [In] AMMediaType pType
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetMaxKeyFrameSpacing(
+        void GetMaxKeyFrameSpacing(
             out long pllTime
             );
 
-        [PreserveSig]
-        int SetMaxKeyFrameSpacing(
+        void SetMaxKeyFrameSpacing(
             [In] long llTime
             );
 
-        [PreserveSig]
-        int GetQuality(
+        void GetQuality(
             out int pdwQuality
             );
 
-        [PreserveSig]
-        int SetQuality(
+        void SetQuality(
             [In] int dwQuality
             );
     }
 
-
-    [Guid("6F497062-F2E2-4624-8EA7-9DD40D81FC8D"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6F497062-F2E2-4624-8EA7-9DD40D81FC8D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWatermarkInfo
     {
-        [PreserveSig]
-        int GetWatermarkEntryCount(
+        void GetWatermarkEntryCount(
             [In] WaterMarkEntryType wmetType,
             out int pdwCount
             );
 
-        [PreserveSig]
-        int GetWatermarkEntry(
+        void GetWatermarkEntry(
             [In] WaterMarkEntryType wmetType,
             [In] int dwEntryNum,
             out WaterMarkEntry pEntry
             );
     }
 
-
-    [Guid("96406BD4-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BD4-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriter
     {
-        [PreserveSig]
-        int SetProfileByID(
+        void SetProfileByID(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidProfile
             );
 
-        [PreserveSig]
-        int SetProfile(
+        void SetProfile(
             [In] IWMProfile pProfile
             );
 
-        [PreserveSig]
-        int SetOutputFilename(
+        void SetOutputFilename(
             [In] string pwszFilename
             );
 
-        [PreserveSig]
-        int GetInputCount(
+        void GetInputCount(
             out int pcInputs
             );
 
-        [PreserveSig]
-        int GetInputProps(
+        void GetInputProps(
             [In] int dwInputNum,
             out IWMInputMediaProps ppInput
             );
 
-        [PreserveSig]
-        int SetInputProps(
+        void SetInputProps(
             [In] int dwInputNum,
             [In] IWMInputMediaProps pInput
             );
 
-        [PreserveSig]
-        int GetInputFormatCount(
+        void GetInputFormatCount(
             [In] int dwInputNumber,
             out int pcFormats
             );
 
-        [PreserveSig]
-        int GetInputFormat(
+        void GetInputFormat(
             [In] int dwInputNumber,
             [In] int dwFormatNumber,
             out IWMInputMediaProps pProps
             );
 
-        [PreserveSig]
-        int BeginWriting();
+        void BeginWriting();
 
-        [PreserveSig]
-        int EndWriting();
+        void EndWriting();
 
-        [PreserveSig]
-        int AllocateSample(
+        void AllocateSample(
             [In] int dwSampleSize,
             out INSSBuffer ppSample
             );
 
-        [PreserveSig]
-        int WriteSample(
+        void WriteSample(
             [In] int dwInputNum,
             [In] long cnsSampleTime,
             [In] WriteFlags dwFlags,
             [In] INSSBuffer pSample
             );
 
-        [PreserveSig]
-        int Flush();
+        void Flush();
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BE3-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BE3-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced
     {
-        [PreserveSig]
-        int GetSinkCount(
+        void GetSinkCount(
             out int pcSinks
             );
 
-        [PreserveSig]
-        int GetSink(
+        void GetSink(
             [In] int dwSinkNum,
             out IWMWriterSink ppSink
             );
 
-        [PreserveSig]
-        int AddSink(
+        void AddSink(
             [In] IWMWriterSink pSink
             );
 
-        [PreserveSig]
-        int RemoveSink(
+        void RemoveSink(
             [In] IWMWriterSink pSink
             );
 
-        [PreserveSig]
-        int WriteStreamSample(
+        void WriteStreamSample(
             [In] short wStreamNum,
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
@@ -4813,68 +4069,57 @@ namespace WindowsMediaLib
             [In] INSSBuffer pSample
             );
 
-        [PreserveSig]
-        int SetLiveSource(
+        void SetLiveSource(
             [In, MarshalAs(UnmanagedType.Bool)] bool fIsLiveSource
             );
 
-        [PreserveSig]
-        int IsRealTime(
+        void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        int GetWriterTime(
+        void GetWriterTime(
             out long pcnsCurrentTime
             );
 
-        [PreserveSig]
-        int GetStatistics(
+        void GetStatistics(
             [In] short wStreamNum,
             out WriterStatistics pStats
             );
 
-        [PreserveSig]
-        int SetSyncTolerance(
+        void SetSyncTolerance(
             [In] int msWindow
             );
 
-        [PreserveSig]
-        int GetSyncTolerance(
+        void GetSyncTolerance(
             out int pmsWindow
             );
     }
 
-
-    [Guid("962DC1EC-C046-4DB8-9CC7-26CEAE500817"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("962DC1EC-C046-4DB8-9CC7-26CEAE500817"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced2 : IWMWriterAdvanced
     {
-        #region IWMWriterAdvanced Methods
+    #region IWMWriterAdvanced Methods
 
-        [PreserveSig]
-        new int GetSinkCount(
+        new void GetSinkCount(
             out int pcSinks
             );
 
-        [PreserveSig]
-        new int GetSink(
+        new void GetSink(
             [In] int dwSinkNum,
             out IWMWriterSink ppSink
             );
 
-        [PreserveSig]
-        new int AddSink(
+        new void AddSink(
             [In] IWMWriterSink pSink
             );
 
-        [PreserveSig]
-        new int RemoveSink(
+        new void RemoveSink(
             [In] IWMWriterSink pSink
             );
 
-        [PreserveSig]
-        new int WriteStreamSample(
+        new void WriteStreamSample(
             [In] short wStreamNum,
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
@@ -4883,41 +4128,34 @@ namespace WindowsMediaLib
             [In] INSSBuffer pSample
             );
 
-        [PreserveSig]
-        new int SetLiveSource(
+        new void SetLiveSource(
             [In, MarshalAs(UnmanagedType.Bool)] bool fIsLiveSource
             );
 
-        [PreserveSig]
-        new int IsRealTime(
+        new void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        new int GetWriterTime(
+        new void GetWriterTime(
             out long pcnsCurrentTime
             );
 
-        [PreserveSig]
-        new int GetStatistics(
+        new void GetStatistics(
             [In] short wStreamNum,
             out WriterStatistics pStats
             );
 
-        [PreserveSig]
-        new int SetSyncTolerance(
+        new void SetSyncTolerance(
             [In] int msWindow
             );
 
-        [PreserveSig]
-        new int GetSyncTolerance(
+        new void GetSyncTolerance(
             out int pmsWindow
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetInputSetting(
+        void GetInputSetting(
             [In] int dwInputNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -4925,8 +4163,7 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        [PreserveSig]
-        int SetInputSetting(
+        void SetInputSetting(
             [In] int dwInputNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -4935,36 +4172,31 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("2CD6492D-7C37-4E76-9D3B-59261183A22E")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("2CD6492D-7C37-4E76-9D3B-59261183A22E"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced3 : IWMWriterAdvanced2
     {
-        #region IWMWriterAdvanced Methods
+    #region IWMWriterAdvanced Methods
 
-        [PreserveSig]
-        new int GetSinkCount(
+        new void GetSinkCount(
             out int pcSinks
             );
 
-        [PreserveSig]
-        new int GetSink(
+        new void GetSink(
             [In] int dwSinkNum,
             out IWMWriterSink ppSink
             );
 
-        [PreserveSig]
-        new int AddSink(
+        new void AddSink(
             [In] IWMWriterSink pSink
             );
 
-        [PreserveSig]
-        new int RemoveSink(
+        new void RemoveSink(
             [In] IWMWriterSink pSink
             );
 
-        [PreserveSig]
-        new int WriteStreamSample(
+        new void WriteStreamSample(
             [In] short wStreamNum,
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
@@ -4973,39 +4205,32 @@ namespace WindowsMediaLib
             [In] INSSBuffer pSample
             );
 
-        [PreserveSig]
-        new int SetLiveSource(
+        new void SetLiveSource(
             [In, MarshalAs(UnmanagedType.Bool)] bool fIsLiveSource
             );
 
-        [PreserveSig]
-        new int IsRealTime(
+        new void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        new int GetWriterTime(
+        new void GetWriterTime(
             out long pcnsCurrentTime
             );
 
-        [PreserveSig]
-        new int GetStatistics(
+        new void GetStatistics(
             [In] short wStreamNum,
             out WriterStatistics pStats
             );
 
-        [PreserveSig]
-        new int SetSyncTolerance(
+        new void SetSyncTolerance(
             [In] int msWindow
             );
 
-        [PreserveSig]
-        new int GetSyncTolerance(
+        new void GetSyncTolerance(
             out int pmsWindow
             );
 
-        [PreserveSig]
-        new int GetInputSetting(
+        new void GetInputSetting(
             [In] int dwInputNum,
             [In] string pszName,
             out AttrDataType pType,
@@ -5013,12 +4238,11 @@ namespace WindowsMediaLib
             ref short pcbLength
             );
 
-        #endregion
+    #endregion
 
-        #region IWMWriterAdvanced2 Methods
+    #region IWMWriterAdvanced2 Methods
 
-        [PreserveSig]
-        new int SetInputSetting(
+        new void SetInputSetting(
             [In] int dwInputNum,
             [In] string pszName,
             [In] AttrDataType Type,
@@ -5026,393 +4250,328 @@ namespace WindowsMediaLib
             [In] short cbLength
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetStatisticsEx(
+        void GetStatisticsEx(
             [In] short wStreamNum,
             out WMWriterStatisticsEx pStats
             );
 
-        [PreserveSig]
-        int SetNonBlocking();
+        void SetNonBlocking();
     }
 
-
-    [Guid("96406BE5-2B2B-11D3-B36B-00C04F6108FF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BE5-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink : IWMWriterSink
     {
-        #region IWMWriterSink Methods
+    #region IWMWriterSink Methods
 
-        [PreserveSig]
-        new int OnHeader(
+        new void OnHeader(
             [In] INSSBuffer pHeader
             );
 
-        [PreserveSig]
-        new int IsRealTime(
+        new void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        new int AllocateDataUnit(
+        new void AllocateDataUnit(
             [In] int cbDataUnit,
             out INSSBuffer ppDataUnit
             );
 
-        [PreserveSig]
-        new int OnDataUnit(
+        new void OnDataUnit(
             [In] INSSBuffer pDataUnit
             );
 
-        [PreserveSig]
-        new int OnEndWriting();
+        new void OnEndWriting();
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int Open(
+        void Open(
             [In] string pwszFilename
             );
     }
 
-
-    [Guid("14282BA7-4AEF-4205-8CE5-C229035A05BC"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("14282BA7-4AEF-4205-8CE5-C229035A05BC"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink2 : IWMWriterFileSink
     {
-        #region IWMWriterSink Methods
+    #region IWMWriterSink Methods
 
-        [PreserveSig]
-        new int OnHeader(
+        new void OnHeader(
             [In] INSSBuffer pHeader
             );
 
-        [PreserveSig]
-        new int IsRealTime(
+        new void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        new int AllocateDataUnit(
+        new void AllocateDataUnit(
             [In] int cbDataUnit,
             out INSSBuffer ppDataUnit
             );
 
-        [PreserveSig]
-        new int OnDataUnit(
+        new void OnDataUnit(
             [In] INSSBuffer pDataUnit
             );
 
-        [PreserveSig]
-        new int OnEndWriting();
+        new void OnEndWriting();
 
-        #endregion
+    #endregion
 
-        #region IWMWriterFileSink Methods
+    #region IWMWriterFileSink Methods
 
-        [PreserveSig]
-        new int Open(
+        new void Open(
             [In] string pwszFilename
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int Start(
+        void Start(
             [In] long cnsStartTime
             );
 
-        [PreserveSig]
-        int Stop(
+        void Stop(
             [In] long cnsStopTime
             );
 
-        [PreserveSig]
-        int IsStopped(
+        void IsStopped(
             [MarshalAs(UnmanagedType.Bool)] out bool pfStopped
             );
 
-        [PreserveSig]
-        int GetFileDuration(
+        void GetFileDuration(
             out long pcnsDuration
             );
 
-        [PreserveSig]
-        int GetFileSize(
+        void GetFileSize(
             out long pcbFile
             );
 
-        [PreserveSig]
-        int Close();
+        void Close();
 
-        [PreserveSig]
-        int IsClosed(
+        void IsClosed(
             [MarshalAs(UnmanagedType.Bool)] out bool pfClosed
             );
     }
 
-
-    [Guid("3FEA4FEB-2945-47A7-A1DD-C53A8FC4C45C"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("3FEA4FEB-2945-47A7-A1DD-C53A8FC4C45C"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink3 : IWMWriterFileSink2
     {
-        #region IWMWriterSink Methods
+    #region IWMWriterSink Methods
 
-        [PreserveSig]
-        new int OnHeader(
+        new void OnHeader(
             [In] INSSBuffer pHeader
             );
 
-        [PreserveSig]
-        new int IsRealTime(
+        new void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        new int AllocateDataUnit(
+        new void AllocateDataUnit(
             [In] int cbDataUnit,
             out INSSBuffer ppDataUnit
             );
 
-        [PreserveSig]
-        new int OnDataUnit(
+        new void OnDataUnit(
             [In] INSSBuffer pDataUnit
             );
 
-        [PreserveSig]
-        new int OnEndWriting();
+        new void OnEndWriting();
 
-        #endregion
+    #endregion
 
-        #region IWMWriterFileSink Methods
+    #region IWMWriterFileSink Methods
 
-        [PreserveSig]
-        new int Open(
+        new void Open(
             [In] string pwszFilename
             );
 
-        #endregion
+    #endregion
 
-        #region IWMWriterFileSink2
+    #region IWMWriterFileSink2
 
-        [PreserveSig]
-        new int Start(
+        new void Start(
             [In] long cnsStartTime
             );
 
-        [PreserveSig]
-        new int Stop(
+        new void Stop(
             [In] long cnsStopTime
             );
 
-        [PreserveSig]
-        new int IsStopped(
+        new void IsStopped(
             [MarshalAs(UnmanagedType.Bool)] out bool pfStopped
             );
 
-        [PreserveSig]
-        new int GetFileDuration(
+        new void GetFileDuration(
             out long pcnsDuration
             );
 
-        [PreserveSig]
-        new int GetFileSize(
+        new void GetFileSize(
             out long pcbFile
             );
 
-        [PreserveSig]
-        new int Close();
+        new void Close();
 
-        [PreserveSig]
-        new int IsClosed(
+        new void IsClosed(
             [MarshalAs(UnmanagedType.Bool)] out bool pfClosed
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int SetAutoIndexing(
+        void SetAutoIndexing(
             [In, MarshalAs(UnmanagedType.Bool)] bool fDoAutoIndexing
             );
 
-        [PreserveSig]
-        int GetAutoIndexing(
+        void GetAutoIndexing(
             [MarshalAs(UnmanagedType.Bool)] out bool pfAutoIndexing
             );
 
-        [PreserveSig]
-        int SetControlStream(
+        void SetControlStream(
             [In] short wStreamNumber,
             [In, MarshalAs(UnmanagedType.Bool)] bool fShouldControlStartAndStop
             );
 
-        [PreserveSig]
-        int GetMode(
+        void GetMode(
             out int pdwFileSinkMode
             );
 
-        [PreserveSig]
-        int OnDataUnitEx(
+        void OnDataUnitEx(
             [In, MarshalAs(UnmanagedType.LPStruct)] FileSinkDataUnit pFileSinkDataUnit
             );
 
-        [PreserveSig]
-        int SetUnbufferedIO(
+        void SetUnbufferedIO(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUnbufferedIO,
             [In, MarshalAs(UnmanagedType.Bool)] bool fRestrictMemUsage
             );
 
-        [PreserveSig]
-        int GetUnbufferedIO(
+        void GetUnbufferedIO(
             [MarshalAs(UnmanagedType.Bool)] out bool pfUnbufferedIO
             );
 
-        [PreserveSig]
-        int CompleteOperations();
+        void CompleteOperations();
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BE7-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BE7-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterNetworkSink : IWMWriterSink
     {
-        #region IWMWriterSink Methods
+    #region IWMWriterSink Methods
 
-        [PreserveSig]
-        new int OnHeader(
+        new void OnHeader(
             [In] INSSBuffer pHeader
             );
 
-        [PreserveSig]
-        new int IsRealTime(
+        new void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        new int AllocateDataUnit(
+        new void AllocateDataUnit(
             [In] int cbDataUnit,
             out INSSBuffer ppDataUnit
             );
 
-        [PreserveSig]
-        new int OnDataUnit(
+        new void OnDataUnit(
             [In] INSSBuffer pDataUnit
             );
 
-        [PreserveSig]
-        new int OnEndWriting();
+        new void OnEndWriting();
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int SetMaximumClients(
+        void SetMaximumClients(
             [In] int dwMaxClients
             );
 
-        [PreserveSig]
-        int GetMaximumClients(
+        void GetMaximumClients(
             out int pdwMaxClients
             );
 
-        [PreserveSig]
-        int SetNetworkProtocol(
+        void SetNetworkProtocol(
             [In] NetProtocol protocol
             );
 
-        [PreserveSig]
-        int GetNetworkProtocol(
+        void GetNetworkProtocol(
             out NetProtocol pProtocol
             );
 
-        [PreserveSig]
-        int GetHostURL(
+        void GetHostURL(
             [Out] StringBuilder pwszURL,
             ref int pcchURL
             );
 
-        [PreserveSig]
-        int Open(
+        void Open(
             ref int pdwPortNum
             );
 
-        [PreserveSig]
-        int Disconnect();
+        void Disconnect();
 
-        [PreserveSig]
-        int Close();
+        void Close();
     }
 
-
-    [Guid("81E20CE4-75EF-491A-8004-FC53C45BDC3E"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("81E20CE4-75EF-491A-8004-FC53C45BDC3E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPostView
     {
-        [PreserveSig]
-        int SetPostViewCallback(
+        void SetPostViewCallback(
             IWMWriterPostViewCallback pCallback, IntPtr pvContext
             );
 
-        [PreserveSig]
-        int SetReceivePostViewSamples(
+        void SetReceivePostViewSamples(
             [In] short wStreamNum,
             [In, MarshalAs(UnmanagedType.Bool)] bool fReceivePostViewSamples
             );
 
-        [PreserveSig]
-        int GetReceivePostViewSamples(
+        void GetReceivePostViewSamples(
             [In] short wStreamNum,
             [MarshalAs(UnmanagedType.Bool)] out bool pfReceivePostViewSamples
             );
 
-        [PreserveSig]
-        int GetPostViewProps(
+        void GetPostViewProps(
             [In] short wStreamNumber,
             out IWMMediaProps ppOutput
             );
 
-        [PreserveSig]
-        int SetPostViewProps(
+        void SetPostViewProps(
             [In] short wStreamNumber,
             [In] IWMMediaProps pOutput
             );
 
-        [PreserveSig]
-        int GetPostViewFormatCount(
+        void GetPostViewFormatCount(
             [In] short wStreamNumber,
             out int pcFormats
             );
 
-        [PreserveSig]
-        int GetPostViewFormat(
+        void GetPostViewFormat(
             [In] short wStreamNumber,
             [In] int dwFormatNumber,
             out IWMMediaProps ppProps
             );
 
-        [PreserveSig]
-        int SetAllocateForPostView(
+        void SetAllocateForPostView(
             [In] short wStreamNumber,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
             );
 
-        [PreserveSig]
-        int GetAllocateForPostView(
+        void GetAllocateForPostView(
             [In] short wStreamNumber,
             [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
             );
     }
 
-
-    [Guid("D9D6549D-A193-4F24-B308-03123D9B7F8D"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("D9D6549D-A193-4F24-B308-03123D9B7F8D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPostViewCallback : IWMStatusCallback
     {
-        #region IWMStatusCallback Methods
+    #region IWMStatusCallback Methods
 
-        [PreserveSig]
-        new int OnStatus(
+        new void OnStatus(
             [In] Status Status,
             [In, MarshalAs(UnmanagedType.Error)] int hr,
             [In] AttrDataType dwType,
@@ -5420,10 +4579,9 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int OnPostViewSample(
+        void OnPostViewSample(
             [In] short wStreamNumber,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
@@ -5432,8 +4590,7 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-        [PreserveSig]
-        int AllocateForPostView(
+        void AllocateForPostView(
             [In] short wStreamNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
@@ -5441,145 +4598,125 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [Guid("FC54A285-38C4-45B5-AA23-85B9F7CB424B"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("FC54A285-38C4-45B5-AA23-85B9F7CB424B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPreprocess
     {
-        [PreserveSig]
-        int GetMaxPreprocessingPasses(
+        void GetMaxPreprocessingPasses(
             [In] int dwInputNum,
             [In] int dwFlags,
             out int pdwMaxNumPasses
             );
 
-        [PreserveSig]
-        int SetNumPreprocessingPasses(
+        void SetNumPreprocessingPasses(
             [In] int dwInputNum,
             [In] int dwFlags,
             [In] int dwNumPasses
             );
 
-        [PreserveSig]
-        int BeginPreprocessingPass(
+        void BeginPreprocessingPass(
             [In] int dwInputNum,
             [In] int dwFlags
             );
 
-        [PreserveSig]
-        int PreprocessSample(
+        void PreprocessSample(
             [In] int dwInputNum,
             [In] long cnsSampleTime,
             [In] int dwFlags,
             [In] INSSBuffer pSample
             );
 
-        [PreserveSig]
-        int EndPreprocessingPass(
+        void EndPreprocessingPass(
             [In] int dwInputNum,
             [In] int dwFlags
             );
     }
 
-
-    [Guid("DC10E6A5-072C-467D-BF57-6330A9DDE12A"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("DC10E6A5-072C-467D-BF57-6330A9DDE12A"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPushSink : IWMWriterSink
     {
-        #region IWMWriterSink Methods
+    #region IWMWriterSink Methods
 
-        [PreserveSig]
-        new int OnHeader(
+        new void OnHeader(
             [In] INSSBuffer pHeader
             );
 
-        [PreserveSig]
-        new int IsRealTime(
+        new void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        new int AllocateDataUnit(
+        new void AllocateDataUnit(
             [In] int cbDataUnit,
             out INSSBuffer ppDataUnit
             );
 
-        [PreserveSig]
-        new int OnDataUnit(
+        new void OnDataUnit(
             [In] INSSBuffer pDataUnit
             );
 
-        [PreserveSig]
-        new int OnEndWriting();
+        new void OnEndWriting();
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int Connect(
+        void Connect(
             [In] string pwszURL,
             [In] string pwszTemplateURL,
             [In, MarshalAs(UnmanagedType.Bool)] bool fAutoDestroy
             );
 
-        [PreserveSig]
-        int Disconnect();
+        void Disconnect();
 
-        [PreserveSig]
-        int EndSession();
+        void EndSession();
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("96406BE4-2B2B-11D3-B36B-00C04F6108FF")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("96406BE4-2B2B-11D3-B36B-00C04F6108FF"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterSink
     {
-        [PreserveSig]
-        int OnHeader(
+        void OnHeader(
             [In] INSSBuffer pHeader
             );
 
-        [PreserveSig]
-        int IsRealTime(
+        void IsRealTime(
             [MarshalAs(UnmanagedType.Bool)] out bool pfRealTime
             );
 
-        [PreserveSig]
-        int AllocateDataUnit(
+        void AllocateDataUnit(
             [In] int cbDataUnit,
             out INSSBuffer ppDataUnit
             );
 
-        [PreserveSig]
-        int OnDataUnit(
+        void OnDataUnit(
             [In] INSSBuffer pDataUnit
             );
 
-        [PreserveSig]
-        int OnEndWriting();
+        void OnEndWriting();
     }
 
-
-    [Guid("6d5140c1-7436-11ce-8034-00aa006009fa"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6d5140c1-7436-11ce-8034-00aa006009fa"),
     InterfaceType( ComInterfaceType.InterfaceIsIUnknown )]
     public interface IServiceProvider
     {
-        [PreserveSig]
-        int QueryService(
+        void QueryService(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidService,
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid riid,
             [Out, MarshalAs(UnmanagedType.IUnknown) ] out object ppvObject
             );
     }
 
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("0C0E4080-9081-11D2-BEEC-0060082F2054")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("0C0E4080-9081-11D2-BEEC-0060082F2054"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSNetSourceCreator
     {
-        [PreserveSig]
-        int Initialize();
+        void Initialize();
 
-        [PreserveSig]
-        int CreateNetSource(
+        void CreateNetSource(
             [In] string pszStreamName,
             [In, MarshalAs(UnmanagedType.IUnknown)] object pMonitor,
             [In] byte [] pData,
@@ -5588,229 +4725,196 @@ namespace WindowsMediaLib
             [In] long qwContext
             );
 
-        [PreserveSig]
-        int GetNetSourceProperties(
+        void GetNetSourceProperties(
             [In] string pszStreamName,
             [MarshalAs(UnmanagedType.IUnknown)] out object ppPropertiesNode
             );
 
-        [PreserveSig]
-        int GetNetSourceSharedNamespace(
+        void GetNetSourceSharedNamespace(
             [MarshalAs(UnmanagedType.IUnknown)] out object ppSharedNamespace
             );
 
-        [PreserveSig]
-        int GetNetSourceAdminInterface(
+        void GetNetSourceAdminInterface(
             [In] string pszStreamName,
             [MarshalAs(UnmanagedType.Struct)] out object pVal
             );
 
-        [PreserveSig]
-        int GetNumProtocolsSupported(
+        void GetNumProtocolsSupported(
             out int pcProtocols
             );
 
-        [PreserveSig]
-        int GetProtocolName(
+        void GetProtocolName(
             [In] int dwProtocolNum,
             [Out] StringBuilder pwszProtocolName,
             ref short pcchProtocolName
             );
 
-        [PreserveSig]
-        int Shutdown();
+        void Shutdown();
     }
 
-
-    [Guid("4F528693-1035-43FE-B428-757561AD3A68"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("4F528693-1035-43FE-B428-757561AD3A68"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer2 : INSSBuffer
     {
-        #region INSSBuffer Methods
+    #region INSSBuffer Methods
 
-        [PreserveSig]
-        new int GetLength(
+        new void GetLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        new int SetLength(
+        new void SetLength(
             [In] int dwLength
             );
 
-        [PreserveSig]
-        new int GetMaxLength(
+        new void GetMaxLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        new int GetBuffer(
+        new void GetBuffer(
             out IntPtr ppdwBuffer
             );
 
-        [PreserveSig]
-        new int GetBufferAndLength(
+        new void GetBufferAndLength(
             out IntPtr ppdwBuffer,
             out int pdwLength
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetSampleProperties(
+        void GetSampleProperties(
             [In] int cbProperties,
             out byte [] pbProperties
             );
 
-        [PreserveSig]
-        int SetSampleProperties(
+        void SetSampleProperties(
             [In] int cbProperties,
             [In] byte [] pbProperties
             );
     }
 
-
-    [ComConversionLoss, Guid("C87CEAAF-75BE-4BC4-84EB-AC2798507672"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("C87CEAAF-75BE-4BC4-84EB-AC2798507672"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer3 : INSSBuffer2
     {
-        #region INSSBuffer Methods
+    #region INSSBuffer Methods
 
-        [PreserveSig]
-        new int GetLength(
+        new void GetLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        new int SetLength(
+        new void SetLength(
             [In] int dwLength
             );
 
-        [PreserveSig]
-        new int GetMaxLength(
+        new void GetMaxLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        new int GetBuffer(
+        new void GetBuffer(
             out IntPtr ppdwBuffer
             );
 
-        [PreserveSig]
-        new int GetBufferAndLength(
+        new void GetBufferAndLength(
             out IntPtr ppdwBuffer,
             out int pdwLength
             );
 
-        #endregion
+    #endregion
 
-        #region INSSBuffer2 Methods
+    #region INSSBuffer2 Methods
 
-        [PreserveSig]
-        new int GetSampleProperties(
+        new void GetSampleProperties(
             [In] int cbProperties,
             out byte [] pbProperties
             );
 
-        [PreserveSig]
-        new int SetSampleProperties(
+        new void SetSampleProperties(
             [In] int cbProperties,
             [In] byte [] pbProperties
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int SetProperty(
+        void SetProperty(
             [In] Guid guidBufferProperty,
             [In] IntPtr pvBufferProperty,
             [In] int dwBufferPropertySize
             );
 
-        [PreserveSig]
-        int GetProperty(
+        void GetProperty(
             [In] Guid guidBufferProperty,
             [Out] IntPtr pvBufferProperty,
             ref int pdwBufferPropertySize
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("B6B8FD5A-32E2-49D4-A910-C26CC85465ED")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("B6B8FD5A-32E2-49D4-A910-C26CC85465ED"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer4 : INSSBuffer3
     {
-        #region INSSBuffer Methods
+    #region INSSBuffer Methods
 
-        [PreserveSig]
-        new int GetLength(
+        new void GetLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        new int SetLength(
+        new void SetLength(
             [In] int dwLength
             );
 
-        [PreserveSig]
-        new int GetMaxLength(
+        new void GetMaxLength(
             out int pdwLength
             );
 
-        [PreserveSig]
-        new int GetBuffer(
+        new void GetBuffer(
             out IntPtr ppdwBuffer
             );
 
-        [PreserveSig]
-        new int GetBufferAndLength(
+        new void GetBufferAndLength(
             out IntPtr ppdwBuffer,
             out int pdwLength
             );
 
-        #endregion
+    #endregion
 
-        #region INSSBuffer2 Methods
+    #region INSSBuffer2 Methods
 
-        [PreserveSig]
-        new int GetSampleProperties(
+        new void GetSampleProperties(
             [In] int cbProperties,
             out byte [] pbProperties
             );
 
-        [PreserveSig]
-        new int SetSampleProperties(
+        new void SetSampleProperties(
             [In] int cbProperties,
             [In] byte [] pbProperties
             );
 
-        #endregion
+    #endregion
 
-        #region INSSBuffer3 Methods
+    #region INSSBuffer3 Methods
 
-        [PreserveSig]
-        new int SetProperty(
+        new void SetProperty(
             [In] Guid guidBufferProperty,
             [In] IntPtr pvBufferProperty,
             [In] int dwBufferPropertySize
             );
 
-        [PreserveSig]
-        new int GetProperty(
+        new void GetProperty(
             [In] Guid guidBufferProperty,
             [Out] IntPtr pvBufferProperty,
             ref int pdwBufferPropertySize
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetPropertyCount(
+        void GetPropertyCount(
             out int pcBufferProperties
             );
 
-        [PreserveSig]
-        int GetPropertyByIndex(
+        void GetPropertyByIndex(
             [In] int dwBufferPropertyIndex,
             out Guid pguidBufferProperty,
             [Out] IntPtr pvBufferProperty,
@@ -5818,93 +4922,82 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("D98EE251-34E0-4A2D-9312-9B4C788D9FA1")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("D98EE251-34E0-4A2D-9312-9B4C788D9FA1"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecAMVideoAccelerator
     {
-        [PreserveSig]
-        int SetAcceleratorInterface(
+        void SetAcceleratorInterface(
             [In, MarshalAs(UnmanagedType.Interface)] object pIAMVA
             );
 
-        [PreserveSig]
-        int NegotiateConnection(
+        void NegotiateConnection(
             [In] AMMediaType pMediaType
             );
 
-        [PreserveSig]
-        int SetPlayerNotify(
+        void SetPlayerNotify(
             [In] IWMPlayerTimestampHook pHook
             );
     }
 
-
-    [Guid("990641B0-739F-4E94-A808-9888DA8F75AF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("990641B0-739F-4E94-A808-9888DA8F75AF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecVideoAccelerator
     {
-        [PreserveSig]
-        int NegotiateConnection(
+        void NegotiateConnection(
             [In, MarshalAs(UnmanagedType.Interface)] object pIAMVA,
             [In] AMMediaType pMediaType
             );
 
-        [PreserveSig]
-        int SetPlayerNotify(
+        void SetPlayerNotify(
             [In] IWMPlayerTimestampHook pHook
             );
     }
 
-
-    [Guid("28580DDA-D98E-48D0-B7AE-69E473A02825"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("28580DDA-D98E-48D0-B7AE-69E473A02825"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPlayerTimestampHook
     {
-        [PreserveSig]
-        int MapTimestamp(
+        void MapTimestamp(
             [In] long rtIn, out long prtOut
             );
     }
 
-
-    [Guid("61103CA4-2033-11D2-9EF1-006097D2D7CF"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("61103CA4-2033-11D2-9EF1-006097D2D7CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSBufferAllocator
     {
-        [PreserveSig]
-        int AllocateBuffer(
+        void AllocateBuffer(
             [In] int dwMaxBufferSize,
             out INSSBuffer ppBuffer
             );
 
-        [PreserveSig]
-        int AllocatePageSizeBuffer(
+        void AllocatePageSizeBuffer(
             [In] int dwMaxBufferSize,
             out INSSBuffer ppBuffer
             );
     }
 
-
-    [Guid("8BB23E5F-D127-4AFB-8D02-AE5B66D54C78"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("8BB23E5F-D127-4AFB-8D02-AE5B66D54C78"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSInternalAdminNetSource
     {
-        [PreserveSig]
-        int Initialize(
+        void Initialize(
             [In, MarshalAs(UnmanagedType.IUnknown)] object pSharedNamespace,
             [In, MarshalAs(UnmanagedType.IUnknown)] object pNamespaceNode,
             [In] INSNetSourceCreator pNetSourceCreator,
             [In] int fEmbeddedInServer
             );
 
-        [PreserveSig]
-        int GetNetSourceCreator(
+        void GetNetSourceCreator(
             out INSNetSourceCreator ppNetSourceCreator
             );
 
-        [PreserveSig]
-        int SetCredentials(
+        void SetCredentials(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrName,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrPassword,
@@ -5912,31 +5005,26 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.Bool)] bool fConfirmedGood
             );
 
-        [PreserveSig]
-        int GetCredentials(
+        void GetCredentials(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [MarshalAs(UnmanagedType.BStr)] out string pbstrName,
             [MarshalAs(UnmanagedType.BStr)] out string pbstrPassword,
             [MarshalAs(UnmanagedType.Bool)] out bool pfConfirmedGood
             );
 
-        [PreserveSig]
-        int DeleteCredentials(
+        void DeleteCredentials(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm
             );
 
-        [PreserveSig]
-        int GetCredentialFlags(
+        void GetCredentialFlags(
             out int lpdwFlags
             );
 
-        [PreserveSig]
-        int SetCredentialFlags(
+        void SetCredentialFlags(
             [In] int dwFlags
             );
 
-        [PreserveSig]
-        int FindProxyForURL(
+        void FindProxyForURL(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrProtocol,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrHost,
             [MarshalAs(UnmanagedType.Bool)] out bool pfProxyEnabled,
@@ -5945,31 +5033,27 @@ namespace WindowsMediaLib
             ref int pdwProxyContext
             );
 
-        [PreserveSig]
-        int RegisterProxyFailure(
+        void RegisterProxyFailure(
             [In, MarshalAs(UnmanagedType.Error)] int hrParam,
             [In] int dwProxyContext
             );
 
-        [PreserveSig]
-        int ShutdownProxyContext(
+        void ShutdownProxyContext(
             [In] int dwProxyContext
             );
 
-        [PreserveSig]
-        int IsUsingIE(
+        void IsUsingIE(
             [In] int dwProxyContext,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsUsingIE
             );
     }
 
-
-    [InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("E74D58C3-CF77-4B51-AF17-744687C43EAE")]
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("E74D58C3-CF77-4B51-AF17-744687C43EAE"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSInternalAdminNetSource2
     {
-        [PreserveSig]
-        int SetCredentialsEx(
+        void SetCredentialsEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy,
@@ -5979,8 +5063,7 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.Bool)] bool fConfirmedGood
             );
 
-        [PreserveSig]
-        int GetCredentialsEx(
+        void GetCredentialsEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy,
@@ -5990,15 +5073,13 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.Bool)] out bool pfConfirmedGood
             );
 
-        [PreserveSig]
-        int DeleteCredentialsEx(
+        void DeleteCredentialsEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy
             );
 
-        [PreserveSig]
-        int FindProxyForURLEx(
+        void FindProxyForURLEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrProtocol,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrHost,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
@@ -6009,15 +5090,14 @@ namespace WindowsMediaLib
             );
     }
 
-
-    [Guid("6B63D08E-4590-44AF-9EB3-57FF1E73BF80"),
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6B63D08E-4590-44AF-9EB3-57FF1E73BF80"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSInternalAdminNetSource3 : IWMSInternalAdminNetSource2
     {
-        #region IWMSInternalAdminNetSource2 Methods
+    #region IWMSInternalAdminNetSource2 Methods
 
-        [PreserveSig]
-        new int SetCredentialsEx(
+        new void SetCredentialsEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy,
@@ -6027,8 +5107,7 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.Bool)] bool fConfirmedGood
             );
 
-        [PreserveSig]
-        new int GetCredentialsEx(
+        new void GetCredentialsEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy,
@@ -6038,15 +5117,13 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.Bool)] out bool pfConfirmedGood
             );
 
-        [PreserveSig]
-        new int DeleteCredentialsEx(
+        new void DeleteCredentialsEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy
             );
 
-        [PreserveSig]
-        new int FindProxyForURLEx(
+        new void FindProxyForURLEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrProtocol,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrHost,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
@@ -6056,15 +5133,13 @@ namespace WindowsMediaLib
             ref int pdwProxyContext
             );
 
-        #endregion
+    #endregion
 
-        [PreserveSig]
-        int GetNetSourceCreator2(
+        void GetNetSourceCreator2(
             [MarshalAs(UnmanagedType.IUnknown)] out object ppNetSourceCreator
             );
 
-        [PreserveSig]
-        int FindProxyForURLEx2(
+        void FindProxyForURLEx2(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrProtocol,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrHost,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
@@ -6074,25 +5149,21 @@ namespace WindowsMediaLib
             ref long pqwProxyContext
             );
 
-        [PreserveSig]
-        int RegisterProxyFailure2(
+        void RegisterProxyFailure2(
             [In, MarshalAs(UnmanagedType.Error)] int hrParam,
             [In] long qwProxyContext
             );
 
-        [PreserveSig]
-        int ShutdownProxyContext2(
+        void ShutdownProxyContext2(
             [In] long qwProxyContext
             );
 
-        [PreserveSig]
-        int IsUsingIE2(
+        void IsUsingIE2(
             [In] long qwProxyContext,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsUsingIE
             );
 
-        [PreserveSig]
-        int SetCredentialsEx2(
+        void SetCredentialsEx2(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy,
@@ -6103,8 +5174,7 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.Bool)] bool fClearTextAuthentication
             );
 
-        [PreserveSig]
-        int GetCredentialsEx2(
+        void GetCredentialsEx2(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,
             [In, MarshalAs(UnmanagedType.Bool)] bool fProxy,
@@ -6116,6 +5186,7 @@ namespace WindowsMediaLib
             );
     }
 
+#endif
 
     #endregion
 }
