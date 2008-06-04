@@ -61,68 +61,68 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateEditor(
             out IWMMetadataEditor ppMetadataEditor
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateWriterNetworkSink(
             out IWMWriterNetworkSink ppSink
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateWriter(
             IntPtr pUnkCert,
             out IWMWriter ppWriter
-            );	
+            );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateProfileManager (
             out IWMProfileManager ppProfileManager
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMIsContentProtected(
             string pwszFileName,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsProtected
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateCertificate(
             [MarshalAs(UnmanagedType.IUnknown)] out object pUnkCert
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateReader(
             IntPtr pUnkCert,
             Rights dwRights,
             out IWMReader ppReader
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateSyncReader(
             IntPtr pUnkCert,
             Rights dwRights,
             out IWMSyncReader ppSyncReader );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateIndexer(
             out IWMIndexer ppIndexer
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateBackupRestorer(
             IWMStatusCallback pCallback,
             out IWMLicenseBackup ppBackup
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateWriterFileSink(
             out IWMWriterFileSink ppSink
             );
 
-        [DllImport("WMVCore.dll")]
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern int WMCreateWriterPushSink(
             out IWMWriterPushSink ppSink
             );
