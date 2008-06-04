@@ -1,23 +1,23 @@
 					Assigned	Reviewer
 Functions
-WMCreateBackupRestorer
-WMCreateCertificate
-WMCreateEditor
-WMCreateDeviceRegistration
-WMCreateDRMTranscryptor
-WMCreateIndexer
-WMCreateLicenseRevocationAgent
-WMCreateProfileManager
-WMCreateReader
-WMCreateSyncReader
-WMCreateWriter
+WMCreateBackupRestorer			
+WMCreateCertificate			
+WMCreateEditor				
+WMCreateDeviceRegistration		
+WMCreateDRMTranscryptor			
+WMCreateIndexer				
+WMCreateLicenseRevocationAgent		
+WMCreateProfileManager			
+WMCreateReader				
+WMCreateSyncReader			
+WMCreateWriter				snarfle		ready
 WMCreateWriterFileSink
-WMCreateWriterNetworkSink
-WMCheckURLExtension
-WMCheckURLScheme
-WMIsAvailableOffline
-WMIsContentProtected
-WMValidateData
+WMCreateWriterNetworkSink		
+WMCheckURLExtension			
+WMCheckURLScheme			
+WMIsAvailableOffline			
+WMIsContentProtected			
+WMValidateData				
 
 
 Interfaces			Parent			Methods		Assigned	Reviewer
