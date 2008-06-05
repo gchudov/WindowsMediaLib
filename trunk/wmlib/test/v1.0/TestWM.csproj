@@ -29,11 +29,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="INSSBufferTest.cs" />
+    <Compile Include="IWMAddressAccessTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
   <ItemGroup>
