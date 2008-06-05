@@ -23,7 +23,7 @@ WMValidateData
 Interfaces			Parent			Methods		Assigned	Reviewer
 INSNetSourceCreator					8		
 INSSBuffer						5		snarfle		ready
-INSSBuffer2			INSSBuffer		2		snarfle
+INSSBuffer2			INSSBuffer		2		snarfle		ready
 INSSBuffer3			INSSBuffer2		2		
 INSSBuffer4			INSSBuffer3		2		
 IServiceProvider					1		
