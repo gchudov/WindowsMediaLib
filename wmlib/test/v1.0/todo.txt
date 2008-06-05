@@ -27,7 +27,7 @@ INSSBuffer2			INSSBuffer		2
 INSSBuffer3			INSSBuffer2		2		
 INSSBuffer4			INSSBuffer3		2		
 IServiceProvider					1		
-IWMAddressAccess					4		
+IWMAddressAccess					4		bwkahle
 IWMAddressAccess2		IWMAddressAccess	2		
 IWMBackupRestoreProps					6		
 IWMBandwidthSharing		IWMStreamList		4		
