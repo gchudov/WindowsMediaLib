@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="INSSBuffer2Test.cs" />
     <Compile Include="INSSBufferTest.cs" />
     <Compile Include="IWMAddressAccessTest.cs" />
     <Compile Include="RunTests.cs" />
