@@ -30,13 +30,13 @@ namespace v1._0
             int j = 0;
             IntPtr p = Marshal.StringToBSTR(s);
 
-            m_pSample.SetProperty(WM_SampleExtensionGUID.WM_SampleExtensionGUID_FileName, p, i);
+            m_pSample.SetProperty(WM_SampleExtensionGUID.FileName, p, i);
 
-            m_pSample.GetProperty(WM_SampleExtensionGUID.WM_SampleExtensionGUID_FileName, IntPtr.Zero, ref j);
+            m_pSample.GetProperty(WM_SampleExtensionGUID.FileName, IntPtr.Zero, ref j);
             Debug.Assert(j == i);
 
             IntPtr p2 = Marshal.AllocCoTaskMem(j);
-            m_pSample.GetProperty(WM_SampleExtensionGUID.WM_SampleExtensionGUID_FileName, p2, ref j);
+            m_pSample.GetProperty(WM_SampleExtensionGUID.FileName, p2, ref j);
 
             Debug.Assert(s == Marshal.PtrToStringUni(p2));
         }
