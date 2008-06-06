@@ -40,6 +40,7 @@
     <Compile Include="INSSBuffer4Test.cs" />
     <Compile Include="INSSBufferTest.cs" />
     <Compile Include="IWMAddressAccessTest.cs" />
+    <Compile Include="IWMProfileManager2Test.cs" />
     <Compile Include="IWMProfileManagerTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
