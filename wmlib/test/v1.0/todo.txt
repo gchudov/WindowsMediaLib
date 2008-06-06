@@ -25,7 +25,7 @@ INSNetSourceCreator					8
 INSSBuffer						5		snarfle		ready
 INSSBuffer2			INSSBuffer		2		snarfle		ready
 INSSBuffer3			INSSBuffer2		2		snarfle		ready
-INSSBuffer4			INSSBuffer3		2		snarfle
+INSSBuffer4			INSSBuffer3		2		snarfle		ready
 IServiceProvider					1		
 IWMAddressAccess					4		bwkahle		ready
 IWMAddressAccess2		IWMAddressAccess	2		
