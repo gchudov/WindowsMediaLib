@@ -1985,7 +1985,7 @@ namespace WindowsMediaLib
 
         new void SaveProfile(
             [In] IWMProfile pIWMProfile,
-            [In] string pwszProfile,
+            [In] StringBuilder pwszProfile,
             ref int pdwLength
             );
 
