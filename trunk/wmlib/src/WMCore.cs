@@ -355,21 +355,19 @@ namespace WindowsMediaLib
         public int dwTotalSampleDropsInMultiplexer;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 8), UnmanagedName("STATSTG")]
-    public struct STATSTG
+    [UnmanagedName("WM_SampleExtensionGUID_*")]
+    public sealed class WM_SampleExtensionGUID
     {
-        [MarshalAs(UnmanagedType.LPWStr)]
-        public string pwcsName;
-        public int Type;
-        public long cbSize;
-        public long mtime;
-        public long ctime;
-        public long atime;
-        public int grfMode;
-        public int grfLocksSupported;
-        public Guid clsid;
-        public int grfStateBits;
-        public int reserved;
+        public static readonly Guid OutputCleanPoint = new Guid(0xf72a3c6f, 0x6eb4, 0x4ebc, 0xb1, 0x92, 0x9, 0xad, 0x97, 0x59, 0xe8, 0x28 );
+        public static readonly Guid Timecode = new Guid(0x399595ec, 0x8667, 0x4e2d, 0x8f, 0xdb, 0x98, 0x81, 0x4c, 0xe7, 0x6c, 0x1e);
+        public static readonly Guid ChromaLocation = new Guid(0x4c5acca0, 0x9276, 0x4b2c, 0x9e, 0x4c, 0xa0, 0xed, 0xef, 0xdd, 0x21, 0x7e);
+        public static readonly Guid ColorSpaceInfo = new Guid(0xf79ada56, 0x30eb, 0x4f2b, 0x9f, 0x7a, 0xf2, 0x4b, 0x13, 0x9a, 0x11, 0x57 );
+        public static readonly Guid UserDataInfo = new Guid(0x732bb4fa, 0x78be, 0x4549, 0x99, 0xbd, 0x2, 0xdb, 0x1a, 0x55, 0xb7, 0xa8 );
+        public static readonly Guid FileName = new Guid(0xe165ec0e, 0x19ed, 0x45d7, 0xb4, 0xa7, 0x25, 0xcb, 0xd1, 0xe2, 0x8e, 0x9b);
+        public static readonly Guid ContentType = new Guid(0xd590dc20, 0x07bc, 0x436c, 0x9c, 0xf7, 0xf3, 0xbb, 0xfb, 0xf1, 0xa4, 0xdc );
+        public static readonly Guid PixelAspectRatio = new Guid(0x1b1ee554, 0xf9ea, 0x4bc8, 0x82, 0x1a, 0x37, 0x6b, 0x74, 0xe4, 0xc4, 0xb8 );
+        public static readonly Guid SampleDuration = new Guid(0xc6bd9450, 0x867f, 0x4907, 0x83, 0xa3, 0xc7, 0x79, 0x21, 0xb7, 0x33, 0xad );
+        public static readonly Guid SampleProtectionSalt = new Guid(0x5403deee, 0xb9ee, 0x438f, 0xaa, 0x83, 0x38, 0x4, 0x99, 0x7e, 0x56, 0x9d );
     }
 
 #endif
@@ -442,13 +440,13 @@ namespace WindowsMediaLib
         void GetAccessEntry(
             [In] AEType aeType,
             [In] int dwEntryNum,
-            out WMAddressAccessEntry pAddrAccessEntry
-            );
+           out WMAddressAccessEntry pAddrAccessEntry
+           );
 
         void AddAccessEntry(
             [In] AEType aeType,
             [In] ref WMAddressAccessEntry pAddrAccessEntry
-            );
+           );
 
         void RemoveAccessEntry(
             [In] AEType aeType,
@@ -4838,13 +4836,13 @@ namespace WindowsMediaLib
     #endregion
 
         void SetProperty(
-            [In] Guid guidBufferProperty,
+            [In] Guid WM_SampleExtensionGUID,
             [In] IntPtr pvBufferProperty,
             [In] int dwBufferPropertySize
             );
 
         void GetProperty(
-            [In] Guid guidBufferProperty,
+            [In] Guid WM_SampleExtensionGUID,
             [Out] IntPtr pvBufferProperty,
             ref int pdwBufferPropertySize
             );
