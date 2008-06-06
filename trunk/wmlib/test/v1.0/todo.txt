@@ -65,7 +65,7 @@ IWMPlayerTimestampHook					1
 IWMProfile						18		
 IWMProfile2			IWMProfile		1		
 IWMProfile3			IWMProfile2		12		
-IWMProfileManager					6		
+IWMProfileManager					6		snarfle
 IWMProfileManager2		IWMProfileManager	2		
 IWMProfileManagerLanguage				2		
 IWMPropertyVault					6		
