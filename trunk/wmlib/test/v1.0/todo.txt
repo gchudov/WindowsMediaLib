@@ -7,7 +7,7 @@ WMCreateDeviceRegistration
 WMCreateDRMTranscryptor			
 WMCreateIndexer				
 WMCreateLicenseRevocationAgent		
-WMCreateProfileManager			
+WMCreateProfileManager			snarfle		ready
 WMCreateReader				
 WMCreateSyncReader			
 WMCreateWriter				snarfle		ready
@@ -66,7 +66,7 @@ IWMProfile						18
 IWMProfile2			IWMProfile		1		
 IWMProfile3			IWMProfile2		12		
 IWMProfileManager					6		snarfle		ready
-IWMProfileManager2		IWMProfileManager	2		snarfle
+IWMProfileManager2		IWMProfileManager	2		snarfle		ready
 IWMProfileManagerLanguage				2		
 IWMPropertyVault					6		
 IWMReader						11		
