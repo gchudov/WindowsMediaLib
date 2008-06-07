@@ -62,8 +62,8 @@ IWMOutputMediaProps		IWMMediaProps		2
 IWMPacketSize						2		
 IWMPacketSize2			IWMPacketSize		2		
 IWMPlayerTimestampHook					1		
-IWMProfile						18		snarfle
-IWMProfile2			IWMProfile		1		
+IWMProfile						18		snarfle		ready
+IWMProfile2			IWMProfile		1		snarfle
 IWMProfile3			IWMProfile2		12		
 IWMProfileManager					6		snarfle		ready
 IWMProfileManager2		IWMProfileManager	2		snarfle		ready
