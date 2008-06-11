@@ -28,7 +28,7 @@ INSSBuffer3			INSSBuffer2		2		snarfle		ready
 INSSBuffer4			INSSBuffer3		2		snarfle		ready
 IServiceProvider					1		
 IWMAddressAccess					4		bwkahle		ready
-IWMAddressAccess2		IWMAddressAccess	2		
+IWMAddressAccess2		IWMAddressAccess	2		bwkahle
 IWMBackupRestoreProps					6		
 IWMBandwidthSharing		IWMStreamList		4		
 IWMClientConnections					2		
