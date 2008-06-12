@@ -35,8 +35,8 @@ IWMClientConnections					2
 IWMClientConnections2		IWMClientConnections	1		
 IWMCodecAMVideoAccelerator				3		
 IWMCodecInfo						3		bwkahle
-IWMCodecInfo2			IWMCodecInfo		2		
-IWMCodecInfo3			IWMCodecInfo2		4		
+IWMCodecInfo2			IWMCodecInfo		2		bwkahle
+IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
 IWMCodecVideoAccelerator				2		
 IWMCredentialCallback					1		
 IWMDRMEditor						1		
