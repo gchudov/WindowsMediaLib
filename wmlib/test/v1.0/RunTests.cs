@@ -287,7 +287,7 @@ namespace v1._0
             }
             catch (Exception e)
             {
-                int hr = Marshal.GetHRForException(e);
+                int hr = Marshal.GetHRForException(e);                
                 string s = WMError.GetErrorText(hr);
 
                 if (s == null)

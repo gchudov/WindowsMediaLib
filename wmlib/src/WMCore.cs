@@ -440,8 +440,8 @@ namespace WindowsMediaLib
         void GetAccessEntry(
             [In] AEType aeType,
             [In] int dwEntryNum,
-           out WMAddressAccessEntry pAddrAccessEntry
-           );
+            out WMAddressAccessEntry pAddrAccessEntry
+            );
 
         void AddAccessEntry(
             [In] AEType aeType,
@@ -474,7 +474,7 @@ namespace WindowsMediaLib
 
         new void AddAccessEntry(
             [In] AEType aeType,
-            [In, MarshalAs(UnmanagedType.LPStruct)] WMAddressAccessEntry pAddrAccessEntry
+            [In] ref WMAddressAccessEntry pAddrAccessEntry
             );
 
         new void RemoveAccessEntry(
