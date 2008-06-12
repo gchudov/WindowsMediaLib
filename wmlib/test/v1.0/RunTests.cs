@@ -59,8 +59,8 @@ namespace v1._0
                 //IWMCodecInfo2Test t15 = new IWMCodecInfo2Test();
                 //t15.DoTests();
 
-                //IWMCodecInfo3Test t16 = new IWMCodecInfo3Test();
-                //t16.DoTests();
+                IWMCodecInfo3Test t16 = new IWMCodecInfo3Test();
+                t16.DoTests();
 
                 //IWMCodecVideoAcceleratorTest t17 = new IWMCodecVideoAcceleratorTest();
                 //t17.DoTests();
@@ -287,7 +287,7 @@ namespace v1._0
             }
             catch (Exception e)
             {
-                int hr = Marshal.GetHRForException(e);                
+                int hr = Marshal.GetHRForException(e);
                 string s = WMError.GetErrorText(hr);
 
                 if (s == null)

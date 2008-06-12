@@ -741,36 +741,36 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
             [In] int dwFormatIndex,
-            [In] string pszName,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref int pdwSize
             );
 
         void GetCodecProp(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
-            [In] string pszName,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte [] pValue,
             ref int pdwSize
             );
 
         void SetCodecEnumerationSetting(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
-            [In] string pszName,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 5)] byte[] pValue,
             [In] int dwSize
             );
 
         void GetCodecEnumerationSetting(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
             [In] int dwCodecIndex,
-            [In] string pszName,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte [] pValue,
             ref int pdwSize
             );
     }
