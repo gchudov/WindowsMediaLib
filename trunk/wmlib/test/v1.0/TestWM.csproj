@@ -41,6 +41,9 @@
     <Compile Include="INSSBufferTest.cs" />
     <Compile Include="IWMAddressAccess2Test.cs" />
     <Compile Include="IWMAddressAccessTest.cs" />
+    <Compile Include="IWMCodecInfo2Test.cs" />
+    <Compile Include="IWMCodecInfo3Test.cs" />
+    <Compile Include="IWMCodecInfoTest.cs" />
     <Compile Include="IWMProfile2Test.cs" />
     <Compile Include="IWMProfileManager2Test.cs" />
     <Compile Include="IWMProfileManagerTest.cs" />
