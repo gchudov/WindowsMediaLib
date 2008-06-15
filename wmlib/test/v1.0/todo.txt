@@ -27,14 +27,14 @@ INSSBuffer2			INSSBuffer		2		snarfle		ready
 INSSBuffer3			INSSBuffer2		2		snarfle		ready
 INSSBuffer4			INSSBuffer3		2		snarfle		ready
 IServiceProvider					1		
-IWMAddressAccess					4		bwkahle		ready
-IWMAddressAccess2		IWMAddressAccess	2		bwkahle		ready
+IWMAddressAccess					4		bwkahle		snarfle
+IWMAddressAccess2		IWMAddressAccess	2		bwkahle		snarfle
 IWMBackupRestoreProps					6		
 IWMBandwidthSharing		IWMStreamList		4		
 IWMClientConnections					2		
 IWMClientConnections2		IWMClientConnections	1		
 IWMCodecAMVideoAccelerator				3		
-IWMCodecInfo						3		bwkahle		ready
+IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		ready
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
 IWMCodecVideoAccelerator				2		
