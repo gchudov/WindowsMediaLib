@@ -41,12 +41,14 @@
     <Compile Include="INSSBufferTest.cs" />
     <Compile Include="IWMAddressAccess2Test.cs" />
     <Compile Include="IWMAddressAccessTest.cs" />
+    <Compile Include="IWMBackupRestorePropsTest.cs" />
     <Compile Include="IWMCodecInfo2Test.cs" />
     <Compile Include="IWMCodecInfo3Test.cs" />
     <Compile Include="IWMCodecInfoTest.cs" />
+    <Compile Include="IWMLicenseBackupTest.cs" />
+    <Compile Include="IWMLicenseRestoreTest.cs" />
     <Compile Include="IWMProfile2Test.cs" />
     <Compile Include="IWMProfileManager2Test.cs" />
-    <Compile Include="IWMProfileManagerTest.cs" />
     <Compile Include="IWMProfileTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
