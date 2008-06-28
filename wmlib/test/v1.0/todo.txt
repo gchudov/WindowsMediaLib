@@ -51,8 +51,8 @@ IWMIndexer2			IWMIndexer		1
 IWMInputMediaProps		IWMMediaProps		2		
 IWMIStreamProps						1		
 IWMLanguageList						3		
-IWMLicenseBackup					2		
-IWMLicenseRestore					2		
+IWMLicenseBackup					2		snarfle		
+IWMLicenseRestore					2		snarfle		
 IWMMediaProps						3		
 IWMMetadataEditor					3		
 IWMMetadataEditor2		IWMMetadataEditor	1		
