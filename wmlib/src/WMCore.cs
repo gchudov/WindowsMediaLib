@@ -34,6 +34,14 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
+    [Flags, UnmanagedName("From defines")]
+    public enum BackupRestoreFlags
+    {
+        None = 0,
+        OverWrite = 0x00000001,
+        Individualize = 0x00000002
+    }
+
     [Flags, UnmanagedName("From unnamed enum")]
     public enum WriteFlags
     {
@@ -509,7 +517,7 @@ namespace WindowsMediaLib
 
         void GetPropByIndex(
             [In] short wIndex,
-            [Out] StringBuilder pwszName,
+            [Out] string pwszName,
             ref short pcchNameLen,
             out AttrDataType pType,
             out byte [] pValue,
@@ -526,7 +534,7 @@ namespace WindowsMediaLib
         void SetProp(
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] IntPtr pValue,
             [In] short cbLength
             );
 
@@ -1343,7 +1351,7 @@ namespace WindowsMediaLib
     public interface IWMLicenseBackup
     {
         void BackupLicenses(
-            [In] int dwFlags,
+            [In] BackupRestoreFlags dwFlags,
             [In] IWMStatusCallback pCallback
             );
 
@@ -1356,7 +1364,7 @@ namespace WindowsMediaLib
     public interface IWMLicenseRestore
     {
         void RestoreLicenses(
-            [In] int dwFlags,
+            [In] BackupRestoreFlags dwFlags,
             [In] IWMStatusCallback pCallback
             );
 
@@ -3367,9 +3375,9 @@ namespace WindowsMediaLib
     {
         void OnStatus(
             [In] Status Status,
-            [In, MarshalAs(UnmanagedType.Error)] int hr,
+            [In] int hr,
             [In] AttrDataType dwType,
-            [In] byte [] pValue,
+            [In] IntPtr pValue,
             [In] IntPtr pvContext
             );
     }
