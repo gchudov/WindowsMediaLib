@@ -43,8 +43,8 @@ IWMDRMEditor						1
 IWMDRMReader						8		
 IWMDRMWriter						4		
 IWMHeaderInfo						12		snarfle		ready
-IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		
-IWMHeaderInfo3			IWMHeaderInfo2		7		
+IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		ready
+IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		
 IWMImageInfo						2		
 IWMIndexer						2		
 IWMIndexer2			IWMIndexer		1		

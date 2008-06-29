@@ -46,6 +46,7 @@
     <Compile Include="IWMCodecInfo3Test.cs" />
     <Compile Include="IWMCodecInfoTest.cs" />
     <Compile Include="IWMHeaderInfo.cs" />
+    <Compile Include="IWMHeaderInfo2Test.cs" />
     <Compile Include="IWMLicenseBackupTest.cs" />
     <Compile Include="IWMLicenseRestoreTest.cs" />
     <Compile Include="IWMProfile2Test.cs" />
