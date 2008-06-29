@@ -892,7 +892,7 @@ namespace WindowsMediaLib
 
         void GetAttributeByIndex(
             [In] short wIndex,
-            ref short pwStreamNum,
+            [In] ref short pwStreamNum,
             [Out] StringBuilder pwszName,
             ref short pcchNameLen,
             out AttrDataType pType,
@@ -901,7 +901,7 @@ namespace WindowsMediaLib
             );
 
         void GetAttributeByName(
-            ref short pwStreamNum,
+            [In] ref short pwStreamNum,
             [In] string pszName,
             out AttrDataType pType,
             IntPtr pValue,
