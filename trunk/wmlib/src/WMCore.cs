@@ -2880,7 +2880,7 @@ namespace WindowsMediaLib
             [In] Status Status,
             [In, MarshalAs(UnmanagedType.Error)] int hr,
             [In] AttrDataType dwType,
-            [In] byte [] pValue,
+            [In] IntPtr pValue,
             [In] IntPtr pvContext
             );
 
@@ -2957,12 +2957,12 @@ namespace WindowsMediaLib
             );
 
         void GetUDPPortRanges(
-            out WMPortNumberRange pRangeArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange [] pRangeArray,
             ref int pcRanges
             );
 
         void SetUDPPortRanges(
-            [In, MarshalAs(UnmanagedType.LPStruct)] WMPortNumberRange pRangeArray,
+            [In, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange [] pRangeArray,
             [In] int cRanges
             );
 
@@ -3116,7 +3116,7 @@ namespace WindowsMediaLib
             );
 
         new void SetUDPPortRanges(
-            [In, MarshalAs(UnmanagedType.LPStruct)] WMPortNumberRange pRangeArray,
+            [In, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange [] pRangeArray,
             [In] int cRanges
             );
 
@@ -4581,7 +4581,7 @@ namespace WindowsMediaLib
             [In] Status Status,
             [In, MarshalAs(UnmanagedType.Error)] int hr,
             [In] AttrDataType dwType,
-            [In] byte [] pValue,
+            [In] IntPtr pValue,
             [In] IntPtr pvContext
             );
 
