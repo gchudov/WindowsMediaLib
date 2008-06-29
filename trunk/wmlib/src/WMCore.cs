@@ -46,32 +46,32 @@ namespace WindowsMediaLib
     public enum WriteFlags
     {
         None = 0,
-        CleanPoint	= 0x1,
-        DisContinuity	= 0x2,
-        DataLoss	= 0x4
+        CleanPoint = 0x1,
+        DisContinuity = 0x2,
+        DataLoss = 0x4
     }
 
     [Flags, UnmanagedName("WMT_CREDENTIAL_FLAGS")]
     public enum CredentialFlags
     {
         Save = 0x1,
-        DontCache	= 0x2,
-        ClearTextT	= 0x4,
+        DontCache = 0x2,
+        ClearTextT = 0x4,
         Proxy = 0x8,
-        Encrypt	= 0x10
+        Encrypt = 0x10
     }
 
     [Flags, UnmanagedName("WMT_RIGHTS")]
     public enum Rights
     {
-        Playback            = 0x00000001,
+        Playback = 0x00000001,
         CopyToNonSDMIDevice = 0x00000002,
-        CopyToCD            = 0x00000008,
-        CopyToSDMIDevice    = 0x00000010,
-        OneTime             = 0x00000020,
+        CopyToCD = 0x00000008,
+        CopyToSDMIDevice = 0x00000010,
+        OneTime = 0x00000020,
         SaveStreamProtected = 0x00000040,
-        SDMITrigger         = 0x00010000,
-        SDMINoMoreCopies    = 0x00020000
+        SDMITrigger = 0x00010000,
+        SDMINoMoreCopies = 0x00020000
     }
 
     [UnmanagedName("NETSOURCE_URLCREDPOLICY_SETTINGS")]
@@ -135,27 +135,27 @@ namespace WindowsMediaLib
     [UnmanagedName("WMT_ATTR_DATATYPE")]
     public enum AttrDataType
     {
-        DWORD   = 0,
-        STRING  = 1,
-        BINARY  = 2,
-        BOOL    = 3,
-        QWORD   = 4,
-        WORD    = 5,
-        GUID    = 6
+        DWORD = 0,
+        STRING = 1,
+        BINARY = 2,
+        BOOL = 3,
+        QWORD = 4,
+        WORD = 5,
+        GUID = 6
     }
 
     [UnmanagedName("WMT_CODEC_INFO_TYPE")]
     public enum CodecInfoType
     {
-        Audio   = 0,
-        Video   = 1,
+        Audio = 0,
+        Video = 1,
         Unknown = 0xffffff
     }
 
     [UnmanagedName("WMT_NET_PROTOCOL")]
     public enum NetProtocol
     {
-        HTTP	= 0
+        HTTP = 0
     }
 
     [UnmanagedName("WMT_PLAY_MODE")]
@@ -182,51 +182,51 @@ namespace WindowsMediaLib
     [UnmanagedName("WMT_STATUS")]
     public enum Status
     {
-        Error                       = 0,
-        Opened                      = 1,
-        BufferingStart             = 2,
-        BufferingStop              = 3,
-        EOF                         = 4,
-        EndOfFile                 = 4,
-        EndOfSegment              = 5,
-        EndOfStreaming            = 6,
-        Locating                    = 7,
-        Connecting                  = 8,
-        NoRights                   = 9,
-        MissingCodec               = 10,
-        Started                     = 11,
-        Stopped                     = 12,
-        Closed                      = 13,
-        Striding                    = 14,
-        Timer                       = 15,
-        IndexProgress              = 16,
-        SaveasStart                = 17,
-        SaveasStop                = 18,
-        NewSourceflags             = 19,
-        NewMetadata                = 20,
-        BackuprestoreBegin         = 21,
-        SourceSwitch               = 22,
-        AcquireLicense             = 23,
-        Individualize               = 24,
-        NeedsIndividualization     = 25,
-        NoRightsEx                = 26,
-        BackuprestoreEnd           = 27,
-        BackuprestoreConnecting    = 28,
+        Error = 0,
+        Opened = 1,
+        BufferingStart = 2,
+        BufferingStop = 3,
+        EOF = 4,
+        EndOfFile = 4,
+        EndOfSegment = 5,
+        EndOfStreaming = 6,
+        Locating = 7,
+        Connecting = 8,
+        NoRights = 9,
+        MissingCodec = 10,
+        Started = 11,
+        Stopped = 12,
+        Closed = 13,
+        Striding = 14,
+        Timer = 15,
+        IndexProgress = 16,
+        SaveasStart = 17,
+        SaveasStop = 18,
+        NewSourceflags = 19,
+        NewMetadata = 20,
+        BackuprestoreBegin = 21,
+        SourceSwitch = 22,
+        AcquireLicense = 23,
+        Individualize = 24,
+        NeedsIndividualization = 25,
+        NoRightsEx = 26,
+        BackuprestoreEnd = 27,
+        BackuprestoreConnecting = 28,
         BackuprestoreDisconnecting = 29,
-        ErrorWithurl               = 30,
-        RestrictedLicense          = 31,
-        ClientConnect              = 32,
-        ClientDisconnect           = 33,
+        ErrorWithurl = 30,
+        RestrictedLicense = 31,
+        ClientConnect = 32,
+        ClientDisconnect = 33,
         NativeOutputPropsChanged = 34,
-        ReconnectStart             = 35,
-        ReconnectEnd               = 36,
-        ClientConnectEx           = 37,
-        ClientDisconnectEx        = 38,
-        SetFECSpan                = 39,
-        PrerollReady               = 40,
-        PrerollComplete            = 41,
-        ClientProperties           = 42,
-        LicenseURLSignatureState  = 43
+        ReconnectStart = 35,
+        ReconnectEnd = 36,
+        ClientConnectEx = 37,
+        ClientDisconnectEx = 38,
+        SetFECSpan = 39,
+        PrerollReady = 40,
+        PrerollComplete = 41,
+        ClientProperties = 42,
+        LicenseURLSignatureState = 43
     }
 
     [UnmanagedName("WMT_STREAM_SELECTION")]
@@ -240,11 +240,11 @@ namespace WindowsMediaLib
     [UnmanagedName("WMT_VERSION")]
     public enum WMVersion
     {
-        V4_0  = 0x00040000,
-        V7_0  = 0x00070000,
-        V8_0  = 0x00080000,
-        V9_0  = 0x00090000
-    }	
+        V4_0 = 0x00040000,
+        V7_0 = 0x00070000,
+        V8_0 = 0x00080000,
+        V9_0 = 0x00090000
+    }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_WATERMARK_ENTRY")]
     public struct WaterMarkEntry
@@ -366,16 +366,16 @@ namespace WindowsMediaLib
     [UnmanagedName("WM_SampleExtensionGUID_*")]
     public sealed class WM_SampleExtensionGUID
     {
-        public static readonly Guid OutputCleanPoint = new Guid(0xf72a3c6f, 0x6eb4, 0x4ebc, 0xb1, 0x92, 0x9, 0xad, 0x97, 0x59, 0xe8, 0x28 );
+        public static readonly Guid OutputCleanPoint = new Guid(0xf72a3c6f, 0x6eb4, 0x4ebc, 0xb1, 0x92, 0x9, 0xad, 0x97, 0x59, 0xe8, 0x28);
         public static readonly Guid Timecode = new Guid(0x399595ec, 0x8667, 0x4e2d, 0x8f, 0xdb, 0x98, 0x81, 0x4c, 0xe7, 0x6c, 0x1e);
         public static readonly Guid ChromaLocation = new Guid(0x4c5acca0, 0x9276, 0x4b2c, 0x9e, 0x4c, 0xa0, 0xed, 0xef, 0xdd, 0x21, 0x7e);
-        public static readonly Guid ColorSpaceInfo = new Guid(0xf79ada56, 0x30eb, 0x4f2b, 0x9f, 0x7a, 0xf2, 0x4b, 0x13, 0x9a, 0x11, 0x57 );
-        public static readonly Guid UserDataInfo = new Guid(0x732bb4fa, 0x78be, 0x4549, 0x99, 0xbd, 0x2, 0xdb, 0x1a, 0x55, 0xb7, 0xa8 );
+        public static readonly Guid ColorSpaceInfo = new Guid(0xf79ada56, 0x30eb, 0x4f2b, 0x9f, 0x7a, 0xf2, 0x4b, 0x13, 0x9a, 0x11, 0x57);
+        public static readonly Guid UserDataInfo = new Guid(0x732bb4fa, 0x78be, 0x4549, 0x99, 0xbd, 0x2, 0xdb, 0x1a, 0x55, 0xb7, 0xa8);
         public static readonly Guid FileName = new Guid(0xe165ec0e, 0x19ed, 0x45d7, 0xb4, 0xa7, 0x25, 0xcb, 0xd1, 0xe2, 0x8e, 0x9b);
-        public static readonly Guid ContentType = new Guid(0xd590dc20, 0x07bc, 0x436c, 0x9c, 0xf7, 0xf3, 0xbb, 0xfb, 0xf1, 0xa4, 0xdc );
-        public static readonly Guid PixelAspectRatio = new Guid(0x1b1ee554, 0xf9ea, 0x4bc8, 0x82, 0x1a, 0x37, 0x6b, 0x74, 0xe4, 0xc4, 0xb8 );
-        public static readonly Guid SampleDuration = new Guid(0xc6bd9450, 0x867f, 0x4907, 0x83, 0xa3, 0xc7, 0x79, 0x21, 0xb7, 0x33, 0xad );
-        public static readonly Guid SampleProtectionSalt = new Guid(0x5403deee, 0xb9ee, 0x438f, 0xaa, 0x83, 0x38, 0x4, 0x99, 0x7e, 0x56, 0x9d );
+        public static readonly Guid ContentType = new Guid(0xd590dc20, 0x07bc, 0x436c, 0x9c, 0xf7, 0xf3, 0xbb, 0xfb, 0xf1, 0xa4, 0xdc);
+        public static readonly Guid PixelAspectRatio = new Guid(0x1b1ee554, 0xf9ea, 0x4bc8, 0x82, 0x1a, 0x37, 0x6b, 0x74, 0xe4, 0xc4, 0xb8);
+        public static readonly Guid SampleDuration = new Guid(0xc6bd9450, 0x867f, 0x4907, 0x83, 0xa3, 0xc7, 0x79, 0x21, 0xb7, 0x33, 0xad);
+        public static readonly Guid SampleProtectionSalt = new Guid(0x5403deee, 0xb9ee, 0x438f, 0xaa, 0x83, 0x38, 0x4, 0x99, 0x7e, 0x56, 0x9d);
     }
 
 #endif
@@ -408,7 +408,7 @@ namespace WindowsMediaLib
         void GetIndexMode([Out, MarshalAs(UnmanagedType.Bool)] out bool pbIndexFile);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity, 
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("E1CD3524-03D7-11D2-9EED-006097D2D7CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer
@@ -467,7 +467,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMAddressAccess2 : IWMAddressAccess
     {
-    #region IWMAddressAccess Methods
+        #region IWMAddressAccess Methods
 
         new void GetAccessEntryCount(
             [In] AEType aeType,
@@ -490,7 +490,7 @@ namespace WindowsMediaLib
             [In] int dwEntryNum
             );
 
-    #endregion
+        #endregion
 
         void GetAccessEntryEx(
             [In] AEType aeType,
@@ -520,14 +520,14 @@ namespace WindowsMediaLib
             [Out] string pwszName,
             ref short pcchNameLen,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
         void GetPropByName(
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
@@ -550,10 +550,10 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMBandwidthSharing : IWMStreamList
     {
-    #region IWMStreamList Methods
+        #region IWMStreamList Methods
 
         new void GetStreams(
-            out short [] pwStreamNumArray,
+            out short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -565,7 +565,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum
             );
 
-    #endregion
+        #endregion
 
         void GetType(
             out Guid pguidType
@@ -606,7 +606,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMClientConnections2 : IWMClientConnections
     {
-    #region IWMClientConnections Methods
+        #region IWMClientConnections Methods
 
         new void GetClientCount(
             out int pcClients
@@ -617,7 +617,7 @@ namespace WindowsMediaLib
             out WMClientProperties pClientProperties
             );
 
-    #endregion
+        #endregion
 
         void GetClientInfo(
             [In] int dwClientNum,
@@ -659,7 +659,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo2 : IWMCodecInfo
     {
-    #region IWMCodecInfo Methods
+        #region IWMCodecInfo Methods
 
         new void GetCodecInfoCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
@@ -679,7 +679,7 @@ namespace WindowsMediaLib
             out IWMStreamConfig ppIStreamConfig
             );
 
-    #endregion
+        #endregion
 
         void GetCodecName(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
@@ -703,7 +703,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo3 : IWMCodecInfo2
     {
-    #region IWMCodecInfo Methods
+        #region IWMCodecInfo Methods
 
         new void GetCodecInfoCount(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
@@ -723,9 +723,9 @@ namespace WindowsMediaLib
             out IWMStreamConfig ppIStreamConfig
             );
 
-    #endregion
+        #endregion
 
-    #region IWMCodecInfo2 Methods
+        #region IWMCodecInfo2 Methods
 
         new void GetCodecName(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
@@ -743,7 +743,7 @@ namespace WindowsMediaLib
             ref int pcchDesc
             );
 
-    #endregion
+        #endregion
 
         void GetCodecFormatProp(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType,
@@ -760,7 +760,7 @@ namespace WindowsMediaLib
             [In] int dwCodecIndex,
             [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
             out AttrDataType pType,
-            [Out, MarshalAs(UnmanagedType.LPArray)] byte [] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref int pdwSize
             );
 
@@ -778,7 +778,7 @@ namespace WindowsMediaLib
             [In] int dwCodecIndex,
             [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
             out AttrDataType pType,
-            [Out, MarshalAs(UnmanagedType.LPArray)] byte [] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref int pdwSize
             );
     }
@@ -795,7 +795,7 @@ namespace WindowsMediaLib
             [In] int cchUser,
             [Out] StringBuilder pwszPassword,
             [In] int cchPassword,
-            [In, MarshalAs(UnmanagedType.Error)] int hrStatus,
+            [In] int hrStatus,
             out CredentialFlags pdwFlags
             );
     }
@@ -808,7 +808,7 @@ namespace WindowsMediaLib
         void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
     }
@@ -837,14 +837,14 @@ namespace WindowsMediaLib
         void SetDRMProperty(
             [In] string pwstrName,
             [In] AttrDataType dwType,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
 
         void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
     }
@@ -875,7 +875,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
     }
@@ -965,7 +965,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo2 : IWMHeaderInfo
     {
-    #region IWMHeaderInfo Methods
+        #region IWMHeaderInfo Methods
 
         new void GetAttributeCount(
             [In] short wStreamNum,
@@ -1041,7 +1041,7 @@ namespace WindowsMediaLib
             [In] short wIndex
             );
 
-    #endregion
+        #endregion
 
         void GetCodecInfoCount(
             out int pcCodecInfos
@@ -1064,7 +1064,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo3 : IWMHeaderInfo2
     {
-    #region IWMHeaderInfo Methods
+        #region IWMHeaderInfo Methods
 
         new void GetAttributeCount(
             [In] short wStreamNum,
@@ -1140,9 +1140,9 @@ namespace WindowsMediaLib
             [In] short wIndex
             );
 
-    #endregion
+        #endregion
 
-    #region IWMHeaderInfo2 Methods
+        #region IWMHeaderInfo2 Methods
 
         new void GetCodecInfoCount(
             out int pcCodecInfos
@@ -1159,7 +1159,7 @@ namespace WindowsMediaLib
             IntPtr pbCodecInfo
             );
 
-    #endregion
+        #endregion
 
         void GetAttributeCountEx(
             [In] short wStreamNum,
@@ -1235,7 +1235,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pwszDescription,
             out short pImageType,
             ref int pcbImageData,
-            out byte [] pbImageData
+            out byte[] pbImageData
             );
     }
 
@@ -1258,7 +1258,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMIndexer2 : IWMIndexer
     {
-    #region IWMIndexer Methods
+        #region IWMIndexer Methods
 
         new void StartIndexing(
             [In] string pwszURL,
@@ -1268,7 +1268,7 @@ namespace WindowsMediaLib
 
         new void Cancel();
 
-    #endregion
+        #endregion
 
         void Configure(
             [In] short wStreamNum,
@@ -1283,7 +1283,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMInputMediaProps : IWMMediaProps
     {
-    #region IWMMediaProps Methods
+        #region IWMMediaProps Methods
 
         new void GetType(
             out Guid pguidType
@@ -1298,7 +1298,7 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pType
             );
 
-    #endregion
+        #endregion
 
         void GetConnectionName(
             [Out] StringBuilder pwszName,
@@ -1319,7 +1319,7 @@ namespace WindowsMediaLib
         void GetProperty(
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref int pdwSize
             );
     }
@@ -1409,7 +1409,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMetadataEditor2 : IWMMetadataEditor
     {
-    #region IWMMetadataEditor Methods
+        #region IWMMetadataEditor Methods
 
         new void Open(
             [In] string pwszFilename
@@ -1419,7 +1419,7 @@ namespace WindowsMediaLib
 
         new void Flush();
 
-    #endregion
+        #endregion
 
         void OpenEx(
             [In] string pwszFilename,
@@ -1433,10 +1433,10 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMutualExclusion : IWMStreamList
     {
-    #region IWMStreamList Methods
+        #region IWMStreamList Methods
 
         new void GetStreams(
-            out short [] pwStreamNumArray,
+            out short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -1448,7 +1448,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum
             );
 
-    #endregion
+        #endregion
 
         void GetType(
             out Guid pguidType
@@ -1464,10 +1464,10 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMutualExclusion2 : IWMMutualExclusion
     {
-    #region IWMStreamList Methods
+        #region IWMStreamList Methods
 
         new void GetStreams(
-            out short [] pwStreamNumArray,
+            out short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -1479,9 +1479,9 @@ namespace WindowsMediaLib
             [In] short wStreamNum
             );
 
-    #endregion
+        #endregion
 
-    #region IWMMutualExclusion Methods
+        #region IWMMutualExclusion Methods
 
         new void GetType(
             out Guid pguidType
@@ -1491,7 +1491,7 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidType
             );
 
-    #endregion
+        #endregion
 
         void GetName(
             [Out] StringBuilder pwszName,
@@ -1525,7 +1525,7 @@ namespace WindowsMediaLib
 
         void GetStreamsForRecord(
             [In] short wRecordNumber,
-            out short [] pwStreamNumArray,
+            out short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -1545,7 +1545,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMOutputMediaProps : IWMMediaProps
     {
-    #region IWMMediaProps Methods
+        #region IWMMediaProps Methods
 
         new void GetType(
             out Guid pguidType
@@ -1560,7 +1560,7 @@ namespace WindowsMediaLib
             [In] AMMediaType pType
             );
 
-    #endregion
+        #endregion
 
         void GetStreamGroupName(
             [Out] StringBuilder pwszName,
@@ -1592,7 +1592,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPacketSize2 : IWMPacketSize
     {
-    #region IWMPacketSize Methods
+        #region IWMPacketSize Methods
 
         new void GetMaxPacketSize(
             out int pdwMaxPacketSize
@@ -1602,7 +1602,7 @@ namespace WindowsMediaLib
             [In] int dwMaxPacketSize
             );
 
-    #endregion
+        #endregion
 
         void GetMinPacketSize(
             out int pdwMinPacketSize
@@ -1702,7 +1702,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile2 : IWMProfile
     {
-    #region IWMProfile Methods
+        #region IWMProfile Methods
 
         new void GetVersion(
             out WMVersion pdwVersion
@@ -1782,7 +1782,7 @@ namespace WindowsMediaLib
             out IWMMutualExclusion ppME
             );
 
-    #endregion
+        #endregion
 
         void GetProfileID(
             out Guid pguidID
@@ -1794,7 +1794,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile3 : IWMProfile2
     {
-    #region IWMProfile Methods
+        #region IWMProfile Methods
 
         new void GetVersion(
             out WMVersion pdwVersion
@@ -1874,15 +1874,15 @@ namespace WindowsMediaLib
             out IWMMutualExclusion ppME
             );
 
-    #endregion
+        #endregion
 
-    #region IWMProfile2 Methods
+        #region IWMProfile2 Methods
 
         new void GetProfileID(
             out Guid pguidID
             );
 
-    #endregion
+        #endregion
 
         void GetStorageFormat(
             out StorageFormat pnStorageFormat
@@ -1974,7 +1974,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfileManager2 : IWMProfileManager
     {
-    #region IWMProfileManager Methods
+        #region IWMProfileManager Methods
 
         new void CreateEmptyProfile(
             [In] WMVersion dwVersion,
@@ -2006,7 +2006,7 @@ namespace WindowsMediaLib
             out IWMProfile ppProfile
             );
 
-    #endregion
+        #endregion
 
         void GetSystemProfileVersion(
             out WMVersion pdwVersion
@@ -2043,14 +2043,14 @@ namespace WindowsMediaLib
         void GetPropertyByName(
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref int pdwSize
             );
 
         void SetProperty(
             [In] string pszName,
             [In] AttrDataType pType,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] int dwSize
             );
 
@@ -2059,7 +2059,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pszName,
             ref int pdwNameLen,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref int pdwSize
             );
 
@@ -2166,8 +2166,8 @@ namespace WindowsMediaLib
 
         void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short [] pwStreamNumbers,
-            [In] StreamSelection [] pSelections
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
             );
 
         void GetStreamSelected(
@@ -2241,7 +2241,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced2 : IWMReaderAdvanced
     {
-    #region IWMReaderAdvanced Methods
+        #region IWMReaderAdvanced Methods
 
         new void SetUserProvidedClock(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
@@ -2265,8 +2265,8 @@ namespace WindowsMediaLib
 
         new void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short [] pwStreamNumbers,
-            [In] StreamSelection [] pSelections
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
             );
 
         new void GetStreamSelected(
@@ -2334,7 +2334,7 @@ namespace WindowsMediaLib
             long cnsLateness
             );
 
-    #endregion
+        #endregion
 
         void SetPlayMode(
             [In] PlayMode Mode
@@ -2379,7 +2379,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
@@ -2387,7 +2387,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
 
@@ -2419,7 +2419,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced3 : IWMReaderAdvanced2
     {
-    #region IWMReaderAdvanced Methods
+        #region IWMReaderAdvanced Methods
 
         new void SetUserProvidedClock(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
@@ -2443,8 +2443,8 @@ namespace WindowsMediaLib
 
         new void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short [] pwStreamNumbers,
-            [In] StreamSelection [] pSelections
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
             );
 
         new void GetStreamSelected(
@@ -2512,9 +2512,9 @@ namespace WindowsMediaLib
             long cnsLateness
             );
 
-    #endregion
+        #endregion
 
-    #region IWMReaderAdvanced2 Methods
+        #region IWMReaderAdvanced2 Methods
 
         new void SetPlayMode(
             [In] PlayMode Mode
@@ -2559,7 +2559,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
@@ -2567,7 +2567,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
 
@@ -2593,7 +2593,7 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-    #endregion
+        #endregion
 
         void StopNetStreaming();
 
@@ -2612,7 +2612,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced4 : IWMReaderAdvanced3
     {
-    #region IWMReaderAdvanced Methods
+        #region IWMReaderAdvanced Methods
 
         new void SetUserProvidedClock(
             [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
@@ -2636,8 +2636,8 @@ namespace WindowsMediaLib
 
         new void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short [] pwStreamNumbers,
-            [In] StreamSelection [] pSelections
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
             );
 
         new void GetStreamSelected(
@@ -2705,9 +2705,9 @@ namespace WindowsMediaLib
             long cnsLateness
             );
 
-    #endregion
+        #endregion
 
-    #region IWMReaderAdvanced2 Methods
+        #region IWMReaderAdvanced2 Methods
 
         new void SetPlayMode(
             [In] PlayMode Mode
@@ -2752,7 +2752,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
@@ -2760,7 +2760,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
 
@@ -2786,9 +2786,9 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-    #endregion
+        #endregion
 
-    #region IWMReaderAdvanced3
+        #region IWMReaderAdvanced3
 
         new void StopNetStreaming();
 
@@ -2801,7 +2801,7 @@ namespace WindowsMediaLib
             [In] IntPtr pvContext
             );
 
-    #endregion
+        #endregion
 
         void GetLanguageCount(
             [In] int dwOutputNum,
@@ -2874,23 +2874,23 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderCallback : IWMStatusCallback
     {
-    #region IWMStatusCallback Methods
+        #region IWMStatusCallback Methods
 
         new void OnStatus(
             [In] Status Status,
-            [In, MarshalAs(UnmanagedType.Error)] int hr,
+            [In] int hr,
             [In] AttrDataType dwType,
             [In] IntPtr pValue,
             [In] IntPtr pvContext
             );
 
-    #endregion
+        #endregion
 
         void OnSample(
             [In] int dwOutputNum,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
-            [In] int dwFlags,
+            [In] WriteFlags dwFlags,
             [In] INSSBuffer pSample,
             [In] IntPtr pvContext
             );
@@ -2917,8 +2917,8 @@ namespace WindowsMediaLib
 
         void OnStreamSelection(
             [In] short wStreamCount,
-            [In] short [] pStreamNumbers,
-            [In] StreamSelection [] pSelections,
+            [In] short[] pStreamNumbers,
+            [In] StreamSelection[] pSelections,
             [In] IntPtr pvContext
             );
 
@@ -2957,12 +2957,12 @@ namespace WindowsMediaLib
             );
 
         void GetUDPPortRanges(
-            [Out, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange [] pRangeArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange[] pRangeArray,
             ref int pcRanges
             );
 
         void SetUDPPortRanges(
-            [In, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange [] pRangeArray,
+            [In, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange[] pRangeArray,
             [In] int cRanges
             );
 
@@ -3100,7 +3100,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderNetworkConfig2 : IWMReaderNetworkConfig
     {
-    #region IWMReaderNetworkConfig Methods
+        #region IWMReaderNetworkConfig Methods
 
         new void GetBufferingTime(
             out long pcnsBufferingTime
@@ -3111,12 +3111,12 @@ namespace WindowsMediaLib
             );
 
         new void GetUDPPortRanges(
-            out WMPortNumberRange pRangeArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange[] pRangeArray,
             ref int pcRanges
             );
 
         new void SetUDPPortRanges(
-            [In, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange [] pRangeArray,
+            [In, MarshalAs(UnmanagedType.LPArray)] WMPortNumberRange[] pRangeArray,
             [In] int cRanges
             );
 
@@ -3248,7 +3248,7 @@ namespace WindowsMediaLib
 
         new void ResetLoggingUrlList();
 
-    #endregion
+        #endregion
 
         void GetEnableContentCaching(
             [MarshalAs(UnmanagedType.Bool)] out bool pfEnableContentCaching
@@ -3309,7 +3309,7 @@ namespace WindowsMediaLib
     public interface IWMReaderStreamClock
     {
         void GetTime(
-            [In] ref long pcnsNow
+            out long pcnsNow
             );
 
         void SetTimer(
@@ -3439,7 +3439,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig2 : IWMStreamConfig
     {
-    #region IWMStreamConfig Methods
+        #region IWMStreamConfig Methods
 
         new void GetStreamType(
             out Guid pguidStreamType
@@ -3487,7 +3487,7 @@ namespace WindowsMediaLib
             [In] int msBufferWindow
             );
 
-    #endregion
+        #endregion
 
         void GetTransportType(
             out TransportType pnTransportType
@@ -3500,7 +3500,7 @@ namespace WindowsMediaLib
         void AddDataUnitExtension(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidExtensionSystemID,
             [In] short cbExtensionDataSize,
-            [In] byte [] pbExtensionSystemInfo,
+            [In] byte[] pbExtensionSystemInfo,
             [In] int cbExtensionSystemInfo
             );
 
@@ -3512,7 +3512,7 @@ namespace WindowsMediaLib
             [In] short wDataUnitExtensionNumber,
             out Guid pguidExtensionSystemID,
             out short pcbExtensionDataSize,
-            out byte [] pbExtensionSystemInfo,
+            out byte[] pbExtensionSystemInfo,
             ref int pcbExtensionSystemInfo
             );
 
@@ -3524,7 +3524,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig3 : IWMStreamConfig2
     {
-    #region IWMStreamConfig Methods
+        #region IWMStreamConfig Methods
 
         new void GetStreamType(
             out Guid pguidStreamType
@@ -3572,9 +3572,9 @@ namespace WindowsMediaLib
             [In] int msBufferWindow
             );
 
-    #endregion
+        #endregion
 
-    #region IWMStreamConfig2 Methods
+        #region IWMStreamConfig2 Methods
 
         new void GetTransportType(
             out TransportType pnTransportType
@@ -3587,7 +3587,7 @@ namespace WindowsMediaLib
         new void AddDataUnitExtension(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidExtensionSystemID,
             [In] short cbExtensionDataSize,
-            [In] byte [] pbExtensionSystemInfo,
+            [In] byte[] pbExtensionSystemInfo,
             [In] int cbExtensionSystemInfo
             );
 
@@ -3599,13 +3599,13 @@ namespace WindowsMediaLib
             [In] short wDataUnitExtensionNumber,
             out Guid pguidExtensionSystemID,
             out short pcbExtensionDataSize,
-            out byte [] pbExtensionSystemInfo,
+            out byte[] pbExtensionSystemInfo,
             ref int pcbExtensionSystemInfo
             );
 
         new void RemoveAllDataUnitExtensions();
 
-    #endregion
+        #endregion
 
         void GetLanguage(
             [Out] StringBuilder pwszLanguageString,
@@ -3623,7 +3623,7 @@ namespace WindowsMediaLib
     public interface IWMStreamList
     {
         void GetStreams(
-            out short [] pwStreamNumArray,
+            out short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -3686,8 +3686,8 @@ namespace WindowsMediaLib
 
         void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short [] pwStreamNumbers,
-            [In] StreamSelection [] pSelections
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
             );
 
         void GetStreamSelected(
@@ -3709,7 +3709,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
@@ -3717,7 +3717,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
 
@@ -3776,7 +3776,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSyncReader2 : IWMSyncReader
     {
-    #region IWMSyncReader Methods
+        #region IWMSyncReader Methods
 
         new void Open(
             [In] string pwszFilename
@@ -3807,8 +3807,8 @@ namespace WindowsMediaLib
 
         new void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short [] pwStreamNumbers,
-            [In] StreamSelection [] pSelections
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
             );
 
         new void GetStreamSelected(
@@ -3830,7 +3830,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
@@ -3838,7 +3838,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
 
@@ -3891,7 +3891,7 @@ namespace WindowsMediaLib
             [In] IStream pStream
             );
 
-    #endregion
+        #endregion
 
         void SetRangeByTimecode(
             [In] short wStreamNum,
@@ -3932,7 +3932,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMVideoMediaProps : IWMMediaProps
     {
-    #region IWMMediaProps Methods
+        #region IWMMediaProps Methods
 
         new void GetType(
             out Guid pguidType
@@ -3947,7 +3947,7 @@ namespace WindowsMediaLib
             [In] AMMediaType pType
             );
 
-    #endregion
+        #endregion
 
         void GetMaxKeyFrameSpacing(
             out long pllTime
@@ -4106,7 +4106,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced2 : IWMWriterAdvanced
     {
-    #region IWMWriterAdvanced Methods
+        #region IWMWriterAdvanced Methods
 
         new void GetSinkCount(
             out int pcSinks
@@ -4159,13 +4159,13 @@ namespace WindowsMediaLib
             out int pmsWindow
             );
 
-    #endregion
+        #endregion
 
         void GetInputSetting(
             [In] int dwInputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
@@ -4173,7 +4173,7 @@ namespace WindowsMediaLib
             [In] int dwInputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
     }
@@ -4183,7 +4183,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced3 : IWMWriterAdvanced2
     {
-    #region IWMWriterAdvanced Methods
+        #region IWMWriterAdvanced Methods
 
         new void GetSinkCount(
             out int pcSinks
@@ -4240,23 +4240,23 @@ namespace WindowsMediaLib
             [In] int dwInputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte [] pValue,
+            out byte[] pValue,
             ref short pcbLength
             );
 
-    #endregion
+        #endregion
 
-    #region IWMWriterAdvanced2 Methods
+        #region IWMWriterAdvanced2 Methods
 
         new void SetInputSetting(
             [In] int dwInputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte [] pValue,
+            [In] byte[] pValue,
             [In] short cbLength
             );
 
-    #endregion
+        #endregion
 
         void GetStatisticsEx(
             [In] short wStreamNum,
@@ -4271,7 +4271,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink : IWMWriterSink
     {
-    #region IWMWriterSink Methods
+        #region IWMWriterSink Methods
 
         new void OnHeader(
             [In] INSSBuffer pHeader
@@ -4292,7 +4292,7 @@ namespace WindowsMediaLib
 
         new void OnEndWriting();
 
-    #endregion
+        #endregion
 
         void Open(
             [In] string pwszFilename
@@ -4304,7 +4304,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink2 : IWMWriterFileSink
     {
-    #region IWMWriterSink Methods
+        #region IWMWriterSink Methods
 
         new void OnHeader(
             [In] INSSBuffer pHeader
@@ -4325,15 +4325,15 @@ namespace WindowsMediaLib
 
         new void OnEndWriting();
 
-    #endregion
+        #endregion
 
-    #region IWMWriterFileSink Methods
+        #region IWMWriterFileSink Methods
 
         new void Open(
             [In] string pwszFilename
             );
 
-    #endregion
+        #endregion
 
         void Start(
             [In] long cnsStartTime
@@ -4367,7 +4367,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink3 : IWMWriterFileSink2
     {
-    #region IWMWriterSink Methods
+        #region IWMWriterSink Methods
 
         new void OnHeader(
             [In] INSSBuffer pHeader
@@ -4388,17 +4388,17 @@ namespace WindowsMediaLib
 
         new void OnEndWriting();
 
-    #endregion
+        #endregion
 
-    #region IWMWriterFileSink Methods
+        #region IWMWriterFileSink Methods
 
         new void Open(
             [In] string pwszFilename
             );
 
-    #endregion
+        #endregion
 
-    #region IWMWriterFileSink2
+        #region IWMWriterFileSink2
 
         new void Start(
             [In] long cnsStartTime
@@ -4426,7 +4426,7 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.Bool)] out bool pfClosed
             );
 
-    #endregion
+        #endregion
 
         void SetAutoIndexing(
             [In, MarshalAs(UnmanagedType.Bool)] bool fDoAutoIndexing
@@ -4466,7 +4466,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterNetworkSink : IWMWriterSink
     {
-    #region IWMWriterSink Methods
+        #region IWMWriterSink Methods
 
         new void OnHeader(
             [In] INSSBuffer pHeader
@@ -4487,7 +4487,7 @@ namespace WindowsMediaLib
 
         new void OnEndWriting();
 
-    #endregion
+        #endregion
 
         void SetMaximumClients(
             [In] int dwMaxClients
@@ -4575,17 +4575,17 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPostViewCallback : IWMStatusCallback
     {
-    #region IWMStatusCallback Methods
+        #region IWMStatusCallback Methods
 
         new void OnStatus(
             [In] Status Status,
-            [In, MarshalAs(UnmanagedType.Error)] int hr,
+            [In] int hr,
             [In] AttrDataType dwType,
             [In] IntPtr pValue,
             [In] IntPtr pvContext
             );
 
-    #endregion
+        #endregion
 
         void OnPostViewSample(
             [In] short wStreamNumber,
@@ -4644,7 +4644,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPushSink : IWMWriterSink
     {
-    #region IWMWriterSink Methods
+        #region IWMWriterSink Methods
 
         new void OnHeader(
             [In] INSSBuffer pHeader
@@ -4665,7 +4665,7 @@ namespace WindowsMediaLib
 
         new void OnEndWriting();
 
-    #endregion
+        #endregion
 
         void Connect(
             [In] string pwszURL,
@@ -4705,13 +4705,13 @@ namespace WindowsMediaLib
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("6d5140c1-7436-11ce-8034-00aa006009fa"),
-    InterfaceType( ComInterfaceType.InterfaceIsIUnknown )]
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IServiceProvider
     {
         void QueryService(
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidService,
             [In, MarshalAs(UnmanagedType.LPStruct)] Guid riid,
-            [Out, MarshalAs(UnmanagedType.IUnknown) ] out object ppvObject
+            [Out, MarshalAs(UnmanagedType.IUnknown)] out object ppvObject
             );
     }
 
@@ -4725,7 +4725,7 @@ namespace WindowsMediaLib
         void CreateNetSource(
             [In] string pszStreamName,
             [In, MarshalAs(UnmanagedType.IUnknown)] object pMonitor,
-            [In] byte [] pData,
+            [In] byte[] pData,
             [In, MarshalAs(UnmanagedType.IUnknown)] object pUserContext,
             [In, MarshalAs(UnmanagedType.IUnknown)] object pCallback,
             [In] long qwContext
@@ -4763,7 +4763,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer2 : INSSBuffer
     {
-    #region INSSBuffer Methods
+        #region INSSBuffer Methods
 
         new void GetLength(
             out int pdwLength
@@ -4786,16 +4786,16 @@ namespace WindowsMediaLib
             out int pdwLength
             );
 
-    #endregion
+        #endregion
 
         void GetSampleProperties(
             [In] int cbProperties,
-            out byte [] pbProperties
+            out byte[] pbProperties
             );
 
         void SetSampleProperties(
             [In] int cbProperties,
-            [In] byte [] pbProperties
+            [In] byte[] pbProperties
             );
     }
 
@@ -4804,7 +4804,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer3 : INSSBuffer2
     {
-    #region INSSBuffer Methods
+        #region INSSBuffer Methods
 
         new void GetLength(
             out int pdwLength
@@ -4827,21 +4827,21 @@ namespace WindowsMediaLib
             out int pdwLength
             );
 
-    #endregion
+        #endregion
 
-    #region INSSBuffer2 Methods
+        #region INSSBuffer2 Methods
 
         new void GetSampleProperties(
             [In] int cbProperties,
-            out byte [] pbProperties
+            out byte[] pbProperties
             );
 
         new void SetSampleProperties(
             [In] int cbProperties,
-            [In] byte [] pbProperties
+            [In] byte[] pbProperties
             );
 
-    #endregion
+        #endregion
 
         void SetProperty(
             [In] Guid WM_SampleExtensionGUID,
@@ -4861,7 +4861,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer4 : INSSBuffer3
     {
-    #region INSSBuffer Methods
+        #region INSSBuffer Methods
 
         new void GetLength(
             out int pdwLength
@@ -4884,23 +4884,23 @@ namespace WindowsMediaLib
             out int pdwLength
             );
 
-    #endregion
+        #endregion
 
-    #region INSSBuffer2 Methods
+        #region INSSBuffer2 Methods
 
         new void GetSampleProperties(
             [In] int cbProperties,
-            out byte [] pbProperties
+            out byte[] pbProperties
             );
 
         new void SetSampleProperties(
             [In] int cbProperties,
-            [In] byte [] pbProperties
+            [In] byte[] pbProperties
             );
 
-    #endregion
+        #endregion
 
-    #region INSSBuffer3 Methods
+        #region INSSBuffer3 Methods
 
         new void SetProperty(
             [In] Guid guidBufferProperty,
@@ -4914,7 +4914,7 @@ namespace WindowsMediaLib
             ref int pdwBufferPropertySize
             );
 
-    #endregion
+        #endregion
 
         void GetPropertyCount(
             out int pcBufferProperties
@@ -5040,7 +5040,7 @@ namespace WindowsMediaLib
             );
 
         void RegisterProxyFailure(
-            [In, MarshalAs(UnmanagedType.Error)] int hrParam,
+            [In] int hrParam,
             [In] int dwProxyContext
             );
 
@@ -5101,7 +5101,7 @@ namespace WindowsMediaLib
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSInternalAdminNetSource3 : IWMSInternalAdminNetSource2
     {
-    #region IWMSInternalAdminNetSource2 Methods
+        #region IWMSInternalAdminNetSource2 Methods
 
         new void SetCredentialsEx(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrRealm,
@@ -5139,7 +5139,7 @@ namespace WindowsMediaLib
             ref int pdwProxyContext
             );
 
-    #endregion
+        #endregion
 
         void GetNetSourceCreator2(
             [MarshalAs(UnmanagedType.IUnknown)] out object ppNetSourceCreator
@@ -5156,7 +5156,7 @@ namespace WindowsMediaLib
             );
 
         void RegisterProxyFailure2(
-            [In, MarshalAs(UnmanagedType.Error)] int hrParam,
+            [In] int hrParam,
             [In] long qwProxyContext
             );
 

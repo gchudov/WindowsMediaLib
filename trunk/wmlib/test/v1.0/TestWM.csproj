@@ -50,10 +50,12 @@
     <Compile Include="IWMProfile2Test.cs" />
     <Compile Include="IWMProfileManager2Test.cs" />
     <Compile Include="IWMProfileTest.cs" />
+    <Compile Include="IWMReaderCallbackTest.cs" />
     <Compile Include="IWMReaderNetworkConfigTest.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IWMReaderNetworkConfigTest2.cs" />
+    <Compile Include="IWMReaderStreamClockTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
   <ItemGroup>
