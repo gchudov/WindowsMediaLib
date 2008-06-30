@@ -1169,8 +1169,8 @@ namespace WindowsMediaLib
         void GetAttributeIndices(
             [In] short wStreamNum,
             [In] string pwszName,
-            [In] ref short pwLangIndex,
-            out short pwIndices,
+            [In] WmShort pwLangIndex,
+            [Out, MarshalAs(UnmanagedType.LPArray)] short [] pwIndices,
             ref short pwCount
             );
 
