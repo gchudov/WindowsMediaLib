@@ -534,7 +534,7 @@ namespace WindowsMediaLib
         void SetProp(
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] IntPtr pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] short cbLength
             );
 
@@ -896,7 +896,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pwszName,
             ref short pcchNameLen,
             out AttrDataType pType,
-            IntPtr pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -904,7 +904,7 @@ namespace WindowsMediaLib
             [In] ref short pwStreamNum,
             [In] string pszName,
             out AttrDataType pType,
-            IntPtr pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -912,7 +912,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] IntPtr pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] short cbLength
             );
 
@@ -978,7 +978,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pwszName,
             ref short pcchNameLen,
             out AttrDataType pType,
-            IntPtr pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -986,7 +986,7 @@ namespace WindowsMediaLib
             ref short pwStreamNum,
             [In] string pszName,
             out AttrDataType pType,
-            IntPtr pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -994,7 +994,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] IntPtr pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] short cbLength
             );
 
@@ -1077,7 +1077,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pwszName,
             ref short pcchNameLen,
             out AttrDataType pType,
-            IntPtr pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -1085,7 +1085,7 @@ namespace WindowsMediaLib
             ref short pwStreamNum,
             [In] string pszName,
             out AttrDataType pType,
-            IntPtr pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -1093,7 +1093,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] IntPtr pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] short cbLength
             );
 
@@ -2877,7 +2877,7 @@ namespace WindowsMediaLib
         #region IWMStatusCallback Methods
 
         new void OnStatus(
-            [In] Status Status,
+            [In] Status iStatus,
             [In] int hr,
             [In] AttrDataType dwType,
             [In] IntPtr pValue,
@@ -3374,7 +3374,7 @@ namespace WindowsMediaLib
     public interface IWMStatusCallback
     {
         void OnStatus(
-            [In] Status Status,
+            [In] Status iStatus,
             [In] int hr,
             [In] AttrDataType dwType,
             [In] IntPtr pValue,
@@ -4578,7 +4578,7 @@ namespace WindowsMediaLib
         #region IWMStatusCallback Methods
 
         new void OnStatus(
-            [In] Status Status,
+            [In] Status iStatus,
             [In] int hr,
             [In] AttrDataType dwType,
             [In] IntPtr pValue,

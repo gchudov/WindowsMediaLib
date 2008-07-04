@@ -81,13 +81,9 @@ namespace v1._0
 
             m_head.GetAttributeCount(wStream, out i1);
 
-            IntPtr ip = Marshal.AllocCoTaskMem(4);
+            m_head.SetAttribute(wStream, "asdf", AttrDataType.DWORD, BitConverter.GetBytes(1234), 4);
 
-            Marshal.WriteInt32(ip, 1234);
-            m_head.SetAttribute(wStream, "asdf", AttrDataType.DWORD, ip, 4);
-
-            Marshal.WriteInt32(ip, 4321);
-            m_head.SetAttribute(wStream, "fdsa", AttrDataType.DWORD, ip, 4);
+            m_head.SetAttribute(wStream, "fdsa", AttrDataType.DWORD, BitConverter.GetBytes(4321), 4);
 
             m_head.GetAttributeCount(wStream, out i2);
             Debug.Assert(i2 - i1 == 2);
@@ -95,18 +91,18 @@ namespace v1._0
             short pLen = 0;
             AttrDataType pType;
 
-            m_head.GetAttributeByName(ref wStream, "asdf", out pType, IntPtr.Zero, ref pLen);
-            IntPtr ip2 = Marshal.AllocCoTaskMem(pLen);
-            m_head.GetAttributeByName(ref wStream, "asdf", out pType, ip2, ref pLen);
-            Debug.Assert(Marshal.ReadInt32(ip2) == 1234);
+            m_head.GetAttributeByName(ref wStream, "asdf", out pType, null, ref pLen);
+            byte [] b = new byte[pLen];
+            m_head.GetAttributeByName(ref wStream, "asdf", out pType, b, ref pLen);
+            Debug.Assert(BitConverter.ToInt32(b, 0) == 1234);
 
             short sNameLen = 0;
-            m_head.GetAttributeByIndex((short)(i1 + 1), ref wStream, null, ref sNameLen, out pType, IntPtr.Zero, ref pLen);
+            m_head.GetAttributeByIndex((short)(i1 + 1), ref wStream, null, ref sNameLen, out pType, null, ref pLen);
             StringBuilder sb = new StringBuilder(sNameLen);
-            ip2 = Marshal.AllocCoTaskMem(pLen);
-            m_head.GetAttributeByIndex((short)(i1 + 1), ref wStream, sb, ref sNameLen, out pType, ip2, ref pLen);
+            byte [] b2 = new byte[pLen];
+            m_head.GetAttributeByIndex((short)(i1 + 1), ref wStream, sb, ref sNameLen, out pType, b2, ref pLen);
 
-            Debug.Assert(sb.ToString() == "fdsa" && pType == AttrDataType.DWORD && Marshal.ReadInt32(ip) == 4321);
+            Debug.Assert(sb.ToString() == "fdsa" && pType == AttrDataType.DWORD && BitConverter.ToInt32(b2, 0) == 4321);
         }
 
         private void Config()
