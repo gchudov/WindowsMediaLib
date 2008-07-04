@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="IWMReaderNetworkConfigTest2.cs" />
     <Compile Include="IWMReaderStreamClockTest.cs" />
+    <Compile Include="IWMSyncReaderTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
   <ItemGroup>

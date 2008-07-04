@@ -32,12 +32,7 @@ namespace v1._0
             m_head.GetAttributeCountEx(0, out w1);
 
             byte[] b = Encoding.Unicode.GetBytes(v);
-            short iSizeWithNull = (short)(b.Length + 2);
-            IntPtr ip = Marshal.AllocCoTaskMem(iSizeWithNull);
-            Marshal.Copy(b, 0, ip, b.Length);
-            Marshal.WriteInt16(ip, b.Length, 0);
-
-            m_head.AddAttribute(0, "asdf", out iIndex, AttrDataType.STRING, 0, ip, iSizeWithNull);
+            m_head.AddAttribute(0, "asdf", out iIndex, AttrDataType.STRING, 0, b, b.Length);
 
             m_head.GetAttributeCountEx(0, out w2);
 
@@ -48,20 +43,22 @@ namespace v1._0
             AttrDataType pType;
             short pLang;
 
-            m_head.GetAttributeByIndexEx(0, w1, null, ref pNLen, out pType, out pLang, IntPtr.Zero, ref pDLen);
+            m_head.GetAttributeByIndexEx(0, w1, null, ref pNLen, out pType, out pLang, null, ref pDLen);
+            byte[] bb = new byte[pDLen];
+            m_head.GetAttributeByIndexEx(0, w1, null, ref pNLen, out pType, out pLang, bb, ref pDLen);
+            string ss = Encoding.Unicode.GetString(bb, 0, pDLen - 2);
             StringBuilder sbName = new StringBuilder(pNLen);
-            IntPtr ip2 = Marshal.AllocCoTaskMem(pDLen);
-            m_head.GetAttributeByIndexEx(0, w1, sbName, ref pNLen, out pType, out pLang, ip2, ref pDLen);
+            byte[] bb2 = new byte[pDLen];
+            m_head.GetAttributeByIndexEx(0, w1, sbName, ref pNLen, out pType, out pLang, bb2, ref pDLen);
 
-            Debug.Assert(sbName.ToString() == "asdf" && pType == AttrDataType.STRING && pLang == 0 && v == Marshal.PtrToStringUni(ip2));
+            Debug.Assert(sbName.ToString() == "asdf" && pType == AttrDataType.STRING && pLang == 0 && v == Encoding.Unicode.GetString(bb2, 0, v.Length * 2));
 
-            IntPtr ip3 = Marshal.AllocCoTaskMem(4);
-            IntPtr ip4 = Marshal.AllocCoTaskMem(4);
-            Marshal.WriteInt32(ip3, 4144);
-            m_head.ModifyAttribute(0, w1, AttrDataType.DWORD, 0, ip3, 4);
+            byte[] wm3 = BitConverter.GetBytes(4144); ;
+            m_head.ModifyAttribute(0, w1, AttrDataType.DWORD, 0, wm3, 4);
 
-            m_head.GetAttributeByIndexEx(0, w1, null, ref pNLen, out pType, out pLang, ip4, ref pDLen);
-            Debug.Assert(Marshal.ReadInt32(ip4) == 4144);
+            byte[] bb4 = new byte[pDLen];
+            m_head.GetAttributeByIndexEx(0, w1, null, ref pNLen, out pType, out pLang, bb4, ref pDLen);
+            Debug.Assert(BitConverter.ToInt32(bb4, 0) == 4144);
 
             m_head.DeleteAttribute(0, w1);
 
@@ -75,13 +72,11 @@ namespace v1._0
 
             m_head.GetAttributeCountEx(0, out w1);
 
-            IntPtr ip = Marshal.AllocCoTaskMem(4);
-            Marshal.WriteInt32(ip, 4292);
-
             short pIndex1, pIndex2;
+            byte[] wm = BitConverter.GetBytes(4292);
 
-            m_head.AddAttribute(0, "tester", out pIndex1, AttrDataType.DWORD, 0, ip, 4);
-            m_head.AddAttribute(0, "tester", out pIndex2, AttrDataType.DWORD, 0, ip, 4);
+            m_head.AddAttribute(0, "tester", out pIndex1, AttrDataType.DWORD, 0, wm, 4);
+            m_head.AddAttribute(0, "tester", out pIndex2, AttrDataType.DWORD, 0, wm, 4);
 
             short pCount = 0;
             WmShort ws = new WmShort();
@@ -95,6 +90,7 @@ namespace v1._0
         private void TestCodec()
         {
             int c1, c2;
+
             m_head.GetCodecInfoCount(out c1);
             m_head.AddCodecInfo("moo", "fooit", CodecInfoType.Unknown, 0, IntPtr.Zero);
             m_head.GetCodecInfoCount(out c2);

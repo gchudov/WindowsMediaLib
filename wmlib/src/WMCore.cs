@@ -1170,7 +1170,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] string pwszName,
             [In] WmShort pwLangIndex,
-            [Out, MarshalAs(UnmanagedType.LPArray)] short [] pwIndices,
+            [Out, MarshalAs(UnmanagedType.LPArray)] short[] pwIndices,
             ref short pwCount
             );
 
@@ -1181,7 +1181,7 @@ namespace WindowsMediaLib
             ref short pwNameLen,
             out AttrDataType pType,
             out short pwLangIndex,
-            IntPtr pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref int pdwDataLength
             );
 
@@ -1190,7 +1190,7 @@ namespace WindowsMediaLib
             [In] short wIndex,
             [In] AttrDataType Type,
             [In] short wLangIndex,
-            [In] IntPtr pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte [] pValue,
             [In] int dwLength
             );
 
@@ -1200,7 +1200,7 @@ namespace WindowsMediaLib
             out short pwIndex,
             [In] AttrDataType Type,
             [In] short wLangIndex,
-            [In] IntPtr pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] int dwLength
             );
 
@@ -1273,8 +1273,8 @@ namespace WindowsMediaLib
         void Configure(
             [In] short wStreamNum,
             [In] IndexerType nIndexerType,
-            [In] IntPtr pvInterval,
-            [In] IntPtr pvIndexType
+            [In] WmInt pvInterval,
+            [In] WmShort pvIndexType
             );
     }
 
@@ -3679,15 +3679,15 @@ namespace WindowsMediaLib
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
             out long pcnsDuration,
-            out int pdwFlags,
+            out WriteFlags pdwFlags,
             out int pdwOutputNum,
             out short pwStreamNum
             );
 
         void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short[] pwStreamNumbers,
-            [In] StreamSelection[] pSelections
+            [In, MarshalAs(UnmanagedType.LPArray)] short[] pwStreamNumbers,
+            [In, MarshalAs(UnmanagedType.LPArray)] StreamSelection[] pSelections
             );
 
         void GetStreamSelected(
@@ -3709,7 +3709,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -3717,7 +3717,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte[] pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] short cbLength
             );
 
@@ -3800,7 +3800,7 @@ namespace WindowsMediaLib
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
             out long pcnsDuration,
-            out int pdwFlags,
+            out WriteFlags pdwFlags,
             out int pdwOutputNum,
             out short pwStreamNum
             );
@@ -3830,7 +3830,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
