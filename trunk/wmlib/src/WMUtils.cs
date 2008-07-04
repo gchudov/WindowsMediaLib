@@ -1655,4 +1655,50 @@ namespace WindowsMediaLib
             return new WmShort(l);
         }
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public class WmInt
+    {
+        private int Value;
+
+        public WmInt()
+        {
+            Value = 0;
+        }
+
+        public WmInt(int v)
+        {
+            Value = v;
+        }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+
+        public static implicit operator int(WmInt l)
+        {
+            return l.Value;
+        }
+
+        public static implicit operator WmInt(int l)
+        {
+            return new WmInt(l);
+        }
+
+        public int ToInt32()
+        {
+            return Value;
+        }
+
+        public static WmInt FromInt32(int l)
+        {
+            return new WmInt(l);
+        }
+    }
 }
