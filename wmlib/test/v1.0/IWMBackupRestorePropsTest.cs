@@ -12,11 +12,7 @@ namespace v1._0
     {
         private IWMBackupRestoreProps m_pIWMBackupRestoreProps;
 
-        public IWMBackupRestorePropsTest()
-        {
-        }
-
-        public void DoTests()
+       public void DoTests()
         {
             Config();
 
@@ -79,16 +75,11 @@ namespace v1._0
         private void TestProps()
         {
             byte [] b = Encoding.Unicode.GetBytes(@"c:\");
-            short iSizeWithNull = (short)(b.Length + 2);
-            IntPtr ip = Marshal.AllocCoTaskMem(iSizeWithNull);
-            Marshal.Copy(b, 0, ip, b.Length);
-            Marshal.WriteInt16(ip, b.Length, 0);
+            Array.Resize(ref b, b.Length + 2);
 
-            m_pIWMBackupRestoreProps.SetProp("BackupPath", AttrDataType.STRING, ip, iSizeWithNull);
+            m_pIWMBackupRestoreProps.SetProp("BackupPath", AttrDataType.STRING, b, (short)b.Length);
             m_pIWMBackupRestoreProps.RemoveProp("BackupPath");
             m_pIWMBackupRestoreProps.RemoveAllProps();
-
-            Marshal.FreeCoTaskMem(ip);
         }
 
         private void Config()

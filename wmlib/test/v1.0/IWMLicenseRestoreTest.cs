@@ -44,28 +44,23 @@ namespace v1._0
             IWMBackupRestoreProps pIWMBackupRestoreProps;
             IWMLicenseBackup pIWMLicenseBackup;
 
-            WMUtils.WMCreateBackupRestorer((IWMStatusCallback)this, out pIWMLicenseBackup);
+            WMUtils.WMCreateBackupRestorer(this, out pIWMLicenseBackup);
             m_pIWMLicenseRestore = (IWMLicenseRestore)pIWMLicenseBackup;
 
             pIWMBackupRestoreProps = (IWMBackupRestoreProps)pIWMLicenseBackup;
 
             byte[] b = Encoding.Unicode.GetBytes(wzBackupDir);
-            short iSizeWithNull = (short)(b.Length + 2);
-            IntPtr ip = Marshal.AllocCoTaskMem(iSizeWithNull);
-            Marshal.Copy(b, 0, ip, b.Length);
-            Marshal.WriteInt16(ip, b.Length, 0);
+            Array.Resize(ref b, b.Length + 2);
 
-            pIWMBackupRestoreProps.SetProp("RestorePath", AttrDataType.STRING, ip, iSizeWithNull);
-
-            Marshal.FreeCoTaskMem(ip);
+            pIWMBackupRestoreProps.SetProp("RestorePath", AttrDataType.STRING, b, (short)b.Length);
         }
 
         #region IWMStatusCallback Members
 
         void IWMStatusCallback.OnStatus(Status iStatus, int hr, AttrDataType dwType, IntPtr pValue, IntPtr pvContext)
         {
-            Debug.Write(string.Format("{0} 0x{1:x} {2} {3} {4} {5} ", iStatus, hr, WMError.GetErrorText(hr), dwType, pValue.ToInt32(), pvContext.ToInt32()));
             m_LastResult = hr;
+            Debug.Write(string.Format("{0} 0x{1:x} {2} {3} {4} {5} ", iStatus, hr, WMError.GetErrorText(hr), dwType, pValue.ToInt32(), pvContext.ToInt32()));
 
             switch (dwType)
             {
@@ -83,9 +78,10 @@ namespace v1._0
                     Debug.WriteLine(Marshal.ReadInt64(pValue));
                     break;
                 default:
-                    Debug.WriteLine("");
+                    Debug.WriteLine("???");
                     break;
             }
+
         }
 
         #endregion
