@@ -278,7 +278,7 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 8), UnmanagedName("WM_READER_CLIENTINFO")]
-    public struct WMReaderClientInfo
+    public class WMReaderClientInfo
     {
         public int cbSize;
         public string wszLang;
@@ -292,7 +292,7 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_READER_STATISTICS")]
-    public struct WMReaderStatistics
+    public class WMReaderStatistics
     {
         public int cbSize;
         public int dwBandwidth;
@@ -2166,8 +2166,8 @@ namespace WindowsMediaLib
 
         void SetStreamsSelected(
             [In] short cStreamCount,
-            [In] short[] pwStreamNumbers,
-            [In] StreamSelection[] pSelections
+            [In, MarshalAs(UnmanagedType.LPArray)] short[] pwStreamNumbers,
+            [In, MarshalAs(UnmanagedType.LPArray)] StreamSelection[] pSelections
             );
 
         void GetStreamSelected(
