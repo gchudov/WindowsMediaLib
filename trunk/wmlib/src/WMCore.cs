@@ -4704,18 +4704,6 @@ namespace WindowsMediaLib
     }
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
-    Guid("6d5140c1-7436-11ce-8034-00aa006009fa"),
-    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IServiceProvider
-    {
-        void QueryService(
-            [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidService,
-            [In, MarshalAs(UnmanagedType.LPStruct)] Guid riid,
-            [Out, MarshalAs(UnmanagedType.IUnknown)] out object ppvObject
-            );
-    }
-
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("0C0E4080-9081-11D2-BEEC-0060082F2054"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSNetSourceCreator
