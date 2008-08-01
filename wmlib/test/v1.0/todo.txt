@@ -70,7 +70,7 @@ IWMProfileManagerLanguage				2
 IWMPropertyVault					6		
 IWMReader						11		
 IWMReaderAccelerator					2		
-IWMReaderAdvanced					20		snarfle		
+IWMReaderAdvanced					20		snarfle		ready
 IWMReaderAdvanced2		IWMReaderAdvanced	15		
 IWMReaderAdvanced3		IWMReaderAdvanced2	2		
 IWMReaderAdvanced4		IWMReaderAdvanced3	9		
