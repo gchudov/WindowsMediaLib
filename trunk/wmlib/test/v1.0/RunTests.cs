@@ -29,9 +29,6 @@ namespace v1._0
                 //INSSBuffer4Test t5 = new INSSBuffer4Test();
                 //t5.DoTests();
 
-                //IServiceProviderTest t6 = new IServiceProviderTest();
-                //t6.DoTests();
-
                 //IWMAddressAccessTest t7 = new IWMAddressAccessTest();
                 //t7.DoTests();
 
@@ -59,8 +56,8 @@ namespace v1._0
                 //IWMCodecInfo2Test t15 = new IWMCodecInfo2Test();
                 //t15.DoTests();
 
-                IWMCodecInfo3Test t16 = new IWMCodecInfo3Test();
-                t16.DoTests();
+                //IWMCodecInfo3Test t16 = new IWMCodecInfo3Test();
+                //t16.DoTests();
 
                 //IWMCodecVideoAcceleratorTest t17 = new IWMCodecVideoAcceleratorTest();
                 //t17.DoTests();
