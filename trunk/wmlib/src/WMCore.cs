@@ -2379,7 +2379,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -2387,7 +2387,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             [In] AttrDataType Type,
-            [In] byte[] pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] short cbLength
             );
 
