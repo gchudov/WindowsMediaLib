@@ -328,7 +328,7 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 2), UnmanagedName("WMT_TIMECODE_EXTENSION_DATA")]
-    public struct TimeCodeExtensionData
+    public class TimeCodeExtensionData
     {
         public short wRange;
         public int dwTimecode;
