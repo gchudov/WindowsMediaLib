@@ -306,7 +306,7 @@ namespace WindowsMediaLib
     public struct WMStreamPrioritizationRecord
     {
         public short wStreamNumber;
-        public int fMandatory;
+        public bool fMandatory;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_BUFFER_SEGMENT")]
@@ -3642,12 +3642,12 @@ namespace WindowsMediaLib
     public interface IWMStreamPrioritization
     {
         void GetPriorityRecords(
-            out WMStreamPrioritizationRecord pRecordArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] WMStreamPrioritizationRecord [] pRecordArray,
             ref short pcRecords
             );
 
         void SetPriorityRecords(
-            [In, MarshalAs(UnmanagedType.LPStruct)] WMStreamPrioritizationRecord pRecordArray,
+            [In, MarshalAs(UnmanagedType.LPArray)] WMStreamPrioritizationRecord [] pRecordArray,
             [In] short cRecords
             );
     }
