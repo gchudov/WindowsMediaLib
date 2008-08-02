@@ -63,7 +63,7 @@ IWMPacketSize2			IWMPacketSize		2
 IWMPlayerTimestampHook					1		
 IWMProfile						18		snarfle		ready
 IWMProfile2			IWMProfile		1		snarfle		ready
-IWMProfile3			IWMProfile2		12		snarfle		
+IWMProfile3			IWMProfile2		12		snarfle		ready
 IWMProfileManager					6		snarfle		ready
 IWMProfileManager2		IWMProfileManager	2		snarfle		ready
 IWMProfileManagerLanguage				2		
@@ -92,7 +92,7 @@ IWMStreamConfig						11
 IWMStreamConfig2		IWMStreamConfig		6		
 IWMStreamConfig3		IWMStreamConfig2	2		
 IWMStreamList						3		
-IWMStreamPrioritization					2		snarfle		
+IWMStreamPrioritization					2		snarfle		ready
 IWMSyncReader						21		snarfle		ready
 IWMSyncReader2			IWMSyncReader		6		snarfle		ready
 IWMVideoMediaProps		IWMMediaProps		4		
