@@ -72,7 +72,7 @@ IWMReader						11
 IWMReaderAccelerator					2		
 IWMReaderAdvanced					20		snarfle		ready
 IWMReaderAdvanced2		IWMReaderAdvanced	15		snarfle		ready
-IWMReaderAdvanced3		IWMReaderAdvanced2	2		
+IWMReaderAdvanced3		IWMReaderAdvanced2	2		snarfle		
 IWMReaderAdvanced4		IWMReaderAdvanced3	9		
 IWMReaderAllocatorEx					2		
 IWMReaderCallback		IWMStatusCallback	1		snarfle		ready
