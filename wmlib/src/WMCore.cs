@@ -64,6 +64,7 @@ namespace WindowsMediaLib
     [Flags, UnmanagedName("WMT_RIGHTS")]
     public enum Rights
     {
+        None = 0,
         Playback = 0x00000001,
         CopyToNonSDMIDevice = 0x00000002,
         CopyToCD = 0x00000008,
@@ -1290,7 +1291,7 @@ namespace WindowsMediaLib
             );
 
         new void GetMediaType(
-            out AMMediaType pType,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(MTMarshaler))] AMMediaType pType,
             ref int pcbType
             );
 
@@ -1381,7 +1382,7 @@ namespace WindowsMediaLib
             );
 
         void GetMediaType(
-            out AMMediaType pType,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(MTMarshaler))] AMMediaType pType,
             ref int pcbType
             );
 
@@ -1552,7 +1553,7 @@ namespace WindowsMediaLib
             );
 
         new void GetMediaType(
-            out AMMediaType pType,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(MTMarshaler))] AMMediaType pType,
             ref int pcbType
             );
 
@@ -2559,7 +2560,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -2752,7 +2753,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
@@ -3939,7 +3940,7 @@ namespace WindowsMediaLib
             );
 
         new void GetMediaType(
-            out AMMediaType pType,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(MTMarshaler))] AMMediaType pType,
             ref int pcbType
             );
 

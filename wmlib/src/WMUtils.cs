@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+
 using WindowsMediaLib.Defs;
 
 namespace WindowsMediaLib
@@ -131,6 +133,56 @@ namespace WindowsMediaLib
 
     }
     #endregion
+
+    abstract public class COMBase
+    {
+        public const int S_Ok = 0;
+        public const int S_False = 0;
+
+        public const int E_NotImplemented = unchecked((int)0x80004001);
+        public const int E_NoInterface = unchecked((int)0x80004002);
+        public const int E_Pointer = unchecked((int)0x80004003);
+        public const int E_Abort = unchecked((int)0x80004004);
+        public const int E_Fail = unchecked((int)0x80004005);
+        public const int E_Unexpected = unchecked((int)0x8000FFFF);
+        public const int E_OutOfMemory = unchecked((int)0x8007000E);
+        public const int E_InvalidArgument = unchecked((int)0x80070057);
+        public const int E_BufferTooSmall = unchecked((int)0x8007007a);
+
+        public static bool Succeeded(int hr)
+        {
+            return hr >= 0;
+        }
+
+        public static bool Failed(int hr)
+        {
+            return hr < 0;
+        }
+
+        public static void SafeRelease(object o)
+        {
+            if (o != null)
+            {
+                if (Marshal.IsComObject(o))
+                {
+                    Marshal.ReleaseComObject(o);
+                }
+                else
+                {
+                    IDisposable iDis = o as IDisposable;
+                    if (iDis != null)
+                    {
+                        iDis.Dispose();
+                    }
+                }
+            }
+        }
+
+        public static void TRACE(string s)
+        {
+            Debug.WriteLine(s);
+        }
+    }
 
     public class NSResults
     {
@@ -1135,7 +1187,6 @@ namespace WindowsMediaLib
             LoadIgnoreCodeAuthzLevel = 0x00000010
         }
 
-
         /// <summary>
         /// From FORMAT_MESSAGE_* defines in WinBase.h
         /// </summary>
@@ -1150,7 +1201,6 @@ namespace WindowsMediaLib
             ArgumentArray = 0x00002000,
             MaxWidthMask = 0x000000FF
         }
-
 
         [DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
         private static extern int FormatMessage(FormatMessageFlags dwFlags, IntPtr lpSource,
@@ -1210,7 +1260,6 @@ namespace WindowsMediaLib
 
             return sRet;
         }
-
 
         /// <summary>
         /// If hr has a "failed" status code (E_*), throw an exception.  Note that status
@@ -1701,4 +1750,124 @@ namespace WindowsMediaLib
             return new WmInt(l);
         }
     }
+
+    #region Internal
+
+    // These classes are used internally and there is probably no reason you will ever
+    // need to use them directly.
+
+    internal class MTMarshaler : ICustomMarshaler
+    {
+        [DllImport("Kernel32.dll", EntryPoint = "RtlMoveMemory")]
+        private static extern void CopyMemory(IntPtr Destination, IntPtr Source, int Length);
+
+        protected AMMediaType m_mt;
+
+        public IntPtr MarshalManagedToNative(object managedObj)
+        {
+            m_mt = managedObj as AMMediaType;
+
+            IntPtr ip = Marshal.AllocCoTaskMem(Marshal.SizeOf(m_mt) + m_mt.formatSize);
+
+            // This class is only used for output.  No need to burn the cpu cycles to copy
+            // over data that just gets overwritten.
+
+            //Marshal.StructureToPtr(m_mt, ip, false);
+
+            //if ((m_mt.formatSize > 0) && (m_mt.formatPtr != IntPtr.Zero))
+            //{
+            //    CopyMemory(new IntPtr(ip.ToInt64() + Marshal.SizeOf(m_mt)), m_mt.formatPtr, m_mt.formatSize);
+            //}
+
+            return ip;
+        }
+
+        // Called just after invoking the COM method.  The IntPtr is the same one that just got returned
+        // from MarshalManagedToNative.  The return value is unused.
+        public object MarshalNativeToManaged(IntPtr pNativeData)
+        {
+            byte[] b = new byte[16];
+            AMMediaType mt = new AMMediaType();
+
+            int iSize = Marshal.ReadInt32(pNativeData, 60 + IntPtr.Size);
+
+            Marshal.Copy(pNativeData, b, 0, 16); mt.majorType = new Guid(b);
+            Marshal.Copy(new IntPtr(pNativeData.ToInt64() + 16), b, 0, 16); mt.subType = new Guid(b);
+            mt.fixedSizeSamples = Marshal.ReadInt32(pNativeData, 32) != 0;
+            mt.temporalCompression = Marshal.ReadInt32(pNativeData, 36) != 0;
+            mt.sampleSize = Marshal.ReadInt32(pNativeData, 40);
+            Marshal.Copy(new IntPtr(pNativeData.ToInt64() + 44), b, 0, 16); mt.formatType = new Guid(b);
+            mt.unkPtr = Marshal.ReadIntPtr(pNativeData, 60);
+            mt.formatSize = iSize;
+
+            if (iSize > 0)
+            {
+                mt.formatPtr = Marshal.AllocCoTaskMem(mt.formatSize);
+                IntPtr ip = Marshal.ReadIntPtr(pNativeData, 64 + IntPtr.Size);
+                CopyMemory(mt.formatPtr, ip, mt.formatSize);
+            }
+
+            // If we this call is In+Out, the return value is ignored.  If
+            // this is out, then m_mt will be null.
+            if (m_mt != null)
+            {
+                m_mt.majorType = mt.majorType;
+                m_mt.subType = mt.subType;
+                m_mt.fixedSizeSamples = mt.fixedSizeSamples;
+                m_mt.temporalCompression = mt.temporalCompression;
+                m_mt.sampleSize = mt.sampleSize;
+                m_mt.formatType = mt.formatType;
+                m_mt.formatSize = mt.formatSize;
+                if (mt.unkPtr != IntPtr.Zero)
+                {
+                    Guid unk = new Guid("00000000 - 0000 - 0000 - C000 - 000000000046");
+                    Marshal.QueryInterface(mt.unkPtr, ref unk, out m_mt.unkPtr);
+                }
+                else
+                {
+                    m_mt.unkPtr = IntPtr.Zero;
+                }
+
+                if (m_mt.formatSize > 0)
+                {
+                    m_mt.formatPtr = Marshal.AllocCoTaskMem(m_mt.formatSize);
+                    CopyMemory(m_mt.formatPtr, mt.formatPtr, m_mt.formatSize);
+                }
+                else
+                {
+                    m_mt.formatPtr = IntPtr.Zero;
+                }
+                mt = null;
+            }
+
+            return mt;
+        }
+
+        // It appears this routine is never called
+        public void CleanUpManagedData(object ManagedObj)
+        {
+            m_mt = null;
+        }
+
+        public void CleanUpNativeData(IntPtr pNativeData)
+        {
+            Marshal.FreeCoTaskMem(pNativeData);
+        }
+
+        // The number of bytes to marshal out - never called
+        public int GetNativeDataSize()
+        {
+            return -1;
+        }
+
+        // This method is called by interop to create the custom marshaler.  The (optional)
+        // cookie is the value specified in MarshalCookie="asdf", or "" is none is specified.
+        public static ICustomMarshaler GetInstance(string cookie)
+        {
+            return new MTMarshaler();
+        }
+    }
+
+
+    #endregion
 }

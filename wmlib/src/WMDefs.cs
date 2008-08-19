@@ -465,7 +465,7 @@ namespace WindowsMediaLib.Defs
     /// From WM_MEDIA_TYPE - When you are done with an instance of this class,
     /// it should be released with FreeWMMediaType() to avoid leaking
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class AMMediaType
     {
         public Guid majorType;
@@ -548,16 +548,24 @@ namespace WindowsMediaLib.Defs
 
 
     /// <summary>
+    /// From WAVEFORMAT
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public class WaveFormat
+    {
+        short wFormatTag;        /* format type */
+        short nChannels;         /* number of channels (i.e. mono, stereo, etc.) */
+        int nSamplesPerSec;    /* sample rate */
+        int nAvgBytesPerSec;   /* for buffer estimation */
+        short nBlockAlign;       /* block size of data */
+    }
+
+    /// <summary>
     /// From WAVEFORMATEX
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public class WaveFormatEx
+    public class WaveFormatEx : WaveFormat
     {
-        public short wFormatTag;
-        public short nChannels;
-        public int nSamplesPerSec;
-        public int nAvgBytesPerSec;
-        public short nBlockAlign;
         public short wBitsPerSample;
         public short cbSize;
     }
