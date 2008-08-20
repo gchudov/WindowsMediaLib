@@ -247,6 +247,69 @@ namespace WindowsMediaLib
         V9_0 = 0x00090000
     }
 
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMDRM_IMPORT_INIT_STRUCT")]
+    public struct WMDRM_IMPORT_INIT_STRUCT
+    {
+        int dwVersion;
+        int cbEncryptedSessionKeyMessage;
+        IntPtr pbEncryptedSessionKeyMessage;
+        int cbEncryptedKeyMessage;
+        IntPtr pbEncryptedKeyMessage;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS")]
+    public struct DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS
+    {
+        short wCompressedDigitalVideo;
+        short wUncompressedDigitalVideo;
+        short wAnalogVideo;
+        short wCompressedDigitalAudio;
+        short wUncompressedDigitalAudio;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_OPL_OUTPUT_IDS")]
+    public struct DRM_OPL_OUTPUT_IDS
+    {
+        short cIds;
+        Guid [] rgIds;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_OUTPUT_PROTECTION")]
+    public struct DRM_VIDEO_OUTPUT_PROTECTION
+    {
+        Guid guidId;
+        byte bConfigData;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_COPY_OPL")]
+    public struct DRM_COPY_OPL
+    {
+        short wMinimumCopyLevel;
+        DRM_OPL_OUTPUT_IDS oplIdIncludes;
+        DRM_OPL_OUTPUT_IDS oplIdExcludes;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_VIDEO_OUTPUT_PROTECTION_IDS")]
+    public struct DRM_VIDEO_OUTPUT_PROTECTION_IDS
+    {
+        short cEntries;
+        DRM_VIDEO_OUTPUT_PROTECTION [] rgVop;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_PLAY_OPL")]
+    public struct DRM_PlayOpl
+    {
+        DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS minOPL;
+        DRM_OPL_OUTPUT_IDS oplIdReserved;
+        DRM_VIDEO_OUTPUT_PROTECTION_IDS vopi;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1), UnmanagedName("DRM_VAL16")]
+    public struct DRM_VAL16
+    {
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst=16)]  byte [] val;
+    }
+
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_WATERMARK_ENTRY")]
     public struct WaterMarkEntry
     {
@@ -2789,7 +2852,7 @@ namespace WindowsMediaLib
 
         #endregion
 
-        #region IWMReaderAdvanced3
+        #region IWMReaderAdvanced3 Methods
 
         new void StopNetStreaming();
 
@@ -4399,7 +4462,7 @@ namespace WindowsMediaLib
 
         #endregion
 
-        #region IWMWriterFileSink2
+        #region IWMWriterFileSink2 Methods
 
         new void Start(
             [In] long cnsStartTime
@@ -5179,6 +5242,957 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.BStr)] out string pbstrPassword,
             [MarshalAs(UnmanagedType.Bool)] out bool pfConfirmedGood
             );
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("f6211f03-8d21-4e94-93e6-8510805f2d99"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDeviceRegistration
+    {
+        void RegisterDevice(
+            [In] int dwRegisterType,
+            [In] IntPtr pbCertificate,
+            int cbCertificate,
+            DRM_VAL16 SerialNumber,
+            out IWMRegisteredDevice ppDevice);
+
+        void UnregisterDevice(
+            [In] int dwRegisterType,
+            IntPtr pbCertificate,
+            [In] int cbCertificate,
+            DRM_VAL16 SerialNumber);
+
+        void GetRegistrationStats(
+            [In] int dwRegisterType,
+            out int pcRegisteredDevices);
+
+        void GetFirstRegisteredDevice(
+            [In] int dwRegisterType,
+            out IWMRegisteredDevice ppDevice);
+
+        void GetNextRegisteredDevice(
+            out IWMRegisteredDevice ppDevice);
+
+        void GetRegisteredDeviceByID(
+            int dwRegisterType,
+            IntPtr pbCertificate,
+            int cbCertificate,
+            DRM_VAL16 SerialNumber,
+            out IWMRegisteredDevice ppDevice);
+
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6967F2C9-4E26-4b57-8894-799880F7AC7B"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMLicenseRevocationAgent
+    {
+        void GetLRBChallenge(
+            IntPtr pMachineID,
+            int dwMachineIDLength,
+            IntPtr pChallenge,
+            int dwChallengeLength,
+            IntPtr pChallengeOutput,
+            out int pdwChallengeOutputLength);
+
+        void ProcessLRB(
+            IntPtr pSignedLRB,
+            int dwSignedLRBLength,
+            IntPtr pSignedACK,
+            out int pdwSignedACKLength);
+    };
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("e5b7ca9a-0f1c-4f66-9002-74ec50d8b304"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMPlayerHook
+    {
+        void PreDecode();
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("6A9FD8EE-B651-4bf0-B849-7D4ECE79A2B1"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMProximityDetection
+    {
+        void StartDetection(
+            IntPtr pbRegistrationMsg,
+            int cbRegistrationMsg,
+            IntPtr pbLocalAddress,
+            int cbLocalAddress,
+            int dwExtraPortsAllowed,
+            out INSSBuffer ppRegistrationResponseMsg,
+            IWMStatusCallback pCallback,
+            IntPtr pvContext);
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("24C44DB0-55D1-49ae-A5CC-F13815E36363"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMReaderAdvanced5 : IWMReaderAdvanced4
+    {
+        #region IWMReaderAdvanced Methods
+
+        new void SetUserProvidedClock(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
+            );
+
+        new void GetUserProvidedClock(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfUserClock
+            );
+
+        new void DeliverTime(
+            [In] long cnsTime
+            );
+
+        new void SetManualStreamSelection(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fSelection
+            );
+
+        new void GetManualStreamSelection(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfSelection
+            );
+
+        new void SetStreamsSelected(
+            [In] short cStreamCount,
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
+            );
+
+        new void GetStreamSelected(
+            [In] short wStreamNum,
+            out StreamSelection pSelection
+            );
+
+        new void SetReceiveSelectionCallbacks(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fGetCallbacks
+            );
+
+        new void GetReceiveSelectionCallbacks(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfGetCallbacks
+            );
+
+        new void SetReceiveStreamSamples(
+            [In] short wStreamNum,
+            [In, MarshalAs(UnmanagedType.Bool)] bool fReceiveStreamSamples
+            );
+
+        new void GetReceiveStreamSamples(
+            [In] short wStreamNum,
+            [MarshalAs(UnmanagedType.Bool)] out bool pfReceiveStreamSamples
+            );
+
+        new void SetAllocateForOutput(
+            [In] int dwOutputNum,
+            [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
+            );
+
+        new void GetAllocateForOutput(
+            [In] int dwOutputNum,
+            [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
+            );
+
+        new void SetAllocateForStream(
+            [In] short wStreamNum,
+            [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
+            );
+
+        new void GetAllocateForStream(
+            [In] short dwSreamNum,
+            [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
+            );
+
+        new void GetStatistics(
+            [In, Out, MarshalAs(UnmanagedType.LPStruct)] WMReaderStatistics pStatistics
+            );
+
+        new void SetClientInfo(
+            [In, MarshalAs(UnmanagedType.LPStruct)] WMReaderClientInfo pClientInfo
+            );
+
+        new void GetMaxOutputSampleSize(
+            [In] int dwOutput,
+            out int pcbMax
+            );
+
+        new void GetMaxStreamSampleSize(
+            [In] short wStream,
+            out int pcbMax
+            );
+
+        new void NotifyLateDelivery(
+            long cnsLateness
+            );
+
+        #endregion
+
+        #region IWMReaderAdvanced2 Methods
+
+        new void SetPlayMode(
+            [In] PlayMode Mode
+            );
+
+        new void GetPlayMode(
+            out PlayMode pMode
+            );
+
+        new void GetBufferProgress(
+            out int pdwPercent,
+            out long pcnsBuffering
+            );
+
+        new void GetDownloadProgress(
+            out int pdwPercent,
+            out long pqwBytesDownloaded,
+            out long pcnsDownload
+            );
+
+        new void GetSaveAsProgress(
+            out int pdwPercent
+            );
+
+        new void SaveFileAs(
+            [In] string pwszFilename
+            );
+
+        new void GetProtocolName(
+            [Out] StringBuilder pwszProtocol,
+            ref int pcchProtocol
+            );
+
+        new void StartAtMarker(
+            [In] short wMarkerIndex,
+            [In] long cnsDuration,
+            [In] float fRate,
+            [In] IntPtr pvContext
+            );
+
+        new void GetOutputSetting(
+            [In] int dwOutputNum,
+            [In] string pszName,
+            out AttrDataType pType,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
+            ref short pcbLength
+            );
+
+        new void SetOutputSetting(
+            [In] int dwOutputNum,
+            [In] string pszName,
+            [In] AttrDataType Type,
+            [In] byte[] pValue,
+            [In] short cbLength
+            );
+
+        new void Preroll(
+            [In] long cnsStart,
+            [In] long cnsDuration,
+            [In] float fRate
+            );
+
+        new void SetLogClientID(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fLogClientID
+            );
+
+        new void GetLogClientID(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfLogClientID
+            );
+
+        new void StopBuffering();
+
+        new void OpenStream(
+            [In] IStream pStream,
+            [In] IWMReaderCallback pCallback,
+            [In] IntPtr pvContext
+            );
+
+        #endregion
+
+        #region IWMReaderAdvanced3 Methods
+
+        new void StopNetStreaming();
+
+        new void StartAtPosition(
+            [In] short wStreamNum,
+            [In] IntPtr pvOffsetStart,
+            [In] IntPtr pvDuration,
+            [In] OffsetFormat dwOffsetFormat,
+            [In] float fRate,
+            [In] IntPtr pvContext
+            );
+
+        #endregion
+
+        #region IWMReaderAdvanced4 Methods
+
+        new void GetLanguageCount(
+            [In] int dwOutputNum,
+            out short pwLanguageCount
+            );
+
+        new void GetLanguage(
+            [In] int dwOutputNum,
+            [In] short wLanguage,
+            [Out] StringBuilder pwszLanguageString,
+            ref short pcchLanguageStringLength
+            );
+
+        new void GetMaxSpeedFactor(
+            out double pdblFactor
+            );
+
+        new void IsUsingFastCache(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfUsingFastCache
+            );
+
+        new void AddLogParam(
+            [In] string wszNameSpace,
+            [In] string wszName,
+            [In] string wszValue
+            );
+
+        new void SendLogParams();
+
+        new void CanSaveFileAs(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfCanSave
+            );
+
+        new void CancelSaveFileAs();
+
+        new void GetURL(
+            [Out] StringBuilder pwszURL,
+            ref int pcchURL
+            );
+
+        #endregion
+
+        void SetPlayerHook(
+            int dwOutputNum,
+            IWMPlayerHook pHook);
+    };
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("18A2E7F8-428F-4acd-8A00-E64639BC93DE"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMReaderAdvanced6 : IWMReaderAdvanced5
+    {
+        #region IWMReaderAdvanced Methods
+
+        new void SetUserProvidedClock(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fUserClock
+            );
+
+        new void GetUserProvidedClock(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfUserClock
+            );
+
+        new void DeliverTime(
+            [In] long cnsTime
+            );
+
+        new void SetManualStreamSelection(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fSelection
+            );
+
+        new void GetManualStreamSelection(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfSelection
+            );
+
+        new void SetStreamsSelected(
+            [In] short cStreamCount,
+            [In] short[] pwStreamNumbers,
+            [In] StreamSelection[] pSelections
+            );
+
+        new void GetStreamSelected(
+            [In] short wStreamNum,
+            out StreamSelection pSelection
+            );
+
+        new void SetReceiveSelectionCallbacks(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fGetCallbacks
+            );
+
+        new void GetReceiveSelectionCallbacks(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfGetCallbacks
+            );
+
+        new void SetReceiveStreamSamples(
+            [In] short wStreamNum,
+            [In, MarshalAs(UnmanagedType.Bool)] bool fReceiveStreamSamples
+            );
+
+        new void GetReceiveStreamSamples(
+            [In] short wStreamNum,
+            [MarshalAs(UnmanagedType.Bool)] out bool pfReceiveStreamSamples
+            );
+
+        new void SetAllocateForOutput(
+            [In] int dwOutputNum,
+            [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
+            );
+
+        new void GetAllocateForOutput(
+            [In] int dwOutputNum,
+            [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
+            );
+
+        new void SetAllocateForStream(
+            [In] short wStreamNum,
+            [In, MarshalAs(UnmanagedType.Bool)] bool fAllocate
+            );
+
+        new void GetAllocateForStream(
+            [In] short dwSreamNum,
+            [MarshalAs(UnmanagedType.Bool)] out bool pfAllocate
+            );
+
+        new void GetStatistics(
+            [In, Out, MarshalAs(UnmanagedType.LPStruct)] WMReaderStatistics pStatistics
+            );
+
+        new void SetClientInfo(
+            [In, MarshalAs(UnmanagedType.LPStruct)] WMReaderClientInfo pClientInfo
+            );
+
+        new void GetMaxOutputSampleSize(
+            [In] int dwOutput,
+            out int pcbMax
+            );
+
+        new void GetMaxStreamSampleSize(
+            [In] short wStream,
+            out int pcbMax
+            );
+
+        new void NotifyLateDelivery(
+            long cnsLateness
+            );
+
+        #endregion
+
+        #region IWMReaderAdvanced2 Methods
+
+        new void SetPlayMode(
+            [In] PlayMode Mode
+            );
+
+        new void GetPlayMode(
+            out PlayMode pMode
+            );
+
+        new void GetBufferProgress(
+            out int pdwPercent,
+            out long pcnsBuffering
+            );
+
+        new void GetDownloadProgress(
+            out int pdwPercent,
+            out long pqwBytesDownloaded,
+            out long pcnsDownload
+            );
+
+        new void GetSaveAsProgress(
+            out int pdwPercent
+            );
+
+        new void SaveFileAs(
+            [In] string pwszFilename
+            );
+
+        new void GetProtocolName(
+            [Out] StringBuilder pwszProtocol,
+            ref int pcchProtocol
+            );
+
+        new void StartAtMarker(
+            [In] short wMarkerIndex,
+            [In] long cnsDuration,
+            [In] float fRate,
+            [In] IntPtr pvContext
+            );
+
+        new void GetOutputSetting(
+            [In] int dwOutputNum,
+            [In] string pszName,
+            out AttrDataType pType,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
+            ref short pcbLength
+            );
+
+        new void SetOutputSetting(
+            [In] int dwOutputNum,
+            [In] string pszName,
+            [In] AttrDataType Type,
+            [In] byte[] pValue,
+            [In] short cbLength
+            );
+
+        new void Preroll(
+            [In] long cnsStart,
+            [In] long cnsDuration,
+            [In] float fRate
+            );
+
+        new void SetLogClientID(
+            [In, MarshalAs(UnmanagedType.Bool)] bool fLogClientID
+            );
+
+        new void GetLogClientID(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfLogClientID
+            );
+
+        new void StopBuffering();
+
+        new void OpenStream(
+            [In] IStream pStream,
+            [In] IWMReaderCallback pCallback,
+            [In] IntPtr pvContext
+            );
+
+        #endregion
+
+        #region IWMReaderAdvanced3 Methods
+
+        new void StopNetStreaming();
+
+        new void StartAtPosition(
+            [In] short wStreamNum,
+            [In] IntPtr pvOffsetStart,
+            [In] IntPtr pvDuration,
+            [In] OffsetFormat dwOffsetFormat,
+            [In] float fRate,
+            [In] IntPtr pvContext
+            );
+
+        #endregion
+
+        #region IWMReaderAdvanced4 Methods
+
+        new void GetLanguageCount(
+            [In] int dwOutputNum,
+            out short pwLanguageCount
+            );
+
+        new void GetLanguage(
+            [In] int dwOutputNum,
+            [In] short wLanguage,
+            [Out] StringBuilder pwszLanguageString,
+            ref short pcchLanguageStringLength
+            );
+
+        new void GetMaxSpeedFactor(
+            out double pdblFactor
+            );
+
+        new void IsUsingFastCache(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfUsingFastCache
+            );
+
+        new void AddLogParam(
+            [In] string wszNameSpace,
+            [In] string wszName,
+            [In] string wszValue
+            );
+
+        new void SendLogParams();
+
+        new void CanSaveFileAs(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfCanSave
+            );
+
+        new void CancelSaveFileAs();
+
+        new void GetURL(
+            [Out] StringBuilder pwszURL,
+            ref int pcchURL
+            );
+
+        #endregion
+
+        #region IWMReaderAdvanced5 Methods
+
+        new void SetPlayerHook(
+            int dwOutputNum,
+            IWMPlayerHook pHook);
+
+        #endregion
+
+        void SetProtectStreamSamples(
+            IntPtr pbCertificate,
+            int cbCertificate,
+            int dwCertificateType,
+            int dwFlags,
+            IntPtr pbInitializationVector,
+            out int pcbInitializationVector);
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("f28c0300-9baa-4477-a846-1744d9cbf533"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMReaderPlaylistBurn
+    {
+        void InitPlaylistBurn(
+            int cFiles,
+            string ppwszFilenames,
+            IWMStatusCallback pCallback,
+            IntPtr pvContext);
+
+        void GetInitResults(
+            int cFiles,
+            out int phrStati);
+
+        void Cancel();
+
+        void EndPlaylistBurn(
+            int hrBurnResult);
+    };
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("a4503bec-5508-4148-97ac-bfa75760a70d"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMRegisteredDevice
+    {
+        void GetDeviceSerialNumber(
+            out DRM_VAL16 pSerialNumber);
+
+        void GetDeviceCertificate(
+            out INSSBuffer ppCertificate);
+
+        void GetDeviceType(
+            out int pdwType);
+
+        void GetAttributeCount(
+            out int pcAttributes);
+
+        void GetAttributeByIndex(
+            int dwIndex,
+            [MarshalAs(UnmanagedType.BStr)] out string pbstrName,
+            [MarshalAs(UnmanagedType.BStr)] out string pbstrValue);
+
+        void GetAttributeByName(
+            [MarshalAs(UnmanagedType.BStr)] string bstrName,
+            [MarshalAs(UnmanagedType.BStr)] out string pbstrValue);
+
+        void SetAttributeByName(
+            [MarshalAs(UnmanagedType.BStr)] string bstrName,
+            [MarshalAs(UnmanagedType.BStr)] string bstrValue);
+
+        void Approve(
+            [MarshalAs(UnmanagedType.Bool)] bool fApprove);
+
+        void IsValid(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfValid);
+
+        void IsApproved(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfApproved);
+
+        void IsWmdrmCompliant(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfCompliant);
+
+        void IsOpened(
+            [MarshalAs(UnmanagedType.Bool)] out bool pfOpened);
+
+        void Open( );
+
+        void Close( );
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("38ee7a94-40e2-4e10-aa3f-33fd3210ed5b"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMWriter2 : IWMDRMWriter
+    {
+        #region IWMDRMWriter Methods
+
+        new void GenerateKeySeed(
+            [Out] StringBuilder pwszKeySeed,
+            ref int pcwchLength
+            );
+
+        new void GenerateKeyID(
+            [Out] StringBuilder pwszKeyID,
+            ref int pcwchLength
+            );
+
+        new void GenerateSigningKeyPair(
+            [Out] StringBuilder pwszPrivKey,
+            ref int pcwchPrivKeyLength,
+            [Out] StringBuilder pwszPubKey,
+            ref int pcwchPubKeyLength
+            );
+
+        new void SetDRMAttribute(
+            [In] short wStreamNum,
+            [In] string pszName,
+            [In] AttrDataType Type,
+            [In] byte[] pValue,
+            [In] short cbLength
+            );
+
+        #endregion
+
+        void SetWMDRMNetEncryption(
+            [MarshalAs(UnmanagedType.Bool)] bool fSamplesEncrypted,
+            IntPtr pbKeyID,
+            int cbKeyID);
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("a7184082-a4aa-4dde-ac9c-e75dbd1117ce"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMWriter3 : IWMDRMWriter2
+    {
+        #region IWMDRMWriter Methods
+
+        new void GenerateKeySeed(
+            [Out] StringBuilder pwszKeySeed,
+            ref int pcwchLength
+            );
+
+        new void GenerateKeyID(
+            [Out] StringBuilder pwszKeyID,
+            ref int pcwchLength
+            );
+
+        new void GenerateSigningKeyPair(
+            [Out] StringBuilder pwszPrivKey,
+            ref int pcwchPrivKeyLength,
+            [Out] StringBuilder pwszPubKey,
+            ref int pcwchPubKeyLength
+            );
+
+        new void SetDRMAttribute(
+            [In] short wStreamNum,
+            [In] string pszName,
+            [In] AttrDataType Type,
+            [In] byte[] pValue,
+            [In] short cbLength
+            );
+
+        #endregion
+
+        #region IWMDRMWriter2 Methods
+
+        new void SetWMDRMNetEncryption(
+            [MarshalAs(UnmanagedType.Bool)] bool fSamplesEncrypted,
+            IntPtr pbKeyID,
+            int cbKeyID);
+
+        #endregion
+
+        void SetProtectStreamSamples(
+            /* [in] */ WMDRM_IMPORT_INIT_STRUCT pImportInitStruct);
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("befe7a75-9f1d-4075-b9d9-a3c37bda49a0"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMReader2 : IWMDRMReader
+    {
+        #region IWMDRMReader Methods
+
+        new void AcquireLicense(
+            [In] int dwFlags
+            );
+
+        new void CancelLicenseAcquisition();
+
+        new void Individualize(
+            [In] int dwFlags
+            );
+
+        new void CancelIndividualization();
+
+        new void MonitorLicenseAcquisition();
+
+        new void CancelMonitorLicenseAcquisition();
+
+        new void SetDRMProperty(
+            [In] string pwstrName,
+            [In] AttrDataType dwType,
+            [In] byte[] pValue,
+            [In] short cbLength
+            );
+
+        new void GetDRMProperty(
+            [In] string pwstrName,
+            out AttrDataType pdwType,
+            out byte[] pValue,
+            ref short pcbLength
+            );
+
+        #endregion
+
+        void SetEvaluateOutputLevelLicenses(
+            [MarshalAs(UnmanagedType.Bool)] bool fEvaluate);
+
+        void GetPlayOutputLevels(
+            out DRM_PlayOpl pPlayOPL,
+            out int pcbLength,
+            out int pdwMinAppComplianceLevel);
+
+        void GetCopyOutputLevels(
+            out DRM_COPY_OPL pCopyOPL,
+            ref int pcbLength,
+            out int pdwMinAppComplianceLevel);
+
+        void TryNextLicense( );
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("e08672de-f1e7-4ff4-a0a3-fc4b08e4caf8"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMReader3 : IWMDRMReader2
+    {
+        #region IWMDRMReader Methods
+
+        new void AcquireLicense(
+            [In] int dwFlags
+            );
+
+        new void CancelLicenseAcquisition();
+
+        new void Individualize(
+            [In] int dwFlags
+            );
+
+        new void CancelIndividualization();
+
+        new void MonitorLicenseAcquisition();
+
+        new void CancelMonitorLicenseAcquisition();
+
+        new void SetDRMProperty(
+            [In] string pwstrName,
+            [In] AttrDataType dwType,
+            [In] byte[] pValue,
+            [In] short cbLength
+            );
+
+        new void GetDRMProperty(
+            [In] string pwstrName,
+            out AttrDataType pdwType,
+            out byte[] pValue,
+            ref short pcbLength
+            );
+
+        #endregion
+
+        #region IWMDRMReader2 Methods
+
+        new void SetEvaluateOutputLevelLicenses(
+            [MarshalAs(UnmanagedType.Bool)] bool fEvaluate);
+
+        new void GetPlayOutputLevels(
+            out DRM_PlayOpl pPlayOPL,
+            out int pcbLength,
+            out int pdwMinAppComplianceLevel);
+
+        new void GetCopyOutputLevels(
+            out DRM_COPY_OPL pCopyOPL,
+            ref int pcbLength,
+            out int pdwMinAppComplianceLevel);
+
+        new void TryNextLicense( );
+
+        #endregion
+
+        void GetInclusionList(
+            [MarshalAs(UnmanagedType.LPStruct)] out Guid ppGuids,
+            out int pcGuids);
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("A73A0072-25A0-4c99-B4A5-EDE8101A6C39"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMMessageParser
+    {
+        void ParseRegistrationReqMsg(
+            IntPtr pbRegistrationReqMsg,
+            int cbRegistrationReqMsg,
+            out INSSBuffer ppDeviceCert,
+            out DRM_VAL16 pDeviceSerialNumber);
+
+        void ParseLicenseRequestMsg(
+            IntPtr pbLicenseRequestMsg,
+            int cbLicenseRequestMsg,
+            out INSSBuffer ppDeviceCert,
+            out DRM_VAL16 pDeviceSerialNumber,
+            [MarshalAs(UnmanagedType.BStr)] out string pbstrAction);
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("69059850-6E6F-4bb2-806F-71863DDFC471"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMTranscryptor
+    {
+        void Initialize(
+            [MarshalAs(UnmanagedType.BStr)] string bstrFileName,
+            [MarshalAs(UnmanagedType.BStr)] string pbLicenseRequestMsg,
+            int cbLicenseRequestMsg,
+            out INSSBuffer ppLicenseResponseMsg,
+            IWMStatusCallback pCallback,
+            IntPtr pvContext);
+
+        void Seek(
+            long hnsTime);
+
+        void Read(
+            IntPtr pbData,
+            ref int pcbData);
+
+        void Close( );
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("e0da439f-d331-496a-bece-18e5bac5dd23"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMTranscryptor2 : IWMDRMTranscryptor
+    {
+        #region IWMDRMTranscryptor Methods
+
+        new void Initialize(
+            [MarshalAs(UnmanagedType.BStr)] string bstrFileName,
+            [MarshalAs(UnmanagedType.BStr)] string pbLicenseRequestMsg,
+            int cbLicenseRequestMsg,
+            out INSSBuffer ppLicenseResponseMsg,
+            IWMStatusCallback pCallback,
+            IntPtr pvContext);
+
+        new void Seek(
+            long hnsTime);
+
+        new void Read(
+            IntPtr pbData,
+            ref int pcbData);
+
+        new void Close( );
+
+        #endregion
+
+        void SeekEx(
+            long cnsStartTime,
+            long cnsDuration,
+            float flRate,
+            [MarshalAs(UnmanagedType.Bool)] bool  fIncludeFileHeader);
+
+        void ZeroAdjustTimestamps(
+            [MarshalAs(UnmanagedType.Bool)] bool fEnable);
+
+        void GetSeekStartTime(
+            out long pcnsTime);
+
+        void GetDuration(
+            out long pcnsDuration);
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("b1a887b2-a4f0-407a-b02e-efbd23bbecdf"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMDRMTranscryptionManager
+    {
+        void CreateTranscryptor(
+            out IWMDRMTranscryptor ppTranscryptor);
     }
 
 #endif
