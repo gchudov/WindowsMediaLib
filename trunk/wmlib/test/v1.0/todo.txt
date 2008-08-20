@@ -1,16 +1,16 @@
 					Assigned	Reviewer
 Functions
-WMCreateBackupRestorer			snarfle		ready
+WMCreateBackupRestorer			snarfle		bwkahle
 WMCreateCertificate			
-WMCreateEditor				snarfle		ready
+WMCreateEditor				snarfle		bwkahle
 WMCreateDeviceRegistration		
 WMCreateDRMTranscryptor			
 WMCreateIndexer				
 WMCreateLicenseRevocationAgent		
-WMCreateProfileManager			snarfle		ready
+WMCreateProfileManager			snarfle		bwkahle
 WMCreateReader				
 WMCreateSyncReader			
-WMCreateWriter				snarfle		ready
+WMCreateWriter				snarfle		bwkahle
 WMCreateWriterFileSink
 WMCreateWriterNetworkSink		
 WMCheckURLExtension			
@@ -22,13 +22,13 @@ WMValidateData
 
 Interfaces			Parent			Methods		Assigned	Reviewer
 INSNetSourceCreator					8		
-INSSBuffer						5		snarfle		ready
-INSSBuffer2			INSSBuffer		2		snarfle		ready
-INSSBuffer3			INSSBuffer2		2		snarfle		ready
-INSSBuffer4			INSSBuffer3		2		snarfle		ready
+INSSBuffer						5		snarfle		bwkahle
+INSSBuffer2			INSSBuffer		2		snarfle		bwkahle
+INSSBuffer3			INSSBuffer2		2		snarfle		bwkahle
+INSSBuffer4			INSSBuffer3		2		snarfle		bwkahle
 IWMAddressAccess					4		bwkahle		snarfle
 IWMAddressAccess2		IWMAddressAccess	2		bwkahle		snarfle
-IWMBackupRestoreProps					6		snarfle		ready
+IWMBackupRestoreProps					6		snarfle		bwkahle
 IWMBandwidthSharing		IWMStreamList		4		
 IWMClientConnections					2		
 IWMClientConnections2		IWMClientConnections	1		
@@ -41,9 +41,9 @@ IWMCredentialCallback					1
 IWMDRMEditor						1		
 IWMDRMReader						8		
 IWMDRMWriter						4		
-IWMHeaderInfo						12		snarfle		ready
-IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		ready
-IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		ready
+IWMHeaderInfo						12		snarfle		bwkahle
+IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		bwkahle
+IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
 IWMImageInfo						2		
 IWMIndexer						2		
 IWMIndexer2			IWMIndexer		1		
@@ -64,8 +64,8 @@ IWMPlayerTimestampHook					1
 IWMProfile						18		snarfle		ready
 IWMProfile2			IWMProfile		1		snarfle		ready
 IWMProfile3			IWMProfile2		12		snarfle		ready
-IWMProfileManager					6		snarfle		ready
-IWMProfileManager2		IWMProfileManager	2		snarfle		ready
+IWMProfileManager					6		snarfle		bwkahle
+IWMProfileManager2		IWMProfileManager	2		snarfle		bwkahle
 IWMProfileManagerLanguage				2		
 IWMPropertyVault					6		
 IWMReader						11		

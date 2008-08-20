@@ -30,12 +30,13 @@ namespace v1._0
 
             CodecInfoType pType;
             short pDLen = 0, pNLen = 0, pCLen = 0;
-            m_head.GetCodecInfo(0, ref pNLen, null, ref pDLen, null, out pType, ref pCLen, IntPtr.Zero);
+            m_head.GetCodecInfo(0, ref pNLen, null, ref pDLen, null, out pType, ref pCLen, null);
 
             StringBuilder sbName = new StringBuilder(pNLen);
             StringBuilder sbDesc = new StringBuilder(pDLen);
-            IntPtr ip = Marshal.AllocCoTaskMem(pCLen);
-            m_head.GetCodecInfo(0, ref pNLen, sbName, ref pDLen, sbDesc, out pType, ref pCLen, ip);
+            //IntPtr ip = Marshal.AllocCoTaskMem(pCLen);
+            byte[] data = new byte[pCLen];
+            m_head.GetCodecInfo(0, ref pNLen, sbName, ref pDLen, sbDesc, out pType, ref pCLen, data);
 
             Debug.WriteLine(string.Format("{0} {1}", sbName.ToString(), sbDesc.ToString()));
         }

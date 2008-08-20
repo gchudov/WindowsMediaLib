@@ -92,7 +92,7 @@ namespace v1._0
             int c1, c2;
 
             m_head.GetCodecInfoCount(out c1);
-            m_head.AddCodecInfo("moo", "fooit", CodecInfoType.Unknown, 0, IntPtr.Zero);
+            m_head.AddCodecInfo("moo", "fooit", CodecInfoType.Unknown, 0, new byte[0]);
             m_head.GetCodecInfoCount(out c2);
 
             Debug.Assert(c2 == c1 + 1);

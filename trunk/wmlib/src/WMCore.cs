@@ -1056,7 +1056,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pwszDescription,
             out CodecInfoType pCodecType,
             ref short pcbCodecInfo,
-            IntPtr pbCodecInfo
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pbCodecInfo
             );
     }
 
@@ -1157,7 +1157,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pwszDescription,
             out CodecInfoType pCodecType,
             ref short pcbCodecInfo,
-            IntPtr pbCodecInfo
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pbCodecInfo
             );
 
         #endregion
@@ -1215,7 +1215,7 @@ namespace WindowsMediaLib
             [In] string pwszDescription,
             [In] CodecInfoType codecType,
             [In] short cbCodecInfo,
-            [In] IntPtr pbCodecInfo
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pbCodecInfo
             );
     }
 
