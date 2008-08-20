@@ -38,9 +38,18 @@ IWMCodecInfo2			IWMCodecInfo		2		bwkahle		ready
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
 IWMCodecVideoAccelerator				2		
 IWMCredentialCallback					1		
+IWMDeviceRegistration					6		
 IWMDRMEditor						1		
+IWMDRMMessageParser					2		
 IWMDRMReader						8		
+IWMDRMReader2			IWMDRMReader		4		
+IWMDRMReader3			IWMDRMReader2		1		
+IWMDRMTranscryptionManager				1		
+IWMDRMTranscryptor					4		
+IWMDRMTranscryptor2		IWMDRMTranscryptor	4		
 IWMDRMWriter						4		
+IWMDRMWriter2			IWMDRMWriter		1		
+IWMDRMWriter3			IWMDRMWriter2		1		
 IWMHeaderInfo						12		snarfle		bwkahle
 IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		bwkahle
 IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
@@ -52,6 +61,7 @@ IWMIStreamProps						1
 IWMLanguageList						3		
 IWMLicenseBackup					2		snarfle		ready
 IWMLicenseRestore					2		snarfle		ready
+IWMLicenseRevocationAgent				2		
 IWMMediaProps						3		
 IWMMetadataEditor					3		
 IWMMetadataEditor2		IWMMetadataEditor	1		
@@ -60,6 +70,7 @@ IWMMutualExclusion2		IWMMutualExclusion	10
 IWMOutputMediaProps		IWMMediaProps		2		
 IWMPacketSize						2		
 IWMPacketSize2			IWMPacketSize		2		
+IWMPlayerHook						1		
 IWMPlayerTimestampHook					1		
 IWMProfile						18		snarfle		ready
 IWMProfile2			IWMProfile		1		snarfle		ready
@@ -68,21 +79,26 @@ IWMProfileManager					6		snarfle		bwkahle
 IWMProfileManager2		IWMProfileManager	2		snarfle		bwkahle
 IWMProfileManagerLanguage				2		
 IWMPropertyVault					6		
+IWMProximityDetection					1		
 IWMReader						11		
 IWMReaderAccelerator					2		
 IWMReaderAdvanced					20		snarfle		ready
 IWMReaderAdvanced2		IWMReaderAdvanced	15		snarfle		ready
 IWMReaderAdvanced3		IWMReaderAdvanced2	2		snarfle		
 IWMReaderAdvanced4		IWMReaderAdvanced3	9		
+IWMReaderAdvanced5		IWMReaderAdvanced4	1		
+IWMReaderAdvanced6		IWMReaderAdvanced5	1		
 IWMReaderAllocatorEx					2		
 IWMReaderCallback		IWMStatusCallback	1		snarfle		ready
 IWMReaderCallbackAdvanced				6		
 IWMReaderNetworkConfig					33		snarfle		ready
 IWMReaderNetworkConfig2		IWMReaderNetworkConfig	13		snarfle		ready
+IWMReaderPlaylistBurn					4		
 IWMReaderStreamClock					3		snarfle		ready
 IWMReaderTimecode					2		
 IWMReaderTypeNegotiation				1		
 IWMRegisterCallback					2		
+IWMRegisteredDevice					14		
 IWMSBufferAllocator					2		
 IWMSInternalAdminNetSource				11		
 IWMSInternalAdminNetSource2				4		
