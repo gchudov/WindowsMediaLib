@@ -465,7 +465,7 @@ namespace WindowsMediaLib.Defs
     /// From WM_MEDIA_TYPE - When you are done with an instance of this class,
     /// it should be released with FreeWMMediaType() to avoid leaking
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
+    [StructLayout(LayoutKind.Sequential, Pack = 1), UnmanagedName("WM_MEDIA_TYPE")]
     public class AMMediaType
     {
         public Guid majorType;
@@ -483,7 +483,7 @@ namespace WindowsMediaLib.Defs
     /// <summary>
     /// From BITMAPINFO
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("BITMAPINFO")]
     public class BitmapInfo 
     { 
         public BitmapInfoHeader bmiHeader; 
@@ -494,7 +494,7 @@ namespace WindowsMediaLib.Defs
     /// <summary>
     /// From BITMAPINFOHEADER
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack=2)]
+    [StructLayout(LayoutKind.Sequential, Pack = 2), UnmanagedName("BITMAPINFOHEADER")]
     public struct BitmapInfoHeader
     {
         public int Size;
@@ -514,7 +514,7 @@ namespace WindowsMediaLib.Defs
     /// <summary>
     /// From VIDEOINFOHEADER
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("VIDEOINFOHEADER")]
     public class VideoInfoHeader
     {
         public Rectangle SrcRect;
@@ -529,7 +529,7 @@ namespace WindowsMediaLib.Defs
     /// <summary>
     /// From VIDEOINFOHEADER2
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("VIDEOINFOHEADER2")]
     public class VideoInfoHeader2
     {
         public Rectangle SrcRect;
@@ -550,7 +550,7 @@ namespace WindowsMediaLib.Defs
     /// <summary>
     /// From WAVEFORMAT
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, Pack=2), UnmanagedName("WAVEFORMAT")]
     public class WaveFormat
     {
         short wFormatTag;        /* format type */
@@ -563,7 +563,7 @@ namespace WindowsMediaLib.Defs
     /// <summary>
     /// From WAVEFORMATEX
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("WAVEFORMATEX")]
     public class WaveFormatEx : WaveFormat
     {
         public short wBitsPerSample;
