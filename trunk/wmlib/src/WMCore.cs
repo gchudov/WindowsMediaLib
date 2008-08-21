@@ -34,6 +34,15 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
+    [UnmanagedName("WMT_INDEX_TYPE")]
+    public enum IndexType
+    {
+        None = 0,
+        NearestDataUnit = 1,
+        NearestObject = 2,
+        NearestCleanPoint = 3
+    }
+
     [Flags, UnmanagedName("From defines")]
     public enum BackupRestoreFlags
     {
