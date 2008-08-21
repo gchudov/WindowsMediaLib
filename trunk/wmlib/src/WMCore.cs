@@ -247,6 +247,47 @@ namespace WindowsMediaLib
         V9_0 = 0x00090000
     }
 
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
+    public class RA3Union
+    {
+        [FieldOffset(0)]
+        public long lOffsetStart;
+        [FieldOffset(0)]
+        public int iOffsetStart;
+
+        [FieldOffset(0)]
+        public short wRange;
+        [FieldOffset(2)]
+        public int Timecode;
+        [FieldOffset(6)]
+        public int dwUserbits;
+        [FieldOffset(10)]
+        public int dwAmFlags;
+
+        public RA3Union()
+        {
+        }
+
+        public RA3Union(long l)
+        {
+            lOffsetStart = l;
+        }
+
+        public RA3Union(int i)
+        {
+            iOffsetStart = i;
+        }
+
+        public RA3Union(TimeCodeExtensionData w)
+        {
+            wRange = w.wRange;
+            Timecode = w.dwTimecode;
+            dwUserbits = w.dwUserbits;
+            dwAmFlags = w.dwAmFlags;
+        }
+
+    }
+
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMDRM_IMPORT_INIT_STRUCT")]
     public struct WMDRM_IMPORT_INIT_STRUCT
     {
@@ -2663,8 +2704,8 @@ namespace WindowsMediaLib
 
         void StartAtPosition(
             [In] short wStreamNum,
-            [In] IntPtr pvOffsetStart,
-            [In] IntPtr pvDuration,
+            [In] RA3Union pvOffsetStart,
+            [In] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
