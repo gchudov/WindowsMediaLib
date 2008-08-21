@@ -56,6 +56,7 @@
     <Compile Include="IWMProfileManagerTest.cs" />
     <Compile Include="IWMProfileTest.cs" />
     <Compile Include="IWMReaderAdvanced2Test.cs" />
+    <Compile Include="IWMReaderAdvanced3Test.cs" />
     <Compile Include="IWMReaderAdvancedTest.cs" />
     <Compile Include="IWMReaderCallbackTest.cs" />
     <Compile Include="IWMReaderNetworkConfigTest.cs">

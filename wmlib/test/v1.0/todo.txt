@@ -84,7 +84,7 @@ IWMReader						11
 IWMReaderAccelerator					2		
 IWMReaderAdvanced					20		snarfle		ready
 IWMReaderAdvanced2		IWMReaderAdvanced	15		snarfle		ready
-IWMReaderAdvanced3		IWMReaderAdvanced2	2		snarfle		
+IWMReaderAdvanced3		IWMReaderAdvanced2	2		snarfle		ready
 IWMReaderAdvanced4		IWMReaderAdvanced3	9		
 IWMReaderAdvanced5		IWMReaderAdvanced4	1		
 IWMReaderAdvanced6		IWMReaderAdvanced5	1		
