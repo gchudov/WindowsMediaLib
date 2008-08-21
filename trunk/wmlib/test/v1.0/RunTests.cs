@@ -281,6 +281,12 @@ namespace v1._0
                 //IWMWriterSinkTest t90 = new IWMWriterSinkTest();
                 //t90.DoTests();
 
+                //IWMReaderAdvanced5Test t91 = new IWMReaderAdvanced5Test();
+                //t91.DoTests();
+
+                //IWMReaderAdvanced6Test t92 = new IWMReaderAdvanced6Test();
+                //t92.DoTests();
+
             }
             catch (Exception e)
             {
