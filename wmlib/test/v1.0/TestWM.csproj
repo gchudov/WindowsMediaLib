@@ -48,6 +48,7 @@
     <Compile Include="IWMHeaderInfo.cs" />
     <Compile Include="IWMHeaderInfo2Test.cs" />
     <Compile Include="IWMHeaderInfo3Test.cs" />
+    <Compile Include="IWMIndexer2Test.cs" />
     <Compile Include="IWMIndexerTest.cs" />
     <Compile Include="IWMLicenseBackupTest.cs" />
     <Compile Include="IWMLicenseRestoreTest.cs" />
