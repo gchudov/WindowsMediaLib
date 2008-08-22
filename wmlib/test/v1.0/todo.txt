@@ -115,7 +115,7 @@ IWMVideoMediaProps		IWMMediaProps		4
 IWMWatermarkInfo					2		
 IWMWriter						13		snarfle		ready
 IWMWriterAdvanced					11		snarfle		ready
-IWMWriterAdvanced2		IWMWriterAdvanced	2		
+IWMWriterAdvanced2		IWMWriterAdvanced	2		snarfle		ready
 IWMWriterAdvanced3		IWMWriterAdvanced2	2		
 IWMWriterFileSink		IWMWriterSink		1		
 IWMWriterFileSink2		IWMWriterFileSink	7		
