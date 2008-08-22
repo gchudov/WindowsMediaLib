@@ -53,6 +53,7 @@
     <Compile Include="IWMIndexerTest.cs" />
     <Compile Include="IWMLicenseBackupTest.cs" />
     <Compile Include="IWMLicenseRestoreTest.cs" />
+    <Compile Include="IWMMutualExclusionTest.cs" />
     <Compile Include="IWMProfile2Test.cs" />
     <Compile Include="IWMProfile3Test.cs" />
     <Compile Include="IWMProfileManager2Test.cs" />
