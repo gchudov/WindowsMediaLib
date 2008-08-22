@@ -12,7 +12,7 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace v1._0
 {
-    public class IWMWriterTest : IWMStatusCallback
+    public class IWMWriterTest
     {
         private const string sFileName = @"c:\WmTestOut.wmv";
         private IWMWriter m_Writer;
@@ -41,12 +41,27 @@ namespace v1._0
             m_Writer.SetOutputFilename(sFileName);
 
             m_Writer.BeginWriting();
-            asfd(b);
+            INSSBuffer pSample = WriteOne(b);
+            m_Writer.WriteSample(0, 1, WriteFlags.CleanPoint, pSample);
             m_Writer.Flush();
+            TestAdvanced(b);
             m_Writer.EndWriting();
         }
 
-        private void asfd(Bitmap hBitmap)
+        // These routines are for testing IWMWriterAdvanced
+        private void TestAdvanced(Bitmap b)
+        {
+            IWMWriterAdvanced adv = m_Writer as IWMWriterAdvanced;
+            WriterStatistics ws;
+            adv.GetStatistics(0, out ws);
+
+            Debug.Assert(ws.dwCurrentBitrate > 0);
+
+            INSSBuffer pSample = WriteOne(b);
+            adv.WriteStreamSample(1, 1234, 5678, 101001, WriteFlags.CleanPoint, pSample);
+        }
+
+        private INSSBuffer WriteOne(Bitmap hBitmap)
         {
             INSSBuffer pSample;
             Rectangle r = new Rectangle(0, 0, hBitmap.Width, hBitmap.Height);
@@ -54,20 +69,28 @@ namespace v1._0
             // Lock the bitmap, which gets us a pointer to the raw bitmap data
             BitmapData bmd = hBitmap.LockBits(r, ImageLockMode.ReadOnly, hBitmap.PixelFormat);
 
-            // Compute size of bitmap in bytes.  Strides may be negative.
-            int iSize = Math.Abs(bmd.Stride * bmd.Height);
-            IntPtr ip;
+            try
+            {
+                // Compute size of bitmap in bytes.  Strides may be negative.
+                int iSize = Math.Abs(bmd.Stride * bmd.Height);
+                IntPtr ip;
 
-            // Get a sample interface
-            m_Writer.AllocateSample(iSize, out pSample);
+                // Get a sample interface
+                m_Writer.AllocateSample(iSize, out pSample);
 
-            // Get the buffer from the sample interface.  This is
-            // where we copy the bitmap data to
-            pSample.GetBuffer(out ip);
+                // Get the buffer from the sample interface.  This is
+                // where we copy the bitmap data to
+                pSample.GetBuffer(out ip);
 
-            // Copy the bitmap data into the sample buffer
-            LoadSample(bmd, ip, iSize);
-            m_Writer.WriteSample(0, 1, WriteFlags.CleanPoint, pSample);
+                // Copy the bitmap data into the sample buffer
+                LoadSample(bmd, ip, iSize);
+            }
+            finally
+            {
+                hBitmap.UnlockBits(bmd);
+            }
+
+            return pSample;
         }
 
         private void LoadSample(BitmapData bmd, IntPtr ip, int iSize)
@@ -193,33 +216,9 @@ namespace v1._0
             m_Writer.SetInputProps(m_dwVideoInput, pProps);
         }
 
-
         private void Config()
         {
             WMUtils.WMCreateWriter(IntPtr.Zero, out m_Writer);
         }
-
-        #region IWMStatusCallback Members
-
-        public void OnStatus(Status iStatus, int hr, AttrDataType dwType, IntPtr pValue, IntPtr pvContext)
-        {
-            Debug.WriteLine(string.Format("{0} {1} {2} {3}", iStatus, hr, dwType, Marshal.ReadInt32(pValue)));
-            switch (iStatus)
-            {
-                case Status.Closed:
-                    {
-                        break;
-                    }
-                case Status.Error:
-                    {
-                        break;
-                    }
-                case Status.IndexProgress:
-                    break;
-            }
-        }
-
-        #endregion
-
     }
 }
