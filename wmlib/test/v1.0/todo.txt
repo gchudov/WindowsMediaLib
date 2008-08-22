@@ -80,7 +80,7 @@ IWMProfileManager2		IWMProfileManager	2		snarfle		bwkahle
 IWMProfileManagerLanguage				2		
 IWMPropertyVault					6		
 IWMProximityDetection					1		
-IWMReader						11		
+IWMReader						11		snarfle		ready
 IWMReaderAccelerator					2		
 IWMReaderAdvanced					20		snarfle		ready
 IWMReaderAdvanced2		IWMReaderAdvanced	15		snarfle		ready
