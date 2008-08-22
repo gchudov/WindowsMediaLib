@@ -1751,6 +1751,175 @@ namespace WindowsMediaLib
         }
     }
 
+    [StructLayout(LayoutKind.Sequential)]
+    public class FourCC
+    {
+        protected const string m_SubTypeExtension = "-0000-0010-8000-00aa00389b71";
+        private int m_fourCC;
+
+        public FourCC(string fcc)
+        {
+            if (fcc.Length != 4)
+            {
+                throw new ArgumentException(fcc + " is not a valid FourCC");
+            }
+
+            byte[] asc = Encoding.ASCII.GetBytes(fcc);
+
+            LoadFromBytes(asc[0], asc[1], asc[2], asc[3]);
+        }
+
+        public FourCC(char a, char b, char c, char d)
+            : this(new string(new char[] { a, b, c, d }))
+        { }
+
+        public FourCC(int fcc)
+        {
+            m_fourCC = fcc;
+        }
+
+        public FourCC(byte[] b)
+        {
+            if (b.Length != 4)
+            {
+                throw new Exception("Invalid byte array passed to FourCC");
+            }
+
+            LoadFromBytes(b[0], b[1], b[2], b[3]);
+        }
+
+        public FourCC(byte a, byte b, byte c, byte d)
+        {
+            LoadFromBytes(a, b, c, d);
+        }
+
+        public FourCC(Guid g)
+        {
+            if (!IsA4ccSubtype(g))
+            {
+                throw new Exception("Not a FourCC Guid");
+            }
+
+            byte[] asc;
+            asc = g.ToByteArray();
+
+            LoadFromBytes(asc[0], asc[1], asc[2], asc[3]);
+        }
+
+        public void LoadFromBytes(byte a, byte b, byte c, byte d)
+        {
+            m_fourCC = a;
+            m_fourCC |= b << 8;
+            m_fourCC |= c << 16;
+            m_fourCC |= d << 24;
+        }
+
+        public int ToInt32()
+        {
+            return m_fourCC;
+        }
+
+        public byte[] GetBytes()
+        {
+            byte[] b = new byte[4];
+
+            b[0] = (byte)(m_fourCC & 0xff);
+            b[1] = (byte)((m_fourCC >> 8) & 0xff);
+            b[2] = (byte)((m_fourCC >> 16) & 0xff);
+            b[3] = (byte)((m_fourCC >> 24) & 0xff);
+
+            return b;
+        }
+
+        public static explicit operator int(FourCC f)
+        {
+            return f.ToInt32();
+        }
+
+        public Guid ToMediaSubtype()
+        {
+            return new Guid(m_fourCC.ToString("X") + m_SubTypeExtension);
+        }
+
+        public static bool operator ==(FourCC fcc1, FourCC fcc2)
+        {
+            // If both are null, or both are same instance, return true.
+            if (System.Object.ReferenceEquals(fcc1, fcc2))
+            {
+                return true;
+            }
+
+            // If one is null, but not both, return false.
+            if (((object)fcc1 == null) || ((object)fcc2 == null))
+            {
+                return false;
+            }
+
+            return fcc1.m_fourCC == fcc2.m_fourCC;
+        }
+
+        public static bool operator !=(FourCC fcc1, FourCC fcc2)
+        {
+            return !(fcc1 == fcc2);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is FourCC))
+                return false;
+
+            return (obj as FourCC).m_fourCC == m_fourCC;
+        }
+
+        public override int GetHashCode()
+        {
+            return m_fourCC.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            char c;
+            char[] ca = new char[4];
+
+            c = Convert.ToChar(m_fourCC & 255);
+            if (!Char.IsLetterOrDigit(c))
+            {
+                c = ' ';
+            }
+            ca[0] = c;
+
+            c = Convert.ToChar((m_fourCC >> 8) & 255);
+            if (!Char.IsLetterOrDigit(c))
+            {
+                c = ' ';
+            }
+            ca[1] = c;
+
+            c = Convert.ToChar((m_fourCC >> 16) & 255);
+            if (!Char.IsLetterOrDigit(c))
+            {
+                c = ' ';
+            }
+            ca[2] = c;
+
+            c = Convert.ToChar((m_fourCC >> 24) & 255);
+            if (!Char.IsLetterOrDigit(c))
+            {
+                c = ' ';
+            }
+            ca[3] = c;
+
+            string s = new string(ca);
+
+            return s;
+        }
+
+        public static bool IsA4ccSubtype(Guid g)
+        {
+            return (g.ToString().Contains(m_SubTypeExtension));
+        }
+    }
+
     #region Internal
 
     // These classes are used internally and there is probably no reason you will ever
