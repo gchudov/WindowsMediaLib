@@ -71,6 +71,7 @@
     <Compile Include="IWMReaderStreamClockTest.cs" />
     <Compile Include="IWMReaderTest.cs" />
     <Compile Include="IWMStreamConfigTest.cs" />
+    <Compile Include="IWMStreamListTest.cs" />
     <Compile Include="IWMSyncReader2Test.cs" />
     <Compile Include="IWMSyncReaderTest.cs" />
     <Compile Include="IWMWriterAdvancedTest.cs" />
