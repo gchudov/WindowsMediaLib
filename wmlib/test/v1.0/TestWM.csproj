@@ -73,6 +73,7 @@
     <Compile Include="IWMStreamConfigTest.cs" />
     <Compile Include="IWMSyncReader2Test.cs" />
     <Compile Include="IWMSyncReaderTest.cs" />
+    <Compile Include="IWMWriterAdvancedTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
