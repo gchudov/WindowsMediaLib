@@ -55,6 +55,7 @@
     <Compile Include="IWMInputMediaPropsTest.cs" />
     <Compile Include="IWMLicenseBackupTest.cs" />
     <Compile Include="IWMLicenseRestoreTest.cs" />
+    <Compile Include="IWMMediaPropsTest.cs" />
     <Compile Include="IWMMutualExclusion2Test.cs" />
     <Compile Include="IWMMutualExclusionTest.cs" />
     <Compile Include="IWMProfile2Test.cs" />
