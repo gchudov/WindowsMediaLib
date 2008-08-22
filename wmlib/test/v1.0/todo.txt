@@ -56,7 +56,7 @@ IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
 IWMImageInfo						2		
 IWMIndexer						2		snarfle		ready
 IWMIndexer2			IWMIndexer		1		snarfle		ready
-IWMInputMediaProps		IWMMediaProps		2		
+IWMInputMediaProps		IWMMediaProps		2		snarfle		ready
 IWMIStreamProps						1		
 IWMLanguageList						3		
 IWMLicenseBackup					2		snarfle		ready
