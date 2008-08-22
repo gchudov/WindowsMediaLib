@@ -667,7 +667,7 @@ namespace WindowsMediaLib
         #region IWMStreamList Methods
 
         new void GetStreams(
-            out short[] pwStreamNumArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -1550,7 +1550,7 @@ namespace WindowsMediaLib
         #region IWMStreamList Methods
 
         new void GetStreams(
-            out short[] pwStreamNumArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -1581,7 +1581,7 @@ namespace WindowsMediaLib
         #region IWMStreamList Methods
 
         new void GetStreams(
-            out short[] pwStreamNumArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] short[] pwStreamNumArray,
             ref short pcStreams
             );
 
@@ -3737,7 +3737,7 @@ namespace WindowsMediaLib
     public interface IWMStreamList
     {
         void GetStreams(
-            out short[] pwStreamNumArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] short[] pwStreamNumArray,
             ref short pcStreams
             );
 
