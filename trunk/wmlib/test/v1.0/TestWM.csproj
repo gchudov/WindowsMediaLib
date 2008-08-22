@@ -70,6 +70,7 @@
     <Compile Include="IWMReaderNetworkConfigTest2.cs" />
     <Compile Include="IWMReaderStreamClockTest.cs" />
     <Compile Include="IWMReaderTest.cs" />
+    <Compile Include="IWMStreamConfigTest.cs" />
     <Compile Include="IWMSyncReader2Test.cs" />
     <Compile Include="IWMSyncReaderTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
