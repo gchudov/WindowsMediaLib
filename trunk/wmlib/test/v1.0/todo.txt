@@ -113,7 +113,7 @@ IWMSyncReader						21		snarfle		ready
 IWMSyncReader2			IWMSyncReader		6		snarfle		ready
 IWMVideoMediaProps		IWMMediaProps		4		
 IWMWatermarkInfo					2		
-IWMWriter						13		
+IWMWriter						13		snarfle		
 IWMWriterAdvanced					11		
 IWMWriterAdvanced2		IWMWriterAdvanced	2		
 IWMWriterAdvanced3		IWMWriterAdvanced2	2		
