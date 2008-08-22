@@ -1639,7 +1639,7 @@ namespace WindowsMediaLib
 
         void GetStreamsForRecord(
             [In] short wRecordNumber,
-            out short[] pwStreamNumArray,
+            [Out, MarshalAs(UnmanagedType.LPArray)] short[] pwStreamNumArray,
             ref short pcStreams
             );
 
