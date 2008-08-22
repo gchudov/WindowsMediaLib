@@ -43,6 +43,7 @@
     <Compile Include="IWMAddressAccess2Test.cs" />
     <Compile Include="IWMAddressAccessTest.cs" />
     <Compile Include="IWMBackupRestorePropsTest.cs" />
+    <Compile Include="IWMBandwidthSharingTest.cs" />
     <Compile Include="IWMCodecInfo2Test.cs" />
     <Compile Include="IWMCodecInfo3Test.cs" />
     <Compile Include="IWMCodecInfoTest.cs" />

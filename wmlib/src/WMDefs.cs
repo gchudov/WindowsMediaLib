@@ -473,6 +473,14 @@ namespace WindowsMediaLib.Defs
         public static readonly Guid Unknown = new Guid(0xD6E22A03,0x35DA,0x11D1,0x90,0x34,0x00,0xA0,0xC9,0x03,0x49,0xBE );
     }
 
+    public static class BandwidthSharingType
+    {
+        /// <summary> CLSID_WMBandwidthSharing_Exclusive </summary>
+        public static readonly Guid Exclusive = new Guid(0xaf6060aa,0x5197,0x11d2,0xb6,0xaf,0x00,0xc0,0x4f,0xd9,0x08,0xe9 );
+
+        /// <summary> CLSID_WMBandwidthSharing_Partial </summary>
+        public static readonly Guid Partial = new Guid(0xaf6060ab, 0x5197, 0x11d2, 0xb6, 0xaf, 0x00, 0xc0, 0x4f, 0xd9, 0x08, 0xe9);
+    }
 
     /// <summary>
     /// From WM_MEDIA_TYPE - When you are done with an instance of this class,
