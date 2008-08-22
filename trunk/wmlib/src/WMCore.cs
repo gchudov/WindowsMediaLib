@@ -2908,8 +2908,8 @@ namespace WindowsMediaLib
 
         new void StartAtPosition(
             [In] short wStreamNum,
-            [In] IntPtr pvOffsetStart,
-            [In] IntPtr pvDuration,
+            [In] RA3Union pvOffsetStart,
+            [In] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
@@ -5563,8 +5563,8 @@ namespace WindowsMediaLib
 
         new void StartAtPosition(
             [In] short wStreamNum,
-            [In] IntPtr pvOffsetStart,
-            [In] IntPtr pvDuration,
+            [In] RA3Union pvOffsetStart,
+            [In] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
@@ -5807,8 +5807,8 @@ namespace WindowsMediaLib
 
         new void StartAtPosition(
             [In] short wStreamNum,
-            [In] IntPtr pvOffsetStart,
-            [In] IntPtr pvDuration,
+            [In] RA3Union pvOffsetStart,
+            [In] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
