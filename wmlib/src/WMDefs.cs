@@ -33,7 +33,7 @@ using System.Reflection;
 
 namespace WindowsMediaLib.Defs
 {
-    public class MediaType
+    public static class MediaType
     {
         public static readonly Guid Null = Guid.Empty;
 
@@ -83,8 +83,7 @@ namespace WindowsMediaLib.Defs
         public static readonly Guid AnalogAudio = new Guid(0x482dee1, 0x7817, 0x11cf, 0x8a, 0x3, 0x0, 0xaa, 0x0, 0x6e, 0xcb, 0x65);
     }
 
-
-    public class MediaSubType
+    public static class MediaSubType
     {
         public static readonly Guid Null = Guid.Empty;
 
@@ -429,8 +428,7 @@ namespace WindowsMediaLib.Defs
 
     }
 
-
-    public class FormatType
+    public static class FormatType
     {
         public static readonly Guid Null = Guid.Empty;
 
@@ -458,6 +456,21 @@ namespace WindowsMediaLib.Defs
         /// <summary> FORMAT_AnalogVideo </summary>
         public static readonly Guid AnalogVideo = new Guid(0x482dde0, 0x7817, 0x11cf, 0x8a, 0x3, 0x0, 0xaa, 0x0, 0x6e, 0xcb, 0x65);
 
+    }
+
+    public static class MutexType
+    {
+        /// <summary> CLSID_WMMUTEX_Language </summary>
+        public static readonly Guid Language = new Guid(0xD6E22A00,0x35DA,0x11D1,0x90,0x34,0x00,0xA0,0xC9,0x03,0x49,0xBE );
+
+        /// <summary> CLSID_WMMUTEX_Bitrate </summary>
+        public static readonly Guid Bitrate = new Guid(0xD6E22A01,0x35DA,0x11D1,0x90,0x34,0x00,0xA0,0xC9,0x03,0x49,0xBE );
+
+        /// <summary> CLSID_WMMUTEX_Presentation </summary>
+        public static readonly Guid Presentation = new Guid(0xD6E22A02,0x35DA,0x11D1,0x90,0x34,0x00,0xA0,0xC9,0x03,0x49,0xBE );
+
+        /// <summary> CLSID_WMMUTEX_Unknown </summary>
+        public static readonly Guid Unknown = new Guid(0xD6E22A03,0x35DA,0x11D1,0x90,0x34,0x00,0xA0,0xC9,0x03,0x49,0xBE );
     }
 
 

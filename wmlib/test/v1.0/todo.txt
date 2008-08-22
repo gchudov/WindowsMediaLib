@@ -65,7 +65,7 @@ IWMLicenseRevocationAgent				2
 IWMMediaProps						3		
 IWMMetadataEditor					3		
 IWMMetadataEditor2		IWMMetadataEditor	1		
-IWMMutualExclusion		IWMStreamList		2		
+IWMMutualExclusion		IWMStreamList		2		snarfle		ready
 IWMMutualExclusion2		IWMMutualExclusion	10		
 IWMOutputMediaProps		IWMMediaProps		2		
 IWMPacketSize						2		
