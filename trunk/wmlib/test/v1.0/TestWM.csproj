@@ -52,6 +52,7 @@
     <Compile Include="IWMHeaderInfo3Test.cs" />
     <Compile Include="IWMIndexer2Test.cs" />
     <Compile Include="IWMIndexerTest.cs" />
+    <Compile Include="IWMInputMediaPropsTest.cs" />
     <Compile Include="IWMLicenseBackupTest.cs" />
     <Compile Include="IWMLicenseRestoreTest.cs" />
     <Compile Include="IWMMutualExclusion2Test.cs" />
