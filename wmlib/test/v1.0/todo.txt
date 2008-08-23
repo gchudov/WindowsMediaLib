@@ -97,7 +97,7 @@ IWMReaderPlaylistBurn					4
 IWMReaderStreamClock					3		snarfle		ready
 IWMReaderTimecode					2		
 IWMReaderTypeNegotiation				1		
-IWMRegisterCallback					2		
+IWMRegisterCallback					2		snarfle		ready
 IWMRegisteredDevice					14		
 IWMSBufferAllocator					2		
 IWMSInternalAdminNetSource				11		
