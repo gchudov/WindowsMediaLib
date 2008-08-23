@@ -56,7 +56,8 @@ namespace v1._0
             int i;
             int c = 0;
 
-            m_ian.FindProxyForURL("http", "limegreensocks.com", out b, out s, out i, ref c);
+            int hr = m_ian.FindProxyForURL("http", "limegreensocks.com", out b, out s, out i, ref c);
+            WMError.ThrowExceptionForHR(hr);
 
             Debug.Assert(b == false);
 
