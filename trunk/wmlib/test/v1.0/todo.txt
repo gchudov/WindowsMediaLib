@@ -63,8 +63,8 @@ IWMLicenseBackup					2		snarfle		ready
 IWMLicenseRestore					2		snarfle		ready
 IWMLicenseRevocationAgent				2		
 IWMMediaProps						3		snarfle		ready
-IWMMetadataEditor					3		
-IWMMetadataEditor2		IWMMetadataEditor	1		
+IWMMetadataEditor					3		snarfle		ready
+IWMMetadataEditor2		IWMMetadataEditor	1		snarfle		ready
 IWMMutualExclusion		IWMStreamList		2		snarfle		ready
 IWMMutualExclusion2		IWMMutualExclusion	10		snarfle		ready
 IWMOutputMediaProps		IWMMediaProps		2		

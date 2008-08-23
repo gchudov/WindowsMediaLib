@@ -34,6 +34,22 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
+    [Flags]
+    public enum MetaDataAccess
+    {
+        None = 0,
+        Write = 0x40000000,
+        Read = unchecked((int)0x80000000)
+    }
+
+    [Flags]
+    public enum MetaDataShare
+    {
+        None = 0,
+        Read = 0x00000001,
+        Delete = 0x00000004
+    }
+
     [UnmanagedName("WMT_INDEX_TYPE")]
     public enum IndexType
     {
@@ -1537,8 +1553,8 @@ namespace WindowsMediaLib
 
         void OpenEx(
             [In] string pwszFilename,
-            [In] int dwDesiredAccess,
-            [In] int dwShareMode
+            [In] MetaDataAccess dwDesiredAccess,
+            [In] MetaDataShare dwShareMode
             );
     }
 
