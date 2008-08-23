@@ -96,6 +96,8 @@ namespace WindowsMediaLib
         CopyToSDMIDevice = 0x00000010,
         OneTime = 0x00000020,
         SaveStreamProtected = 0x00000040,
+        Copy = 0x00000080,
+        CollaborativePlay = 0x00000100,
         SDMITrigger = 0x00010000,
         SDMINoMoreCopies = 0x00020000
     }
