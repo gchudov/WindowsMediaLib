@@ -13,7 +13,7 @@ WMCreateReader				snarfle		ready
 WMCreateSyncReader			snarfle		ready
 WMCreateWriter				snarfle		bwkahle
 WMCreateWriterFileSink			snarfle		ready
-WMCreateWriterNetworkSink		
+WMCreateWriterNetworkSink		snarfle		ready
 WMCreateWriterPushSink			
 WMIsAvailableOffline			
 WMIsContentProtected			
@@ -21,7 +21,7 @@ WMValidateData
 
 
 Interfaces			Parent			Methods		Assigned	Reviewer
-INSNetSourceCreator					8		
+INSNetSourceCreator					8		snarfle		ready
 INSSBuffer						5		snarfle		bwkahle
 INSSBuffer2			INSSBuffer		2		snarfle		bwkahle
 INSSBuffer3			INSSBuffer2		2		snarfle		bwkahle
@@ -38,7 +38,6 @@ IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
 IWMCodecVideoAccelerator				2		
 IWMCredentialCallback					1		
-IWMDeviceRegistration					6		
 IWMHeaderInfo						12		snarfle		bwkahle
 IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		bwkahle
 IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
@@ -68,7 +67,6 @@ IWMProfileManager					6		snarfle		bwkahle
 IWMProfileManager2		IWMProfileManager	2		snarfle		bwkahle
 IWMProfileManagerLanguage				2		
 IWMPropertyVault					6		
-IWMProximityDetection					1		
 IWMReader						11		snarfle		ready
 IWMReaderAccelerator					2		
 IWMReaderAdvanced					20		snarfle		ready
@@ -86,7 +84,6 @@ IWMReaderStreamClock					3		snarfle		ready
 IWMReaderTimecode					2		
 IWMReaderTypeNegotiation				1		
 IWMRegisterCallback					2		snarfle		ready
-IWMRegisteredDevice					14		
 IWMSBufferAllocator					2		
 IWMSInternalAdminNetSource				11		
 IWMSInternalAdminNetSource2				4		
@@ -108,7 +105,7 @@ IWMWriterAdvanced3		IWMWriterAdvanced2	2
 IWMWriterFileSink		IWMWriterSink		1		
 IWMWriterFileSink2		IWMWriterFileSink	7		
 IWMWriterFileSink3		IWMWriterFileSink2	8		
-IWMWriterNetworkSink		IWMWriterSink		8		
+IWMWriterNetworkSink		IWMWriterSink		8		snarfle		ready
 IWMWriterPostView					9		
 IWMWriterPostViewCallback	IWMStatusCallback	2		
 IWMWriterPreprocess					5		
@@ -117,6 +114,7 @@ IWMWriterPushSink		IWMWriterSink		3
 
 Candidates for v1.1
 
+IWMDeviceRegistration					6		
 IWMDRMEditor						1		
 IWMDRMMessageParser					2		
 IWMDRMReader						8		
@@ -128,5 +126,7 @@ IWMDRMTranscryptor2		IWMDRMTranscryptor	4
 IWMDRMWriter						4		
 IWMDRMWriter2			IWMDRMWriter		1		
 IWMDRMWriter3			IWMDRMWriter2		1		
+IWMProximityDetection					1		
 IWMReaderAdvanced6		IWMReaderAdvanced5	1		
+IWMRegisteredDevice					14		
 IWMWriterSink						5		
