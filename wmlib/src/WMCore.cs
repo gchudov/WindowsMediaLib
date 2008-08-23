@@ -5115,6 +5115,13 @@ namespace WindowsMediaLib
             );
     }
 
+    [Flags]
+    public enum CredentialFlag
+    {
+        None = 0,
+        AutoSavePW = 1
+    }
+
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("8BB23E5F-D127-4AFB-8D02-AE5B66D54C78"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
@@ -5151,14 +5158,15 @@ namespace WindowsMediaLib
             );
 
         void GetCredentialFlags(
-            out int lpdwFlags
+            out CredentialFlag lpdwFlags
             );
 
         void SetCredentialFlags(
-            [In] int dwFlags
+            [In] CredentialFlag dwFlags
             );
 
-        void FindProxyForURL(
+        [PreserveSig]
+        int FindProxyForURL(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrProtocol,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrHost,
             [MarshalAs(UnmanagedType.Bool)] out bool pfProxyEnabled,
