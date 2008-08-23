@@ -30,6 +30,14 @@ using WindowsMediaLib.Defs;
 
 namespace WindowsMediaLib
 {
+    /// <summary>
+    /// CLSID_ClientNetManager
+    /// </summary>
+    [ComImport, Guid("CD12A3CE-9C42-11D2-BEED-0060082F2054")]
+    public class ClientNetManager
+    {
+    }
+
     #region Declarations
 
 #if ALLOW_UNTESTED_INTERFACES

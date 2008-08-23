@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="INSNetSourceCreatorTest.cs" />
     <Compile Include="INSSBuffer2Test.cs" />
     <Compile Include="INSSBuffer3Test.cs" />
     <Compile Include="INSSBuffer4Test.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="IWMSyncReaderTest.cs" />
     <Compile Include="IWMWriterAdvanced2Test.cs" />
     <Compile Include="IWMWriterAdvancedTest.cs" />
+    <Compile Include="IWMWriterNetworkSinkTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
