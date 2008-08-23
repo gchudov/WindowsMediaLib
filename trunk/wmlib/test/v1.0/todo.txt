@@ -85,7 +85,7 @@ IWMReaderTimecode					2
 IWMReaderTypeNegotiation				1		
 IWMRegisterCallback					2		snarfle		ready
 IWMSBufferAllocator					2		
-IWMSInternalAdminNetSource				11		
+IWMSInternalAdminNetSource				11		snarfle		ready
 IWMSInternalAdminNetSource2				4		
 IWMSInternalAdminNetSource3	IWMSInternalAdminNetSource2	7	
 IWMStatusCallback					1		snarfle		ready
