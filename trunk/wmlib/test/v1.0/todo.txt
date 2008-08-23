@@ -49,7 +49,6 @@ IWMIStreamProps						1
 IWMLanguageList						3		
 IWMLicenseBackup					2		snarfle		ready
 IWMLicenseRestore					2		snarfle		ready
-IWMLicenseRevocationAgent				2		
 IWMMediaProps						3		snarfle		ready
 IWMMetadataEditor					3		snarfle		ready
 IWMMetadataEditor2		IWMMetadataEditor	1		snarfle		ready
@@ -126,6 +125,7 @@ IWMDRMTranscryptor2		IWMDRMTranscryptor	4
 IWMDRMWriter						4		
 IWMDRMWriter2			IWMDRMWriter		1		
 IWMDRMWriter3			IWMDRMWriter2		1		
+IWMLicenseRevocationAgent				2		
 IWMProximityDetection					1		
 IWMReaderAdvanced6		IWMReaderAdvanced5	1		
 IWMRegisteredDevice					14		
