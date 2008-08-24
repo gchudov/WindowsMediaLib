@@ -2,12 +2,8 @@ Functions				Assigned	Reviewer
 WMCheckURLExtension			
 WMCheckURLScheme			
 WMCreateBackupRestorer			snarfle		bwkahle
-WMCreateCertificate			
-WMCreateDeviceRegistration		
-WMCreateDRMTranscryptor			
 WMCreateEditor				snarfle		bwkahle
 WMCreateIndexer				snarfle		ready
-WMCreateLicenseRevocationAgent		
 WMCreateProfileManager			snarfle		bwkahle
 WMCreateReader				snarfle		ready
 WMCreateSyncReader			snarfle		ready
@@ -65,7 +61,7 @@ IWMProfile3			IWMProfile2		12		snarfle		ready
 IWMProfileManager					6		snarfle		bwkahle
 IWMProfileManager2		IWMProfileManager	2		snarfle		bwkahle
 IWMProfileManagerLanguage				2		
-IWMPropertyVault					6		
+IWMPropertyVault					6		snarfle
 IWMReader						11		snarfle		ready
 IWMReaderAccelerator					2		
 IWMReaderAdvanced					20		snarfle		ready
@@ -112,6 +108,11 @@ IWMWriterPushSink		IWMWriterSink		3
 
 
 Candidates for v1.1
+
+WMCreateCertificate			
+WMCreateDeviceRegistration		
+WMCreateDRMTranscryptor			
+WMCreateLicenseRevocationAgent		
 
 IWMDeviceRegistration					6		
 IWMDRMEditor						1		
