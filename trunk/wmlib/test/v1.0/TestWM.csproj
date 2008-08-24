@@ -88,6 +88,8 @@
     <Compile Include="IWMSyncReaderTest.cs" />
     <Compile Include="IWMWriterAdvanced2Test.cs" />
     <Compile Include="IWMWriterAdvancedTest.cs" />
+    <Compile Include="IWMWriterFileSink2Test.cs" />
+    <Compile Include="IWMWriterFileSinkTest.cs" />
     <Compile Include="IWMWriterNetworkSinkTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
     <Compile Include="RunTests.cs" />
