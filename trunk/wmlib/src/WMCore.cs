@@ -3638,9 +3638,9 @@ namespace WindowsMediaLib
             );
 
         void AddDataUnitExtension(
-            [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidExtensionSystemID,
+            [In] Guid guidExtensionSystemID,
             [In] short cbExtensionDataSize,
-            [In] byte[] pbExtensionSystemInfo,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pbExtensionSystemInfo,
             [In] int cbExtensionSystemInfo
             );
 
@@ -3652,7 +3652,7 @@ namespace WindowsMediaLib
             [In] short wDataUnitExtensionNumber,
             out Guid pguidExtensionSystemID,
             out short pcbExtensionDataSize,
-            out byte[] pbExtensionSystemInfo,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pbExtensionSystemInfo,
             ref int pcbExtensionSystemInfo
             );
 
