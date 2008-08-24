@@ -28,7 +28,6 @@ namespace v1._0
 
         private void TestOpen()
         {
-            IWMWriter w;
             IWMWriterAdvanced wa;
             IWMWriter pw;
 
