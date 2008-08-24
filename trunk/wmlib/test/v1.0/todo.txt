@@ -91,7 +91,7 @@ IWMStreamList						3		snarfle		ready
 IWMStreamPrioritization					2		snarfle		ready
 IWMSyncReader						21		snarfle		ready
 IWMSyncReader2			IWMSyncReader		6		snarfle		ready
-IWMVideoMediaProps		IWMMediaProps		4		
+IWMVideoMediaProps		IWMMediaProps		4		snarfle		ready
 IWMWatermarkInfo					2		
 IWMWriter						13		snarfle		ready
 IWMWriterAdvanced					11		snarfle		ready

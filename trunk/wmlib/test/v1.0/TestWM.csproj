@@ -86,6 +86,7 @@
     <Compile Include="IWMStreamListTest.cs" />
     <Compile Include="IWMSyncReader2Test.cs" />
     <Compile Include="IWMSyncReaderTest.cs" />
+    <Compile Include="IWMVideoMediaPropsTest.cs" />
     <Compile Include="IWMWriterAdvanced2Test.cs" />
     <Compile Include="IWMWriterAdvancedTest.cs" />
     <Compile Include="IWMWriterFileSink2Test.cs" />
