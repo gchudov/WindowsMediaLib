@@ -2183,14 +2183,14 @@ namespace WindowsMediaLib
         void GetPropertyByName(
             [In] string pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref int pdwSize
             );
 
         void SetProperty(
             [In] string pszName,
             [In] AttrDataType pType,
-            [In] byte[] pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] int dwSize
             );
 
@@ -2199,7 +2199,7 @@ namespace WindowsMediaLib
             [Out] StringBuilder pszName,
             ref int pdwNameLen,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref int pdwSize
             );
 
@@ -3739,7 +3739,7 @@ namespace WindowsMediaLib
             [In] short wDataUnitExtensionNumber,
             out Guid pguidExtensionSystemID,
             out short pcbExtensionDataSize,
-            out byte[] pbExtensionSystemInfo,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pbExtensionSystemInfo,
             ref int pcbExtensionSystemInfo
             );
 
@@ -4380,7 +4380,7 @@ namespace WindowsMediaLib
             [In] int dwInputNum,
             [In] string pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
 
