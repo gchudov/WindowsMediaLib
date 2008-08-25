@@ -62,6 +62,7 @@
     <Compile Include="IWMMetadataEditorTest.cs" />
     <Compile Include="IWMMutualExclusion2Test.cs" />
     <Compile Include="IWMMutualExclusionTest.cs" />
+    <Compile Include="IWMOutputMediaPropsTest.cs" />
     <Compile Include="IWMProfile2Test.cs" />
     <Compile Include="IWMProfile3Test.cs" />
     <Compile Include="IWMProfileManager2Test.cs" />
