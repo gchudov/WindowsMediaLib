@@ -50,7 +50,7 @@ IWMMetadataEditor					3		snarfle		ready
 IWMMetadataEditor2		IWMMetadataEditor	1		snarfle		ready
 IWMMutualExclusion		IWMStreamList		2		snarfle		ready
 IWMMutualExclusion2		IWMMutualExclusion	10		snarfle		ready
-IWMOutputMediaProps		IWMMediaProps		2		
+IWMOutputMediaProps		IWMMediaProps		2		snarfle		ready
 IWMPacketSize						2		
 IWMPacketSize2			IWMPacketSize		2		
 IWMPlayerHook						1		
