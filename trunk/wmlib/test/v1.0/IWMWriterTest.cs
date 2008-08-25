@@ -12,10 +12,12 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace v1._0
 {
-    public class IWMWriterTest
+    public class IWMWriterTest : IWMWriterPostViewCallback
     {
         private const string sFileName = @"c:\WmTestOut.wmv";
         private IWMWriter m_Writer;
+        private bool m_ViewSample;
+        private bool m_Alloc;
 
         // Profile id for "Windows Media Video 8 for Dial-up Modem (No audio, 56 Kbps)"
         private Guid g = new Guid(0x6E2A6955, 0x81DF, 0x4943, 0xBA, 0x50, 0x68, 0xA9, 0x86, 0xA7, 0x08, 0xF6);
@@ -29,8 +31,27 @@ namespace v1._0
             Config();
 
             TestProfile();
+            TestPostView();
             TestInput();
             TestWrite();
+            TestPostView2();
+        }
+
+        private void TestPostView2()
+        {
+            Debug.Assert(m_ViewSample);
+            Debug.Assert(m_Alloc);
+        }
+
+        private void TestPostView()
+        {
+            m_ViewSample = false;
+            m_Alloc = false;
+
+            IWMWriterPostView w = m_Writer as IWMWriterPostView;
+            w.SetPostViewCallback(this, new IntPtr(17));
+            w.SetAllocateForPostView(1, true);
+            w.SetReceivePostViewSamples(1, true);
         }
 
         private void TestWrite()
@@ -220,5 +241,68 @@ namespace v1._0
         {
             WMUtils.WMCreateWriter(IntPtr.Zero, out m_Writer);
         }
+
+        #region IWMWriterPostViewCallback Members
+
+        public void OnStatus(Status iStatus, int hr, AttrDataType dwType, IntPtr pValue, IntPtr pvContext)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void OnPostViewSample(short wStreamNumber, long cnsSampleTime, long cnsSampleDuration, WriteFlags dwFlags, INSSBuffer pSample, IntPtr pvContext)
+        {
+            Debug.Assert(pSample != null && pvContext.ToInt32() == 17);
+            m_ViewSample = true;
+        }
+
+        public void AllocateForPostView(short wStreamNum, int cbBuffer, out INSSBuffer ppBuffer, IntPtr pvContext)
+        {
+            m_Alloc = true;
+            TempBuff b = new TempBuff();
+            ppBuffer = b as INSSBuffer;
+        }
+
+        #endregion
+    }
+
+    internal class TempBuff : INSSBuffer
+    {
+        IntPtr m_ip;
+        int m_iCurSize;
+
+        public TempBuff()
+        {
+            m_ip = Marshal.AllocCoTaskMem(100000);
+            m_iCurSize = 0;
+        }
+
+        #region INSSBuffer Members
+
+        public void GetLength(out int pdwLength)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void SetLength(int dwLength)
+        {
+            m_iCurSize = dwLength;
+        }
+
+        public void GetMaxLength(out int pdwLength)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void GetBuffer(out IntPtr ppdwBuffer)
+        {
+            ppdwBuffer = m_ip;
+        }
+
+        public void GetBufferAndLength(out IntPtr ppdwBuffer, out int pdwLength)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        #endregion
     }
 }
