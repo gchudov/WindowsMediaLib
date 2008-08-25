@@ -63,6 +63,8 @@
     <Compile Include="IWMMutualExclusion2Test.cs" />
     <Compile Include="IWMMutualExclusionTest.cs" />
     <Compile Include="IWMOutputMediaPropsTest.cs" />
+    <Compile Include="IWMPacketSize2Test.cs" />
+    <Compile Include="IWMPacketSizeTest.cs" />
     <Compile Include="IWMProfile2Test.cs" />
     <Compile Include="IWMProfile3Test.cs" />
     <Compile Include="IWMProfileManager2Test.cs" />
