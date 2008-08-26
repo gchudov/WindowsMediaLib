@@ -90,7 +90,6 @@ IWMStreamPrioritization					2		snarfle		ready
 IWMSyncReader						21		snarfle		ready
 IWMSyncReader2			IWMSyncReader		6		snarfle		ready
 IWMVideoMediaProps		IWMMediaProps		4		snarfle		ready
-IWMWatermarkInfo					2		
 IWMWriter						13		snarfle		ready
 IWMWriterAdvanced					11		snarfle		ready
 IWMWriterAdvanced2		IWMWriterAdvanced	2		snarfle		ready
@@ -131,3 +130,4 @@ IWMRegisteredDevice					14
 IWMWriterSink						5		
 IWMCodecVideoAccelerator				2		interface is not supported (http://msdn.microsoft.com/en-us/library/aa387405(VS.85).aspx)
 IWMImageInfo						2		Deprecated (http://msdn.microsoft.com/en-us/library/aa388414(VS.85).aspx)
+IWMWatermarkInfo					2		"No watermarking DMOs are provided with the Windows Media Format SDK" http://msdn.microsoft.com/en-us/library/aa390034(VS.85).aspx
