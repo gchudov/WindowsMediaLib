@@ -45,6 +45,8 @@
     <Compile Include="IWMAddressAccessTest.cs" />
     <Compile Include="IWMBackupRestorePropsTest.cs" />
     <Compile Include="IWMBandwidthSharingTest.cs" />
+    <Compile Include="IWMClientConnections2Test.cs" />
+    <Compile Include="IWMClientConnectionsTest.cs" />
     <Compile Include="IWMCodecInfo2Test.cs" />
     <Compile Include="IWMCodecInfo3Test.cs" />
     <Compile Include="IWMCodecInfoTest.cs" />

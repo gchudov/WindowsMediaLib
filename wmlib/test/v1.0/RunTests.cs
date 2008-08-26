@@ -44,8 +44,8 @@ namespace v1._0
                 //IWMClientConnectionsTest t11 = new IWMClientConnectionsTest();
                 //t11.DoTests();
 
-                //IWMClientConnections2Test t12 = new IWMClientConnections2Test();
-                //t12.DoTests();
+                IWMClientConnections2Test t12 = new IWMClientConnections2Test();
+                t12.DoTests();
 
                 //IWMCodecAMVideoAcceleratorTest t13 = new IWMCodecAMVideoAcceleratorTest();
                 //t13.DoTests();
@@ -303,6 +303,9 @@ namespace v1._0
                 }
 
                 System.Windows.Forms.MessageBox.Show(string.Format("0x{0:x}: {1}", hr, s), "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            finally
+            {
             }
         }
     }
