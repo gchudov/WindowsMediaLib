@@ -5281,7 +5281,8 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.IUnknown)] out object ppNetSourceCreator
             );
 
-        void FindProxyForURLEx2(
+        [PreserveSig]
+        int FindProxyForURLEx2(
             [In, MarshalAs(UnmanagedType.BStr)] string bstrProtocol,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrHost,
             [In, MarshalAs(UnmanagedType.BStr)] string bstrUrl,

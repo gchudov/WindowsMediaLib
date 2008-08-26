@@ -78,8 +78,8 @@ IWMReaderTimecode					2		bwkahle
 IWMReaderTypeNegotiation				1		snarfle		ready
 IWMRegisterCallback					2		snarfle		ready
 IWMSInternalAdminNetSource				11		snarfle		ready
-IWMSInternalAdminNetSource2				4		
-IWMSInternalAdminNetSource3	IWMSInternalAdminNetSource2	7	
+IWMSInternalAdminNetSource2				4		snarfle		ready
+IWMSInternalAdminNetSource3	IWMSInternalAdminNetSource2	7	snarfle		ready
 IWMStatusCallback					1		snarfle		ready
 IWMStreamConfig						11		snarfle		ready
 IWMStreamConfig2		IWMStreamConfig		6		snarfle		ready

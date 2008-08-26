@@ -16,14 +16,10 @@ namespace v1._0
     {
         private const string sFileName = @"c:\WmTestOut.wmv";
         private IWMWriter m_Writer;
-        private bool m_ViewSample;
-        private bool m_Alloc;
         private IWMWriterAdvanced3 m_wa3;
 
         // Profile id for "Windows Media Video 8 for Dial-up Modem (No audio, 56 Kbps)"
         private Guid g = new Guid(0x6E2A6955, 0x81DF, 0x4943, 0xBA, 0x50, 0x68, 0xA9, 0x86, 0xA7, 0x08, 0xF6);
-        private int m_iFrameRate = 3;
-        private int m_dwVideoInput = 0;
         [DllImport("Kernel32.dll", EntryPoint = "RtlMoveMemory")]
         private static extern void CopyMemory(IntPtr Destination, IntPtr Source, [MarshalAs(UnmanagedType.U4)] int Length);
 
