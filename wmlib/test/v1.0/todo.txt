@@ -26,8 +26,8 @@ IWMAddressAccess					4		bwkahle		snarfle
 IWMAddressAccess2		IWMAddressAccess	2		bwkahle		snarfle
 IWMBackupRestoreProps					6		snarfle		bwkahle
 IWMBandwidthSharing		IWMStreamList		4		snarfle		ready
-IWMClientConnections					2		
-IWMClientConnections2		IWMClientConnections	1		
+IWMClientConnections					2		bwkahle
+IWMClientConnections2		IWMClientConnections	1		bwkahle
 IWMCodecAMVideoAccelerator				3		
 IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
