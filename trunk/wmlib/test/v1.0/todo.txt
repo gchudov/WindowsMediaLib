@@ -32,12 +32,10 @@ IWMCodecAMVideoAccelerator				3
 IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
-IWMCodecVideoAccelerator				2		
 IWMCredentialCallback					1		
 IWMHeaderInfo						12		snarfle		bwkahle
 IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		bwkahle
 IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
-IWMImageInfo						2		
 IWMIndexer						2		snarfle		ready
 IWMIndexer2			IWMIndexer		1		snarfle		ready
 IWMInputMediaProps		IWMMediaProps		2		snarfle		ready
@@ -131,3 +129,5 @@ IWMProximityDetection					1
 IWMReaderAdvanced6		IWMReaderAdvanced5	1		
 IWMRegisteredDevice					14		
 IWMWriterSink						5		
+IWMCodecVideoAccelerator				2		interface is not supported (http://msdn.microsoft.com/en-us/library/aa387405(VS.85).aspx)
+IWMImageInfo						2		Deprecated (http://msdn.microsoft.com/en-us/library/aa388414(VS.85).aspx)

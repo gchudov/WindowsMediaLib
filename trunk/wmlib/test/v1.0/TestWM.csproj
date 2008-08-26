@@ -68,6 +68,7 @@
     <Compile Include="IWMProfile2Test.cs" />
     <Compile Include="IWMProfile3Test.cs" />
     <Compile Include="IWMProfileManager2Test.cs" />
+    <Compile Include="IWMProfileManagerLanguageTest.cs" />
     <Compile Include="IWMProfileManagerTest.cs" />
     <Compile Include="IWMProfileTest.cs" />
     <Compile Include="IWMPropertyVaultTest.cs" />
