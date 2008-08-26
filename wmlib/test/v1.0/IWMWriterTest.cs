@@ -258,7 +258,7 @@ namespace v1._0
         public void AllocateForPostView(short wStreamNum, int cbBuffer, out INSSBuffer ppBuffer, IntPtr pvContext)
         {
             m_Alloc = true;
-            TempBuff b = new TempBuff();
+            TempBuff b = new TempBuff(100000);
             ppBuffer = b as INSSBuffer;
         }
 
@@ -270,17 +270,17 @@ namespace v1._0
         IntPtr m_ip;
         int m_iCurSize;
 
-        public TempBuff()
+        public TempBuff(int i)
         {
-            m_ip = Marshal.AllocCoTaskMem(100000);
-            m_iCurSize = 0;
+            m_ip = Marshal.AllocCoTaskMem(i);
+            m_iCurSize = i;
         }
 
         #region INSSBuffer Members
 
         public void GetLength(out int pdwLength)
         {
-            throw new Exception("The method or operation is not implemented.");
+            pdwLength = m_iCurSize;
         }
 
         public void SetLength(int dwLength)
@@ -290,7 +290,7 @@ namespace v1._0
 
         public void GetMaxLength(out int pdwLength)
         {
-            throw new Exception("The method or operation is not implemented.");
+            pdwLength = m_iCurSize;
         }
 
         public void GetBuffer(out IntPtr ppdwBuffer)
@@ -300,7 +300,8 @@ namespace v1._0
 
         public void GetBufferAndLength(out IntPtr ppdwBuffer, out int pdwLength)
         {
-            throw new Exception("The method or operation is not implemented.");
+            ppdwBuffer = m_ip;
+            pdwLength = m_iCurSize;
         }
 
         #endregion
