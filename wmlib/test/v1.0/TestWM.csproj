@@ -90,6 +90,7 @@
     <Compile Include="IWMRegisterCallbackTest.cs" />
     <Compile Include="IWMSInternalAdminNetSourceTest.cs" />
     <Compile Include="IWMStreamConfig2Test.cs" />
+    <Compile Include="IWMStreamConfig3Test.cs" />
     <Compile Include="IWMStreamConfigTest.cs" />
     <Compile Include="IWMStreamListTest.cs" />
     <Compile Include="IWMSyncReader2Test.cs" />
