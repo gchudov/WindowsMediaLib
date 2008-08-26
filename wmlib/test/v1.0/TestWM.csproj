@@ -88,6 +88,8 @@
     <Compile Include="IWMReaderTest.cs" />
     <Compile Include="IWMReaderTypeNegotiationTest.cs" />
     <Compile Include="IWMRegisterCallbackTest.cs" />
+    <Compile Include="IWMSInternalAdminNetSource2Test.cs" />
+    <Compile Include="IWMSInternalAdminNetSource3Test.cs" />
     <Compile Include="IWMSInternalAdminNetSourceTest.cs" />
     <Compile Include="IWMStreamConfig2Test.cs" />
     <Compile Include="IWMStreamConfig3Test.cs" />
