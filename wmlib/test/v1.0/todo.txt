@@ -74,7 +74,7 @@ IWMReaderNetworkConfig					33		snarfle		ready
 IWMReaderNetworkConfig2		IWMReaderNetworkConfig	13		snarfle		ready
 IWMReaderPlaylistBurn					4		bwkahle
 IWMReaderStreamClock					3		snarfle		ready
-IWMReaderTimecode					2		
+IWMReaderTimecode					2		bwkahle
 IWMReaderTypeNegotiation				1		snarfle		ready
 IWMRegisterCallback					2		snarfle		ready
 IWMSBufferAllocator					2		
