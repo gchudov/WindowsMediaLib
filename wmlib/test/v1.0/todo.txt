@@ -58,7 +58,7 @@ IWMProfile2			IWMProfile		1		snarfle		ready
 IWMProfile3			IWMProfile2		12		snarfle		ready
 IWMProfileManager					6		snarfle		bwkahle
 IWMProfileManager2		IWMProfileManager	2		snarfle		bwkahle
-IWMProfileManagerLanguage				2		
+IWMProfileManagerLanguage				2		snarfle		ready
 IWMPropertyVault					6		snarfle		ready
 IWMReader						11		snarfle		ready
 IWMReaderAccelerator					2		
