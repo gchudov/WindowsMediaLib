@@ -39,7 +39,7 @@ IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
 IWMIndexer						2		snarfle		ready
 IWMIndexer2			IWMIndexer		1		snarfle		ready
 IWMInputMediaProps		IWMMediaProps		2		snarfle		ready
-IWMIStreamProps						1		
+IWMIStreamProps						1		snarfle		
 IWMLanguageList						3		snarfle		ready
 IWMLicenseBackup					2		snarfle		ready
 IWMLicenseRestore					2		snarfle		ready
@@ -69,7 +69,7 @@ IWMReaderAdvanced4		IWMReaderAdvanced3	9		snarfle		ready
 IWMReaderAdvanced5		IWMReaderAdvanced4	1		snarfle		ready
 IWMReaderAllocatorEx					2		snarfle		ready
 IWMReaderCallback		IWMStatusCallback	1		snarfle		ready
-IWMReaderCallbackAdvanced				6		
+IWMReaderCallbackAdvanced				6		snarfle		
 IWMReaderNetworkConfig					33		snarfle		ready
 IWMReaderNetworkConfig2		IWMReaderNetworkConfig	13		snarfle		ready
 IWMReaderPlaylistBurn					4		bwkahle
