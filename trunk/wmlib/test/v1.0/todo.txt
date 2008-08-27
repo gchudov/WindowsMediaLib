@@ -95,7 +95,7 @@ IWMWriterAdvanced2		IWMWriterAdvanced	2		snarfle		ready
 IWMWriterAdvanced3		IWMWriterAdvanced2	2		snarfle		ready
 IWMWriterFileSink		IWMWriterSink		1		snarfle		ready
 IWMWriterFileSink2		IWMWriterFileSink	7		snarfle		ready
-IWMWriterFileSink3		IWMWriterFileSink2	8		
+IWMWriterFileSink3		IWMWriterFileSink2	8		snarfle
 IWMWriterNetworkSink		IWMWriterSink		8		snarfle		ready
 IWMWriterPostView					9		snarfle		ready
 IWMWriterPostViewCallback	IWMStatusCallback	2		snarfle		ready
