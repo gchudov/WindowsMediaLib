@@ -101,6 +101,7 @@ IWMWriterPostView					9		snarfle		ready
 IWMWriterPostViewCallback	IWMStatusCallback	2		snarfle		ready
 IWMWriterPreprocess					5		snarfle		ready
 IWMWriterPushSink		IWMWriterSink		3		
+IWMWriterSink						5		snarfle		ready
 
 
 Candidates for v1.1
@@ -126,7 +127,6 @@ IWMLicenseRevocationAgent				2
 IWMProximityDetection					1		
 IWMReaderAdvanced6		IWMReaderAdvanced5	1		
 IWMRegisteredDevice					14		
-IWMWriterSink						5		
 IWMCodecVideoAccelerator				2		interface is not supported (http://msdn.microsoft.com/en-us/library/aa387405(VS.85).aspx)
 IWMImageInfo						2		Deprecated (http://msdn.microsoft.com/en-us/library/aa388414(VS.85).aspx)
 IWMWatermarkInfo					2		"No watermarking DMOs are provided with the Windows Media Format SDK" http://msdn.microsoft.com/en-us/library/aa390034(VS.85).aspx

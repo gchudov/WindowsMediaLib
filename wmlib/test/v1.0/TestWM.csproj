@@ -106,6 +106,7 @@
     <Compile Include="IWMWriterNetworkSinkTest.cs" />
     <Compile Include="IWMWriterPostViewTest.cs" />
     <Compile Include="IWMWriterPreprocessTest.cs" />
+    <Compile Include="IWMWriterSinkTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
