@@ -43,6 +43,23 @@ namespace WindowsMediaLib
 #if ALLOW_UNTESTED_INTERFACES
 
     [Flags]
+    public enum WM_SFEX
+    {
+        None = 0,
+        NotASyncPoint = 0x2,
+        Dataloss = 0x4
+    }
+
+    [Flags, UnmanagedName("WMT_FILESINK_MODE")]
+    public enum FileSinkMode
+    {
+        None = 0,
+        SingleBuffers = 0x1,
+        FileSinkDataUnits = 0x2,
+        FileSinkUnbuffered = 0x4
+    }
+
+    [Flags]
     public enum MetaDataAccess
     {
         None = 0,
@@ -458,7 +475,7 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_FILESINK_DATA_UNIT")]
-    public struct FileSinkDataUnit
+    public class FileSinkDataUnit
     {
         public BufferSegment packetHeaderBuffer;
         public int cPayloads;
@@ -2992,7 +3009,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
-            [In] int dwFlags,
+            [In] WM_SFEX dwFlags,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
             [In] IntPtr pvContext
@@ -3002,7 +3019,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
-            [In] int dwFlags,
+            [In] WM_SFEX dwFlags,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
             [In] IntPtr pvContext
@@ -4582,11 +4599,11 @@ namespace WindowsMediaLib
             );
 
         void GetMode(
-            out int pdwFileSinkMode
+            out FileSinkMode pdwFileSinkMode
             );
 
         void OnDataUnitEx(
-            [In, MarshalAs(UnmanagedType.LPStruct)] FileSinkDataUnit pFileSinkDataUnit
+            IntPtr pFileSinkDataUnit
             );
 
         void SetUnbufferedIO(

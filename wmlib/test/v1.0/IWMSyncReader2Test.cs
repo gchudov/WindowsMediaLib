@@ -128,12 +128,12 @@ namespace v1._0
 
         #region IWMReaderAllocatorEx Members
 
-        public void AllocateForStreamEx(short wStreamNum, int cbBuffer, out INSSBuffer ppBuffer, int dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
+        public void AllocateForStreamEx(short wStreamNum, int cbBuffer, out INSSBuffer ppBuffer, WM_SFEX dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void AllocateForOutputEx(int dwOutputNum, int cbBuffer, out INSSBuffer ppBuffer, int dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
+        public void AllocateForOutputEx(int dwOutputNum, int cbBuffer, out INSSBuffer ppBuffer, WM_SFEX dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
         {
             throw new Exception("The method or operation is not implemented.");
         }
