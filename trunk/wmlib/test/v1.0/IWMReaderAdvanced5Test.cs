@@ -16,12 +16,17 @@ namespace v1._0
         IWMReaderAdvanced5 m_read;
         private bool m_Opened;
         private bool m_CallbackCalled;
+        private bool m_Decode;
 
         public void DoTests()
         {
+            m_Decode = false;
             Config();
 
             m_read.SetPlayerHook(0, this);
+            (m_read as IWMReader).Start(0, 0, 1.0f, IntPtr.Zero);
+            System.Threading.Thread.Sleep(5000);
+            Debug.Assert(m_Decode);
         }
 
         private void Config()
@@ -100,7 +105,7 @@ namespace v1._0
 
         public void PreDecode()
         {
-            throw new Exception("The method or operation is not implemented.");
+            m_Decode = true;
         }
 
         #endregion
