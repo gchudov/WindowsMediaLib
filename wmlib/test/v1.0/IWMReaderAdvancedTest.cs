@@ -196,7 +196,7 @@ namespace v1._0
 
         #region IWMReaderCallbackAdvanced Members
 
-        public void OnStreamSample(short wStreamNum, long cnsSampleTime, long cnsSampleDuration, int dwFlags, INSSBuffer pSample, IntPtr pvContext)
+        public void OnStreamSample(short wStreamNum, long cnsSampleTime, long cnsSampleDuration, WM_SF dwFlags, INSSBuffer pSample, IntPtr pvContext)
         {
             throw new Exception("The method or operation is not implemented.");
         }

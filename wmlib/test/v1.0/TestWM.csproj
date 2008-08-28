@@ -104,6 +104,7 @@
     <Compile Include="IWMWriterAdvanced2Test.cs" />
     <Compile Include="IWMWriterAdvancedTest.cs" />
     <Compile Include="IWMWriterFileSink2Test.cs" />
+    <Compile Include="IWMWriterFileSink3Test.cs" />
     <Compile Include="IWMWriterFileSinkTest.cs" />
     <Compile Include="IWMWriterNetworkSinkTest.cs" />
     <Compile Include="IWMWriterPostViewTest.cs" />
