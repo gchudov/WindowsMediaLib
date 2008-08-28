@@ -44,8 +44,8 @@ namespace v1._0
                 //IWMClientConnectionsTest t11 = new IWMClientConnectionsTest();
                 //t11.DoTests();
 
-                IWMClientConnections2Test t12 = new IWMClientConnections2Test();
-                t12.DoTests();
+                //IWMClientConnections2Test t12 = new IWMClientConnections2Test();
+                //t12.DoTests();
 
                 //IWMCodecAMVideoAcceleratorTest t13 = new IWMCodecAMVideoAcceleratorTest();
                 //t13.DoTests();
@@ -286,6 +286,9 @@ namespace v1._0
 
                 //IWMReaderAdvanced6Test t92 = new IWMReaderAdvanced6Test();
                 //t92.DoTests();
+
+                //ExternTest t93 = new ExternTest();
+                //t93.DoTests();
 
             }
             catch (Exception e)
