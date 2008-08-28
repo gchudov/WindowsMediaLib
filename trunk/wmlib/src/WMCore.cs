@@ -4612,7 +4612,7 @@ namespace WindowsMediaLib
             );
 
         void OnDataUnitEx(
-            IntPtr pFileSinkDataUnit
+            [In, MarshalAs(UnmanagedType.LPStruct)] FileSinkDataUnit pFileSinkDataUnit
             );
 
         void SetUnbufferedIO(
