@@ -1,6 +1,6 @@
 Functions				Assigned	Reviewer
-WMCheckURLExtension			
-WMCheckURLScheme			
+WMCheckURLExtension			snarfle		ready
+WMCheckURLScheme			snarfle		ready
 WMCreateBackupRestorer			snarfle		bwkahle
 WMCreateEditor				snarfle		bwkahle
 WMCreateIndexer				snarfle		ready
@@ -10,10 +10,10 @@ WMCreateSyncReader			snarfle		ready
 WMCreateWriter				snarfle		bwkahle
 WMCreateWriterFileSink			snarfle		ready
 WMCreateWriterNetworkSink		snarfle		ready
-WMCreateWriterPushSink			
-WMIsAvailableOffline			
-WMIsContentProtected			
-WMValidateData				
+WMCreateWriterPushSink			snarfle		ready
+WMIsAvailableOffline			snarfle		ready
+WMIsContentProtected			snarfle		ready
+WMValidateData				snarfle		ready
 
 
 Interfaces			Parent			Methods		Assigned	Reviewer

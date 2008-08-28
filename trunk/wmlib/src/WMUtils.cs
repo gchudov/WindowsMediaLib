@@ -32,12 +32,8 @@ using WindowsMediaLib.Defs;
 namespace WindowsMediaLib
 {
     #region API Declares
-    sealed public class WMUtils
+    static public class WMUtils
     {
-        private WMUtils()
-        {
-        }
-
         /// <summary>
         ///  Free the nested structures and release any
         ///  COM objects within an WMMediaType struct.
@@ -64,6 +60,45 @@ namespace WindowsMediaLib
 #if ALLOW_UNTESTED_INTERFACES
 
         [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMValidateData(
+            byte[] pbData,
+            ref int pdwDataSize
+            );
+
+        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        public static extern int WMCheckURLExtension(
+            string pwszURL
+            );
+
+        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        public static extern void WMCheckURLScheme(
+            string pwszURLScheme
+            );
+
+        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        public static extern void WMIsAvailableOffline(
+            string pwszURL,
+            string pwszLanguage,
+            [MarshalAs(UnmanagedType.Bool)] out bool pfIsAvailableOffline
+            );
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMCreateDeviceRegistration(
+            out IWMDeviceRegistration ppDevReg
+            );
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMCreateDRMTranscryptor(
+            out IWMDRMTranscryptor ppTranscryptor
+            );
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMCreateLicenseRevocationAgent(
+            [MarshalAs(UnmanagedType.IUnknown)] object pCallback, 
+            out IWMLicenseRevocationAgent ppLicenseRevocationAgent
+            );
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern void WMCreateEditor(
             out IWMMetadataEditor ppMetadataEditor
             );
@@ -84,7 +119,7 @@ namespace WindowsMediaLib
             out IWMProfileManager ppProfileManager
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
         public static extern void WMIsContentProtected(
             string pwszFileName,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsProtected
@@ -184,7 +219,7 @@ namespace WindowsMediaLib
         }
     }
 
-    public class NSResults
+    static public class NSResults
     {
         public const int S_CALLPENDING = unchecked((int)0x000D0000);
         public const int S_CALLABORTED = unchecked((int)0x000D0001);
@@ -1165,16 +1200,8 @@ namespace WindowsMediaLib
         public const int E_REGKEY_NOT_FOUND = unchecked((int)0xC00D006A);
     }
 
-    sealed public class WMError
+    static public class WMError
     {
-        /// <summary>
-        /// Prevent people from trying to instantiate this class
-        /// </summary>
-        private WMError()
-        {
-        }
-
-
         /// <summary>
         /// From #defines in WinBase.h
         /// </summary>
@@ -1305,7 +1332,7 @@ namespace WindowsMediaLib
         }
     }
 
-    sealed public class Constants
+    static public class Constants
     {
         ////////////////////////////////////////////////////////////////
         //
