@@ -56,6 +56,7 @@
     <Compile Include="IWMIndexer2Test.cs" />
     <Compile Include="IWMIndexerTest.cs" />
     <Compile Include="IWMInputMediaPropsTest.cs" />
+    <Compile Include="IWMIStreamPropsTest.cs" />
     <Compile Include="IWMLanguageListTest.cs" />
     <Compile Include="IWMLicenseBackupTest.cs" />
     <Compile Include="IWMLicenseRestoreTest.cs" />

@@ -43,6 +43,15 @@ namespace WindowsMediaLib
 #if ALLOW_UNTESTED_INTERFACES
 
     [Flags]
+    public enum WM_SF
+    {
+        None = 0,
+        CleanPoint = 0x1,
+        Discontinuity = 0x2,
+        Dataloss = 0x4
+    }
+
+    [Flags]
     public enum WM_SFEX
     {
         None = 0,
@@ -1474,9 +1483,9 @@ namespace WindowsMediaLib
     public interface IWMIStreamProps
     {
         void GetProperty(
-            [In] string pszName,
+            [In] StringBuilder pszName,
             out AttrDataType pType,
-            out byte[] pValue,
+            IntPtr pValue,
             ref int pdwSize
             );
     }
@@ -3062,7 +3071,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
-            [In] int dwFlags,
+            [In] WM_SF dwFlags,
             [In] INSSBuffer pSample,
             [In] IntPtr pvContext
             );
@@ -3074,8 +3083,8 @@ namespace WindowsMediaLib
 
         void OnStreamSelection(
             [In] short wStreamCount,
-            [In] short[] pStreamNumbers,
-            [In] StreamSelection[] pSelections,
+            [In, MarshalAs(UnmanagedType.LPArray)] short[] pStreamNumbers,
+            [In, MarshalAs(UnmanagedType.LPArray)] StreamSelection[] pSelections,
             [In] IntPtr pvContext
             );
 
