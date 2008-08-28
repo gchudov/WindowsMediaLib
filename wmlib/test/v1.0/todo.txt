@@ -39,7 +39,7 @@ IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
 IWMIndexer						2		snarfle		ready
 IWMIndexer2			IWMIndexer		1		snarfle		ready
 IWMInputMediaProps		IWMMediaProps		2		snarfle		ready
-IWMIStreamProps						1		snarfle		
+IWMIStreamProps						1		snarfle		ready
 IWMLanguageList						3		snarfle		ready
 IWMLicenseBackup					2		snarfle		ready
 IWMLicenseRestore					2		snarfle		ready
