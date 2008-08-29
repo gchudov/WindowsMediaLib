@@ -28,7 +28,6 @@ IWMBackupRestoreProps					6		snarfle		bwkahle
 IWMBandwidthSharing		IWMStreamList		4		snarfle		ready
 IWMClientConnections					2		bwkahle		snarfle
 IWMClientConnections2		IWMClientConnections	1		bwkahle		snarfle
-IWMCodecAMVideoAccelerator				3		
 IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
@@ -52,7 +51,6 @@ IWMOutputMediaProps		IWMMediaProps		2		snarfle		ready
 IWMPacketSize						2		snarfle		ready
 IWMPacketSize2			IWMPacketSize		2		snarfle		ready
 IWMPlayerHook						1		snarfle		ready
-IWMPlayerTimestampHook					1		
 IWMProfile						18		snarfle		ready
 IWMProfile2			IWMProfile		1		snarfle		ready
 IWMProfile3			IWMProfile2		12		snarfle		ready
@@ -61,7 +59,6 @@ IWMProfileManager2		IWMProfileManager	2		snarfle		bwkahle
 IWMProfileManagerLanguage				2		snarfle		ready
 IWMPropertyVault					6		snarfle		ready
 IWMReader						11		snarfle		ready
-IWMReaderAccelerator					2		
 IWMReaderAdvanced					20		snarfle		ready
 IWMReaderAdvanced2		IWMReaderAdvanced	15		snarfle		ready
 IWMReaderAdvanced3		IWMReaderAdvanced2	2		snarfle		ready
@@ -131,3 +128,11 @@ IWMCodecVideoAccelerator				2		interface is not supported (http://msdn.microsoft
 IWMImageInfo						2		Deprecated (http://msdn.microsoft.com/en-us/library/aa388414(VS.85).aspx)
 IWMWatermarkInfo					2		"No watermarking DMOs are provided with the Windows Media Format SDK" http://msdn.microsoft.com/en-us/library/aa390034(VS.85).aspx
 IWMSBufferAllocator					2		This interface is available only on Windows Server 2003 (http://msdn.microsoft.com/en-us/library/aa389626(VS.85).aspx)
+
+
+These 3 interfaces are only useful when writing a DirectShow filter (see http://msdn.microsoft.com/en-us/library/aa385715.aspx).
+Since you can't do that in c#, there's no reason (in fact, no way) to test these.
+
+IWMCodecAMVideoAccelerator				3		
+IWMPlayerTimestampHook					1		
+IWMReaderAccelerator					2		
