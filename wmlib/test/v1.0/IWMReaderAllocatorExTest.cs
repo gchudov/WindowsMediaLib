@@ -37,7 +37,7 @@ namespace v1._0
             INSSBuffer pSamp;
             long l;
             long d;
-            WriteFlags f;
+            WM_SF f;
             int i;
             short s;
 
@@ -55,7 +55,7 @@ namespace v1._0
             INSSBuffer pSamp;
             long l;
             long d;
-            WriteFlags f;
+            WM_SF f;
             int i;
             short s;
 

@@ -64,7 +64,7 @@ namespace v1._0
 
         }
 
-        public void OnSample(int dwOutputNum, long cnsSampleTime, long cnsSampleDuration, WriteFlags dwFlags, INSSBuffer pSample, IntPtr pvContext)
+        public void OnSample(int dwOutputNum, long cnsSampleTime, long cnsSampleDuration, WM_SF dwFlags, INSSBuffer pSample, IntPtr pvContext)
         {
             //throw new Exception("The method or operation is not implemented.");
             if (pvContext.ToInt32() == 567)

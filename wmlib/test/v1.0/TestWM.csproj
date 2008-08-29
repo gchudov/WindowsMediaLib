@@ -83,6 +83,7 @@
     <Compile Include="IWMReaderAdvanced5Test.cs" />
     <Compile Include="IWMReaderAdvancedTest.cs" />
     <Compile Include="IWMReaderAllocatorExTest.cs" />
+    <Compile Include="IWMReaderCallbackAdvancedTest.cs" />
     <Compile Include="IWMReaderCallbackTest.cs" />
     <Compile Include="IWMReaderNetworkConfigTest.cs">
       <SubType>Code</SubType>

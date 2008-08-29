@@ -92,7 +92,7 @@ namespace v1._0
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void OnPostViewSample(short wStreamNumber, long cnsSampleTime, long cnsSampleDuration, WriteFlags dwFlags, INSSBuffer pSample, IntPtr pvContext)
+        public void OnPostViewSample(short wStreamNumber, long cnsSampleTime, long cnsSampleDuration, WM_SF dwFlags, INSSBuffer pSample, IntPtr pvContext)
         {
             throw new Exception("The method or operation is not implemented.");
         }
