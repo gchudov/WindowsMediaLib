@@ -79,7 +79,7 @@ namespace v1._0
             INSSBuffer pSamp;
             long l;
             long d;
-            WriteFlags f;
+            WM_SF f;
             int i;
             short s;
             m_read.GetNextSample(1, out pSamp, out l, out d, out f, out i, out s);

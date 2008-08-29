@@ -69,7 +69,7 @@ IWMReaderAdvanced4		IWMReaderAdvanced3	9		snarfle		ready
 IWMReaderAdvanced5		IWMReaderAdvanced4	1		snarfle		ready
 IWMReaderAllocatorEx					2		snarfle		ready
 IWMReaderCallback		IWMStatusCallback	1		snarfle		ready
-IWMReaderCallbackAdvanced				6		snarfle		
+IWMReaderCallbackAdvanced				6		snarfle		ready
 IWMReaderNetworkConfig					33		snarfle		ready
 IWMReaderNetworkConfig2		IWMReaderNetworkConfig	13		snarfle		ready
 IWMReaderPlaylistBurn					4		bwkahle

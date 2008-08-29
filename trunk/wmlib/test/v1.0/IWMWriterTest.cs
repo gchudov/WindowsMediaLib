@@ -63,7 +63,7 @@ namespace v1._0
 
             m_Writer.BeginWriting();
             INSSBuffer pSample = WriteOne(b);
-            m_Writer.WriteSample(0, 1, WriteFlags.CleanPoint, pSample);
+            m_Writer.WriteSample(0, 1, WM_SF.CleanPoint, pSample);
             m_Writer.Flush();
             TestAdvanced(b);
             m_Writer.EndWriting();
@@ -79,7 +79,7 @@ namespace v1._0
             Debug.Assert(ws.dwCurrentBitrate > 0);
 
             INSSBuffer pSample = WriteOne(b);
-            adv.WriteStreamSample(1, 1234, 5678, 101001, WriteFlags.CleanPoint, pSample);
+            adv.WriteStreamSample(1, 1234, 5678, 101001, WM_SF.CleanPoint, pSample);
         }
 
         private INSSBuffer WriteOne(Bitmap hBitmap)
@@ -249,7 +249,7 @@ namespace v1._0
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public void OnPostViewSample(short wStreamNumber, long cnsSampleTime, long cnsSampleDuration, WriteFlags dwFlags, INSSBuffer pSample, IntPtr pvContext)
+        public void OnPostViewSample(short wStreamNumber, long cnsSampleTime, long cnsSampleDuration, WM_SF dwFlags, INSSBuffer pSample, IntPtr pvContext)
         {
             Debug.Assert(pSample != null && pvContext.ToInt32() == 17);
             m_ViewSample = true;

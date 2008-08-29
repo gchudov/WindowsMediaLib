@@ -42,7 +42,7 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [Flags]
+    [Flags, UnmanagedName("From unnamed enum")]
     public enum WM_SF
     {
         None = 0,
@@ -99,15 +99,6 @@ namespace WindowsMediaLib
         None = 0,
         OverWrite = 0x00000001,
         Individualize = 0x00000002
-    }
-
-    [Flags, UnmanagedName("From unnamed enum")]
-    public enum WriteFlags
-    {
-        None = 0,
-        CleanPoint = 0x1,
-        DisContinuity = 0x2,
-        DataLoss = 0x4
     }
 
     [Flags, UnmanagedName("WMT_CREDENTIAL_FLAGS")]
@@ -3056,7 +3047,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
-            [In] WriteFlags dwFlags,
+            [In] WM_SF dwFlags,
             [In] INSSBuffer pSample,
             [In] IntPtr pvContext
             );
@@ -3083,14 +3074,14 @@ namespace WindowsMediaLib
 
         void OnStreamSelection(
             [In] short wStreamCount,
-            [In, MarshalAs(UnmanagedType.LPArray)] short[] pStreamNumbers,
-            [In, MarshalAs(UnmanagedType.LPArray)] StreamSelection[] pSelections,
+            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex=0)] short[] pStreamNumbers,
+            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex=0)] StreamSelection[] pSelections,
             [In] IntPtr pvContext
             );
 
         void OnOutputPropsChanged(
             [In] int dwOutputNum,
-            [In] AMMediaType pMediaType,
+            [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pMediaType,
             [In] IntPtr pvContext
             );
 
@@ -3845,7 +3836,7 @@ namespace WindowsMediaLib
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
             out long pcnsDuration,
-            out WriteFlags pdwFlags,
+            out WM_SF pdwFlags,
             out int pdwOutputNum,
             out short pwStreamNum
             );
@@ -3966,7 +3957,7 @@ namespace WindowsMediaLib
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
             out long pcnsDuration,
-            out WriteFlags pdwFlags,
+            out WM_SF pdwFlags,
             out int pdwOutputNum,
             out short pwStreamNum
             );
@@ -4203,7 +4194,7 @@ namespace WindowsMediaLib
         void WriteSample(
             [In] int dwInputNum,
             [In] long cnsSampleTime,
-            [In] WriteFlags dwFlags,
+            [In] WM_SF dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4237,7 +4228,7 @@ namespace WindowsMediaLib
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
             [In] long cnsSampleDuration,
-            [In] WriteFlags dwFlags,
+            [In] WM_SF dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4296,7 +4287,7 @@ namespace WindowsMediaLib
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
             [In] long cnsSampleDuration,
-            [In] WriteFlags dwFlags,
+            [In] WM_SF dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4373,7 +4364,7 @@ namespace WindowsMediaLib
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
             [In] long cnsSampleDuration,
-            [In] WriteFlags dwFlags,
+            [In] WM_SF dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4757,7 +4748,7 @@ namespace WindowsMediaLib
             [In] short wStreamNumber,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
-            [In] WriteFlags dwFlags,
+            [In] WM_SF dwFlags,
             [In] INSSBuffer pSample,
             [In] IntPtr pvContext
             );

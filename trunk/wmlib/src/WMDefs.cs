@@ -61,7 +61,7 @@ namespace WindowsMediaLib.Defs
         /// <summary> MEDIATYPE_File </summary>
         public static readonly Guid File = new Guid(0x656c6966, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
 
-        /// <summary> MEDIATYPE_ScriptCommand </summary>
+        /// <summary> MEDIATYPE_ScriptCommand or WMMEDIATYPE_Script </summary>
         public static readonly Guid ScriptCommand = new Guid(0x73636d64, 0x0000, 0x0010, 0x80, 0x00, 0x00, 0xaa, 0x00, 0x38, 0x9b, 0x71);
 
         /// <summary> MEDIATYPE_AUXLine21Data </summary>
