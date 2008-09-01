@@ -341,13 +341,13 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMDRM_IMPORT_INIT_STRUCT")]
-    public struct WMDRM_IMPORT_INIT_STRUCT
+    public class WMDRM_IMPORT_INIT_STRUCT
     {
-        int dwVersion;
-        int cbEncryptedSessionKeyMessage;
-        IntPtr pbEncryptedSessionKeyMessage;
-        int cbEncryptedKeyMessage;
-        IntPtr pbEncryptedKeyMessage;
+        public int dwVersion;
+        public int cbEncryptedSessionKeyMessage;
+        public IntPtr pbEncryptedSessionKeyMessage;
+        public int cbEncryptedKeyMessage;
+        public IntPtr pbEncryptedKeyMessage;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS")]
@@ -543,26 +543,35 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
+
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("45086030-F7E4-486a-B504-826BB5792A3B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IConfigAsfWriter
     {
-        void ConfigureFilterUsingProfileId([In] int dwProfileId);
+        void ConfigureFilterUsingProfileId(
+            [In] int dwProfileId);
 
-        void GetCurrentProfileId([Out] out int pdwProfileId);
+        void GetCurrentProfileId(
+            [Out] out int pdwProfileId);
 
-        void ConfigureFilterUsingProfileGuid([In, MarshalAs(UnmanagedType.LPStruct)] Guid guidProfile);
+        void ConfigureFilterUsingProfileGuid(
+            [In, MarshalAs(UnmanagedType.LPStruct)] Guid guidProfile);
 
-        void GetCurrentProfileGuid([Out] out Guid pProfileGuid);
+        void GetCurrentProfileGuid(
+            [Out] out Guid pProfileGuid);
 
-        void ConfigureFilterUsingProfile([In] IWMProfile pProfile);
+        void ConfigureFilterUsingProfile(
+            [In] IWMProfile pProfile);
 
-        void GetCurrentProfileGuid([Out] out IWMProfile ppProfile);
+        void GetCurrentProfileGuid(
+            [Out] out IWMProfile ppProfile);
 
-        void SetIndexMode([In, MarshalAs(UnmanagedType.Bool)] bool bIndexFile);
+        void SetIndexMode(
+            [In, MarshalAs(UnmanagedType.Bool)] bool bIndexFile);
 
-        void GetIndexMode([Out, MarshalAs(UnmanagedType.Bool)] out bool pbIndexFile);
+        void GetIndexMode(
+            [Out, MarshalAs(UnmanagedType.Bool)] out bool pbIndexFile);
     }
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
@@ -1543,7 +1552,7 @@ namespace WindowsMediaLib
             );
 
         void SetMediaType(
-            [In] AMMediaType pType
+            [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pType
             );
     }
 
@@ -1714,7 +1723,7 @@ namespace WindowsMediaLib
             );
 
         new void SetMediaType(
-            [In] AMMediaType pType
+            [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pType
             );
 
         #endregion
@@ -2292,7 +2301,7 @@ namespace WindowsMediaLib
 
         void Notify(
             [In] int dwOutputNum,
-            [In] AMMediaType pSubtype
+            [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pSubtype
             );
     }
 
@@ -2756,8 +2765,8 @@ namespace WindowsMediaLib
 
         void StartAtPosition(
             [In] short wStreamNum,
-            [In] RA3Union pvOffsetStart,
-            [In] RA3Union pvDuration,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvOffsetStart,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
@@ -2951,8 +2960,8 @@ namespace WindowsMediaLib
 
         new void StartAtPosition(
             [In] short wStreamNum,
-            [In] RA3Union pvOffsetStart,
-            [In] RA3Union pvDuration,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvOffsetStart,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
@@ -4101,7 +4110,7 @@ namespace WindowsMediaLib
             );
 
         new void SetMediaType(
-            [In] AMMediaType pType
+            [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pType
             );
 
         #endregion
@@ -4682,7 +4691,8 @@ namespace WindowsMediaLib
     public interface IWMWriterPostView
     {
         void SetPostViewCallback(
-            IWMWriterPostViewCallback pCallback, IntPtr pvContext
+            IWMWriterPostViewCallback pCallback, 
+            IntPtr pvContext
             );
 
         void SetReceivePostViewSamples(
@@ -5083,7 +5093,7 @@ namespace WindowsMediaLib
             );
 
         void NegotiateConnection(
-            [In] AMMediaType pMediaType
+            [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pMediaType
             );
 
         void SetPlayerNotify(
@@ -5098,7 +5108,7 @@ namespace WindowsMediaLib
     {
         void NegotiateConnection(
             [In, MarshalAs(UnmanagedType.Interface)] object pIAMVA,
-            [In] AMMediaType pMediaType
+            [In, MarshalAs(UnmanagedType.LPStruct)] AMMediaType pMediaType
             );
 
         void SetPlayerNotify(
@@ -5615,8 +5625,8 @@ namespace WindowsMediaLib
 
         new void StartAtPosition(
             [In] short wStreamNum,
-            [In] RA3Union pvOffsetStart,
-            [In] RA3Union pvDuration,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvOffsetStart,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
@@ -5859,8 +5869,8 @@ namespace WindowsMediaLib
 
         new void StartAtPosition(
             [In] short wStreamNum,
-            [In] RA3Union pvOffsetStart,
-            [In] RA3Union pvDuration,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvOffsetStart,
+            [In, MarshalAs(UnmanagedType.LPStruct)] RA3Union pvDuration,
             [In] OffsetFormat dwOffsetFormat,
             [In] float fRate,
             [In] IntPtr pvContext
@@ -5935,7 +5945,7 @@ namespace WindowsMediaLib
     {
         void InitPlaylistBurn(
             int cFiles,
-            string ppwszFilenames,
+            [In] string ppwszFilenames,
             IWMStatusCallback pCallback,
             IntPtr pvContext);
 
@@ -6083,7 +6093,7 @@ namespace WindowsMediaLib
         #endregion
 
         void SetProtectStreamSamples(
-            /* [in] */ WMDRM_IMPORT_INIT_STRUCT pImportInitStruct);
+            [In, MarshalAs(UnmanagedType.LPStruct)] WMDRM_IMPORT_INIT_STRUCT pImportInitStruct);
     }
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
