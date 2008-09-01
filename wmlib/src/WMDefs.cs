@@ -574,11 +574,11 @@ namespace WindowsMediaLib.Defs
     [StructLayout(LayoutKind.Sequential, Pack=2), UnmanagedName("WAVEFORMAT")]
     public class WaveFormat
     {
-        short wFormatTag;        /* format type */
-        short nChannels;         /* number of channels (i.e. mono, stereo, etc.) */
-        int nSamplesPerSec;    /* sample rate */
-        int nAvgBytesPerSec;   /* for buffer estimation */
-        short nBlockAlign;       /* block size of data */
+        public short wFormatTag;        /* format type */
+        public short nChannels;         /* number of channels (i.e. mono, stereo, etc.) */
+        public int nSamplesPerSec;    /* sample rate */
+        public int nAvgBytesPerSec;   /* for buffer estimation */
+        public short nBlockAlign;       /* block size of data */
     }
 
     /// <summary>
