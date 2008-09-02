@@ -70,19 +70,6 @@ namespace v1._0
             WaitForStatus(Status.Stopped);
         }
 
-#if false
-        void GetOutputProps(
-            [In] int dwOutputNum,
-            out IWMOutputMediaProps ppOutput
-            );
-
-        void SetOutputProps(
-            [In] int dwOutputNum,
-            [In] IWMOutputMediaProps pOutput
-            );
-
-#endif
-
         private void TestClose()
         {
             m_read.Close();

@@ -39,11 +39,4 @@ namespace v1._0
         }
 
     }
-
-#if false
-        void RemoveMutualExclusion(
-            [In] IWMMutualExclusion pME
-            );
-
-#endif
 }

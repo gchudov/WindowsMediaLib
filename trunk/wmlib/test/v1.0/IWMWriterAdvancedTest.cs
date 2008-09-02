@@ -79,22 +79,6 @@ namespace v1._0
             m_Writer.GetSinkCount(out i);
             Debug.Assert(i == 0);
         }
-#if false
-        void (
-            [In] short wStreamNum,
-            [In] long cnsSampleTime,
-            [In] int msSampleSendTime,
-            [In] long cnsSampleDuration,
-            [In] WriteFlags dwFlags,
-            [In] INSSBuffer pSample
-            );
-
-        void (
-            [In] short wStreamNum,
-            out WriterStatistics pStats
-            );
-
-#endif
 
         private void Config()
         {
