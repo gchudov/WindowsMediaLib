@@ -156,13 +156,6 @@ namespace v1._0
             m_read.SetOutputProps(1, p);
         }
 
-#if false
-
-        void OpenStream(
-            [In] IStream pStream
-            );
-
-#endif
         private void Config()
         {
             IWMIndexer pIndex;

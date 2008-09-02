@@ -62,13 +62,6 @@ namespace v1._0
             m_pSink.Close();
         }
 
-#if false
-        void Disconnect();
-
-        void Close();
-
-#endif
-
         private void Config()
         {
             WMUtils.WMCreateWriterNetworkSink(out m_pSink);
