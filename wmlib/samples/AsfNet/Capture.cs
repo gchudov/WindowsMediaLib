@@ -1,4 +1,11 @@
-// Copyright 2005 - David Wohlferd david@LimeGreenSocks.com
+/****************************************************************************
+While the underlying libraries are covered by LGPL, this sample is released 
+as public domain.  It is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+or FITNESS FOR A PARTICULAR PURPOSE.  
+
+From http://windowsmedianet.sourceforge.net
+*****************************************************************************/
 
 using System;
 using System.Runtime.InteropServices;
@@ -53,16 +60,13 @@ namespace AsfNet
         /// <returns></returns>
         public string GetURL()
         {
-            int hr;
             int iSize = 0;
 
             // Call the function once to get the size
-            hr = m_pNetSink.GetHostURL(null, ref iSize);
-            WMError.ThrowExceptionForHR(hr);
+            m_pNetSink.GetHostURL(null, ref iSize);
 
             StringBuilder sRet = new StringBuilder(iSize, iSize);
-            hr = m_pNetSink.GetHostURL(sRet, ref iSize);
-            WMError.ThrowExceptionForHR(hr);
+            m_pNetSink.GetHostURL(sRet, ref iSize);
 
             // Trim off the trailing null
             return sRet.ToString().Substring(0, iSize - 1);
@@ -211,8 +215,7 @@ namespace AsfNet
                 // Windows Media Video 8 for Dial-up Modem (No audio, 56 Kbps)
                 Guid cat = new Guid(0x6E2A6955, 0x81DF, 0x4943, 0xBA, 0x50, 0x68, 0xA9, 0x86, 0xA7, 0x08, 0xF6);
 
-                hr = lConfig.ConfigureFilterUsingProfileGuid(cat);
-                DsError.ThrowExceptionForHR( hr );
+                lConfig.ConfigureFilterUsingProfileGuid(cat);
             }
             finally
             {
@@ -232,7 +235,6 @@ namespace AsfNet
         /// <param name="asfWriter">IBaseFilter from which to get the IWMWriterAdvanced</param>
         void DoAnet(IBaseFilter asfWriter)
         {
-            int hr;
             int dwPortNum = PortNum;
 
             // Get the IWMWriterAdvanced
@@ -244,28 +246,22 @@ namespace AsfNet
                 RemoveAllSinks(pWriterAdvanced);
 
                 // Say we are using live data
-                hr = pWriterAdvanced.SetLiveSource(true);
-                WMError.ThrowExceptionForHR( hr );
+                pWriterAdvanced.SetLiveSource(true);
 
                 // Create a network sink
-                hr = WMUtils.WMCreateWriterNetworkSink(out m_pNetSink);
-                WMError.ThrowExceptionForHR( hr );
+                WMUtils.WMCreateWriterNetworkSink(out m_pNetSink);
 
                 // Configure the network sink
-                hr = m_pNetSink.SetNetworkProtocol(NetProtocol.HTTP);
-                WMError.ThrowExceptionForHR( hr );
+                m_pNetSink.SetNetworkProtocol(NetProtocol.HTTP);
 
                 // Configure the network sink
-                hr = m_pNetSink.SetMaximumClients(MaxClients);
-                WMError.ThrowExceptionForHR( hr );
+                m_pNetSink.SetMaximumClients(MaxClients);
 
                 // Done configuring the network sink, open it
-                hr = m_pNetSink.Open(ref dwPortNum);
-                WMError.ThrowExceptionForHR( hr );
+                m_pNetSink.Open(ref dwPortNum);
 				
                 // Add the network sink to the IWMWriterAdvanced
-                hr = pWriterAdvanced.AddSink(m_pNetSink as IWMWriterSink);
-                WMError.ThrowExceptionForHR( hr );
+                pWriterAdvanced.AddSink(m_pNetSink as IWMWriterSink);
             }
             finally
             {
@@ -284,7 +280,7 @@ namespace AsfNet
 
             // I don't understand why we can't just QueryInterface for a IWMWriterAdvanced, but
             // we just can't.  So, we use an IServiceProvider
-            WindowsMediaLib.IServiceProvider pProvider = asfWriter as WindowsMediaLib.IServiceProvider;
+            DirectShowLib.IServiceProvider pProvider = asfWriter as DirectShowLib.IServiceProvider;
 
             if (pProvider != null)
             {
@@ -308,16 +304,13 @@ namespace AsfNet
             IWMWriterSink ppSink;
             int iSinkCount;
 
-            int hr = pWriterAdvanced.GetSinkCount(out iSinkCount);
-            WMError.ThrowExceptionForHR( hr );
+            pWriterAdvanced.GetSinkCount(out iSinkCount);
 
             for(int x=iSinkCount - 1; x >= 0; x--)
             {
-                hr = pWriterAdvanced.GetSink(x, out ppSink);
-                WMError.ThrowExceptionForHR( hr );
+                pWriterAdvanced.GetSink(x, out ppSink);
 
-                hr = pWriterAdvanced.RemoveSink(ppSink);
-                WMError.ThrowExceptionForHR( hr );
+                pWriterAdvanced.RemoveSink(ppSink);
             }
         }
 
