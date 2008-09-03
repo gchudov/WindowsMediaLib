@@ -1,8 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C# Express 2005
+# Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DESCombineLib-2005", "DESCombineLib\DESCombineLib-2005.csproj", "{A10D4671-34C7-4AD8-B537-B2B9C48242F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCombine-2005", "TestCombine\TestCombine-2005.csproj", "{B20FEBE5-4895-4930-8017-C7614AB6C49B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5BC40F4-19B0-461C-A218-D1CA7E35B23A}"
+	ProjectSection(SolutionItems) = preProject
+		readme.txt = readme.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

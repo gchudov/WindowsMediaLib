@@ -86,9 +86,9 @@
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
     </Reference>
-    <Reference Include="WindowsMediaLib, Version=0.9.0.0, Culture=neutral">
+    <Reference Include="WindowsMediaLib, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\WindowsMediaLib.dll</HintPath>
+      <HintPath>..\..\..\src\bin\Debug\WindowsMediaLib.dll</HintPath>
     </Reference>
     <ProjectReference Include="..\DESCombineLib\DESCombineLib-2005.csproj">
       <Name>DESCombineLib-2005</Name>
@@ -109,9 +109,11 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

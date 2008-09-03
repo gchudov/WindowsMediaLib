@@ -1,10 +1,20 @@
+/************************************************************************
+DesCombine - Join and split files, outputting data to a WM file.
+
+While the underlying libraries are covered by LGPL, this sample is released 
+as public domain.  It is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+or FITNESS FOR A PARTICULAR PURPOSE.  
+
+**************************************************************************/
+
 This is the same sample as is included with DirectShowLib, but adds support for WM files.  To
 use the default WM profile that is included, your input file must have BOTH video and audio.
 To create your own profiles, use GenProfile from the MS WMF SDK.
 
-The DESCombine can be used to combine multiple audio and video files, or specific sections
+The DESCombine class can be used to combine multiple audio and video files, or specific sections
 of those files into a single output.  For example, you can take seconds 5-9 of videofile1.avi
-combine them with seconds 2-7 of videofile2.mpg, and output them to foo.avi.  Similarly with
+combine them with seconds 2-7 of videofile2.mpg, and output them to foo.wmv.  Similarly with
 audio files.  Note that this is only a small subset of what can be done with DES.
 
 When using the sample program, if you want to use both the video and audio from a file, you
