@@ -4,7 +4,7 @@ as public domain.  It is distributed in the hope that it will be useful, but
 WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
 or FITNESS FOR A PARTICULAR PURPOSE.  
 
-Written by snarfle@sourceforge.net
+From http://windowsmedianet.sourceforge.net
 *****************************************************************************/
 
 using System;
@@ -669,8 +669,7 @@ namespace DESCombineLib
                 DESError.ThrowExceptionForHR(hr);
 
                 // Create a Profile manager (used to process the profile parameter)
-                hr = WMUtils.WMCreateProfileManager(out pProfileManager);
-                WMError.ThrowExceptionForHR(hr);
+                WMUtils.WMCreateProfileManager(out pProfileManager);
 
                 try
                 {
@@ -692,8 +691,7 @@ namespace DESCombineLib
 
                             // Set the profile we got into the writer.  This controls compression, video
                             // size, # of video channels, # of audio channels, etc
-                            hr = icaw.ConfigureFilterUsingProfile(pProfile);
-                            WMError.ThrowExceptionForHR(hr);
+                            icaw.ConfigureFilterUsingProfile(pProfile);
 
                             int NumGroups;
                             hr = m_pTimeline.GetGroupCount(out NumGroups);
@@ -950,7 +948,7 @@ namespace DESCombineLib
             const int E_ABORT = unchecked((int)0x80004004);
 
             int hr;
-            int p1, p2;
+            IntPtr p1, p2;
             EventCode ec;
             EventCode exitCode = 0;
 
@@ -982,7 +980,7 @@ namespace DESCombineLib
                         case EC_VideoFileComplete:
                             if (FileCompleted != null)
                             {
-                                MediaFile mf = m_Video.File(p1);
+                                MediaFile mf = m_Video.File(p1.ToInt32());
                                 FileCompletedArgs ca = new FileCompletedArgs(mf.FileName, FileCompletedArgs.FileType.Video);
                                 FileCompleted(this, ca);
                             }
@@ -992,7 +990,7 @@ namespace DESCombineLib
                         case EC_AudioFileComplete:
                             if (FileCompleted != null)
                             {
-                                MediaFile mf = m_Audio.File(p1);
+                                MediaFile mf = m_Audio.File(p1.ToInt32());
                                 FileCompletedArgs ca = new FileCompletedArgs(mf.FileName, FileCompletedArgs.FileType.Audio);
                                 FileCompleted(this, ca);
                             }
@@ -1157,7 +1155,6 @@ namespace DESCombineLib
             bool bRet = false;
             AMMediaType [] pmt = new AMMediaType[1];
             IEnumMediaTypes ppEnum;
-            int i;
 
             // Walk the MediaTypes for the pin
             hr = pPin.EnumMediaTypes(out ppEnum);
@@ -1166,7 +1163,7 @@ namespace DESCombineLib
             try
             {
                 // Just read the first one
-                hr = ppEnum.Next(1, pmt, out i);
+                hr = ppEnum.Next(1, pmt, IntPtr.Zero);
                 DESError.ThrowExceptionForHR(hr);
 
                 bRet = pmt[0].majorType == MediaType.Video;
@@ -1527,7 +1524,7 @@ namespace DESCombineLib
             if (m_iCurFrame >= m_iMaxFrame)
             {
                 // Send the notification
-                int hr = m_pEventSink.Notify(m_ec, m_iCurFile, m_iCurFrame);
+                int hr = m_pEventSink.Notify(m_ec, new IntPtr(m_iCurFile), new IntPtr(m_iCurFrame));
 
                 // Find the next file
                 m_iCurFile++;
