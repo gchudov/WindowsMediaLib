@@ -1,31 +1,12 @@
 /************************************************************************
+AsfCreate - Creates an Asf or WMV file from a collection of bitmaps
 
-DirectShowLib - Provide access to DirectShow interfaces via .NET
-Copyright (C) 2005
-http://sourceforge.net/projects/directshownet/
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+While the underlying libraries are covered by LGPL, this sample is released 
+as public domain.  It is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+or FITNESS FOR A PARTICULAR PURPOSE.  
 
 **************************************************************************/
-
----------------------------------------------------------------------
-CreateAsf
-
-A .NET sample application for creating Asf or WMV files from a collection of bitmaps
-  
----------------------------------------------------------------------
 
 There are some useful comments at the top of CwmvFile.cs.
 
@@ -47,3 +28,11 @@ Not really much to say.  Create an instance of the class, then pass it bitmaps:
     }
     f.Close();
 
+Probably the most common question about this sample is how to change the format
+of the output (ie other than "No audio, 56 Kbps".  The easy answer is to say "use
+one of the other formats in %windir%\WMSysPr9.prx".  Unfortunately there aren't very 
+many formats in that file that don't have audio.
+
+The other answer is to suggest that you read the WMF docs about 
+IWMProfileManager::LoadProfileByData.  You can generate profiles for that method using
+a tool from MS's WMF sdk named GenProfile.
