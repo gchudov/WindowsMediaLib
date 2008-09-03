@@ -1,15 +1,18 @@
+/****************************************************************************
+While the underlying libraries are covered by LGPL, this sample is released 
+as public domain.  It is distributed in the hope that it will be useful, but 
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY 
+or FITNESS FOR A PARTICULAR PURPOSE.  
+
+From http://windowsmedianet.sourceforge.net
+*****************************************************************************/
+
 // ---------------------------------------------------------------------
 //  CwmvFile
 //  A .NET class library for creating asf files from a collection of bitmaps
-//  
-//    Copyright (c) 2005 David Wohlferd
-//    david@LimeGreenSocks.com
 // ---------------------------------------------------------------------
 // 
-// This code is released "free of charge for personal, educational and commercial
-// use." I only ask that you give me credit for my work.
-//
-// In that light, the original outline of this code came from a C++ project
+// The original outline of this code came from a C++ project
 // by P.GopalaKrishna (http://www.codeproject.com/bitmap/createmovie.asp).
 // 
 // Things to know when using this class:
@@ -68,9 +71,8 @@ namespace AsfCreate
         /// <param name="iFrameRate">Frames Per Second</param>
         public CwmvFile(string lpszFileName, ref Guid guidProfileID, int iFrameRate)
         {
-            int hr;
             Guid    guidInputType;
-            int    dwInputCount = 0;
+            int    dwInputCount;
 
             IWMProfileManager pWMProfileManager = null;
             IWMProfile pWMProfile = null;
@@ -88,32 +90,26 @@ namespace AsfCreate
             try
             {
                 // Open the profile manager
-                hr = WMUtils.WMCreateProfileManager(out pWMProfileManager);
-                Marshal.ThrowExceptionForHR(hr);
+                WMUtils.WMCreateProfileManager(out pWMProfileManager);
 
                 // Convert pWMProfileManager to a IWMProfileManager2
                 IWMProfileManager2 pProfileManager2 = (IWMProfileManager2)pWMProfileManager;
 
                 // Specify the version number of the profiles to use
-                hr = pProfileManager2.SetSystemProfileVersion(WMVersion.V8_0);
-                Marshal.ThrowExceptionForHR(hr);
+                pProfileManager2.SetSystemProfileVersion(WMVersion.V8_0);
 
                 // Load the profile specified by the caller
-                hr = pProfileManager2.LoadProfileByID(guidProfileID, out pWMProfile);
-                Marshal.ThrowExceptionForHR(hr);
+                pProfileManager2.LoadProfileByID(guidProfileID, out pWMProfile);
 
                 // Create a writer.  This is the interface we actually write with
-                hr = WMUtils.WMCreateWriter(IntPtr.Zero, out m_pWMWriter);
-                Marshal.ThrowExceptionForHR(hr);
+                WMUtils.WMCreateWriter(IntPtr.Zero, out m_pWMWriter);
 
                 // Set the profile we got into the writer.  This controls compression, video
                 // size, # of video channels, # of audio channels, etc
-                hr = m_pWMWriter.SetProfile(pWMProfile);
-                Marshal.ThrowExceptionForHR(hr);
+                m_pWMWriter.SetProfile(pWMProfile);
 
                 // Find out how many inputs are in the current profile
-                hr = m_pWMWriter.GetInputCount(out dwInputCount);
-                Marshal.ThrowExceptionForHR(hr);
+                m_pWMWriter.GetInputCount(out dwInputCount);
 
                 // Assume we won't find any video pins
                 m_dwVideoInput = -1;
@@ -122,12 +118,10 @@ namespace AsfCreate
                 for (int i=0; i < dwInputCount; i++)
                 {
                     // Get the properties of channel #i
-                    hr = m_pWMWriter.GetInputProps(i, out m_pInputProps);
-                    Marshal.ThrowExceptionForHR(hr);
+                    m_pWMWriter.GetInputProps(i, out m_pInputProps);
 
                     // Read the type of the channel
-                    hr = m_pInputProps.GetType(out guidInputType);
-                    Marshal.ThrowExceptionForHR(hr);
+                    m_pInputProps.GetType(out guidInputType);
 
                     // If it is video, we are done
                     if (guidInputType == MediaType.Video)
@@ -144,8 +138,7 @@ namespace AsfCreate
                 }
 
                 // Specify the file name for the output
-                hr = m_pWMWriter.SetOutputFilename(lpszFileName);
-                Marshal.ThrowExceptionForHR(hr);
+                m_pWMWriter.SetOutputFilename(lpszFileName);
             }
             catch
             {
@@ -188,7 +181,11 @@ namespace AsfCreate
                 if (m_pWMWriter != null)
                 {
                     // Close the file
-                    int hr = m_pWMWriter.EndWriting();
+                    try
+                    {
+                        m_pWMWriter.EndWriting();
+                    }
+                    catch { } 
                 }
                 m_Init = false;
             }
@@ -233,13 +230,11 @@ namespace AsfCreate
                 IntPtr ip;
 
                 // Get a sample interface
-                hr = m_pWMWriter.AllocateSample(iSize, out pSample);
-                Marshal.ThrowExceptionForHR(hr);
+                m_pWMWriter.AllocateSample(iSize, out pSample);
 
                 // Get the buffer from the sample interface.  This is
                 // where we copy the bitmap data to
-                hr = pSample.GetBuffer(out ip);
-                Marshal.ThrowExceptionForHR(hr);
+                pSample.GetBuffer(out ip);
 
                 // Copy the bitmap data into the sample buffer
                 LoadSample(bmd, ip, iSize);
@@ -250,8 +245,23 @@ namespace AsfCreate
                 int iRetry = 0;
                 do
                 {
-                    hr = m_pWMWriter.WriteSample(m_dwVideoInput, 10000 * m_msVideoTime, WriteFlags.CleanPoint, pSample);
-                } while (hr == NSResults.E_InvalidData && iRetry++ < 3);
+                    try
+                    {
+                        m_pWMWriter.WriteSample(m_dwVideoInput, 10000 * m_msVideoTime, WM_SF.CleanPoint, pSample);
+                        break;
+                    }
+                    catch (COMException e)
+                    {
+                        if ((iRetry++ < 3) && (e.ErrorCode != NSResults.E_InvalidData))
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                } while (true);
 
                 Marshal.ThrowExceptionForHR(hr);
 
@@ -278,7 +288,6 @@ namespace AsfCreate
         /// <param name="hBitmap">First bitmap</param>
         private void Initialize(Bitmap hBitmap)
         {
-            int hr;
             AMMediaType mt = new AMMediaType();
             VideoInfoHeader videoInfo = new VideoInfoHeader();
 
@@ -338,21 +347,19 @@ namespace AsfCreate
                 // Set the inputprops using the structures
                 mt.formatPtr = gHan.AddrOfPinnedObject();
 
-                hr = m_pInputProps.SetMediaType(mt);
-                Marshal.ThrowExceptionForHR(hr);
+                m_pInputProps.SetMediaType(mt);
             }
             finally
             {
                 gHan.Free();
+                mt.formatPtr = IntPtr.Zero;
             }
 
             // Now take the inputprops, and set them on the file writer
-            hr = m_pWMWriter.SetInputProps(m_dwVideoInput, m_pInputProps);
-            Marshal.ThrowExceptionForHR(hr);
+            m_pWMWriter.SetInputProps(m_dwVideoInput, m_pInputProps);
 
             // Done with config, prepare to write
-            hr = m_pWMWriter.BeginWriting();
-            Marshal.ThrowExceptionForHR(hr);
+            m_pWMWriter.BeginWriting();
 
             m_Init = true;
         }
