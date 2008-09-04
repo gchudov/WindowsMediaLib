@@ -32,6 +32,7 @@ IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
 IWMCredentialCallback					1		
+IWMDRMEditor						1		snarfle		ready
 IWMHeaderInfo						12		snarfle		bwkahle
 IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		bwkahle
 IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
@@ -109,7 +110,6 @@ WMCreateDRMTranscryptor
 WMCreateLicenseRevocationAgent		
 
 IWMDeviceRegistration					6		
-IWMDRMEditor						1		
 IWMDRMMessageParser					2		
 IWMDRMReader						8		
 IWMDRMReader2			IWMDRMReader		4		
