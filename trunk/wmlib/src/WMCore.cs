@@ -42,6 +42,21 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
+    [UnmanagedName("DRM_LICENSE_STATE_CATEGORY")]
+    public enum DRM_LICENSE_STATE_CATEGORY
+    {
+        NoRight = 0,
+        UnLimited,
+        Count,
+        From,
+        Until,
+        FromUntil,
+        CountFrom,
+        CountUntil,
+        CountFromUntil,
+        ExpirationAfterFristUse
+    }
+
     [Flags, UnmanagedName("From unnamed enum")]
     public enum WM_SF
     {
@@ -338,6 +353,73 @@ namespace WindowsMediaLib
             dwAmFlags = w.dwAmFlags;
         }
 
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_LICENSE_STATE_DATA")]
+    public struct WM_LICENSE_STATE_DATA
+    {
+        public WM_LICENSE_STATE_DATA(byte [] b)
+        {
+            int LICENSESTATEDATASIZE = Marshal.SizeOf(typeof(DRM_LICENSE_STATE_DATA));
+            dwSize = BitConverter.ToInt32(b, 0);
+            dwNumStates = BitConverter.ToInt32(b, 4);
+
+            stateData = new DRM_LICENSE_STATE_DATA[dwNumStates];
+
+            for (int x = 0; x < dwNumStates; x++)
+            {
+                stateData[x] = new DRM_LICENSE_STATE_DATA(b, (x * LICENSESTATEDATASIZE) + 8);
+            }
+        }
+
+        public int dwSize;
+        public int dwNumStates;
+        public DRM_LICENSE_STATE_DATA[] stateData;
+    }
+
+    [Flags]
+    public enum DRM_LICENSE_STATE_DATA_FLAGS
+    {
+        None = 0,
+        Vague = 1,
+        OPLPresent = 2,
+        SAPPresent = 4
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_LICENSE_STATE_DATA")]
+    public struct DRM_LICENSE_STATE_DATA
+    {
+        public DRM_LICENSE_STATE_DATA(byte[] b, int iOffset)
+        {
+            dwStreamId = BitConverter.ToInt32(b, 0 + iOffset);
+            dwCategory = (DRM_LICENSE_STATE_CATEGORY)BitConverter.ToInt32(b, 4 + iOffset);
+            dwNumCounts = BitConverter.ToInt32(b, 8 + iOffset);
+
+            dwCount = new int[4];
+            dwCount[0] = BitConverter.ToInt32(b, 12 + iOffset);
+            dwCount[1] = BitConverter.ToInt32(b, 16 + iOffset);
+            dwCount[2] = BitConverter.ToInt32(b, 20 + iOffset);
+            dwCount[3] = BitConverter.ToInt32(b, 24 + iOffset);
+            dwNumDates = BitConverter.ToInt32(b, 28 + iOffset);
+
+            datetime = new long[4];
+            datetime[0] = BitConverter.ToInt64(b, 32 + iOffset);
+            datetime[1] = BitConverter.ToInt64(b, 40 + iOffset);
+            datetime[2] = BitConverter.ToInt64(b, 48 + iOffset);
+            datetime[3] = BitConverter.ToInt64(b, 56 + iOffset);
+
+            dwVague = (DRM_LICENSE_STATE_DATA_FLAGS)BitConverter.ToInt32(b, 64 + iOffset);
+        }
+
+        public int dwStreamId;
+        public DRM_LICENSE_STATE_CATEGORY dwCategory;
+        public int dwNumCounts;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public int[] dwCount;
+        public int dwNumDates;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
+        public long[] datetime;
+        public DRM_LICENSE_STATE_DATA_FLAGS dwVague;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMDRM_IMPORT_INIT_STRUCT")]
@@ -974,7 +1056,7 @@ namespace WindowsMediaLib
         void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
-            out byte[] pValue,
+            [Out, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             ref short pcbLength
             );
     }
@@ -1512,8 +1594,8 @@ namespace WindowsMediaLib
     }
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
-    InterfaceType(ComInterfaceType.InterfaceIsIUnknown),
-    Guid("05E5AC9F-3FB6-4508-BB43-A4067BA1EBE8")]
+    Guid("05E5AC9F-3FB6-4508-BB43-A4067BA1EBE8"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMLicenseBackup
     {
         void BackupLicenses(
