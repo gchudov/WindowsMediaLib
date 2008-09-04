@@ -171,30 +171,30 @@ namespace WindowsMediaLib
 
     abstract public class COMBase
     {
-        public const int S_Ok = 0;
-        public const int S_False = 0;
+        protected const int S_Ok = 0;
+        protected const int S_False = 0;
 
-        public const int E_NotImplemented = unchecked((int)0x80004001);
-        public const int E_NoInterface = unchecked((int)0x80004002);
-        public const int E_Pointer = unchecked((int)0x80004003);
-        public const int E_Abort = unchecked((int)0x80004004);
-        public const int E_Fail = unchecked((int)0x80004005);
-        public const int E_Unexpected = unchecked((int)0x8000FFFF);
-        public const int E_OutOfMemory = unchecked((int)0x8007000E);
-        public const int E_InvalidArgument = unchecked((int)0x80070057);
-        public const int E_BufferTooSmall = unchecked((int)0x8007007a);
+        protected const int E_NotImplemented = unchecked((int)0x80004001);
+        protected const int E_NoInterface = unchecked((int)0x80004002);
+        protected const int E_Pointer = unchecked((int)0x80004003);
+        protected const int E_Abort = unchecked((int)0x80004004);
+        protected const int E_Fail = unchecked((int)0x80004005);
+        protected const int E_Unexpected = unchecked((int)0x8000FFFF);
+        protected const int E_OutOfMemory = unchecked((int)0x8007000E);
+        protected const int E_InvalidArgument = unchecked((int)0x80070057);
+        protected const int E_BufferTooSmall = unchecked((int)0x8007007a);
 
-        public static bool Succeeded(int hr)
+        protected static bool Succeeded(int hr)
         {
             return hr >= 0;
         }
 
-        public static bool Failed(int hr)
+        protected static bool Failed(int hr)
         {
             return hr < 0;
         }
 
-        public static void SafeRelease(object o)
+        protected static void SafeRelease(object o)
         {
             if (o != null)
             {
@@ -213,7 +213,7 @@ namespace WindowsMediaLib
             }
         }
 
-        public static void TRACE(string s)
+        protected static void TRACE(string s)
         {
             Debug.WriteLine(s);
         }
@@ -1684,6 +1684,58 @@ namespace WindowsMediaLib
         // Needs previous sample for Delta frame on video decode
         //
         public const string g_wszNeedsPreviousSample = "NeedsPreviousSample";
+
+        public const string g_wszWMDRM_ACTIONLIST_TAG = "ACTIONLIST";
+        public const string g_wszWMDRM_ACTION_TAG = "ACTION";
+        public const string g_wszWMDRM_RIGHT_PLAYBACK = "Play";
+        public const string g_wszWMDRM_RIGHT_COPY = "Copy";
+        public const string g_wszWMDRM_RIGHT_PLAYLIST_BURN = "PlaylistBurn";
+        public const string g_wszWMDRM_RIGHT_CREATE_THUMBNAIL_IMAGE = "CreateThumbnailImage";
+        public const string g_wszWMDRM_RIGHT_COPY_TO_CD = "Print.redbook";
+        public const string g_wszWMDRM_RIGHT_COPY_TO_SDMI_DEVICE = "Transfer.SDMI";
+        public const string g_wszWMDRM_RIGHT_COPY_TO_NON_SDMI_DEVICE = "Transfer.NONSDMI";
+        public const string g_wszWMDRM_RIGHT_BACKUP = "Backup";
+        public const string g_wszWMDRM_RIGHT_COLLABORATIVE_PLAY = "CollaborativePlay";
+        public const string g_wszWMDRM_ActionAllowed = "ActionAllowed.";
+        public const string g_wszWMDRM_ActionAllowed_Playback = "ActionAllowed.Play";
+        public const string g_wszWMDRM_ActionAllowed_Copy = "ActionAllowed.Copy";
+        public const string g_wszWMDRM_ActionAllowed_PlaylistBurn = "ActionAllowed.PlaylistBurn";
+        public const string g_wszWMDRM_ActionAllowed_CreateThumbnailImage = "ActionAllowed.CreateThumbnailImage";
+        public const string g_wszWMDRM_ActionAllowed_CopyToCD = "ActionAllowed.Print.redbook";
+        public const string g_wszWMDRM_ActionAllowed_CopyToSDMIDevice = "ActionAllowed.Transfer.SDMI";
+        public const string g_wszWMDRM_ActionAllowed_CopyToNonSDMIDevice = "ActionAllowed.Transfer.NONSDMI";
+        public const string g_wszWMDRM_ActionAllowed_Backup = "ActionAllowed.Backup";
+        public const string g_wszWMDRM_ActionAllowed_CollaborativePlay = "ActionAllowed.CollaborativePlay";
+        public const string g_wszWMDRM_LicenseState = "LicenseStateData.";
+        public const string g_wszWMDRM_LicenseState_Playback = "LicenseStateData.Play";
+        public const string g_wszWMDRM_LicenseState_Copy = "LicenseStateData.Copy";
+        public const string g_wszWMDRM_LicenseState_PlaylistBurn = "LicenseStateData.PlaylistBurn";
+        public const string g_wszWMDRM_LicenseState_CreateThumbnailImage = "LicenseStateData.CreateThumbnailImage";
+        public const string g_wszWMDRM_LicenseState_CopyToCD = "LicenseStateData.Print.redbook";
+        public const string g_wszWMDRM_LicenseState_CopyToSDMIDevice = "LicenseStateData.Transfer.SDMI";
+        public const string g_wszWMDRM_LicenseState_CopyToNonSDMIDevice = "LicenseStateData.Transfer.NONSDMI";
+        public const string g_wszWMDRM_LicenseState_Backup = "LicenseStateData.Backup";
+        public const string g_wszWMDRM_LicenseState_CollaborativePlay = "LicenseStateData.CollaborativePlay";
+        public const string g_wszWMDRMNET_Revocation = "WMDRMNET_REVOCATION";
+        public const string g_wszWMDRM_SAPLEVEL = "SAPLEVEL";
+        public const string g_wszWMDRM_SAPRequired = "SAPRequired";
+        public const string g_wszWMDRM_PRIORITY = "PRIORITY";
+        public const string g_wszWMDRM_ISSUEDATE = "ISSUEDATE";
+        public const string g_wszWMDRM_UplinkID = "UplinkID";
+        public const string g_wszWMDRM_REVINFOVERSION = "REVINFOVERSION";
+
+        public const string g_wszWMDRM_IsDRM = "IsDRM";
+        public const string g_wszWMDRM_IsDRMCached = "IsDRMCached";
+        public const string g_wszWMDRM_BaseLicenseAcqURL = "BaseLAURL";
+        public const string g_wszWMDRM_Rights = "Rights";
+        public const string g_wszWMDRM_LicenseID = "LID";
+        public const string g_wszWMDRM_DRMHeader = "DRMHeader.";
+        public const string g_wszWMDRM_DRMHeader_KeyID = "DRMHeader.KID";
+        public const string g_wszWMDRM_DRMHeader_LicenseAcqURL = "DRMHeader.LAINFO";
+        public const string g_wszWMDRM_DRMHeader_ContentID = "DRMHeader.CID";
+        public const string g_wszWMDRM_DRMHeader_IndividualizedVersion = "DRMHeader.SECURITYVERSION";
+        public const string g_wszWMDRM_DRMHeader_ContentDistributor = "DRMHeader.ContentDistributor";
+        public const string g_wszWMDRM_DRMHeader_SubscriptionContentID = "DRMHeader.SubscriptionContentID";
     }
 
     [StructLayout(LayoutKind.Sequential)]
