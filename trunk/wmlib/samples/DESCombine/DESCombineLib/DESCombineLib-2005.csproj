@@ -85,7 +85,7 @@
     </Reference>
     <Reference Include="WindowsMediaLib, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\src\bin\Debug\WindowsMediaLib.dll</HintPath>
+      <HintPath>..\..\..\lib\WindowsMediaLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -29,17 +29,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="WindowsMediaLib, Version=0.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\WindowsMediaLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WMVCopy.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\WindowsMediaLib-2005.csproj">
-      <Project>{7EA4160F-3BBD-47C9-A38C-4053B64B24A8}</Project>
-      <Name>WindowsMediaLib-2005</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="readme.txt" />

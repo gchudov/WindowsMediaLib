@@ -247,7 +247,7 @@ namespace AsfCreate
                 {
                     try
                     {
-                        m_pWMWriter.WriteSample(m_dwVideoInput, 10000 * m_msVideoTime, WM_SF.CleanPoint, pSample);
+                        m_pWMWriter.WriteSample(m_dwVideoInput, 10000 * m_msVideoTime, SampleFlag.CleanPoint, pSample);
                         break;
                     }
                     catch (COMException e)
