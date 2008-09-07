@@ -156,7 +156,7 @@ namespace DrmHeader
                     {
                         if (pwszPropertyName.StartsWith(Constants.g_wszWMDRM_LicenseState))
                         {
-                            WM_LICENSE_STATE_DATA sd = new WM_LICENSE_STATE_DATA(pValue);
+                            LicenseStateData sd = new LicenseStateData(pValue);
                             sRet = GetStringFromLicense(pwszPropertyName.Substring(Constants.g_wszWMDRM_LicenseState.Length), sd);
                         }
                         else
@@ -174,7 +174,7 @@ namespace DrmHeader
             return sRet;
         }
 
-        private string GetStringFromLicense(string s, WM_LICENSE_STATE_DATA sd)
+        private string GetStringFromLicense(string s, LicenseStateData sd)
         {
             // These are my best guesses about about how to format this data.  MSDN
             // is pretty vague about the whole thing.
@@ -185,57 +185,57 @@ namespace DrmHeader
             {
                 switch (sd.stateData[x].dwCategory)
                 {
-                    case DRM_LICENSE_STATE_CATEGORY.NoRight:
+                    case LicenseStateCategory .NoRight:
                         sRet += string.Format("{0} not permitted.", s);
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.UnLimited:
+                    case LicenseStateCategory.UnLimited:
                         sRet += string.Format("{0} unlimited.", s);
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.Count:
+                    case LicenseStateCategory.Count:
                         sRet += string.Format("{0} valid {1} times.", s, sd.stateData[x].dwCount[0]);
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.From:
+                    case LicenseStateCategory.From:
                         d1 = FileTimeToDateTime(sd.stateData[x].datetime[0]);
 
                         sRet += string.Format("{0} valid from {1}.", s, d1.ToShortDateString());
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.Until:
+                    case LicenseStateCategory.Until:
                         d1 = FileTimeToDateTime(sd.stateData[x].datetime[0]);
 
                         sRet += string.Format("{0} valid until {1}.", s, d1.ToShortDateString());
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.FromUntil:
+                    case LicenseStateCategory.FromUntil:
                         d1 = FileTimeToDateTime(sd.stateData[x].datetime[0]);
                         d2 = FileTimeToDateTime(sd.stateData[x].datetime[1]);
 
                         sRet += string.Format("{0} valid from {1} to {2}.", s, d1.ToShortDateString(), d2.ToShortDateString());
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.CountFrom:
+                    case LicenseStateCategory.CountFrom:
                         d1 = FileTimeToDateTime(sd.stateData[x].datetime[0]);
 
                         sRet += string.Format("{0} valid {1} times from {2}.", s, sd.stateData[x].dwCount[0], d1.ToShortDateString());
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.CountUntil:
+                    case LicenseStateCategory.CountUntil:
                         d1 = FileTimeToDateTime(sd.stateData[x].datetime[0]);
 
                         sRet += string.Format("{0} valid {1} times until {2}.", s, sd.stateData[x].dwCount[0], d1.ToShortDateString());
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.CountFromUntil:
+                    case LicenseStateCategory.CountFromUntil:
                         d1 = FileTimeToDateTime(sd.stateData[x].datetime[0]);
                         d2 = FileTimeToDateTime(sd.stateData[x].datetime[1]);
 
                         sRet += string.Format("{0} valid {1} times from {2} to {3}.", s, sd.stateData[x].dwCount[0], d1.ToShortDateString(), d2.ToShortDateString());
                         break;
 
-                    case DRM_LICENSE_STATE_CATEGORY.ExpirationAfterFristUse:
+                    case LicenseStateCategory.ExpirationAfterFristUse:
                         sRet += string.Format("{0} valid for {1} hours from first use.", s, sd.stateData[x].dwCount[0]);
                         break;
 

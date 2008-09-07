@@ -37,7 +37,7 @@ namespace v1._0
             INSSBuffer pSamp;
             long l;
             long d;
-            WM_SF f;
+            SampleFlag f;
             int i;
             short s;
 
@@ -55,7 +55,7 @@ namespace v1._0
             INSSBuffer pSamp;
             long l;
             long d;
-            WM_SF f;
+            SampleFlag f;
             int i;
             short s;
 
@@ -75,14 +75,14 @@ namespace v1._0
 
         #region IWMReaderAllocatorEx Members
 
-        public void AllocateForStreamEx(short wStreamNum, int cbBuffer, out INSSBuffer ppBuffer, WM_SFEX dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
+        public void AllocateForStreamEx(short wStreamNum, int cbBuffer, out INSSBuffer ppBuffer, SampleFlagEx dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
         {
             m_Status |= 1;
             TempBuff t = new TempBuff(cbBuffer);
             ppBuffer = t as INSSBuffer;
         }
 
-        public void AllocateForOutputEx(int dwOutputNum, int cbBuffer, out INSSBuffer ppBuffer, WM_SFEX dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
+        public void AllocateForOutputEx(int dwOutputNum, int cbBuffer, out INSSBuffer ppBuffer, SampleFlagEx dwFlags, long cnsSampleTime, long cnsSampleDuration, IntPtr pvContext)
         {
             m_Status |= 2;
             TempBuff t = new TempBuff(cbBuffer);
