@@ -59,6 +59,29 @@ namespace WindowsMediaLib
 #if ALLOW_UNTESTED_INTERFACES
 
         [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMCreateCertificate(
+            [MarshalAs(UnmanagedType.IUnknown)] out object pUnkCert
+            );
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMCreateDeviceRegistration(
+            out IWMDeviceRegistration ppDevReg
+            );
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMCreateDRMTranscryptor(
+            out IWMDRMTranscryptor ppTranscryptor
+            );
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
+        public static extern void WMCreateLicenseRevocationAgent(
+            [MarshalAs(UnmanagedType.IUnknown)] object pCallback,
+            out IWMLicenseRevocationAgent ppLicenseRevocationAgent
+            );
+
+#endif
+
+        [DllImport("WMVCore.dll", PreserveSig = false)]
         public static extern void WMValidateData(
             byte[] pbData,
             ref int pdwDataSize
@@ -79,22 +102,6 @@ namespace WindowsMediaLib
             string pwszURL,
             string pwszLanguage,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsAvailableOffline
-            );
-
-        [DllImport("WMVCore.dll", PreserveSig = false)]
-        public static extern void WMCreateDeviceRegistration(
-            out IWMDeviceRegistration ppDevReg
-            );
-
-        [DllImport("WMVCore.dll", PreserveSig = false)]
-        public static extern void WMCreateDRMTranscryptor(
-            out IWMDRMTranscryptor ppTranscryptor
-            );
-
-        [DllImport("WMVCore.dll", PreserveSig = false)]
-        public static extern void WMCreateLicenseRevocationAgent(
-            [MarshalAs(UnmanagedType.IUnknown)] object pCallback, 
-            out IWMLicenseRevocationAgent ppLicenseRevocationAgent
             );
 
         [DllImport("WMVCore.dll", PreserveSig = false)]
@@ -122,11 +129,6 @@ namespace WindowsMediaLib
         public static extern void WMIsContentProtected(
             string pwszFileName,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsProtected
-            );
-
-        [DllImport("WMVCore.dll", PreserveSig = false)]
-        public static extern void WMCreateCertificate(
-            [MarshalAs(UnmanagedType.IUnknown)] out object pUnkCert
             );
 
         [DllImport("WMVCore.dll", PreserveSig = false)]
@@ -162,8 +164,6 @@ namespace WindowsMediaLib
         public static extern void WMCreateWriterPushSink(
             out IWMWriterPushSink ppSink
             );
-
-#endif
 
     }
 
