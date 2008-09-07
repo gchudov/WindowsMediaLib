@@ -2,7 +2,9 @@
 V 1.0 Original release
 
 
-91 Interfaces defined
-0 Interfaces tested 
+106 Interfaces defined
+84 Interfaces tested 
+29 methods defined
+24 methods tested
 
-3 Samples
+6 Samples
