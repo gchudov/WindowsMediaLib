@@ -44,7 +44,7 @@ namespace v1._0
 
             m_Writer.BeginWriting();
             INSSBuffer pSample = WriteOne(b);
-            m_Writer.WriteSample(0, 1, WM_SF.CleanPoint, pSample);
+            m_Writer.WriteSample(0, 1, SampleFlag.CleanPoint, pSample);
             m_Writer.Flush();
             m_Writer.EndWriting();
 

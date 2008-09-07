@@ -186,7 +186,7 @@ namespace v1._0
 
         }
 
-        public void OnSample(int dwOutputNum, long cnsSampleTime, long cnsSampleDuration, WM_SF dwFlags, INSSBuffer pSample, IntPtr pvContext)
+        public void OnSample(int dwOutputNum, long cnsSampleTime, long cnsSampleDuration, SampleFlag dwFlags, INSSBuffer pSample, IntPtr pvContext)
         {
         }
 
@@ -194,7 +194,7 @@ namespace v1._0
 
         #region IWMReaderCallbackAdvanced Members
 
-        public void OnStreamSample(short wStreamNum, long cnsSampleTime, long cnsSampleDuration, WM_SF dwFlags, INSSBuffer pSample, IntPtr pvContext)
+        public void OnStreamSample(short wStreamNum, long cnsSampleTime, long cnsSampleDuration, SampleFlag dwFlags, INSSBuffer pSample, IntPtr pvContext)
         {
             Debug.WriteLine("OnStreamSample");
             // wmvcopy
