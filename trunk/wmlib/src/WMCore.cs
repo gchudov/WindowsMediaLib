@@ -42,8 +42,17 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
+    [Flags]
+    public enum LicenseStateDataFlags
+    {
+        None = 0,
+        Vague = 1,
+        OPLPresent = 2,
+        SAPPresent = 4
+    }
+
     [UnmanagedName("DRM_LICENSE_STATE_CATEGORY")]
-    public enum DRM_LICENSE_STATE_CATEGORY
+    public enum LicenseStateCategory
     {
         NoRight = 0,
         UnLimited,
@@ -58,7 +67,7 @@ namespace WindowsMediaLib
     }
 
     [Flags, UnmanagedName("From unnamed enum")]
-    public enum WM_SF
+    public enum SampleFlag
     {
         None = 0,
         CleanPoint = 0x1,
@@ -67,7 +76,7 @@ namespace WindowsMediaLib
     }
 
     [Flags]
-    public enum WM_SFEX
+    public enum SampleFlagEx
     {
         None = 0,
         NotASyncPoint = 0x2,
@@ -356,43 +365,34 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_LICENSE_STATE_DATA")]
-    public struct WM_LICENSE_STATE_DATA
+    public struct LicenseStateData
     {
-        public WM_LICENSE_STATE_DATA(byte [] b)
+        public LicenseStateData(byte [] b)
         {
-            int LICENSESTATEDATASIZE = Marshal.SizeOf(typeof(DRM_LICENSE_STATE_DATA));
+            int LICENSESTATEDATASIZE = Marshal.SizeOf(typeof(DRMLicenseStateData));
             dwSize = BitConverter.ToInt32(b, 0);
             dwNumStates = BitConverter.ToInt32(b, 4);
 
-            stateData = new DRM_LICENSE_STATE_DATA[dwNumStates];
+            stateData = new DRMLicenseStateData[dwNumStates];
 
             for (int x = 0; x < dwNumStates; x++)
             {
-                stateData[x] = new DRM_LICENSE_STATE_DATA(b, (x * LICENSESTATEDATASIZE) + 8);
+                stateData[x] = new DRMLicenseStateData(b, (x * LICENSESTATEDATASIZE) + 8);
             }
         }
 
         public int dwSize;
         public int dwNumStates;
-        public DRM_LICENSE_STATE_DATA[] stateData;
-    }
-
-    [Flags]
-    public enum DRM_LICENSE_STATE_DATA_FLAGS
-    {
-        None = 0,
-        Vague = 1,
-        OPLPresent = 2,
-        SAPPresent = 4
+        public DRMLicenseStateData[] stateData;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_LICENSE_STATE_DATA")]
-    public struct DRM_LICENSE_STATE_DATA
+    public struct DRMLicenseStateData
     {
-        public DRM_LICENSE_STATE_DATA(byte[] b, int iOffset)
+        public DRMLicenseStateData(byte[] b, int iOffset)
         {
             dwStreamId = BitConverter.ToInt32(b, 0 + iOffset);
-            dwCategory = (DRM_LICENSE_STATE_CATEGORY)BitConverter.ToInt32(b, 4 + iOffset);
+            dwCategory = (LicenseStateCategory)BitConverter.ToInt32(b, 4 + iOffset);
             dwNumCounts = BitConverter.ToInt32(b, 8 + iOffset);
 
             dwCount = new int[4];
@@ -408,22 +408,22 @@ namespace WindowsMediaLib
             datetime[2] = BitConverter.ToInt64(b, 48 + iOffset);
             datetime[3] = BitConverter.ToInt64(b, 56 + iOffset);
 
-            dwVague = (DRM_LICENSE_STATE_DATA_FLAGS)BitConverter.ToInt32(b, 64 + iOffset);
+            dwVague = (LicenseStateDataFlags)BitConverter.ToInt32(b, 64 + iOffset);
         }
 
         public int dwStreamId;
-        public DRM_LICENSE_STATE_CATEGORY dwCategory;
+        public LicenseStateCategory dwCategory;
         public int dwNumCounts;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public int[] dwCount;
         public int dwNumDates;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
         public long[] datetime;
-        public DRM_LICENSE_STATE_DATA_FLAGS dwVague;
+        public LicenseStateDataFlags dwVague;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMDRM_IMPORT_INIT_STRUCT")]
-    public class WMDRM_IMPORT_INIT_STRUCT
+    public class ImportInitStruct
     {
         public int dwVersion;
         public int cbEncryptedSessionKeyMessage;
@@ -433,7 +433,7 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS")]
-    public struct DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS
+    public struct MinimumOutputProtectionLevels
     {
         short wCompressedDigitalVideo;
         short wUncompressedDigitalVideo;
@@ -443,44 +443,44 @@ namespace WindowsMediaLib
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_OPL_OUTPUT_IDS")]
-    public struct DRM_OPL_OUTPUT_IDS
+    public struct OPLOutputIds
     {
         short cIds;
         Guid [] rgIds;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_OUTPUT_PROTECTION")]
-    public struct DRM_VIDEO_OUTPUT_PROTECTION
+    public struct VideoOutputProtection
     {
         Guid guidId;
         byte bConfigData;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_COPY_OPL")]
-    public struct DRM_COPY_OPL
+    public struct CopyOPL
     {
         short wMinimumCopyLevel;
-        DRM_OPL_OUTPUT_IDS oplIdIncludes;
-        DRM_OPL_OUTPUT_IDS oplIdExcludes;
+        OPLOutputIds oplIdIncludes;
+        OPLOutputIds oplIdExcludes;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_VIDEO_OUTPUT_PROTECTION_IDS")]
-    public struct DRM_VIDEO_OUTPUT_PROTECTION_IDS
+    public struct VideoOutputProtectionIDs
     {
         short cEntries;
-        DRM_VIDEO_OUTPUT_PROTECTION [] rgVop;
+        VideoOutputProtection [] rgVop;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_PLAY_OPL")]
-    public struct DRM_PlayOpl
+    public struct PlayOpl
     {
-        DRM_MINIMUM_OUTPUT_PROTECTION_LEVELS minOPL;
-        DRM_OPL_OUTPUT_IDS oplIdReserved;
-        DRM_VIDEO_OUTPUT_PROTECTION_IDS vopi;
+        MinimumOutputProtectionLevels minOPL;
+        OPLOutputIds oplIdReserved;
+        VideoOutputProtectionIDs vopi;
     }
 
     [StructLayout(LayoutKind.Sequential, Pack = 1), UnmanagedName("DRM_VAL16")]
-    public struct DRM_VAL16
+    public struct Val16
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst=16)]  byte [] val;
     }
@@ -3124,7 +3124,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
-            [In] WM_SFEX dwFlags,
+            [In] SampleFlagEx dwFlags,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
             [In] IntPtr pvContext
@@ -3134,7 +3134,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] int cbBuffer,
             out INSSBuffer ppBuffer,
-            [In] WM_SFEX dwFlags,
+            [In] SampleFlagEx dwFlags,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
             [In] IntPtr pvContext
@@ -3162,7 +3162,7 @@ namespace WindowsMediaLib
             [In] int dwOutputNum,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
-            [In] WM_SF dwFlags,
+            [In] SampleFlag dwFlags,
             [In] INSSBuffer pSample,
             [In] IntPtr pvContext
             );
@@ -3177,7 +3177,7 @@ namespace WindowsMediaLib
             [In] short wStreamNum,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
-            [In] WM_SF dwFlags,
+            [In] SampleFlag dwFlags,
             [In] INSSBuffer pSample,
             [In] IntPtr pvContext
             );
@@ -3951,7 +3951,7 @@ namespace WindowsMediaLib
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
             out long pcnsDuration,
-            out WM_SF pdwFlags,
+            out SampleFlag pdwFlags,
             out int pdwOutputNum,
             out short pwStreamNum
             );
@@ -4072,7 +4072,7 @@ namespace WindowsMediaLib
             out INSSBuffer ppSample,
             out long pcnsSampleTime,
             out long pcnsDuration,
-            out WM_SF pdwFlags,
+            out SampleFlag pdwFlags,
             out int pdwOutputNum,
             out short pwStreamNum
             );
@@ -4309,7 +4309,7 @@ namespace WindowsMediaLib
         void WriteSample(
             [In] int dwInputNum,
             [In] long cnsSampleTime,
-            [In] WM_SF dwFlags,
+            [In] SampleFlag dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4343,7 +4343,7 @@ namespace WindowsMediaLib
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
             [In] long cnsSampleDuration,
-            [In] WM_SF dwFlags,
+            [In] SampleFlag dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4402,7 +4402,7 @@ namespace WindowsMediaLib
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
             [In] long cnsSampleDuration,
-            [In] WM_SF dwFlags,
+            [In] SampleFlag dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4479,7 +4479,7 @@ namespace WindowsMediaLib
             [In] long cnsSampleTime,
             [In] int msSampleSendTime,
             [In] long cnsSampleDuration,
-            [In] WM_SF dwFlags,
+            [In] SampleFlag dwFlags,
             [In] INSSBuffer pSample
             );
 
@@ -4864,7 +4864,7 @@ namespace WindowsMediaLib
             [In] short wStreamNumber,
             [In] long cnsSampleTime,
             [In] long cnsSampleDuration,
-            [In] WM_SF dwFlags,
+            [In] SampleFlag dwFlags,
             [In] INSSBuffer pSample,
             [In] IntPtr pvContext
             );
@@ -5471,14 +5471,14 @@ namespace WindowsMediaLib
             [In] int dwRegisterType,
             [In] IntPtr pbCertificate,
             int cbCertificate,
-            DRM_VAL16 SerialNumber,
+            Val16 SerialNumber,
             out IWMRegisteredDevice ppDevice);
 
         void UnregisterDevice(
             [In] int dwRegisterType,
             IntPtr pbCertificate,
             [In] int cbCertificate,
-            DRM_VAL16 SerialNumber);
+            Val16 SerialNumber);
 
         void GetRegistrationStats(
             [In] int dwRegisterType,
@@ -5495,7 +5495,7 @@ namespace WindowsMediaLib
             int dwRegisterType,
             IntPtr pbCertificate,
             int cbCertificate,
-            DRM_VAL16 SerialNumber,
+            Val16 SerialNumber,
             out IWMRegisteredDevice ppDevice);
 
     }
@@ -6071,7 +6071,7 @@ namespace WindowsMediaLib
     public interface IWMRegisteredDevice
     {
         void GetDeviceSerialNumber(
-            out DRM_VAL16 pSerialNumber);
+            out Val16 pSerialNumber);
 
         void GetDeviceCertificate(
             out INSSBuffer ppCertificate);
@@ -6199,7 +6199,7 @@ namespace WindowsMediaLib
         #endregion
 
         void SetProtectStreamSamples(
-            [In, MarshalAs(UnmanagedType.LPStruct)] WMDRM_IMPORT_INIT_STRUCT pImportInitStruct);
+            [In, MarshalAs(UnmanagedType.LPStruct)] ImportInitStruct pImportInitStruct);
     }
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
@@ -6245,12 +6245,12 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.Bool)] bool fEvaluate);
 
         void GetPlayOutputLevels(
-            out DRM_PlayOpl pPlayOPL,
+            out PlayOpl pPlayOPL,
             out int pcbLength,
             out int pdwMinAppComplianceLevel);
 
         void GetCopyOutputLevels(
-            out DRM_COPY_OPL pCopyOPL,
+            out CopyOPL pCopyOPL,
             ref int pcbLength,
             out int pdwMinAppComplianceLevel);
 
@@ -6302,12 +6302,12 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.Bool)] bool fEvaluate);
 
         new void GetPlayOutputLevels(
-            out DRM_PlayOpl pPlayOPL,
+            out PlayOpl pPlayOPL,
             out int pcbLength,
             out int pdwMinAppComplianceLevel);
 
         new void GetCopyOutputLevels(
-            out DRM_COPY_OPL pCopyOPL,
+            out CopyOPL pCopyOPL,
             ref int pcbLength,
             out int pdwMinAppComplianceLevel);
 
@@ -6329,13 +6329,13 @@ namespace WindowsMediaLib
             IntPtr pbRegistrationReqMsg,
             int cbRegistrationReqMsg,
             out INSSBuffer ppDeviceCert,
-            out DRM_VAL16 pDeviceSerialNumber);
+            out Val16 pDeviceSerialNumber);
 
         void ParseLicenseRequestMsg(
             IntPtr pbLicenseRequestMsg,
             int cbLicenseRequestMsg,
             out INSSBuffer ppDeviceCert,
-            out DRM_VAL16 pDeviceSerialNumber,
+            out Val16 pDeviceSerialNumber,
             [MarshalAs(UnmanagedType.BStr)] out string pbstrAction);
     }
 
