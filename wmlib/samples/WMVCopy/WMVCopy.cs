@@ -764,7 +764,7 @@ namespace WMVCopy
             int dwOutputNum,
             long qwSampleTime,
             long qwSampleDuration,
-            WM_SF dwFlags,
+            SampleFlag dwFlags,
             INSSBuffer pSample,
             IntPtr pvContext)
         {
@@ -850,7 +850,7 @@ namespace WMVCopy
             short wStreamNum,
             long cnsSampleTime,
             long cnsSampleDuration,
-            WM_SF dwFlags,
+            SampleFlag dwFlags,
             INSSBuffer pSample,
             IntPtr pvContext)
         {
