@@ -1,9 +1,7 @@
 WindowsMediaLibNET - A library to allow .NET applications to use Windows Media
-http://directshownet.sourceforge.net
+http://windowsmedianet.sourceforge.net
 
 Licensed under Lesser General Public License.  See license.txt for details.
-
-This alpha version of the library is virtually UNTESTED.  Use with great caution.
 
 The documentation is located in docs\readme.rtf and can be read with WordPad, MS Word, etc.
 

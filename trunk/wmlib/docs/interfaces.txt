@@ -1,26 +1,24 @@
-NONE of the functions or interfaces have been tested at this time
+These method are tested
 
 Functions
 WMCreateBackupRestorer
-WMCreateCertificate
 WMCreateEditor
-WMCreateDeviceRegistration
-WMCreateDRMTranscryptor
 WMCreateIndexer
-WMCreateLicenseRevocationAgent
 WMCreateProfileManager
 WMCreateReader
 WMCreateSyncReader
 WMCreateWriter
 WMCreateWriterFileSink
 WMCreateWriterNetworkSink
-WMCheckURLExtension
-WMCheckURLScheme
+WMCreateWriterPushSink
 WMIsAvailableOffline
 WMIsContentProtected
+WMCheckURLExtension
+WMCheckURLScheme
 WMValidateData
 
 
+These interfaces are tested
 
 Interfaces
 INSNetSourceCreator
@@ -28,26 +26,20 @@ INSSBuffer
 INSSBuffer2
 INSSBuffer3
 INSSBuffer4
-IServiceProvider
 IWMAddressAccess
 IWMAddressAccess2
 IWMBackupRestoreProps
 IWMBandwidthSharing
 IWMClientConnections
 IWMClientConnections2
-IWMCodecAMVideoAccelerator
 IWMCodecInfo
 IWMCodecInfo2
 IWMCodecInfo3
-IWMCodecVideoAccelerator
 IWMCredentialCallback
 IWMDRMEditor
-IWMDRMReader
-IWMDRMWriter
 IWMHeaderInfo
 IWMHeaderInfo2
 IWMHeaderInfo3
-IWMImageInfo
 IWMIndexer
 IWMIndexer2
 IWMInputMediaProps
@@ -63,7 +55,7 @@ IWMMutualExclusion2
 IWMOutputMediaProps
 IWMPacketSize
 IWMPacketSize2
-IWMPlayerTimestampHook
+IWMPlayerHook
 IWMProfile
 IWMProfile2
 IWMProfile3
@@ -72,21 +64,21 @@ IWMProfileManager2
 IWMProfileManagerLanguage
 IWMPropertyVault
 IWMReader
-IWMReaderAccelerator
 IWMReaderAdvanced
 IWMReaderAdvanced2
 IWMReaderAdvanced3
 IWMReaderAdvanced4
+IWMReaderAdvanced5
 IWMReaderAllocatorEx
 IWMReaderCallback
 IWMReaderCallbackAdvanced
 IWMReaderNetworkConfig
 IWMReaderNetworkConfig2
+IWMReaderPlaylistBurn
 IWMReaderStreamClock
 IWMReaderTimecode
 IWMReaderTypeNegotiation
 IWMRegisterCallback
-IWMSBufferAllocator
 IWMSInternalAdminNetSource
 IWMSInternalAdminNetSource2
 IWMSInternalAdminNetSource3
@@ -99,7 +91,6 @@ IWMStreamPrioritization
 IWMSyncReader
 IWMSyncReader2
 IWMVideoMediaProps
-IWMWatermarkInfo
 IWMWriter
 IWMWriterAdvanced
 IWMWriterAdvanced2
@@ -113,3 +104,37 @@ IWMWriterPostViewCallback
 IWMWriterPreprocess
 IWMWriterPushSink
 IWMWriterSink
+
+
+These method are not tested
+
+WMCreateCertificate			
+WMCreateDeviceRegistration		
+WMCreateDRMTranscryptor			
+WMCreateLicenseRevocationAgent		
+
+
+These interfaces are not tested
+
+IWMDeviceRegistration
+IWMDRMMessageParser
+IWMDRMReader
+IWMDRMReader2
+IWMDRMReader3
+IWMDRMTranscryptionManager
+IWMDRMTranscryptor
+IWMDRMTranscryptor2
+IWMDRMWriter
+IWMDRMWriter2
+IWMDRMWriter3
+IWMLicenseRevocationAgent
+IWMProximityDetection
+IWMReaderAdvanced6
+IWMRegisteredDevice
+IWMCodecVideoAccelerator
+IWMImageInfo
+IWMWatermarkInfo
+IWMSBufferAllocator
+IWMCodecAMVideoAccelerator
+IWMPlayerTimestampHook
+IWMReaderAccelerator
