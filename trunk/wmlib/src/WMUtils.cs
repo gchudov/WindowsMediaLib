@@ -31,7 +31,6 @@ using WindowsMediaLib.Defs;
 
 namespace WindowsMediaLib
 {
-    #region API Declares
     static public class WMUtils
     {
         /// <summary>
@@ -167,7 +166,6 @@ namespace WindowsMediaLib
 #endif
 
     }
-    #endregion
 
     abstract public class COMBase
     {
@@ -1202,6 +1200,8 @@ namespace WindowsMediaLib
 
     static public class WMError
     {
+        #region Private methods
+
         /// <summary>
         /// From #defines in WinBase.h
         /// </summary>
@@ -1242,6 +1242,8 @@ namespace WindowsMediaLib
 
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern IntPtr LocalFree(IntPtr hMem);
+
+        #endregion
 
         public static string GetErrorText(int hr)
         {
@@ -1317,7 +1319,7 @@ namespace WindowsMediaLib
     }
 
     [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Class)]
-    public class UnmanagedNameAttribute : System.Attribute
+    internal class UnmanagedNameAttribute : System.Attribute
     {
         private string m_Name;
 
@@ -1741,31 +1743,31 @@ namespace WindowsMediaLib
     [StructLayout(LayoutKind.Sequential)]
     public class WmShort
     {
-        private short Value;
+        private short m_value;
 
         public WmShort()
         {
-            Value = 0;
+            m_value = 0;
         }
 
         public WmShort(short v)
         {
-            Value = v;
+            m_value = v;
         }
 
         public override string ToString()
         {
-            return Value.ToString();
+            return m_value.ToString();
         }
 
         public override int GetHashCode()
         {
-            return Value.GetHashCode();
+            return m_value.GetHashCode();
         }
 
         public static implicit operator short(WmShort l)
         {
-            return l.Value;
+            return l.m_value;
         }
 
         public static implicit operator WmShort(short l)
@@ -1775,7 +1777,12 @@ namespace WindowsMediaLib
 
         public short ToInt16()
         {
-            return Value;
+            return m_value;
+        }
+
+        public void Assign(short f)
+        {
+            m_value = f;
         }
 
         public static WmShort FromInt16(short l)
@@ -1787,31 +1794,31 @@ namespace WindowsMediaLib
     [StructLayout(LayoutKind.Sequential)]
     public class WmInt
     {
-        private int Value;
+        private int m_value;
 
         public WmInt()
         {
-            Value = 0;
+            m_value = 0;
         }
 
         public WmInt(int v)
         {
-            Value = v;
+            m_value = v;
         }
 
         public override string ToString()
         {
-            return Value.ToString();
+            return m_value.ToString();
         }
 
         public override int GetHashCode()
         {
-            return Value.GetHashCode();
+            return m_value.GetHashCode();
         }
 
         public static implicit operator int(WmInt l)
         {
-            return l.Value;
+            return l.m_value;
         }
 
         public static implicit operator WmInt(int l)
@@ -1821,7 +1828,12 @@ namespace WindowsMediaLib
 
         public int ToInt32()
         {
-            return Value;
+            return m_value;
+        }
+
+        public void Assign(int f)
+        {
+            m_value = f;
         }
 
         public static WmInt FromInt32(int l)
