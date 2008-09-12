@@ -31,7 +31,7 @@ IWMClientConnections2		IWMClientConnections	1		bwkahle		snarfle
 IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
-IWMCredentialCallback					1		
+IWMCredentialCallback					1		snarfle		ready
 IWMDRMEditor						1		snarfle		ready
 IWMHeaderInfo						12		snarfle		bwkahle
 IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		bwkahle
