@@ -98,7 +98,7 @@ IWMWriterNetworkSink		IWMWriterSink		8		snarfle		ready
 IWMWriterPostView					9		snarfle		ready
 IWMWriterPostViewCallback	IWMStatusCallback	2		snarfle		ready
 IWMWriterPreprocess					5		snarfle		ready
-IWMWriterPushSink		IWMWriterSink		3		
+IWMWriterPushSink		IWMWriterSink		3		snarfle		ready
 IWMWriterSink						5		snarfle		ready
 
 
