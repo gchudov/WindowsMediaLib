@@ -205,7 +205,7 @@ namespace WindowsMediaLib
     {
         Save = 0x1,
         DontCache = 0x2,
-        ClearTextT = 0x4,
+        ClearText = 0x4,
         Proxy = 0x8,
         Encrypt = 0x10
     }
@@ -1928,14 +1928,14 @@ namespace WindowsMediaLib
     public interface IWMCredentialCallback
     {
         void AcquireCredentials(
-            [In] string pwszRealm,
-            [In] string pwszSite,
-            [Out] StringBuilder pwszUser,
+            [In,MarshalAs(UnmanagedType.LPWStr) ] string pwszRealm,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string pwszSite,
+            [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex=3)] char[] pwszUser,
             [In] int cchUser,
-            [Out] StringBuilder pwszPassword,
+            [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex=5)] char[] pwszPassword,
             [In] int cchPassword,
             [In] int hrStatus,
-            out CredentialFlags pdwFlags
+            ref CredentialFlags pdwFlags
             );
     }
 

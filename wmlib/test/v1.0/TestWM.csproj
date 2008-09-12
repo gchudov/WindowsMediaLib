@@ -52,6 +52,7 @@
     <Compile Include="IWMCodecInfo2Test.cs" />
     <Compile Include="IWMCodecInfo3Test.cs" />
     <Compile Include="IWMCodecInfoTest.cs" />
+    <Compile Include="IWMCredentialCallbackTest.cs" />
     <Compile Include="IWMHeaderInfo.cs" />
     <Compile Include="IWMHeaderInfo2Test.cs" />
     <Compile Include="IWMHeaderInfo3Test.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="IWMWriterSinkTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
     <Compile Include="RunTests.cs" />
+    <Compile Include="MMIOTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\WindowsMediaLib-2005.csproj">
