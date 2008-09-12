@@ -72,7 +72,6 @@ IWMReaderNetworkConfig					33		snarfle		ready
 IWMReaderNetworkConfig2		IWMReaderNetworkConfig	13		snarfle		ready
 IWMReaderPlaylistBurn					4		bwkahle
 IWMReaderStreamClock					3		snarfle		ready
-IWMReaderTimecode					2		bwkahle
 IWMReaderTypeNegotiation				1		snarfle		ready
 IWMRegisterCallback					2		snarfle		ready
 IWMSInternalAdminNetSource				11		snarfle		ready
@@ -109,25 +108,26 @@ WMCreateDeviceRegistration
 WMCreateDRMTranscryptor			
 WMCreateLicenseRevocationAgent		
 
-IWMDeviceRegistration					6		
-IWMDRMMessageParser					2		
-IWMDRMReader						8		
-IWMDRMReader2			IWMDRMReader		4		
-IWMDRMReader3			IWMDRMReader2		1		
-IWMDRMTranscryptionManager				1		
-IWMDRMTranscryptor					4		
-IWMDRMTranscryptor2		IWMDRMTranscryptor	4		
-IWMDRMWriter						4		
-IWMDRMWriter2			IWMDRMWriter		1		
-IWMDRMWriter3			IWMDRMWriter2		1		
-IWMLicenseRevocationAgent				2		
-IWMProximityDetection					1		
-IWMReaderAdvanced6		IWMReaderAdvanced5	1		
-IWMRegisteredDevice					14		
+IWMDeviceRegistration					6		Requires special HW (and DRM)
+IWMDRMMessageParser					2		Requires DRM which can't be done w/o input from MS
+IWMDRMReader						8		Requires DRM which can't be done w/o input from MS
+IWMDRMReader2			IWMDRMReader		4		Requires DRM which can't be done w/o input from MS
+IWMDRMReader3			IWMDRMReader2		1		Requires DRM which can't be done w/o input from MS
+IWMDRMTranscryptionManager				1		Requires DRM which can't be done w/o input from MS
+IWMDRMTranscryptor					4		Requires DRM which can't be done w/o input from MS
+IWMDRMTranscryptor2		IWMDRMTranscryptor	4		Requires DRM which can't be done w/o input from MS
+IWMDRMWriter						4		Requires DRM which can't be done w/o input from MS
+IWMDRMWriter2			IWMDRMWriter		1		Requires DRM which can't be done w/o input from MS
+IWMDRMWriter3			IWMDRMWriter2		1		Requires DRM which can't be done w/o input from MS
+IWMLicenseRevocationAgent				2		Requires DRM which can't be done w/o input from MS
+IWMProximityDetection					1		Requires DRM which can't be done w/o input from MS
+IWMReaderAdvanced6		IWMReaderAdvanced5	1		Requires DRM which can't be done w/o input from MS
+IWMRegisteredDevice					14		Requires special HW (and DRM)
 IWMCodecVideoAccelerator				2		interface is not supported (http://msdn.microsoft.com/en-us/library/aa387405(VS.85).aspx)
 IWMImageInfo						2		Deprecated (http://msdn.microsoft.com/en-us/library/aa388414(VS.85).aspx)
 IWMWatermarkInfo					2		"No watermarking DMOs are provided with the Windows Media Format SDK" http://msdn.microsoft.com/en-us/library/aa390034(VS.85).aspx
 IWMSBufferAllocator					2		This interface is available only on Windows Server 2003 (http://msdn.microsoft.com/en-us/library/aa389626(VS.85).aspx)
+IWMReaderTimecode					2		Due to an MS bug, it isn't possible to create SMTPE indices, which this interface requires
 
 
 These 3 interfaces are only useful when writing a DirectShow filter (see http://msdn.microsoft.com/en-us/library/aa385715.aspx).
