@@ -116,7 +116,6 @@
     <Compile Include="IWMWriterSinkTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
     <Compile Include="RunTests.cs" />
-    <Compile Include="MMIOTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\WindowsMediaLib-2005.csproj">
