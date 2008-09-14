@@ -61,17 +61,17 @@ namespace WindowsMediaLib
             ref int pdwDataSize
             );
 
-        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling=true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
         public static extern int WMCheckURLExtension(
             string pwszURL
             );
 
-        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
         public static extern void WMCheckURLScheme(
             string pwszURLScheme
             );
 
-        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
         public static extern void WMIsAvailableOffline(
             string pwszURL,
             string pwszLanguage,
@@ -99,7 +99,7 @@ namespace WindowsMediaLib
             out IWMProfileManager ppProfileManager
             );
 
-        [DllImport("WMVCore.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
         public static extern void WMIsContentProtected(
             string pwszFileName,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsProtected
