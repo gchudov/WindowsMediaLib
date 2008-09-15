@@ -30,7 +30,7 @@ IWMClientConnections					2		bwkahle		snarfle
 IWMClientConnections2		IWMClientConnections	1		bwkahle		snarfle
 IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
-IWMCodecInfo3			IWMCodecInfo2		4		bwkahle
+IWMCodecInfo3			IWMCodecInfo2		4		bwkahle		ready
 IWMCredentialCallback					1		snarfle		ready
 IWMDRMEditor						1		snarfle		ready
 IWMHeaderInfo						12		snarfle		bwkahle
@@ -70,7 +70,7 @@ IWMReaderCallback		IWMStatusCallback	1		snarfle		ready
 IWMReaderCallbackAdvanced				6		snarfle		ready
 IWMReaderNetworkConfig					33		snarfle		ready
 IWMReaderNetworkConfig2		IWMReaderNetworkConfig	13		snarfle		ready
-IWMReaderPlaylistBurn					4		bwkahle
+IWMReaderPlaylistBurn					4		bwkahle		ready
 IWMReaderStreamClock					3		snarfle		ready
 IWMReaderTypeNegotiation				1		snarfle		ready
 IWMRegisterCallback					2		snarfle		ready
