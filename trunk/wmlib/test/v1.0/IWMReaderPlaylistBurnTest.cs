@@ -20,7 +20,7 @@ namespace v1._0
 
             TestInit();
 
-            //TestCancel();
+            TestCancel();
         }
 
         private void TestInit()

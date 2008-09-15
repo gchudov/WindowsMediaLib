@@ -1,23 +1,23 @@
 Functions				Assigned	Reviewer
-WMCheckURLExtension			snarfle		ready
-WMCheckURLScheme			snarfle		ready
+WMCheckURLExtension			snarfle		bwkahle
+WMCheckURLScheme			snarfle		bwkahle
 WMCreateBackupRestorer			snarfle		bwkahle
 WMCreateEditor				snarfle		bwkahle
-WMCreateIndexer				snarfle		ready
+WMCreateIndexer				snarfle		bwkahle
 WMCreateProfileManager			snarfle		bwkahle
-WMCreateReader				snarfle		ready
-WMCreateSyncReader			snarfle		ready
+WMCreateReader				snarfle		bwkahle
+WMCreateSyncReader			snarfle		bwkahle
 WMCreateWriter				snarfle		bwkahle
-WMCreateWriterFileSink			snarfle		ready
-WMCreateWriterNetworkSink		snarfle		ready
-WMCreateWriterPushSink			snarfle		ready
-WMIsAvailableOffline			snarfle		ready
-WMIsContentProtected			snarfle		ready
-WMValidateData				snarfle		ready
+WMCreateWriterFileSink			snarfle		bwkahle
+WMCreateWriterNetworkSink		snarfle		bwkahle
+WMCreateWriterPushSink			snarfle		bwkahle
+WMIsAvailableOffline			snarfle		bwkahle
+WMIsContentProtected			snarfle		bwkahle
+WMValidateData				snarfle		bwkahle
 
 
 Interfaces			Parent			Methods		Assigned	Reviewer
-INSNetSourceCreator					8		snarfle		ready
+INSNetSourceCreator					8		snarfle		bwkahle
 INSSBuffer						5		snarfle		bwkahle
 INSSBuffer2			INSSBuffer		2		snarfle		bwkahle
 INSSBuffer3			INSSBuffer2		2		snarfle		bwkahle
@@ -25,30 +25,30 @@ INSSBuffer4			INSSBuffer3		2		snarfle		bwkahle
 IWMAddressAccess					4		bwkahle		snarfle
 IWMAddressAccess2		IWMAddressAccess	2		bwkahle		snarfle
 IWMBackupRestoreProps					6		snarfle		bwkahle
-IWMBandwidthSharing		IWMStreamList		4		snarfle		ready
+IWMBandwidthSharing		IWMStreamList		4		snarfle		bwkahle
 IWMClientConnections					2		bwkahle		snarfle
 IWMClientConnections2		IWMClientConnections	1		bwkahle		snarfle
 IWMCodecInfo						3		bwkahle		snarfle
 IWMCodecInfo2			IWMCodecInfo		2		bwkahle		snarfle
 IWMCodecInfo3			IWMCodecInfo2		4		bwkahle		ready
-IWMCredentialCallback					1		snarfle		ready
+IWMCredentialCallback					1		snarfle		bwkahle
 IWMDRMEditor						1		snarfle		ready
 IWMHeaderInfo						12		snarfle		bwkahle
 IWMHeaderInfo2			IWMHeaderInfo		2		snarfle		bwkahle
 IWMHeaderInfo3			IWMHeaderInfo2		7		snarfle		bwkahle
-IWMIndexer						2		snarfle		ready
-IWMIndexer2			IWMIndexer		1		snarfle		ready
-IWMInputMediaProps		IWMMediaProps		2		snarfle		ready
-IWMIStreamProps						1		snarfle		ready
-IWMLanguageList						3		snarfle		ready
-IWMLicenseBackup					2		snarfle		ready
-IWMLicenseRestore					2		snarfle		ready
-IWMMediaProps						3		snarfle		ready
-IWMMetadataEditor					3		snarfle		ready
-IWMMetadataEditor2		IWMMetadataEditor	1		snarfle		ready
-IWMMutualExclusion		IWMStreamList		2		snarfle		ready
-IWMMutualExclusion2		IWMMutualExclusion	10		snarfle		ready
-IWMOutputMediaProps		IWMMediaProps		2		snarfle		ready
+IWMIndexer						2		snarfle		bwkahle
+IWMIndexer2			IWMIndexer		1		snarfle		bwkahle
+IWMInputMediaProps		IWMMediaProps		2		snarfle		bwkahle
+IWMIStreamProps						1		snarfle		bwkahle
+IWMLanguageList						3		snarfle		bwkahle
+IWMLicenseBackup					2		snarfle		bwkahle
+IWMLicenseRestore					2		snarfle		bwkahle
+IWMMediaProps						3		snarfle		bwkahle
+IWMMetadataEditor					3		snarfle		bwkahle
+IWMMetadataEditor2		IWMMetadataEditor	1		snarfle		bwkahle
+IWMMutualExclusion		IWMStreamList		2		snarfle		bwkahle
+IWMMutualExclusion2		IWMMutualExclusion	10		snarfle		bwkahle
+IWMOutputMediaProps		IWMMediaProps		2		snarfle		bwkahle
 IWMPacketSize						2		snarfle		ready
 IWMPacketSize2			IWMPacketSize		2		snarfle		ready
 IWMPlayerHook						1		snarfle		ready

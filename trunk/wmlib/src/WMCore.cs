@@ -1936,7 +1936,7 @@ namespace WindowsMediaLib
     public interface IWMCredentialCallback
     {
         void AcquireCredentials(
-            [In,MarshalAs(UnmanagedType.LPWStr) ] string pwszRealm,
+            [In, MarshalAs(UnmanagedType.LPWStr)] string pwszRealm,
             [In, MarshalAs(UnmanagedType.LPWStr)] string pwszSite,
             [In, Out, MarshalAs(UnmanagedType.LPArray, SizeParamIndex=3)] char[] pwszUser,
             [In] int cchUser,
