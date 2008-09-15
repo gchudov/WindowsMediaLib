@@ -30,7 +30,7 @@ namespace v1._0
                 {
                     // Start testing IWMCodecInfo3
                     AttrDataType dataType;
-                    byte[] value = new byte[] { 1, 0, 0, 0 };
+                    byte[] value = new byte[] { 2, 0, 0, 0 };
                     byte[] outvalue;
                     int size = 4;
 
@@ -43,17 +43,19 @@ namespace v1._0
                     m_pCodecInfo.GetCodecName(MediaType.Audio, i, sb, ref nameLen);
                     Debug.Assert(sb.ToString().Length > 0);
 
-                    if (sb.ToString().Equals("Windows Media Audio Voice 9"))
+                    if (sb.ToString().Equals("Windows Media Audio 9.2"))
                     {
-                        //m_pCodecInfo.SetCodecEnumerationSetting(MediaType.Audio, i, Constants.g_wszVBREnabled, AttrDataType.BOOL, value, size);
-                        //size = -1;
-                        //m_pCodecInfo.GetCodecEnumerationSetting(MediaType.Audio, i, Constants.g_wszVBREnabled, out dataType, null, ref size);
-                        //Debug.Assert(size == 4);
+                        m_pCodecInfo.SetCodecEnumerationSetting(MediaType.Audio, i, Constants.g_wszNumPasses, AttrDataType.DWORD, value, size);
+                        size = -1;
+                        m_pCodecInfo.GetCodecEnumerationSetting(MediaType.Audio, i, Constants.g_wszNumPasses, out dataType, null, ref size);
+                        Debug.Assert(size == 4);
 
-                        //outvalue = new byte[size];
-                        //m_pCodecInfo.GetCodecEnumerationSetting(MediaType.Audio, 0, Constants.g_wszVBREnabled, out dataType, outvalue, ref size);
-                        //Debug.Assert(value == outvalue);
-
+                        outvalue = new byte[size];
+                        m_pCodecInfo.GetCodecEnumerationSetting(MediaType.Audio, 0, Constants.g_wszNumPasses, out dataType, outvalue, ref size);
+                        Debug.Assert(BitConverter.ToInt32(value, 0) == BitConverter.ToInt32(outvalue, 0));
+                    }
+                    else if (sb.ToString().Equals("Windows Media Audio Voice 9"))
+                    {
                         m_pCodecInfo.GetCodecFormatProp(MediaType.Audio, i, 0, Constants.g_wszSpeechCaps, out dataType, null, ref size);
                         Debug.Assert(size == 4);
                         outvalue = new byte[size];
