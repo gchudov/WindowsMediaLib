@@ -289,7 +289,9 @@ namespace v1._0
 
                 //ExternTest t93 = new ExternTest();
                 //t93.DoTests();
-
+                
+                //IWMReaderPlaylistBurnTest t94 = new IWMReaderPlaylistBurnTest();
+                //t94.DoTests();
             }
             catch (Exception e)
             {
