@@ -240,7 +240,7 @@ namespace WindowsMediaLib
         public const int E_INSUFFICIENT_BANDWIDTH = unchecked((int)0xC00D002C);
         public const int E_NOT_REBUILDING = unchecked((int)0xC00D002D);
         public const int E_LATE_OPERATION = unchecked((int)0xC00D002E);
-        public const int E_InvalidData = unchecked((int)0xC00D002F);
+        public const int E_INVALID_DATA = unchecked((int)0xC00D002F);
         public const int E_FILE_BANDWIDTH_LIMIT = unchecked((int)0xC00D0030);
         public const int E_OPEN_FILE_LIMIT = unchecked((int)0xC00D0031);
         public const int E_BAD_CONTROL_DATA = unchecked((int)0xC00D0032);
