@@ -369,7 +369,15 @@ namespace WindowsMediaLib
         PrerollReady = 40,
         PrerollComplete = 41,
         ClientProperties = 42,
-        LicenseURLSignatureState = 43
+        LicenseURLSignatureState = 43,
+        InitPlaylistBurn = 44,
+        TranscryptorInit = 45,
+        TranscryptorSeeked = 46,
+        TranscryptorRead = 47,
+        TranscryptorClosed = 48,
+        ProximityResult = 49,
+        ProximityCompleted = 50,
+        ContentEnabler = 51
     }
 
     [UnmanagedName("WMT_STORAGE_FORMAT")]
@@ -6400,13 +6408,13 @@ namespace WindowsMediaLib
     {
         void InitPlaylistBurn(
             int cFiles,
-            [In] string ppwszFilenames,
+            [In, MarshalAs(UnmanagedType.LPArray, ArraySubType=UnmanagedType.LPWStr)] string[] ppwszFilenames,
             IWMStatusCallback pCallback,
             IntPtr pvContext);
 
         void GetInitResults(
             int cFiles,
-            out int phrStati);
+            [Out, MarshalAs(UnmanagedType.LPArray)] int[] phrStati);
 
         void Cancel();
 

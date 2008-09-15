@@ -90,8 +90,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IWMReaderNetworkConfigTest2.cs" />
+    <Compile Include="IWMReaderPlaylistBurnTest.cs" />
     <Compile Include="IWMReaderStreamClockTest.cs" />
     <Compile Include="IWMReaderTest.cs" />
+    <Compile Include="IWMReaderTimecodeTest.cs" />
     <Compile Include="IWMReaderTypeNegotiationTest.cs" />
     <Compile Include="IWMRegisterCallbackTest.cs" />
     <Compile Include="IWMSInternalAdminNetSource2Test.cs" />
