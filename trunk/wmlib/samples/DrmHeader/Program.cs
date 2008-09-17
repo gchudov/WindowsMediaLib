@@ -18,18 +18,6 @@ namespace DrmHeader
 {
     class Program
     {
-        //*****************************************************************************
-        //
-        // Microsoft Windows Media
-        // Copyright (C) Microsoft Corporation. All rights reserved.
-        //
-        // FileName:            DRMHeader.cpp
-        //
-        // Abstract:            This sample demonstrates the usage of IWMDRMEditor
-        //						interface for retrieving various DRM properties.
-        //
-        //*****************************************************************************
-
         //
         // DRM properties to be queried
         //
