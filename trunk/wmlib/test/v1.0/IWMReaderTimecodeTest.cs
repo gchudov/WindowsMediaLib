@@ -6,6 +6,8 @@ using System.Diagnostics;
 
 namespace v1._0
 {
+#if ALLOW_UNTESTED_INTERFACES
+
     public class IWMReaderTimecodeTest
     {
         IWMReaderTimecode readerTimecode;
@@ -36,4 +38,5 @@ namespace v1._0
             Debug.Assert(outputs > 0);
         }
     }
+#endif
 }
