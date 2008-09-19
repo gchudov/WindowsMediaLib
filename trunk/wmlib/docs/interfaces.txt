@@ -76,7 +76,6 @@ IWMReaderNetworkConfig
 IWMReaderNetworkConfig2
 IWMReaderPlaylistBurn
 IWMReaderStreamClock
-IWMReaderTimecode
 IWMReaderTypeNegotiation
 IWMRegisterCallback
 IWMSInternalAdminNetSource
@@ -138,3 +137,4 @@ IWMSBufferAllocator
 IWMCodecAMVideoAccelerator
 IWMPlayerTimestampHook
 IWMReaderAccelerator
+IWMReaderTimecode
