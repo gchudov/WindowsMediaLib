@@ -6414,8 +6414,7 @@ namespace WindowsMediaLib
 
         void GetInitResults(
             int cFiles,
-            IntPtr ip);
-            //[Out, MarshalAs(UnmanagedType.LPArray)] int[] phrStati);
+            [Out, MarshalAs(UnmanagedType.LPArray)] int[] phrStati);
 
         void Cancel();
 
