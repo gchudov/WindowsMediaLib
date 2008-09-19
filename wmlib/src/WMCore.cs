@@ -665,6 +665,24 @@ namespace WindowsMediaLib
 #if ALLOW_UNTESTED_INTERFACES
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    Guid("F369E2F0-E081-4FE6-8450-B810B2F410D1"),
+    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+    public interface IWMReaderTimecode
+    {
+        void GetTimecodeRangeCount(
+            [In] short wStreamNum,
+            out short pwRangeCount
+            );
+
+        void GetTimecodeRangeBounds(
+            [In] short wStreamNum,
+            [In] short wRangeNum,
+            out int pStartTimecode,
+            out int pEndTimecode
+            );
+    }
+
+    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("f6211f03-8d21-4e94-93e6-8510805f2d99"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDeviceRegistration
@@ -4366,24 +4384,6 @@ namespace WindowsMediaLib
     }
 
     [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
-    Guid("F369E2F0-E081-4FE6-8450-B810B2F410D1"),
-    InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
-    public interface IWMReaderTimecode
-    {
-        void GetTimecodeRangeCount(
-            [In] short wStreamNum,
-            out short pwRangeCount
-            );
-
-        void GetTimecodeRangeBounds(
-            [In] short wStreamNum,
-            [In] short wRangeNum,
-            out int pStartTimecode,
-            out int pEndTimecode
-            );
-    }
-
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
     Guid("FDBE5592-81A1-41EA-93BD-735CAD1ADC05"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderTypeNegotiation
@@ -6414,7 +6414,8 @@ namespace WindowsMediaLib
 
         void GetInitResults(
             int cFiles,
-            [Out, MarshalAs(UnmanagedType.LPArray)] int[] phrStati);
+            IntPtr ip);
+            //[Out, MarshalAs(UnmanagedType.LPArray)] int[] phrStati);
 
         void Cancel();
 
