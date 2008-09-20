@@ -252,7 +252,7 @@ namespace AsfCreate
                     }
                     catch (COMException e)
                     {
-                        if ((iRetry++ < 3) && (e.ErrorCode != NSResults.E_InvalidData))
+                        if ((iRetry++ < 3) && (e.ErrorCode != NSResults.E_INVALID_DATA))
                         {
                             continue;
                         }
