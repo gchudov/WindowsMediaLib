@@ -292,6 +292,9 @@ namespace v1._0
                 
                 //IWMReaderPlaylistBurnTest t94 = new IWMReaderPlaylistBurnTest();
                 //t94.DoTests();
+
+                //TestMMIO t95 = new TestMMIO();
+                //t95.DoTests();
             }
             catch (Exception e)
             {
@@ -308,9 +311,6 @@ namespace v1._0
                 }
 
                 System.Windows.Forms.MessageBox.Show(string.Format("0x{0:x}: {1}", hr, s), "Exception", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-            }
-            finally
-            {
             }
         }
     }
