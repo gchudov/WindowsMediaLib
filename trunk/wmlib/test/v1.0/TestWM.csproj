@@ -118,6 +118,7 @@
     <Compile Include="IWMWriterPushSinkTest.cs" />
     <Compile Include="IWMWriterSinkTest.cs" />
     <Compile Include="IWMWriterTest.cs" />
+    <Compile Include="MMIOTest.cs" />
     <Compile Include="RunTests.cs" />
   </ItemGroup>
   <ItemGroup>
