@@ -90,6 +90,7 @@ namespace v1._0
 
             int iMax;
             m_read.GetMaxStreamSampleSize(1, out iMax);
+            Debug.Assert(iMax > 0);
         }
 
         private void TestSetting()
