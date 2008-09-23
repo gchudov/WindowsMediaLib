@@ -5,6 +5,8 @@ using WindowsMediaLib;
 using WindowsMediaLib.Defs;
 using System.Diagnostics;
 
+using System.Runtime.InteropServices;
+
 namespace v1._0
 {
     public class IWMCodecInfo3Test
@@ -43,6 +45,16 @@ namespace v1._0
                     m_pCodecInfo.GetCodecName(MediaType.Audio, i, sb, ref nameLen);
                     Debug.Assert(sb.ToString().Length > 0);
 
+                    Guid mt;
+                    int fCount;
+
+                    mt = MediaType.Video;
+                    m_pCodecInfo.GetCodecFormatCount(mt, i, out fCount);
+                    for (int jjj = 0; jjj < fCount; jjj++)
+                    {
+                        TryOne(mt, jjj, Constants.g_wszComplexityMax);
+                    }
+
                     if (sb.ToString().Equals("Windows Media Audio 9.2"))
                     {
                         m_pCodecInfo.SetCodecEnumerationSetting(MediaType.Audio, i, Constants.g_wszNumPasses, AttrDataType.DWORD, value, size);
@@ -67,6 +79,26 @@ namespace v1._0
                         Debug.Assert(dataType == AttrDataType.DWORD);
                         Debug.Assert(val > 0);
                     }
+                }
+            }
+        }
+
+        private void TryOne(Guid g, int jjj, string s)
+        {
+            AttrDataType pType;
+            int iSize = 4;
+            byte[] b = null;
+            try
+            {
+                m_pCodecInfo.GetCodecProp(g, jjj, s, out pType, b, ref iSize);
+                b = new byte[iSize];
+            }
+            catch (Exception e)
+            {
+                int hr = Marshal.GetHRForException(e);
+                if (hr != -2147024809)
+                {
+                    Debug.WriteLine(hr);
                 }
             }
         }
