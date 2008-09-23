@@ -87,6 +87,9 @@ namespace v1._0
             Debug.Assert(pSamp != null);
             Debug.Assert(d > 0);
             Debug.Assert(s == 1);
+
+            int iMax;
+            m_read.GetMaxStreamSampleSize(1, out iMax);
         }
 
         private void TestSetting()
