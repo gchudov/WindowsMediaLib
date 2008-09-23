@@ -26,7 +26,8 @@ that would be the place to get started.
 =====================================================================================
 
 This is the current list of samples along with a short description.  See the
-readme.txt in the individual samples for more details.
+readme.txt in the individual samples for more details.  Note that these samples 
+should not be considered commercial quality, but can form the basis of your own code.
 
 
 Samples\AsfCreate
