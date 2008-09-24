@@ -1,5 +1,5 @@
 -----------------------
-These method are tested
+These methods are tested
 
 Functions
 WMCreateBackupRestorer
@@ -160,12 +160,12 @@ IWMWriterSink
 
 
 ---------------------------
-These method are not tested
+These methods are not tested
 
-WMCreateCertificate			
-WMCreateDeviceRegistration		
-WMCreateDRMTranscryptor			
-WMCreateLicenseRevocationAgent		
+WMCreateCertificate
+WMCreateDeviceRegistration
+WMCreateDRMTranscryptor
+WMCreateLicenseRevocationAgent
 
 
 -------------------------------
