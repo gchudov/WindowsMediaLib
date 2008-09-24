@@ -92,6 +92,7 @@ namespace v1._0
             {
                 m_pCodecInfo.GetCodecProp(g, jjj, s, out pType, b, ref iSize);
                 b = new byte[iSize];
+                m_pCodecInfo.GetCodecProp(g, jjj, s, out pType, b, ref iSize);
             }
             catch (Exception e)
             {

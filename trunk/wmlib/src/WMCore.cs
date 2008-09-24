@@ -1934,7 +1934,7 @@ namespace WindowsMediaLib
             [In] int dwCodecIndex,
             [In, MarshalAs(UnmanagedType.LPWStr)] string pszName,
             [In] AttrDataType Type,
-            [In, MarshalAs(UnmanagedType.LPArray, SizeParamIndex = 5)] byte[] pValue,
+            [In, MarshalAs(UnmanagedType.LPArray)] byte[] pValue,
             [In] int dwSize
             );
 
