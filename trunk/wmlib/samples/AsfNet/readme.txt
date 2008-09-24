@@ -10,7 +10,7 @@ or FITNESS FOR A PARTICULAR PURPOSE.
 **************************************************************************/
 
 In addition to the Windows Media library, you'll also need DirectShowLib (located
-at http://directshownet.sourceforge.net
+at http://directshownet.sourceforge.net)
 
 After starting this application, you should be able to connect to the output of 
 your capture device by connecting to a TCP/IP port.  From Windows Media Player, go to 
