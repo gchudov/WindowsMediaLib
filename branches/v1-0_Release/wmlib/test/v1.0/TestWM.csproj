@@ -1,0 +1,138 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C6B9C35B-DE1D-4CFA-B038-5ED9ADC033AC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>v1._0</RootNamespace>
+    <AssemblyName>TestWM</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ALLOW_UNTESTED_INTERFACES</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Extern.cs" />
+    <Compile Include="INSNetSourceCreatorTest.cs" />
+    <Compile Include="INSSBuffer2Test.cs" />
+    <Compile Include="INSSBuffer3Test.cs" />
+    <Compile Include="INSSBuffer4Test.cs" />
+    <Compile Include="INSSBufferTest.cs" />
+    <Compile Include="IWMAddressAccess2Test.cs" />
+    <Compile Include="IWMAddressAccessTest.cs" />
+    <Compile Include="IWMBackupRestorePropsTest.cs" />
+    <Compile Include="IWMBandwidthSharingTest.cs" />
+    <Compile Include="IWMClientConnections2Test.cs" />
+    <Compile Include="IWMClientConnectionsTest.cs" />
+    <Compile Include="IWMCodecInfo2Test.cs" />
+    <Compile Include="IWMCodecInfo3Test.cs" />
+    <Compile Include="IWMCodecInfoTest.cs" />
+    <Compile Include="IWMCredentialCallbackTest.cs" />
+    <Compile Include="IWMHeaderInfo.cs" />
+    <Compile Include="IWMHeaderInfo2Test.cs" />
+    <Compile Include="IWMHeaderInfo3Test.cs" />
+    <Compile Include="IWMIndexer2Test.cs" />
+    <Compile Include="IWMIndexerTest.cs" />
+    <Compile Include="IWMInputMediaPropsTest.cs" />
+    <Compile Include="IWMIStreamPropsTest.cs" />
+    <Compile Include="IWMLanguageListTest.cs" />
+    <Compile Include="IWMLicenseBackupTest.cs" />
+    <Compile Include="IWMLicenseRestoreTest.cs" />
+    <Compile Include="IWMMediaPropsTest.cs" />
+    <Compile Include="IWMMetadataEditor2Test.cs" />
+    <Compile Include="IWMMetadataEditorTest.cs" />
+    <Compile Include="IWMMutualExclusion2Test.cs" />
+    <Compile Include="IWMMutualExclusionTest.cs" />
+    <Compile Include="IWMOutputMediaPropsTest.cs" />
+    <Compile Include="IWMPacketSize2Test.cs" />
+    <Compile Include="IWMPacketSizeTest.cs" />
+    <Compile Include="IWMProfile2Test.cs" />
+    <Compile Include="IWMProfile3Test.cs" />
+    <Compile Include="IWMProfileManager2Test.cs" />
+    <Compile Include="IWMProfileManagerLanguageTest.cs" />
+    <Compile Include="IWMProfileManagerTest.cs" />
+    <Compile Include="IWMProfileTest.cs" />
+    <Compile Include="IWMPropertyVaultTest.cs" />
+    <Compile Include="IWMReaderAdvanced2Test.cs" />
+    <Compile Include="IWMReaderAdvanced3Test.cs" />
+    <Compile Include="IWMReaderAdvanced4Test.cs" />
+    <Compile Include="IWMReaderAdvanced5Test.cs" />
+    <Compile Include="IWMReaderAdvancedTest.cs" />
+    <Compile Include="IWMReaderAllocatorExTest.cs" />
+    <Compile Include="IWMReaderCallbackAdvancedTest.cs" />
+    <Compile Include="IWMReaderCallbackTest.cs" />
+    <Compile Include="IWMReaderNetworkConfigTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IWMReaderNetworkConfigTest2.cs" />
+    <Compile Include="IWMReaderPlaylistBurnTest.cs" />
+    <Compile Include="IWMReaderStreamClockTest.cs" />
+    <Compile Include="IWMReaderTest.cs" />
+    <Compile Include="IWMReaderTimecodeTest.cs" />
+    <Compile Include="IWMReaderTypeNegotiationTest.cs" />
+    <Compile Include="IWMRegisterCallbackTest.cs" />
+    <Compile Include="IWMSInternalAdminNetSource2Test.cs" />
+    <Compile Include="IWMSInternalAdminNetSource3Test.cs" />
+    <Compile Include="IWMSInternalAdminNetSourceTest.cs" />
+    <Compile Include="IWMStreamConfig2Test.cs" />
+    <Compile Include="IWMStreamConfig3Test.cs" />
+    <Compile Include="IWMStreamConfigTest.cs" />
+    <Compile Include="IWMStreamListTest.cs" />
+    <Compile Include="IWMSyncReader2Test.cs" />
+    <Compile Include="IWMSyncReaderTest.cs" />
+    <Compile Include="IWMVideoMediaPropsTest.cs" />
+    <Compile Include="IWMWriterAdvanced3Test.cs" />
+    <Compile Include="IWMWriterAdvanced2Test.cs" />
+    <Compile Include="IWMWriterAdvancedTest.cs" />
+    <Compile Include="IWMWriterFileSink2Test.cs" />
+    <Compile Include="IWMWriterFileSink3Test.cs" />
+    <Compile Include="IWMWriterFileSinkTest.cs" />
+    <Compile Include="IWMWriterNetworkSinkTest.cs" />
+    <Compile Include="IWMWriterPostViewTest.cs" />
+    <Compile Include="IWMWriterPreprocessTest.cs" />
+    <Compile Include="IWMWriterPushSinkTest.cs" />
+    <Compile Include="IWMWriterSinkTest.cs" />
+    <Compile Include="IWMWriterTest.cs" />
+    <Compile Include="MMIOTest.cs" />
+    <Compile Include="RunTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\WindowsMediaLib-2005.csproj">
+      <Project>{7EA4160F-3BBD-47C9-A38C-4053B64B24A8}</Project>
+      <Name>WindowsMediaLib-2005</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
