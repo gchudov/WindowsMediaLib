@@ -188,6 +188,280 @@ namespace MultiMedia
         DenyNone = 0x00000040,      /* deny nothing to other processes */
     }
 
+    // From MIXER_GETLINEINFOF_* defines and MIXER_OBJECTF_* defines
+    [Flags]
+    public enum MIXER_GETLINEINFOF
+    {
+        Destination = 0x00000000,
+        Source = 0x00000001,
+        LineID = 0x00000002,
+        ComponentType = 0x00000003,
+        TargetType = 0x00000004,
+
+        Mixer = 0x00000000,
+        WaveOut = 0x10000000,
+        WaveIn = 0x20000000,
+        MidiOut = 0x30000000,
+        MidiIn = 0x40000000,
+        Aux = 0x50000000,
+        Handle = unchecked((int)0x80000000),
+        HMidiIn = (Handle | MidiIn),
+        HMidiOut = (Handle | MidiOut),
+        HMixer = (Handle | Mixer),
+        HWaveIn = (Handle | WaveIn),
+        HWaveOut = (Handle | WaveOut)
+    }
+
+    // From MIXER_SETCONTROLDETAILSF_* defines and MIXER_OBJECTF_* defines
+    [Flags]
+    public enum MIXER_SETCONTROLDETAILSF
+    {
+        Value = 0x00000000,
+        Custom = 0x00000001,
+
+        QueryMask = 0x0000000F,
+
+        Mixer = 0x00000000,
+        WaveOut = 0x10000000,
+        WaveIn = 0x20000000,
+        MidiOut = 0x30000000,
+        MidiIn = 0x40000000,
+        Aux = 0x50000000,
+        Handle = unchecked((int)0x80000000),
+        HMidiIn = (Handle | MidiIn),
+        HMidiOut = (Handle | MidiOut),
+        HMixer = (Handle | Mixer),
+        HWaveIn = (Handle | WaveIn),
+        HWaveOut = (Handle | WaveOut)
+    }
+
+    // From MIXER_GETLINECONTROLSF_* defines combined with MIXER_OBJECTF_* defines
+    [Flags]
+    public enum MIXER_GETLINECONTROLSF
+    {
+        All = 0x00000000,
+        OneByID = 0x00000001,
+        OneByType = 0x00000002,
+        QueryMask = 0x0000000F,
+
+        Mixer = 0x00000000,
+        WaveOut = 0x10000000,
+        WaveIn = 0x20000000,
+        MidiOut = 0x30000000,
+        MidiIn = 0x40000000,
+        Aux = 0x50000000,
+        Handle = unchecked((int)0x80000000),
+        HMidiIn = (Handle | MidiIn),
+        HMidiOut = (Handle | MidiOut),
+        HMixer = (Handle | Mixer),
+        HWaveIn = (Handle | WaveIn),
+        HWaveOut = (Handle | WaveOut)
+    }
+
+    // From MIXER_OBJECTF_* defines
+    [Flags]
+    public enum MIXER_OBJECTF
+    {
+        GetControlDetailsF_Value = 0x0,
+        GetControlDetailsF_ListText = 0x00000001,
+
+        CallBack_Window = 0x00010000,    /* dwCallback is an HWND */
+
+        Mixer = 0x00000000,
+        WaveOut = 0x10000000,
+        WaveIn = 0x20000000,
+        MidiOut = 0x30000000,
+        MidiIn = 0x40000000,
+        Aux = 0x50000000,
+        Handle = unchecked((int)0x80000000),
+        HMidiIn = (Handle | MidiIn),
+        HMidiOut = (Handle | MidiOut),
+        HMixer = (Handle | Mixer),
+        HWaveIn = (Handle | WaveIn),
+        HWaveOut = (Handle | WaveOut)
+    }
+
+    // From MIXERCONTROL_CONTROLF_* defines
+    [Flags]
+    public enum MIXERCONTROL_CONTROLF
+    {
+        None = 0,
+        Uniform = 0x00000001,
+        Multiple = 0x00000002,
+        Disabled = unchecked((int)0x80000000)
+    }
+
+    // From MIXERCONTROL_CONTROLTYPE defines
+    [Flags]
+    public enum MIXERCONTROL_CONTROLTYPE
+    {
+        ClassFader = 0x50000000,
+        ClassList = 0x70000000,
+        SCListSingle = 0x00000000,
+        UnitsBoolean = 0x00010000,
+        UnitsUnsigned = 0x30000,
+        SCListMultiple = 0x01000000,
+
+        Fader = (ClassFader | UnitsUnsigned),
+        MultipleSelect = (ClassList | SCListMultiple | UnitsBoolean),
+        SingleSelect = (ClassList | SCListSingle | UnitsBoolean),
+        Mixer = (MultipleSelect + 1),
+        Mux = (SingleSelect + 1),
+        Volume = (Fader + 1)
+    }
+
+    // From MIXERCONTROL_CT_* defines combined with MIXERCONTROL_CONTROLTYPE_* defines
+    [Flags]
+    public enum ControlType
+    {
+        Class_Mask = unchecked((int)0xF0000000),
+        Class_Custom = 0x00000000,
+        Class_Meter = 0x10000000,
+        Class_Switch = 0x20000000,
+        Class_Number = 0x30000000,
+        Class_Slider = 0x40000000,
+        Class_Fader = 0x50000000,
+        Class_Time = 0x60000000,
+        Class_List = 0x70000000,
+
+        SubClassMask = 0x0F000000,
+
+        SC_SwitchBoolean = 0x00000000,
+        SC_SwitchButton = 0x01000000,
+
+        SC_MeterPolled = 0x00000000,
+
+        SC_TimeMicroSecs = 0x00000000,
+        SC_TimeMilliSecs = 0x01000000,
+
+        SC_ListSingle = 0x00000000,
+        SC_ListMultiple = 0x01000000,
+
+        Units_Mask = 0x00FF0000,
+        Units_Custom = 0x00000000,
+        Units_Boolean = 0x00010000,
+        Units_Signed = 0x00020000,
+        Units_Unsigned = 0x00030000,
+        Units_Decibels = 0x00040000, /* in 10ths */
+        Units_Percent = 0x00050000, /* in 10ths */
+
+        Custom = (Class_Custom | Units_Custom),
+        BooleanMeter = (Class_Meter | SC_MeterPolled | Units_Boolean),
+        SignedMeter = (Class_Meter | SC_MeterPolled | Units_Signed),
+        PeakMeter = (SignedMeter + 1),
+        UnsignedMeter = (Class_Meter | SC_MeterPolled | Units_Unsigned),
+        Boolean = (Class_Switch | SC_SwitchBoolean | Units_Boolean),
+        OnOff = (Boolean + 1),
+        Mute = (Boolean + 2),
+        Mono = (Boolean + 3),
+        Loudness = (Boolean + 4),
+        StereoEnh = (Boolean + 5),
+        BassBoost = (Boolean + 0x00002277),
+        Button = (Class_Switch | SC_SwitchButton | Units_Boolean),
+        Decibels = (Class_Number | Units_Decibels),
+        Signed = (Class_Number | Units_Signed),
+        Unsigned = (Class_Number | Units_Unsigned),
+        Percent = (Class_Number | Units_Percent),
+        Slider = (Class_Slider | Units_Signed),
+        Pan = (Slider + 1),
+        QSoundPan = (Slider + 2),
+        Fader = (Class_Fader | Units_Unsigned),
+        Volume = (Fader + 1),
+        Bass = (Fader + 2),
+        Treble = (Fader + 3),
+        Equalizer = (Fader + 4),
+        SingleSelect = (Class_List | SC_ListSingle | Units_Boolean),
+        Mux = (SingleSelect + 1),
+        MultipleSelect = (Class_List | SC_ListMultiple | Units_Boolean),
+        Mixer = (MultipleSelect + 1),
+        MicroTime = (Class_Time | SC_TimeMicroSecs | Units_Unsigned),
+        MilliTime = (Class_Time | SC_TimeMilliSecs | Units_Unsigned)
+    }
+
+    // From MIXERLINE_TARGETTYPE_* defines
+    public enum MIXERLINE_TARGETTYPE
+    {
+        Undefined = 0,
+        WaveOut,
+        WaveIn,
+        MidiOut,
+        MidiIn,
+        Aux
+    }
+
+    // From MIXERLINE_COMPONENTTYPE_* defines
+    public enum MIXERLINE_COMPONENTTYPE
+    {
+        DST_First = 0x00000000,
+        DST_Undefined = (DST_First + 0),
+        DST_Digital = (DST_First + 1),
+        DST_Line = (DST_First + 2),
+        DST_Monitor = (DST_First + 3),
+        DST_Speakers = (DST_First + 4),
+        DST_Headphones = (DST_First + 5),
+        DST_Telephone = (DST_First + 6),
+        DST_WaveIn = (DST_First + 7),
+        DST_VoiceIn = (DST_First + 8),
+        DST_Last = (DST_First + 8),
+
+        SRC_First = 0x00001000,
+        SRC_Undefined = (SRC_First + 0),
+        SRC_Digital = (SRC_First + 1),
+        SRC_Line = (SRC_First + 2),
+        SRC_Microphone = (SRC_First + 3),
+        SRC_Synthesizer = (SRC_First + 4),
+        SRC_CompactDisc = (SRC_First + 5),
+        SRC_Telephone = (SRC_First + 6),
+        SRC_PCSpeaker = (SRC_First + 7),
+        SRC_WaveOut = (SRC_First + 8),
+        SRC_Auxillary = (SRC_First + 9),
+        SRC_Analog = (SRC_First + 10),
+        SRC_Last = (SRC_First + 10),
+
+        Invalid = -1
+    }
+
+    // From MIXERLINE_LINEF_* defines
+    [Flags]
+    public enum MIXERLINE_LINEF
+    {
+        None = 0,
+        Active = 0x00000001,
+        Disconnected = 0x00008000,
+        Source = unchecked((int)0x80000000)
+    }
+
+    // From MMSYSERR_* defines
+    public enum MMSYSERR
+    {
+        NoError = 0,    /* no error */
+        Error,          /* unspecified error */
+        BadDeviceID,    /* device ID out of range */
+        NotEnabled,     /* driver failed enable */
+        Allocated,      /* device already allocated */
+        InvalHandle,    /* device handle is invalid */
+        NoDriver,       /* no device driver present */
+        NoMem,          /* memory allocation error */
+        NotSupported,   /* function isn't supported */
+        BadErrNum,      /* error value out of range */
+        InvalFlag,      /* invalid flag passed */
+        InvalParam,     /* invalid parameter passed */
+        HandleBusy,     /* handle being used simultaneously on another thread (eg callback) */
+        InvalidAlias,   /* specified alias not found */
+        BadDB,          /* bad registry database */
+        KeyNotFound,    /* registry key not found */
+        ReadError,      /* registry read error */
+        WriteError,     /* registry write error */
+        DeleteError,    /* registry delete error */
+        ValNotFound,    /* registry value not found */
+        NoDriverCB,     /* driver does not call DriverCallback */
+        MoreData,       /* more data to be returned */
+
+        InvalLine = (1024 + 0),
+        InvalControl,
+        InvalValue
+    }
+
     #endregion
 
     #region Structs
@@ -323,6 +597,142 @@ namespace MultiMedia
         public int dwReserved1;
         public int dwReserved2;
         public IntPtr hmmio;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Unicode), UnmanagedName("MIXERCAPS")]
+    public class MixerCaps
+    {
+        public const int MAXPNAMELEN = 32;
+
+        public short wMid;
+        public short wPid;
+        public int vDriverVersion;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAXPNAMELEN)]
+        public string szPname;
+        public int fdwSupport; // Zero
+        public int cDestinations;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1), UnmanagedName("MIXERCONTROLDETAILS")]
+    public class MixerControlDetails
+    {
+        public int cbStruct;        //  size in Bytes of MIXERCONTROLDETAILS
+        public int dwControlID;     // control id to get/set details on
+        public int cChannels;       // number of channels in paDetails array
+        public MCDUnion item;       // hwndOwner or cMultipleItems
+        public int cbDetails;       // size of _one_ details_XX struct
+        public IntPtr paDetails;    // pointer to array of details_XX structs
+
+        public MixerControlDetails()
+        {
+            item = new MCDUnion();
+        }
+    }
+
+    [StructLayout(LayoutKind.Explicit, Pack = 1)]
+    public class MCDUnion
+    {
+        [FieldOffset(0)]
+        public IntPtr hwndOwner;
+        [FieldOffset(0)]
+        public int cMultipleItems;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1), UnmanagedName("MIXERLINECONTROLS")]
+    public class MixerLineControls
+    {
+        public int cbStruct;       //  size in Byte of MIXERLINECONTROLS
+        public int dwLineID;       //  line id (from MIXERLINE.dwLineID)
+        public int dwControl;      //  MIXER_GETLINECONTROLSF_ONEBYID or MIXER_GETLINECONTROLSF_ONEBYTYPE
+        public int cControls;      //  count of controls pmxctrl points to
+        public int cbmxctrl;       //  size in Byte of _one_ MIXERCONTROL
+        public MixerControl[] pamxctrl;       //  pointer to first MIXERCONTROL array
+    }
+
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("MIXERCONTROLDETAILS_UNSIGNED")]
+    public class MixerControlDetailsUnsigned
+    {
+        public int dwValue;        //  value of the control
+    }
+
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("MIXERCONTROLDETAILS_SIGNED")]
+    public struct MixerControlDetailsSigned
+    {
+        public int dwValue;        //  value of the control
+    }
+
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("MIXERCONTROLDETAILS_BOOLEAN")]
+    public struct MixerControlDetailsBoolean
+    {
+        [MarshalAs(UnmanagedType.Bool)]
+        public bool fValue;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Unicode), UnmanagedName("MIXERCONTROLDETAILS_LISTTEXT")]
+    public struct MixerControlDetailsListText
+    {
+        public const int MIXER_LONG_NAME_CHARS = 64;
+
+        public int dwParam1;
+        public int dwParam2;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MIXER_LONG_NAME_CHARS)]
+        public string szName;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Unicode), UnmanagedName("MIXERLINE")]
+    public class MixerLine
+    {
+        public const int MIXER_SHORT_NAME_CHARS = 16;
+        public const int MIXER_LONG_NAME_CHARS = 64;
+        public const int MAXPNAMELEN = 32;
+
+        public int cbStruct;               //  size of MIXERLINE structure
+        public int dwDestination;          //  zero based destination index
+        public int dwSource;               //  zero based source index (if source)
+        public int dwLineID;               //  unique line id for mixer device
+        public MIXERLINE_LINEF fdwLine;    //  state/information about line
+        public IntPtr dwUser;              //  driver specific information
+        public MIXERLINE_COMPONENTTYPE dwComponentType;        //  component type line connects to
+        public int cChannels;              //  number of channels line supports
+        public int cConnections;           //  number of connections (possible)
+        public int cControls;              //  number of controls at this line
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MIXER_SHORT_NAME_CHARS)]
+        public string szShortName;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MIXER_LONG_NAME_CHARS)]
+        public string szName;
+        public MIXERLINE_TARGETTYPE dwType;
+        public int dwDeviceID;
+        public short wMid;
+        public short wPid;
+        public int vDriverVersion;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAXPNAMELEN)]
+        public string szPname;
+    }
+
+    [StructLayout(LayoutKind.Sequential, Pack = 1, CharSet = CharSet.Unicode), UnmanagedName("MIXERCONTROL")]
+    public class MixerControl
+    {
+        public const int MIXER_SHORT_NAME_CHARS = 16;
+        public const int MIXER_LONG_NAME_CHARS = 64;
+        public const int RESERVED1 = 4;
+        public const int RESERVED2 = 5;
+
+        public int cbStruct;                        //  size in Byte of MIXERCONTROL
+        public int dwControlID;                     //  unique control id for mixer device
+        public ControlType dwControlType;           //  MIXERCONTROL_CONTROLTYPE_xxx
+        public MIXERCONTROL_CONTROLF fdwControl;    //  MIXERCONTROL_CONTROLF_xxx
+        public int cMultipleItems;                  //  if MIXERCONTROL_CONTROLF_MULTIPLE set
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MIXER_SHORT_NAME_CHARS)]
+        public string szShortName;                  //  short name of control
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MIXER_LONG_NAME_CHARS)]
+        public string szName;                       //  int name of control
+        public int lMinimum;                        //  Minimum value
+        public int lMaximum;                        //  Maximum value
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = RESERVED1)]
+        public int[] reserved1;                     //  reserved structure space
+        public int cSteps;                          // # of steps between min & max
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = RESERVED2)]
+        public int[] reserved2;                     //  reserved structure space
     }
 
     #endregion
@@ -830,4 +1240,279 @@ namespace MultiMedia
         #endregion
 
     }
+
+    public static class Mixer
+    {
+        public const int LINE_CHANGE = 0x3D0;           /* mixer line change notify */
+        public const int CONTROL_CHANGE = 0x3D1;        /* mixer control change notify */
+
+        #region Externals
+
+        [DllImport("winmm.dll", EntryPoint = "mixerSetControlDetails"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR SetControlDetails(
+            IntPtr hmxobj,
+            [In, MarshalAs(UnmanagedType.LPStruct)] MixerControlDetails pmxcd,
+            MIXER_SETCONTROLDETAILSF fdwDetails);
+
+        [DllImport("winmm.dll", CharSet = CharSet.Unicode, ExactSpelling = true, EntryPoint = "mixerGetControlDetailsW"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR GetControlDetails(
+            IntPtr hmxobj,
+            [In, Out, MarshalAs(UnmanagedType.LPStruct)] MixerControlDetails pmxcd,
+            MIXER_OBJECTF fdwDetails);
+
+        [DllImport("winmm.dll", EntryPoint = "mixerOpen"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR Open(
+            out IntPtr phmx,
+            int uMxId,
+            IntPtr dwCallback,
+            IntPtr dwInstance,
+            MIXER_OBJECTF fdwOpen);
+
+        [DllImport("winmm.dll", EntryPoint = "mixerClose"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR Close(
+            IntPtr phmx);
+
+        [DllImport("winmm.dll", CharSet = CharSet.Unicode, ExactSpelling = true, EntryPoint = "mixerGetLineInfoW"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR GetLineInfo(
+            IntPtr hmxobj,
+            [In, Out, MarshalAs(UnmanagedType.LPStruct)] MixerLine pmxl,
+            MIXER_GETLINEINFOF fdwInfo);
+
+        [DllImport("winmm.dll", CharSet = CharSet.Unicode, ExactSpelling = true, EntryPoint = "mixerGetLineControlsW"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR GetLineControls(
+            IntPtr hmxobj,
+            [In, Out, MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(MLCMarshaler))] MixerLineControls pmxlc,
+            MIXER_GETLINECONTROLSF fdwControls);
+
+        [DllImport("winmm.dll", CharSet = CharSet.Unicode, ExactSpelling = true, EntryPoint = "mixerGetDevCapsW"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR GetDevCaps(
+            IntPtr uMxId,
+            [Out, MarshalAs(UnmanagedType.LPStruct)] MixerCaps pmxcaps,
+            int cbmxcaps);
+
+        [DllImport("winmm.dll", EntryPoint = "mixerGetNumDevs"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern int GetNumDevs();
+
+        [DllImport("winmm.dll", EntryPoint = "mixerGetID"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern MMSYSERR GetID(
+            IntPtr hmxobj,
+            out int puMxId,
+            MIXER_OBJECTF fdwId);
+
+        [DllImport("winmm.dll", EntryPoint = "mixerMessage"),
+        SuppressUnmanagedCodeSecurity]
+        public static extern int Message(
+            IntPtr driverID,
+            int uMsg,
+            IntPtr dwParam1,
+            IntPtr dwParam2);
+
+        #endregion
+
+        #region Public functions
+
+        public static string Errorstring(MMSYSERR iError)
+        {
+            string sRet;
+
+            switch (iError)
+            {
+                case MMSYSERR.NoError:
+                    sRet = "The specified command was carried out.";
+                    break;
+                case MMSYSERR.Error:
+                    sRet = "Undefined external error.";
+                    break;
+                case MMSYSERR.BadDeviceID:
+                    sRet = "A device ID has been used that is out of range for your system.";
+                    break;
+                case MMSYSERR.NotEnabled:
+                    sRet = "The driver was not enabled.";
+                    break;
+                case MMSYSERR.Allocated:
+                    sRet = "The specified device is already in use.  Wait until it is free, and then try again.";
+                    break;
+                case MMSYSERR.InvalHandle:
+                    sRet = "The specified device handle is invalid.";
+                    break;
+                case MMSYSERR.NoDriver:
+                    sRet = "There is no driver installed on your system.";
+                    break;
+                case MMSYSERR.NoMem:
+                    sRet = "There is not enough memory available for this task.  Quit one or more applications to increase avai";
+                    break;
+                case MMSYSERR.NotSupported:
+                    sRet = "This function is not supported.  Use the Capabilities function to determine which functions and mes";
+                    break;
+                case MMSYSERR.BadErrNum:
+                    sRet = "An error number was specified that is not defined in the system.";
+                    break;
+                case MMSYSERR.InvalFlag:
+                    sRet = "An invalid flag was passed to a system function.";
+                    break;
+                case MMSYSERR.InvalParam:
+                    sRet = "An invalid parameter was passed to a system function.";
+                    break;
+                case MMSYSERR.HandleBusy:
+                    sRet = "Handle being used simultaneously on another thread (eg callback).";
+                    break;
+                case MMSYSERR.InvalidAlias:
+                    sRet = "Specified alias not found in WIN.INI.";
+                    break;
+                case MMSYSERR.BadDB:
+                    sRet = "The registry database is corrupt.";
+                    break;
+                case MMSYSERR.KeyNotFound:
+                    sRet = "The specified registry key was not found.";
+                    break;
+                case MMSYSERR.ReadError:
+                    sRet = "The registry could not be opened or could not be read.";
+                    break;
+                case MMSYSERR.WriteError:
+                    sRet = "The registry could not be written to.";
+                    break;
+                case MMSYSERR.DeleteError:
+                    sRet = "The specified registry key could not be deleted.";
+                    break;
+                case MMSYSERR.ValNotFound:
+                    sRet = "The specified registry key value could not be found.";
+                    break;
+                case MMSYSERR.NoDriverCB:
+                    sRet = "The driver did not generate a valid OPEN callback.";
+                    break;
+                case MMSYSERR.MoreData:
+                    sRet = "More data to be returned";
+                    break;
+
+                case MMSYSERR.InvalLine:
+                    sRet = "The line reference is invalid.";
+                    break;
+                case MMSYSERR.InvalControl:
+                    sRet = "The control reference is invalid.";
+                    break;
+                case MMSYSERR.InvalValue:
+                    sRet = "The value is invalid.";
+                    break;
+                default:
+                    sRet = "Unknown error code";
+                    break;
+            }
+
+            return sRet;
+        }
+
+        public static void ThrowExceptionForError(MMSYSERR i)
+        {
+            if (i != MMSYSERR.NoError)
+            {
+                throw new Exception(Errorstring(i));
+            }
+        }
+
+        #endregion
+
+    }
+
+    #region Internal code
+
+    // Custom marshaler for Mixer.GetLineControls
+    internal class MLCMarshaler : ICustomMarshaler
+    {
+        // The managed object passed in to MarshalManagedToNative
+        protected MixerLineControls m_Control;
+
+        protected int iMixContSize = Marshal.SizeOf(typeof(MixerControl));
+        protected int iMixLineContSize = Marshal.SizeOf(typeof(MixerLineControls));
+
+        public IntPtr MarshalManagedToNative(object managedObj)
+        {
+            IntPtr p;
+
+            // Cast the object back to a PropVariant
+            m_Control = managedObj as MixerLineControls;
+
+            if (m_Control != null)
+            {
+                // Create an appropriately sized buffer, blank it, and send it to
+                // the marshaler to make the COM call with.
+                int iSize2 = m_Control.cControls * iMixContSize;
+
+                p = Marshal.AllocCoTaskMem(iMixLineContSize + iSize2);
+#if DEBUG
+                for (int x = 0; x < iMixLineContSize + iSize2; x++)
+                {
+                    Marshal.WriteByte(p, x, 0xcc);
+                }
+#endif
+                Marshal.StructureToPtr(m_Control, p, false);
+                Marshal.WriteIntPtr(p, iMixLineContSize - IntPtr.Size, new IntPtr(p.ToInt64() + iMixLineContSize));
+            }
+            else
+            {
+                p = IntPtr.Zero;
+            }
+
+            return p;
+        }
+
+        // Called just after invoking the COM method.  The IntPtr is the same one that just got returned
+        // from MarshalManagedToNative.  The return value is unused.
+        public object MarshalNativeToManaged(IntPtr pNativeData)
+        {
+            m_Control.cbStruct = Marshal.ReadInt32(pNativeData);
+            m_Control.dwLineID = Marshal.ReadInt32(pNativeData, 4);
+            m_Control.dwControl = Marshal.ReadInt32(pNativeData, 8);
+            m_Control.cControls = Marshal.ReadInt32(pNativeData, 12);
+            m_Control.cbmxctrl = Marshal.ReadInt32(pNativeData, 16);
+            m_Control.pamxctrl = new MixerControl[m_Control.cControls];
+
+            IntPtr pData = new IntPtr(pNativeData.ToInt64() + iMixLineContSize);
+
+            for (int x = 0; x < m_Control.cControls; x++)
+            {
+                m_Control.pamxctrl[x] = new MixerControl();
+                IntPtr ip = new IntPtr(pData.ToInt64() + (x * iMixContSize));
+                Marshal.PtrToStructure(ip, m_Control.pamxctrl[x]);
+            }
+
+            m_Control = null;
+
+            return m_Control;
+        }
+
+        // It appears this routine is never called
+        public void CleanUpManagedData(object ManagedObj)
+        {
+            m_Control = null;
+        }
+
+        public void CleanUpNativeData(IntPtr pNativeData)
+        {
+            Marshal.FreeCoTaskMem(pNativeData);
+        }
+
+        // The number of bytes to marshal out
+        public int GetNativeDataSize()
+        {
+            return 0;
+        }
+
+        // This method is called by interop to create the custom marshaler.  The (optional)
+        // cookie is the value specified in MarshalCookie="asdf", or "" is none is specified.
+        public static ICustomMarshaler GetInstance(string cookie)
+        {
+            return new MLCMarshaler();
+        }
+    }
+
+    #endregion
 }
