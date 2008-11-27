@@ -302,7 +302,7 @@ namespace MultiMedia
         public MMIOFlags dwFlags;
     }
 
-    [StructLayout(LayoutKind.Sequential), UnmanagedName("MMIOINFO")]
+    [StructLayout(LayoutKind.Sequential, Pack=1), UnmanagedName("MMIOINFO")]
     public class MMIOINFO
     {
         public MMIOFlags dwFlags;
@@ -413,13 +413,13 @@ namespace MultiMedia
 #if false
         // These methods are unnecessary or deprecated
 
-        [DllImport("winmm.dll", 
+        [DllImport("winmm.dll",
         CharSet = CharSet.Unicode,
         ExactSpelling=true,
         EntryPoint="mmioStringToFOURCCW"),
         SuppressUnmanagedCodeSecurity]
         public static extern FourCC mmioStringToFOURCC(
-            [In] string sz, 
+            [In] string sz,
             int uFlags);
 
         //LPMMIOPROC WINAPI mmioInstallIOProc( FOURCC fccIOProc, LPMMIOPROC pIOProc, DWORD dwFlags);

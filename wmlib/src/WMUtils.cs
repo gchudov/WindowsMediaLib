@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 using System;
 using System.Text;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Diagnostics;
 
 using WindowsMediaLib.Defs;
@@ -55,86 +56,86 @@ namespace WindowsMediaLib
             }
         }
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMValidateData(
             byte[] pbData,
             ref int pdwDataSize
             );
 
-        [DllImport("WMVCore.dll", ExactSpelling=true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = CharSet.Unicode, PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern int WMCheckURLExtension(
             string pwszURL
             );
 
-        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = CharSet.Unicode, PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCheckURLScheme(
             string pwszURLScheme
             );
 
-        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = CharSet.Unicode, PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMIsAvailableOffline(
             string pwszURL,
             string pwszLanguage,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsAvailableOffline
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateEditor(
             out IWMMetadataEditor ppMetadataEditor
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateWriterNetworkSink(
             out IWMWriterNetworkSink ppSink
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateWriter(
             IntPtr pUnkCert,
             out IWMWriter ppWriter
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateProfileManager(
             out IWMProfileManager ppProfileManager
             );
 
-        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = System.Runtime.InteropServices.CharSet.Unicode, PreserveSig = false)]
+        [DllImport("WMVCore.dll", ExactSpelling = true, CharSet = CharSet.Unicode, PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMIsContentProtected(
             string pwszFileName,
             [MarshalAs(UnmanagedType.Bool)] out bool pfIsProtected
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateReader(
             IntPtr pUnkCert,
             Rights dwRights,
             out IWMReader ppReader
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateSyncReader(
             IntPtr pUnkCert,
             Rights dwRights,
             out IWMSyncReader ppSyncReader);
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateIndexer(
             out IWMIndexer ppIndexer
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateBackupRestorer(
             IWMStatusCallback pCallback,
             out IWMLicenseBackup ppBackup
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateWriterFileSink(
             out IWMWriterFileSink ppSink
             );
 
-        [DllImport("WMVCore.dll", PreserveSig = false)]
+        [DllImport("WMVCore.dll", PreserveSig = false), SuppressUnmanagedCodeSecurity]
         public static extern void WMCreateWriterPushSink(
             out IWMWriterPushSink ppSink
             );
@@ -1203,18 +1204,18 @@ namespace WindowsMediaLib
             MaxWidthMask = 0x000000FF
         }
 
-        [DllImport("kernel32.dll", CharSet = System.Runtime.InteropServices.CharSet.Unicode)]
+        [DllImport("kernel32.dll", ExactSpelling = true, CharSet = CharSet.Unicode, EntryPoint = "FormatMessageW"), SuppressUnmanagedCodeSecurity]
         private static extern int FormatMessage(FormatMessageFlags dwFlags, IntPtr lpSource,
             int dwMessageId, int dwLanguageId, ref IntPtr lpBuffer, int nSize, IntPtr Arguments);
 
-        [DllImport("kernel32.dll")]
+        [DllImport("kernel32.dll", ExactSpelling = true, CharSet = CharSet.Unicode, EntryPoint = "LoadLibraryExW"), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr LoadLibraryEx(string lpFileName, IntPtr hFile, LoadLibraryExFlags dwFlags);
 
-        [DllImport("kernel32.dll")]
+        [DllImport("kernel32.dll"), SuppressUnmanagedCodeSecurity]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool FreeLibrary(IntPtr hFile);
 
-        [DllImport("kernel32.dll", SetLastError = true)]
+        [DllImport("kernel32.dll", SetLastError = true), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr LocalFree(IntPtr hMem);
 
         #endregion
@@ -1248,9 +1249,9 @@ namespace WindowsMediaLib
 
             try
             {
-                // Convert the returned buffer to a string.  If ip is null (due to not finding 
-                // the message), no exception is thrown.  sRet just stays null.  The 
-                // try/finally is for the (remote) possibility that we run out of memory 
+                // Convert the returned buffer to a string.  If ip is null (due to not finding
+                // the message), no exception is thrown.  sRet just stays null.  The
+                // try/finally is for the (remote) possibility that we run out of memory
                 // creating the string.
                 sRet = Marshal.PtrToStringUni(ip);
             }
@@ -1293,7 +1294,7 @@ namespace WindowsMediaLib
     }
 
     [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Class)]
-    internal class UnmanagedNameAttribute : System.Attribute
+    internal class UnmanagedNameAttribute : Attribute
     {
         private string m_Name;
 
@@ -1312,7 +1313,7 @@ namespace WindowsMediaLib
     {
         ////////////////////////////////////////////////////////////////
         //
-        // These are the special case attributes that give information 
+        // These are the special case attributes that give information
         // about the Windows Media file.
         //
         public const int g_dwWMSpecialAttributes = 20;
@@ -1394,7 +1395,7 @@ namespace WindowsMediaLib
 
         ////////////////////////////////////////////////////////////////
         //
-        // These optional attributes may be used to give information 
+        // These optional attributes may be used to give information
         // about the branding of the content.
         //
         public const string g_wszWMBannerImageType = "BannerImageType";
@@ -1403,14 +1404,14 @@ namespace WindowsMediaLib
         public const string g_wszWMCopyrightURL = "CopyrightURL";
         ////////////////////////////////////////////////////////////////
         //
-        // Optional attributes, used to give information 
+        // Optional attributes, used to give information
         // about video stream properties.
         //
         public const string g_wszWMAspectRatioX = "AspectRatioX";
         public const string g_wszWMAspectRatioY = "AspectRatioY";
         ////////////////////////////////////////////////////////////////
         //
-        // Optional attributes, used to give information 
+        // Optional attributes, used to give information
         // about the overall streaming properties of VBR files.
         // This attribute takes the format:
         //  WORD wReserved (must be 0)
@@ -1605,7 +1606,7 @@ namespace WindowsMediaLib
         // Codec encoding complexity settings
         //
         // g_wszComplexity should be used to set desired encoding complexity on the
-        // stream's IWMPropertyVault (see above for definition) 
+        // stream's IWMPropertyVault (see above for definition)
         // The below settings can be queried from IWMCodecInfo3::GetCodecProp()
         //
         public const string g_wszComplexityMax = "_COMPLEXITYEXMAX";
@@ -1909,7 +1910,7 @@ namespace WindowsMediaLib
         public static bool operator ==(FourCC fcc1, FourCC fcc2)
         {
             // If both are null, or both are same instance, return true.
-            if (System.Object.ReferenceEquals(fcc1, fcc2))
+            if (Object.ReferenceEquals(fcc1, fcc2))
             {
                 return true;
             }
@@ -1992,7 +1993,7 @@ namespace WindowsMediaLib
 
     internal class MTMarshaler : ICustomMarshaler
     {
-        [DllImport("Kernel32.dll", EntryPoint = "RtlMoveMemory")]
+        [DllImport("Kernel32.dll", EntryPoint = "RtlMoveMemory"), SuppressUnmanagedCodeSecurity]
         private static extern void CopyMemory(IntPtr Destination, IntPtr Source, int Length);
 
         protected AMMediaType m_mt;
@@ -2020,61 +2021,21 @@ namespace WindowsMediaLib
         // from MarshalManagedToNative.  The return value is unused.
         public object MarshalNativeToManaged(IntPtr pNativeData)
         {
-            byte[] b = new byte[16];
-            AMMediaType mt = new AMMediaType();
-
-            int iSize = Marshal.ReadInt32(pNativeData, 60 + IntPtr.Size);
-
-            Marshal.Copy(pNativeData, b, 0, 16); mt.majorType = new Guid(b);
-            Marshal.Copy(new IntPtr(pNativeData.ToInt64() + 16), b, 0, 16); mt.subType = new Guid(b);
-            mt.fixedSizeSamples = Marshal.ReadInt32(pNativeData, 32) != 0;
-            mt.temporalCompression = Marshal.ReadInt32(pNativeData, 36) != 0;
-            mt.sampleSize = Marshal.ReadInt32(pNativeData, 40);
-            Marshal.Copy(new IntPtr(pNativeData.ToInt64() + 44), b, 0, 16); mt.formatType = new Guid(b);
-            mt.unkPtr = Marshal.ReadIntPtr(pNativeData, 60);
-            mt.formatSize = iSize;
-
-            if (iSize > 0)
+            if (m_mt == null)
             {
-                mt.formatPtr = Marshal.AllocCoTaskMem(mt.formatSize);
-                IntPtr ip = Marshal.ReadIntPtr(pNativeData, 64 + IntPtr.Size);
-                CopyMemory(mt.formatPtr, ip, mt.formatSize);
+                m_mt = new AMMediaType();
+            }
+            Marshal.PtrToStructure(pNativeData, m_mt);
+
+            if (m_mt.formatSize > 0)
+            {
+                IntPtr ip = m_mt.formatPtr;
+
+                m_mt.formatPtr = Marshal.AllocCoTaskMem(m_mt.formatSize);
+                CopyMemory(m_mt.formatPtr, ip, m_mt.formatSize);
             }
 
-            // If we this call is In+Out, the return value is ignored.  If
-            // this is out, then m_mt will be null.
-            if (m_mt != null)
-            {
-                m_mt.majorType = mt.majorType;
-                m_mt.subType = mt.subType;
-                m_mt.fixedSizeSamples = mt.fixedSizeSamples;
-                m_mt.temporalCompression = mt.temporalCompression;
-                m_mt.sampleSize = mt.sampleSize;
-                m_mt.formatType = mt.formatType;
-                m_mt.formatSize = mt.formatSize;
-                if (mt.unkPtr != IntPtr.Zero)
-                {
-                    Guid unk = new Guid("00000000 - 0000 - 0000 - C000 - 000000000046");
-                    Marshal.QueryInterface(mt.unkPtr, ref unk, out m_mt.unkPtr);
-                }
-                else
-                {
-                    m_mt.unkPtr = IntPtr.Zero;
-                }
-
-                if (m_mt.formatSize > 0)
-                {
-                    m_mt.formatPtr = Marshal.AllocCoTaskMem(m_mt.formatSize);
-                    CopyMemory(m_mt.formatPtr, mt.formatPtr, m_mt.formatSize);
-                }
-                else
-                {
-                    m_mt.formatPtr = IntPtr.Zero;
-                }
-                mt = null;
-            }
-
-            return mt;
+            return m_mt;
         }
 
         // It appears this routine is never called
