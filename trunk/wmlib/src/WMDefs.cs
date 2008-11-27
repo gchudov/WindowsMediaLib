@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #endregion
 
 // The definitions in this namespace duplicate ones found in DirectShowLib.
-// To avoid ambiguous references when using both libs, do NOT use 
+// To avoid ambiguous references when using both libs, do NOT use
 // "using WindowsMediaLib.Defs;"
 
 using System;
@@ -610,7 +610,7 @@ namespace WindowsMediaLib.Defs
     /// From WM_MEDIA_TYPE - When you are done with an instance of this class,
     /// it should be released with FreeWMMediaType() to avoid leaking
     /// </summary>
-    [StructLayout(LayoutKind.Sequential, Pack = 1), UnmanagedName("WM_MEDIA_TYPE")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("WM_MEDIA_TYPE")]
     public class AMMediaType
     {
         public Guid majorType;
@@ -741,7 +741,7 @@ namespace WindowsMediaLib.Defs
             string s = WalkClass(typeof(MediaSubType), guid);
 
             // There is a special set of Guids that contain the FourCC code
-            // as part of the Guid.  If we haven't found a name, check to see if 
+            // as part of the Guid.  If we haven't found a name, check to see if
             // it is one of those.
             if (s == guid.ToString() && FourCC.IsA4ccSubtype(guid))
             {

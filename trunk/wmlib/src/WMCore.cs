@@ -26,6 +26,8 @@ using System;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security;
+
 using WindowsMediaLib.Defs;
 
 namespace WindowsMediaLib
@@ -50,7 +52,7 @@ namespace WindowsMediaLib
         Video = 2
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMDRM_IMPORT_INIT_STRUCT")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("WMDRM_IMPORT_INIT_STRUCT")]
     public class ImportInitStruct
     {
         public int dwVersion;
@@ -70,7 +72,7 @@ namespace WindowsMediaLib
         short wUncompressedDigitalAudio;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_OPL_OUTPUT_IDS")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("DRM_OPL_OUTPUT_IDS")]
     public struct OPLOutputIds
     {
         short cIds;
@@ -84,7 +86,7 @@ namespace WindowsMediaLib
         byte bConfigData;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_COPY_OPL")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("DRM_COPY_OPL")]
     public struct CopyOPL
     {
         short wMinimumCopyLevel;
@@ -92,14 +94,14 @@ namespace WindowsMediaLib
         OPLOutputIds oplIdExcludes;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_VIDEO_OUTPUT_PROTECTION_IDS")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("DRM_VIDEO_OUTPUT_PROTECTION_IDS")]
     public struct VideoOutputProtectionIDs
     {
         short cEntries;
         VideoOutputProtection [] rgVop;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("DRM_PLAY_OPL")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("DRM_PLAY_OPL")]
     public struct PlayOpl
     {
         MinimumOutputProtectionLevels minOPL;
@@ -421,7 +423,7 @@ namespace WindowsMediaLib
         public int cbLength;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WMT_FILESINK_DATA_UNIT")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("WMT_FILESINK_DATA_UNIT")]
     public class FileSinkDataUnit
     {
         public BufferSegment packetHeaderBuffer;
@@ -561,7 +563,7 @@ namespace WindowsMediaLib
         public int dwExpectedSampleRate;
     }
 
-    [StructLayout(LayoutKind.Sequential, Pack = 4), UnmanagedName("WM_LICENSE_STATE_DATA")]
+    [StructLayout(LayoutKind.Sequential), UnmanagedName("WM_LICENSE_STATE_DATA")]
     public struct LicenseStateData
     {
         public LicenseStateData(byte[] b)
@@ -664,7 +666,7 @@ namespace WindowsMediaLib
 
 #if ALLOW_UNTESTED_INTERFACES
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("F369E2F0-E081-4FE6-8450-B810B2F410D1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderTimecode
@@ -682,7 +684,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("f6211f03-8d21-4e94-93e6-8510805f2d99"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDeviceRegistration
@@ -720,7 +722,7 @@ namespace WindowsMediaLib
 
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("A73A0072-25A0-4c99-B4A5-EDE8101A6C39"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMMessageParser
@@ -739,7 +741,7 @@ namespace WindowsMediaLib
             [MarshalAs(UnmanagedType.BStr)] out string pbstrAction);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("D2827540-3EE7-432C-B14C-DC17F085D3B3"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMReader
@@ -770,12 +772,12 @@ namespace WindowsMediaLib
         void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
-            out byte[] pValue,
+            [Out] byte[] pValue,
             ref short pcbLength
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("befe7a75-9f1d-4075-b9d9-a3c37bda49a0"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMReader2 : IWMDRMReader
@@ -808,7 +810,7 @@ namespace WindowsMediaLib
         new void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
-            out byte[] pValue,
+            [Out] byte[] pValue,
             ref short pcbLength
             );
 
@@ -830,7 +832,7 @@ namespace WindowsMediaLib
         void TryNextLicense();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("e08672de-f1e7-4ff4-a0a3-fc4b08e4caf8"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMReader3 : IWMDRMReader2
@@ -863,7 +865,7 @@ namespace WindowsMediaLib
         new void GetDRMProperty(
             [In] string pwstrName,
             out AttrDataType pdwType,
-            out byte[] pValue,
+            [Out] byte[] pValue,
             ref short pcbLength
             );
 
@@ -893,7 +895,7 @@ namespace WindowsMediaLib
             out int pcGuids);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("b1a887b2-a4f0-407a-b02e-efbd23bbecdf"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMTranscryptionManager
@@ -902,7 +904,7 @@ namespace WindowsMediaLib
             out IWMDRMTranscryptor ppTranscryptor);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("69059850-6E6F-4bb2-806F-71863DDFC471"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMTranscryptor
@@ -925,7 +927,7 @@ namespace WindowsMediaLib
         void Close();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("e0da439f-d331-496a-bece-18e5bac5dd23"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMTranscryptor2 : IWMDRMTranscryptor
@@ -967,7 +969,7 @@ namespace WindowsMediaLib
             out long pcnsDuration);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("D6EA5DD0-12A0-43F4-90AB-A3FD451E6A07"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMWriter
@@ -998,7 +1000,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("38ee7a94-40e2-4e10-aa3f-33fd3210ed5b"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMWriter2 : IWMDRMWriter
@@ -1038,7 +1040,7 @@ namespace WindowsMediaLib
             int cbKeyID);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("a7184082-a4aa-4dde-ac9c-e75dbd1117ce"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMWriter3 : IWMDRMWriter2
@@ -1085,7 +1087,7 @@ namespace WindowsMediaLib
             [In, MarshalAs(UnmanagedType.LPStruct)] ImportInitStruct pImportInitStruct);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6967F2C9-4E26-4b57-8894-799880F7AC7B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMLicenseRevocationAgent
@@ -1105,7 +1107,7 @@ namespace WindowsMediaLib
             out int pdwSignedACKLength);
     };
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6A9FD8EE-B651-4bf0-B849-7D4ECE79A2B1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProximityDetection
@@ -1121,7 +1123,7 @@ namespace WindowsMediaLib
             IntPtr pvContext);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("18A2E7F8-428F-4acd-8A00-E64639BC93DE"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced6 : IWMReaderAdvanced5
@@ -1377,7 +1379,7 @@ namespace WindowsMediaLib
             out int pcbInitializationVector);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("a4503bec-5508-4148-97ac-bfa75760a70d"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMRegisteredDevice
@@ -1427,7 +1429,7 @@ namespace WindowsMediaLib
         void Close();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("990641B0-739F-4E94-A808-9888DA8F75AF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecVideoAccelerator
@@ -1442,7 +1444,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("9F0AA3B6-7267-4D89-88F2-BA915AA5C4C6"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMImageInfo
@@ -1463,7 +1465,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6F497062-F2E2-4624-8EA7-9DD40D81FC8D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWatermarkInfo
@@ -1480,7 +1482,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("61103CA4-2033-11D2-9EF1-006097D2D7CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSBufferAllocator
@@ -1496,7 +1498,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("D98EE251-34E0-4A2D-9312-9B4C788D9FA1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecAMVideoAccelerator
@@ -1514,7 +1516,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("28580DDA-D98E-48D0-B7AE-69E473A02825"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPlayerTimestampHook
@@ -1524,7 +1526,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("BDDC4D08-944D-4D52-A612-46C3FDA07DD4"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAccelerator
@@ -1543,7 +1545,7 @@ namespace WindowsMediaLib
 
 #endif
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("45086030-F7E4-486a-B504-826BB5792A3B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IConfigAsfWriter
@@ -1573,7 +1575,7 @@ namespace WindowsMediaLib
             [Out, MarshalAs(UnmanagedType.Bool)] out bool pbIndexFile);
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("E1CD3524-03D7-11D2-9EED-006097D2D7CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer
@@ -1600,7 +1602,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("BB3C6389-1633-4E92-AF14-9F3173BA39D0"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMAddressAccess
@@ -1627,7 +1629,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("65A83FC2-3E98-4D4D-81B5-2A742886B33D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMAddressAccess2 : IWMAddressAccess
@@ -1671,7 +1673,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("3C8E0DA6-996F-4FF3-A1AF-4838F9377E2E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMBackupRestoreProps
@@ -1710,7 +1712,7 @@ namespace WindowsMediaLib
         void RemoveAllProps();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("AD694AF1-F8D9-42F8-BC47-70311B0C4F9E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMBandwidthSharing : IWMStreamList
@@ -1751,7 +1753,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("73C66010-A299-41DF-B1F0-CCF03B09C1C6"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMClientConnections
@@ -1766,7 +1768,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("4091571E-4701-4593-BB3D-D5F5F0C74246"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMClientConnections2 : IWMClientConnections
@@ -1795,7 +1797,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("A970F41E-34DE-4A98-B3BA-E4B3CA7528F0"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo
@@ -1819,7 +1821,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("AA65E273-B686-4056-91EC-DD768D4DF710"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo2 : IWMCodecInfo
@@ -1863,7 +1865,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("7E51F487-4D93-4F98-8AB4-27D0565ADC51"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCodecInfo3 : IWMCodecInfo2
@@ -1948,7 +1950,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("342E0EB7-E651-450C-975B-2ACE2C90C48E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMCredentialCallback
@@ -1965,7 +1967,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FF130EBC-A6C3-42A6-B401-C3382C3E08B3"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMDRMEditor
@@ -1978,7 +1980,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BDA-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo
@@ -2058,7 +2060,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("15CF9781-454E-482E-B393-85FAE487A810"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo2 : IWMHeaderInfo
@@ -2157,7 +2159,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("15CC68E3-27CC-4ECD-B222-3F5D02D80BD5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMHeaderInfo3 : IWMHeaderInfo2
@@ -2316,7 +2318,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6D7CDC71-9888-11D3-8EDC-00C04F6109CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMIndexer
@@ -2330,7 +2332,7 @@ namespace WindowsMediaLib
         void Cancel();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("B70F1E42-6255-4DF0-A6B9-02B212D9E2BB"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMIndexer2 : IWMIndexer
@@ -2355,7 +2357,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BD5-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMInputMediaProps : IWMMediaProps
@@ -2388,7 +2390,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6816DAD3-2B4B-4C8E-8149-874C3483A753"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMIStreamProps
@@ -2401,7 +2403,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("DF683F00-2D49-4D8E-92B7-FB19F6A0DC57"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMLanguageList
@@ -2422,7 +2424,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("05E5AC9F-3FB6-4508-BB43-A4067BA1EBE8"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMLicenseBackup
@@ -2435,7 +2437,7 @@ namespace WindowsMediaLib
         void CancelLicenseBackup();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("C70B6334-A22E-4EFB-A245-15E65A004A13"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMLicenseRestore
@@ -2448,7 +2450,7 @@ namespace WindowsMediaLib
         void CancelLicenseRestore();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BCE-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMediaProps
@@ -2467,7 +2469,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BD9-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMetadataEditor
@@ -2481,7 +2483,7 @@ namespace WindowsMediaLib
         void Flush();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("203CFFE3-2E18-4FDF-B59D-6E71530534CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMetadataEditor2 : IWMMetadataEditor
@@ -2505,7 +2507,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BDE-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMutualExclusion : IWMStreamList
@@ -2536,7 +2538,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("0302B57D-89D1-4BA2-85C9-166F2C53EB91"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMMutualExclusion2 : IWMMutualExclusion
@@ -2617,7 +2619,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BD7-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMOutputMediaProps : IWMMediaProps
@@ -2650,7 +2652,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("CDFB97AB-188F-40B3-B643-5B7903975C59"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPacketSize
@@ -2664,7 +2666,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("8BFC2B9E-B646-4233-A877-1C6A079669DC"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPacketSize2 : IWMPacketSize
@@ -2690,7 +2692,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BDB-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile
@@ -2774,7 +2776,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("07E72D33-D94E-4BE7-8843-60AE5FF7E5F5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile2 : IWMProfile
@@ -2866,7 +2868,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("00EF96CC-A461-4546-8BCD-C9A28F0E06F5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfile3 : IWMProfile2
@@ -3010,7 +3012,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("D16679F2-6CA0-472D-8D31-2F5D55AEE155"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfileManager
@@ -3046,7 +3048,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("7A924E51-73C1-494D-8019-23D37ED9B89A"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfileManager2 : IWMProfileManager
@@ -3094,7 +3096,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("BA4DCC78-7EE0-4AB8-B27A-DBCE8BC51454"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMProfileManagerLanguage
@@ -3108,7 +3110,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("72995A79-5090-42A4-9C8C-D9D0B6D34BE5"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPropertyVault
@@ -3147,7 +3149,7 @@ namespace WindowsMediaLib
         void Clear();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BD6-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReader
@@ -3199,7 +3201,7 @@ namespace WindowsMediaLib
         void Resume();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BEA-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced
@@ -3296,7 +3298,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("AE14A945-B90C-4D0D-9127-80D665F7D73E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced2 : IWMReaderAdvanced
@@ -3474,7 +3476,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("5DC0674B-F04B-4A4E-9F2A-B1AFDE2C8100"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced3 : IWMReaderAdvanced2
@@ -3667,7 +3669,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("945A76A2-12AE-4D48-BD3C-CD1D90399B85"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced4 : IWMReaderAdvanced3
@@ -3903,7 +3905,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("9F762FA7-A22E-428D-93C9-AC82F3AAFE5A"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAllocatorEx
@@ -3929,7 +3931,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BD8-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderCallback : IWMStatusCallback
@@ -3956,7 +3958,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BEB-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderCallbackAdvanced
@@ -4003,7 +4005,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BEC-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderNetworkConfig
@@ -4155,7 +4157,7 @@ namespace WindowsMediaLib
         void ResetLoggingUrlList();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("D979A853-042B-4050-8387-C939DB22013F"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderNetworkConfig2 : IWMReaderNetworkConfig
@@ -4363,7 +4365,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BED-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderStreamClock
@@ -4383,7 +4385,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FDBE5592-81A1-41EA-93BD-735CAD1ADC05"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderTypeNegotiation
@@ -4394,7 +4396,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("CF4B1F99-4DE2-4E49-A363-252740D99BC1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMRegisterCallback
@@ -4410,7 +4412,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6D7CDC70-9888-11D3-8EDC-00C04F6109CF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStatusCallback
@@ -4424,7 +4426,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BDC-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig
@@ -4476,7 +4478,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("7688D8CB-FC0D-43BD-9459-5A8DEC200CFA"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig2 : IWMStreamConfig
@@ -4561,7 +4563,7 @@ namespace WindowsMediaLib
         void RemoveAllDataUnitExtensions();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("CB164104-3AA9-45A7-9AC9-4DAEE131D6E1"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamConfig3 : IWMStreamConfig2
@@ -4659,7 +4661,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BDD-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamList
@@ -4678,7 +4680,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("8C1C6090-F9A8-4748-8EC3-DD1108BA1E77"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMStreamPrioritization
@@ -4694,7 +4696,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("9397F121-7705-4DC9-B049-98B698188414"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSyncReader
@@ -4813,7 +4815,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FAED3D21-1B6B-4AF7-8CB6-3E189BBC187B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSyncReader2 : IWMSyncReader
@@ -4969,7 +4971,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BCF-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMVideoMediaProps : IWMMediaProps
@@ -5008,7 +5010,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BD4-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriter
@@ -5069,7 +5071,7 @@ namespace WindowsMediaLib
         void Flush();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BE3-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced
@@ -5126,7 +5128,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("962DC1EC-C046-4DB8-9CC7-26CEAE500817"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced2 : IWMWriterAdvanced
@@ -5203,7 +5205,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("2CD6492D-7C37-4E76-9D3B-59261183A22E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterAdvanced3 : IWMWriterAdvanced2
@@ -5291,7 +5293,7 @@ namespace WindowsMediaLib
         void SetNonBlocking();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BE5-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink : IWMWriterSink
@@ -5324,7 +5326,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("14282BA7-4AEF-4205-8CE5-C229035A05BC"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink2 : IWMWriterFileSink
@@ -5387,7 +5389,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("3FEA4FEB-2945-47A7-A1DD-C53A8FC4C45C"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterFileSink3 : IWMWriterFileSink2
@@ -5486,7 +5488,7 @@ namespace WindowsMediaLib
         void CompleteOperations();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BE7-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterNetworkSink : IWMWriterSink
@@ -5544,13 +5546,13 @@ namespace WindowsMediaLib
         void Close();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("81E20CE4-75EF-491A-8004-FC53C45BDC3E"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPostView
     {
         void SetPostViewCallback(
-            IWMWriterPostViewCallback pCallback, 
+            IWMWriterPostViewCallback pCallback,
             IntPtr pvContext
             );
 
@@ -5596,7 +5598,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("D9D6549D-A193-4F24-B308-03123D9B7F8D"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPostViewCallback : IWMStatusCallback
@@ -5630,7 +5632,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("FC54A285-38C4-45B5-AA23-85B9F7CB424B"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPreprocess
@@ -5665,7 +5667,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("DC10E6A5-072C-467D-BF57-6330A9DDE12A"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterPushSink : IWMWriterSink
@@ -5704,7 +5706,7 @@ namespace WindowsMediaLib
         void EndSession();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("96406BE4-2B2B-11D3-B36B-00C04F6108FF"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMWriterSink
@@ -5729,7 +5731,7 @@ namespace WindowsMediaLib
         void OnEndWriting();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("0C0E4080-9081-11D2-BEEC-0060082F2054"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSNetSourceCreator
@@ -5772,7 +5774,7 @@ namespace WindowsMediaLib
         void Shutdown();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("4F528693-1035-43FE-B428-757561AD3A68"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer2 : INSSBuffer
@@ -5813,7 +5815,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("C87CEAAF-75BE-4BC4-84EB-AC2798507672"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer3 : INSSBuffer2
@@ -5870,7 +5872,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("B6B8FD5A-32E2-49D4-A910-C26CC85465ED"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface INSSBuffer4 : INSSBuffer3
@@ -5942,7 +5944,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("8BB23E5F-D127-4AFB-8D02-AE5B66D54C78"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSInternalAdminNetSource
@@ -6010,7 +6012,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("E74D58C3-CF77-4B51-AF17-744687C43EAE"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSInternalAdminNetSource2
@@ -6052,7 +6054,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("6B63D08E-4590-44AF-9EB3-57FF1E73BF80"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMSInternalAdminNetSource3 : IWMSInternalAdminNetSource2
@@ -6149,7 +6151,7 @@ namespace WindowsMediaLib
             );
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("e5b7ca9a-0f1c-4f66-9002-74ec50d8b304"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMPlayerHook
@@ -6157,7 +6159,7 @@ namespace WindowsMediaLib
         void PreDecode();
     }
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("24C44DB0-55D1-49ae-A5CC-F13815E36363"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderAdvanced5 : IWMReaderAdvanced4
@@ -6401,7 +6403,7 @@ namespace WindowsMediaLib
             IWMPlayerHook pHook);
     };
 
-    [ComImport, System.Security.SuppressUnmanagedCodeSecurity,
+    [ComImport, SuppressUnmanagedCodeSecurity,
     Guid("f28c0300-9baa-4477-a846-1744d9cbf533"),
     InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     public interface IWMReaderPlaylistBurn

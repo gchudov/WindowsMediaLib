@@ -40,7 +40,7 @@ using System.Security.Permissions;
 #endif
 [assembly: AssemblyCopyright("Lesser General Public License Version 2.1")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]		
+[assembly: AssemblyCulture("")]
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
