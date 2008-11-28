@@ -9,6 +9,7 @@ From http://windowsmedianet.sourceforge.net
 
 using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 using System.Text;
 using System.Threading;
 using System.Runtime.InteropServices;
@@ -86,6 +87,8 @@ namespace AudioPlayer
         private INSBuf[] m_InsBuf;
         private int m_DeviceIndex;
         private WaveCapsFlags m_WaveCaps;
+        private IntPtr m_hMixer;
+        private Form m_fForm;
 
         #endregion
 
@@ -93,9 +96,10 @@ namespace AudioPlayer
         /// Create the player
         /// </summary>
         /// <param name="iDevice">Zero based index of the playback device.  See GetDevs for a list of devices.</param>
-        public CAudioPlay(int iDevice)
+        public CAudioPlay(int iDevice, Form fForm)
         {
             m_DeviceIndex = iDevice;
+            m_fForm = fForm;
 
             WaveOutCaps woc = new WaveOutCaps();
             int mmr = waveOut.GetDevCaps(iDevice, woc, Marshal.SizeOf(woc));
@@ -108,6 +112,7 @@ namespace AudioPlayer
             m_dwAudioOutputNum = -1;
             m_hrAsync = 0;
             m_hWaveOut = IntPtr.Zero;
+            m_hMixer = IntPtr.Zero;
             m_pReader = null;
             m_pHeaderInfo = null;
             m_cnsFileDuration = 0;
@@ -130,6 +135,11 @@ namespace AudioPlayer
         ~CAudioPlay()
         {
             Dispose();
+        }
+
+        public bool IsDisposed()
+        {
+            return m_pReader == null;
         }
 
         static public WaveOutCaps[] GetDevs()
@@ -159,37 +169,37 @@ namespace AudioPlayer
                 throw new COMException("null url", E_InvalidArgument);
             }
 
-            if (null == m_pReader)
+            if (IsDisposed())
             {
                 throw new COMException("Instance has been Disposed", E_Unexpected);
             }
 
             try
             {
-                m_hAsyncEvent.Reset();
+                // Close previously opened file, if any.
+                Close();
+            }
+            catch { }
 
-                try
-                {
-                    // Close previously opened file, if any.
-                    Close();
-                }
-                catch { }
+            m_hAsyncEvent.Reset();
 
-                // Open the file with the reader object. This method call also sets
-                //  the status callback that the reader will use.
-                m_pReader.Open(pwszUrl, this, IntPtr.Zero);
+            // Open the file with the reader object. This method call also sets
+            //  the status callback that the reader will use.
+            m_pReader.Open(pwszUrl, this, IntPtr.Zero);
 
-                // Wait for the Open call to complete. The event is set in the OnStatus
-                //  callback when the reader reports completion.
-                m_hAsyncEvent.WaitOne();
+            // Wait for the Open call to complete. The event is set in the OnStatus
+            //  callback when the reader reports completion.
+            m_hAsyncEvent.WaitOne();
 
-                // Check the HRESULT reported by the reader object to the OnStatus
-                //  callback. Most errors in opening files will be reported this way.
-                if (Failed(m_hrAsync))
-                {
-                    throw new COMException("Could not open the specified file", m_hrAsync);
-                }
+            // Check the HRESULT reported by the reader object to the OnStatus
+            //  callback. Most errors in opening files will be reported this way.
+            if (Failed(m_hrAsync))
+            {
+                throw new COMException("Could not open the specified file", m_hrAsync);
+            }
 
+            try
+            {
                 m_pHeaderInfo = (IWMHeaderInfo)m_pReader;
 
                 // Get Seekable, Broadcast & Duration
@@ -215,7 +225,7 @@ namespace AudioPlayer
         /// </summary>
         public void Close()
         {
-            if (null != m_pReader)
+            if (!IsDisposed())
             {
                 try
                 {
@@ -247,6 +257,13 @@ namespace AudioPlayer
 
                 m_hWaveOut = IntPtr.Zero;
             }
+
+            // Close the mixer
+            if (m_hMixer != IntPtr.Zero)
+            {
+                Mixer.Close(m_hMixer);
+                m_hMixer = IntPtr.Zero;
+            }
         }
         /// <summary>
         /// Start playing the audio
@@ -257,7 +274,7 @@ namespace AudioPlayer
             //
             // Ensure that a reader object has been instantiated.
             //
-            if (null == m_pReader)
+            if (IsDisposed())
             {
                 throw new COMException("Instance has been Disposed", E_Unexpected);
             }
@@ -281,6 +298,16 @@ namespace AudioPlayer
                                             WaveOpenFlags.Null);
                 waveOut.ThrowExceptionForError(mmr);
 
+                // If a form was provided
+                if (m_fForm != null)
+                {
+                    // Ensure volume change events get sent
+                    MIXER_OBJECTF flags = MIXER_OBJECTF.CallBack_Window | MIXER_OBJECTF.WaveOut;
+                    MMSYSERR rc = Mixer.Open(out m_hMixer, m_DeviceIndex, m_fForm.Handle, IntPtr.Zero, flags);
+                    // Not checking for error.  If something goes wrong, rather than fail the call, we
+                    // just won't update the volume bar
+                }
+
                 for (int x = 0; x < MAXBUFFERS; x++)
                 {
                     m_InsBuf[x] = new INSBuf(m_hWaveOut, m_MaxSampleSize);
@@ -293,7 +320,7 @@ namespace AudioPlayer
             //
             // Ensure that a reader object has been instantiated.
             //
-            if (null == m_pReader)
+            if (IsDisposed())
             {
                 throw new COMException("Instance has been Disposed", E_Unexpected);
             }
@@ -319,7 +346,7 @@ namespace AudioPlayer
             //
             // Sanity check
             //
-            if (null == m_pReader)
+            if (IsDisposed())
             {
                 throw new COMException("Instance has been Disposed", E_Unexpected);
             }
@@ -340,7 +367,7 @@ namespace AudioPlayer
             //
             // Sanity check
             //
-            if (null == m_pReader)
+            if (IsDisposed())
             {
                 throw new COMException("Instance has been Disposed", E_Unexpected);
             }
@@ -403,7 +430,7 @@ namespace AudioPlayer
             iLeftVolume = iRet & 0xffff;
             iRightVolume = iRet >> 16;
         }
-        public void SetPlaybackcRate(int iRate)
+        public void SetPlaybackRate(int iRate)
         {
             if ((m_WaveCaps & WaveCapsFlags.PlaybackRate) > 0)
             {
@@ -415,7 +442,7 @@ namespace AudioPlayer
                 throw new NotSupportedException("This wave device doesn't support PlaybackRate");
             }
         }
-        public int GetPlaybackcRate()
+        public int GetPlaybackRate()
         {
             int iRet;
 
@@ -567,7 +594,7 @@ namespace AudioPlayer
             //
             // Sanity check
             //
-            if (null == m_pReader)
+            if (IsDisposed())
             {
                 throw new COMException("Instance has been Disposed", E_Unexpected);
             }
@@ -585,18 +612,14 @@ namespace AudioPlayer
             StringBuilder sName = null;
             for (i = 0; i < cOutputs; i++)
             {
+                m_pReader.GetOutputProps(i, out pProps);
+
                 try
                 {
-                    m_pReader.GetOutputProps(i, out pProps);
-
                     //
                     // Find out the space needed for pMediaType
                     //
-                    cbType = Marshal.SizeOf(typeof(AMMediaType));
-
-                    //
-                    // Get the value for MediaType
-                    //
+                    cbType = 0;
                     pMediaType = null;
                     pProps.GetMediaType(pMediaType, ref cbType);
 
@@ -604,16 +627,20 @@ namespace AudioPlayer
                     sName = null;
                     short iName = 0;
                     pProps.GetConnectionName(sName, ref iName);
+
                     sName = new StringBuilder(iName);
                     pProps.GetConnectionName(sName, ref iName);
 
                     pMediaType = new AMMediaType();
                     pMediaType.formatSize = cbType - Marshal.SizeOf(typeof(AMMediaType));
 
+                    //
+                    // Get the value for MediaType
+                    //
+                    pProps.GetMediaType(pMediaType, ref cbType);
+
                     try
                     {
-                        pProps.GetMediaType(pMediaType, ref cbType);
-
                         if (MediaType.Audio == pMediaType.majorType)
                         {
                             m_pWfx = new WaveFormatEx();
@@ -933,7 +960,7 @@ namespace AudioPlayer
                 Close();
             }
             catch { }
-            if (m_pReader != null)
+            if (!IsDisposed())
             {
                 Marshal.ReleaseComObject(m_pReader);
                 m_pReader = null;
@@ -944,6 +971,12 @@ namespace AudioPlayer
             {
                 waveOut.Close(m_hWaveOut); // Ignore return
                 m_hWaveOut = IntPtr.Zero;
+            }
+
+            if (IntPtr.Zero != m_hMixer)
+            {
+                Mixer.Close(m_hMixer);
+                m_hMixer = IntPtr.Zero;
             }
 
             if (null != m_hAsyncEvent)
