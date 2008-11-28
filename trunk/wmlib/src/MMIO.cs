@@ -729,10 +729,10 @@ namespace MultiMedia
         public int lMinimum;                        //  Minimum value
         public int lMaximum;                        //  Maximum value
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = RESERVED1)]
-        public int[] reserved1;                     //  reserved structure space
+        public int[] reservedBytes1;                //  reserved structure space
         public int cSteps;                          // # of steps between min & max
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = RESERVED2)]
-        public int[] reserved2;                     //  reserved structure space
+        public int[] reservedBytes2;                //  reserved structure space
     }
 
     #endregion
@@ -970,15 +970,13 @@ namespace MultiMedia
 
         #region Externs
 
-#if false
         // These methods are unnecessary or deprecated
 
-        [DllImport("winmm.dll"),
+        [DllImport("winmm.dll", EntryPoint="waveInGetID"),
         SuppressUnmanagedCodeSecurity]
         public static extern int GetID(
             IntPtr hwi,
             out int puDeviceID);
-#endif
 
         [DllImport("winmm.dll", EntryPoint = "waveInGetPosition"),
         SuppressUnmanagedCodeSecurity]
@@ -1092,15 +1090,11 @@ namespace MultiMedia
 
         #region Externs
 
-#if false
-        // These methods are unnecessary or deprecated
-
-        [DllImport("winmm.dll"),
+        [DllImport("winmm.dll", EntryPoint = "waveOutGetID"),
         SuppressUnmanagedCodeSecurity]
         public static extern int GetID(
             IntPtr hwo,
             out int puDeviceID);
-#endif
 
         [DllImport("winmm.dll", EntryPoint = "waveOutGetNumDevs"),
         SuppressUnmanagedCodeSecurity]
