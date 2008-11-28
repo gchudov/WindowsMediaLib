@@ -46,6 +46,23 @@ namespace AudioPlayer
         private AUDIOSTATUS m_Status;
         private string m_Duration;
 
+        protected override void WndProc(ref Message m)
+        {
+            switch (m.Msg)
+            {
+                case Mixer.LINE_CHANGE:
+                    //Debug.WriteLine(string.Format("Line {0} {1}", m.LParam, m.WParam));
+                    ShowVolume();
+                    break;
+                //case Mixer.CONTROL_CHANGE:
+                //    Debug.WriteLine(string.Format("Control {0} {1}", m.LParam, m.WParam));
+                //    break;
+                default:
+                    break;
+            }
+            base.WndProc(ref m);
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -62,7 +79,7 @@ namespace AudioPlayer
                 WaveOutCaps[] waves = CAudioPlay.GetDevs();
                 tbDevice.Text = waves[iUseDevice].szPname;
 
-                m_pAudioplay = new CAudioPlay(iUseDevice);
+                m_pAudioplay = new CAudioPlay(iUseDevice, this);
                 m_pAudioplay.StatusChanged += new EventHandler(StatusChanged);
                 m_pAudioplay.TimeChanged += new EventHandler(TimeChanged);
             }
