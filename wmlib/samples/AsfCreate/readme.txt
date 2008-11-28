@@ -29,10 +29,5 @@ Not really much to say.  Create an instance of the class, then pass it bitmaps:
     f.Close();
 
 Probably the most common question about this sample is how to change the format
-of the output (ie other than "No audio, 56 Kbps".  The easy answer is to say "use
-one of the other formats in %windir%\WMSysPr9.prx".  Unfortunately there aren't very 
-many formats in that file that don't have audio.
-
-The other answer is to suggest that you read the WMF docs about 
-IWMProfileManager::LoadProfileByData.  You can generate profiles for that method using
-a tool from MS's WMF sdk named GenProfile.
+of the output (ie other than "No audio, 56 Kbps").  Check out the section titled
+"Profiles & LoadProfileByID vs LoadProfileByData & GenProfile" in docs\readme.rtf.
