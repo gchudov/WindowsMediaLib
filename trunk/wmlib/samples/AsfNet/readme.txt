@@ -20,3 +20,7 @@ The most common question asked about this sample has to do with reducing latency
 is a several second delay between when something happens at the camera and when that is
 seen at the player.  While it is possible to reduce (slightly) that delay by playing 
 with various settings, there is no way to completely eliminate it.
+
+Second, is how to change the format of the output (ie other than "No audio, 56 Kbps").  
+Check out the section titled "Profiles & LoadProfileByID vs LoadProfileByData & GenProfile" 
+in docs\readme.rtf.
