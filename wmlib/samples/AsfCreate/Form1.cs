@@ -81,7 +81,7 @@ namespace AsfCreate
             this.button1.Location = new System.Drawing.Point(96, 176);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 56);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 4;
             this.button1.Text = "Go";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -91,18 +91,18 @@ namespace AsfCreate
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(40, 20);
             this.numericUpDown1.TabIndex = 1;
-            this.numericUpDown1.Value = new System.Decimal(new int[] {
-                                                                         3,
-                                                                         0,
-                                                                         0,
-                                                                         0});
+            this.numericUpDown1.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(16, 128);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(248, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.TabIndex = 3;
             this.textBox1.Text = "c:\\asdf.asf";
             // 
             // label1
@@ -126,7 +126,7 @@ namespace AsfCreate
             this.textBox2.Location = new System.Drawing.Point(16, 72);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(248, 20);
-            this.textBox2.TabIndex = 5;
+            this.textBox2.TabIndex = 2;
             this.textBox2.Text = "C:\\vss\\catchpic\\bin";
             // 
             // label3
@@ -155,6 +155,7 @@ namespace AsfCreate
             this.Text = "ASFCreate";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 		#endregion
@@ -200,7 +201,7 @@ namespace AsfCreate
 
             Cursor.Current = Cursors.Default;
 
-            MessageBox.Show(string.Format("Added {0} frames", x), "Done");
+            MessageBox.Show(string.Format("Added {0} frames", x-1), "Done");
         }
 	}
 }
