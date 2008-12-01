@@ -1,4 +1,4 @@
-DirectShowLib Samples 2007-07-31
+WindowsMediaNet Samples 2008-11-30
 
 http://WindowsMediaNet.SourceForge.net
 
