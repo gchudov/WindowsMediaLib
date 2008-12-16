@@ -1,8 +1,7 @@
 V 1.1 Minor updates November 30, 2008
 
-Fix some 64bit issues
+Fix some 64bit issues.  However, see http://msdn.microsoft.com/en-us/library/aa391570(VS.85).aspx
 Add support for mixer* methods from http://msdn.microsoft.com/en-us/library/ms712636(VS.85).aspx
-Update AudioPlayer sample to use mixer methods
 
 No further interfaces are planned for this library.  At one time, it was hoped that the DRM methods 
 could be implemented from .Net.  However, between licensing issues (to use DRM, you MUST link in a 
