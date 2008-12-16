@@ -1,8 +1,10 @@
-WindowsMediaNet Samples 2008-11-30
+WindowsMediaNet Samples 2008-12-09
 
 http://WindowsMediaNet.SourceForge.net
 
-This package contains a selection of samples.  See the descriptions below.
+This package contains a selection of samples.  See the descriptions below.  In order
+to run ANY of these samples, you must also have the windowsmedianet library, which
+can be downloaded at the address above.
 
 These samples should not be considered commercial quality applications.  They are just 
 intended to illustrate how to use some particular feature, or group of features in 
@@ -32,18 +34,18 @@ should not be considered commercial quality, but can form the basis of your own 
 
 Samples\AsfCreate
 --------------------
-Creates an Asf or WMV file from a collection of bitmaps
+Creates an Asf or WMV file from a collection of bitmaps.
 
 
 Samples\AsfNet
 --------------------
 Sends the output of DirectShow capture graphs to a network port 
-to be read by Windows Media Player
+to be read by Windows Media Player.
 
 
 Samples\AudioPlayer
 --------------------
-Play the audio portion of a windows media file
+Play the audio portion of a windows media file.
 
 
 Samples\DESCombine
@@ -53,26 +55,31 @@ Join and split files, outputting data to a WM file.
 
 Samples\DrmHeader
 --------------------
-Show the DRM attributes of a file
+Show the DRM attributes of a file.
+
+
+Samples\GenerateLa
+--------------------
+Builds (and plays) a wave buffer that contains a beep.
 
 
 Samples\ReadFromStream
 --------------------
-Walk the samples in a file where the source is an IStream
+Walk the samples in a file where the source is an IStream.
 
 
 Samples\RecordWav
 --------------------
-Record audio data from a microphone to a .wav file
+Record audio data from a microphone to a .wav file.
 
 
 Samples\WMProp
 --------------------
-Show file properties for WM files
+Show file properties for WM files.
 
 
 Samples\WMVCopy
 --------------------
-Code to copy a file
+Code to copy a file.
 
 
