@@ -6,6 +6,13 @@ This package contains a selection of samples.  See the descriptions below.  In o
 to run ANY of these samples, you must also have the windowsmedianet library, which
 can be downloaded at the address above.
 
+
+Since the last release:
+-----------------------
+Update AudioPlayer sample to use mixer methods
+Add GenerateLa sample
+
+
 These samples should not be considered commercial quality applications.  They are just 
 intended to illustrate how to use some particular feature, or group of features in 
 WindowsMediaFormat.  Feel free to polish them into applications of your own, or extract 
