@@ -18,6 +18,17 @@ WMCheckURLExtension
 WMCheckURLScheme
 WMValidateData
 
+mixerClose
+mixerGetControlDetails
+mixerGetDevCaps
+mixerGetID
+mixerGetLineControls
+mixerGetLineInfo
+mixerGetNumDevs
+mixerMessage
+mixerOpen
+mixerSetControlDetails
+
 mmioAdvance
 mmioAscend
 mmioClose
@@ -69,7 +80,6 @@ waveOutSetPlaybackRate
 waveOutSetVolume
 waveOutUnprepareHeader
 waveOutWrite
-
 
 ---------------------------
 These interfaces are tested
