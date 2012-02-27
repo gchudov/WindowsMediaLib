@@ -64,7 +64,6 @@ namespace RecordWav
         public CWaveRecord(int iDevice)
         {
             m_Disposed = false;
-            m_AudioLength = 0;
             m_iDevice = iDevice;
             m_Delegate = new waveIn.WaveInDelegate(WaveInProc);
             m_Sample = new AutoResetEvent(false);
@@ -188,6 +187,8 @@ namespace RecordWav
                     MMIO.Close(m_OutputFile, MMIOCloseFlags.None);
                     m_OutputFile = IntPtr.Zero;
                 }
+
+                m_AudioLength = 0;
             }
             else
             {

@@ -44,7 +44,7 @@ namespace RecordWav
             {
                 if (!File.Exists(tbFilename.Text))
                 {
-                    m_Wav.CreateNew(tbFilename.Text, 1, 16, 44100);
+                    m_Wav.CreateNew(tbFilename.Text, 2, 16, 44100);
                 }
                 else
                 {
